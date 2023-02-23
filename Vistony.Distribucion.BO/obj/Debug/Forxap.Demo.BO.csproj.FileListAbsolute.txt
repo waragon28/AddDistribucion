@@ -1,0 +1,8 @@
+D:\Forxap\Saperos Elite\Forxap.Demo.BO\bin\Debug\Forxap.Demo.BO.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.BO\bin\Debug\Forxap.Demo.BO.pdb
+D:\Forxap\Saperos Elite\Forxap.Demo.BO\obj\Debug\Forxap.Demo.BO.csprojResolveAssemblyReference.cache
+D:\Forxap\Saperos Elite\Forxap.Demo.BO\obj\Debug\Forxap.Demo.BO.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.BO\obj\Debug\Forxap.Demo.BO.pdb
+D:\Forxap\Saperos Elite\Forxap.Demo.BO\bin\Debug\Forxap.Framework.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.BO\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.BO\bin\Debug\Forxap.Framework.pdb

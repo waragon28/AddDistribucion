@@ -1,0 +1,11 @@
+D:\Forxap\Saperos Elite\Forxap.Demo.DAL\bin\Debug\Forxap.Demo.DAL.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.DAL\bin\Debug\Forxap.Demo.DAL.pdb
+D:\Forxap\Saperos Elite\Forxap.Demo.DAL\bin\Debug\Forxap.Demo.BO.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.DAL\bin\Debug\Forxap.Framework.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.DAL\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.DAL\bin\Debug\Forxap.Framework.pdb
+D:\Forxap\Saperos Elite\Forxap.Demo.DAL\bin\Debug\Forxap.Demo.BO.pdb
+D:\Forxap\Saperos Elite\Forxap.Demo.DAL\obj\Debug\Forxap.Demo.DAL.csprojResolveAssemblyReference.cache
+D:\Forxap\Saperos Elite\Forxap.Demo.DAL\obj\Debug\Forxap.Demo.DAL.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.DAL\obj\Debug\Forxap.Demo.DAL.pdb
+C:\Addons\Bancos\Vistony.Banco.DAL\obj\Debug\Forxap.Demo.DAL.csprojResolveAssemblyReference.cache

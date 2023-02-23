@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AddOnRegData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SlientInstallation="No" SlientUpgrade="No" Partnernmsp="Vistony_PE" SchemaVersion="3.0" Type="" MultipleVersion="false" OnDemand="" OnPremise="" ExtName="UltimaMilla_PE" ExtVersion="1.2.6" Contdata="waragon@nogasa.com" Partner="TI Vistony" DBType="HANA" ClientType="A">
+  <Validity>
+    <SBOCompatibility>
+      <Version From="930.110.01" To="1000.160.06" />
+    </SBOCompatibility>
+  </Validity>
+  <Configuration>
+    <Repository>
+      <Properties />
+    </Repository>
+    <Deployment>
+      <Properties />
+    </Deployment>
+    <Assignment>
+      <Properties />
+    </Assignment>
+  </Configuration>
+  <Addons>
+    <Addon Name="" Group="" ForceFlag="" Visible="" AutoAssign="" SelfUpgrd="">
+      <x86 AddonExe="D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\UltimaMilla.exe" AddonSig="">
+        <Installation>
+          <Files>
+            <File FileName="UltimaMilla.exe">
+              <Actions />
+            </File>
+          </Files>
+        </Installation>
+        <Uninstallation>
+          <Files>
+            <File FileName="UltimaMilla.exe">
+              <Actions />
+            </File>
+          </Files>
+        </Uninstallation>
+      </x86>
+      <x64 AddonExe="D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\UltimaMilla.exe" AddonSig="">
+        <Installation>
+          <Files>
+            <File FileName="Forxap.Framework.dll">
+              <Actions />
+            </File>
+            <File FileName="Forxap.Framework.ServiceLayer.dll">
+              <Actions />
+            </File>
+            <File FileName="GMap.NET.Core.dll">
+              <Actions />
+            </File>
+            <File FileName="GMap.NET.WindowsForms.dll">
+              <Actions />
+            </File>
+            <File FileName="ICSharpCode.SharpZipLib.dll">
+              <Actions />
+            </File>
+            <File FileName="Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.dll">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.dll">
+              <Actions />
+            </File>
+            <File FileName="SAPBusinessOneSDK.dll">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.b1s">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.exe">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.exe.config">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.xml">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Distribucion.BLL.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Distribucion.BO.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Distribucion.DAL.dll">
+              <Actions />
+            </File>
+            <File FileName="es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll">
+              <Actions />
+            </File>
+            <File FileName="Files\UserFields.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserMenus.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserMenusEnglisUnitedStates.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserMenusFrench.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserMenusPeru.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserObjects.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserPermissions.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserScripts.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserTables.xml">
+              <Actions />
+            </File>
+            <File FileName="Images\AddonIcon.png">
+              <Actions />
+            </File>
+            <File FileName="Images\Wizard.JPG">
+              <Actions />
+            </File>
+          </Files>
+        </Installation>
+        <Uninstallation>
+          <Files>
+            <File FileName="Forxap.Framework.dll">
+              <Actions />
+            </File>
+            <File FileName="Forxap.Framework.ServiceLayer.dll">
+              <Actions />
+            </File>
+            <File FileName="GMap.NET.Core.dll">
+              <Actions />
+            </File>
+            <File FileName="GMap.NET.WindowsForms.dll">
+              <Actions />
+            </File>
+            <File FileName="ICSharpCode.SharpZipLib.dll">
+              <Actions />
+            </File>
+            <File FileName="Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.dll">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.dll">
+              <Actions />
+            </File>
+            <File FileName="SAPBusinessOneSDK.dll">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.b1s">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.exe">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.exe.config">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.xml">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Distribucion.BLL.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Distribucion.BO.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Distribucion.DAL.dll">
+              <Actions />
+            </File>
+            <File FileName="es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll">
+              <Actions />
+            </File>
+            <File FileName="Files\UserFields.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserMenus.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserMenusEnglisUnitedStates.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserMenusFrench.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserMenusPeru.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserObjects.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserPermissions.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserScripts.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserTables.xml">
+              <Actions />
+            </File>
+            <File FileName="Images\AddonIcon.png">
+              <Actions />
+            </File>
+            <File FileName="Images\Wizard.JPG">
+              <Actions />
+            </File>
+          </Files>
+        </Uninstallation>
+      </x64>
+    </Addon>
+  </Addons>
+  <XApps>
+    <XApp Name="" Path="" FileName="" />
+  </XApps>
+  <UDQs>
+    <UDQ udqname="">
+      <Hana FileName="" />
+    </UDQ>
+  </UDQs>
+</AddOnRegData>

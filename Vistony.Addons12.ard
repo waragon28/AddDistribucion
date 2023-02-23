@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AddOnRegData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SlientInstallation="No" SlientUpgrade="No" Partnernmsp="AddAsignaDespacho" SchemaVersion="3.0" Type="" MultipleVersion="false" OnDemand="" OnPremise="" ExtName="Vistony_AsignaDespacho" ExtVersion="1.0.0" Contdata="juan.silupu@nogasa.com.pe" Partner="TI_Vistony" DBType="HANA" ClientType="A">
+  <Validity>
+    <SBOCompatibility>
+      <Version From="" To="" />
+    </SBOCompatibility>
+  </Validity>
+  <Configuration>
+    <Repository>
+      <Properties />
+    </Repository>
+    <Deployment>
+      <Properties />
+    </Deployment>
+    <Assignment>
+      <Properties />
+    </Assignment>
+  </Configuration>
+  <Addons>
+    <Addon Name="" Group="" ForceFlag="" Visible="" AutoAssign="" SelfUpgrd="">
+      <x86 AddonExe="D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe" AddonSig="">
+        <Installation>
+          <Files>
+            <File FileName="Vistony.Banco.UI.Win.exe">
+              <Actions />
+            </File>
+          </Files>
+        </Installation>
+        <Uninstallation>
+          <Files>
+            <File FileName="Vistony.Banco.UI.Win.exe">
+              <Actions />
+            </File>
+          </Files>
+        </Uninstallation>
+      </x86>
+      <x64 AddonExe="D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe" AddonSig="">
+        <Installation>
+          <Files>
+            <File FileName="DLCuotas.dll">
+              <Actions />
+            </File>
+            <File FileName="Forxap.Framework.pdb">
+              <Actions />
+            </File>
+            <File FileName="Forxap.Framework.ServiceLayer.pdb">
+              <Actions />
+            </File>
+            <File FileName="ICSharpCode.SharpZipLib.dll">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.dll">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.xml">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.dll">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.xml">
+              <Actions />
+            </File>
+            <File FileName="SAPBusinessOneSDK.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.BO.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.BO.pdb">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.DAL.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.DAL.pdb">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.b1s">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.exe">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.exe.config">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.pdb">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.vshost.exe">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.vshost.exe.config">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.vshost.exe.manifest">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.xml">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Framework.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Framework.pdb">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Framework.ServiceLayer.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Framework.ServiceLayer.pdb">
+              <Actions />
+            </File>
+            <File FileName="Files\UserFields.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserMenus.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserObjects.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserPermissions.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserScripts.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserTables.xml">
+              <Actions />
+            </File>
+            <File FileName="Images\Icon.png">
+              <Actions />
+            </File>
+            <File FileName="Images\Icon_16x16.png">
+              <Actions />
+            </File>
+            <File FileName="Images\Wizard.JPG">
+              <Actions />
+            </File>
+          </Files>
+        </Installation>
+        <Uninstallation>
+          <Files>
+            <File FileName="DLCuotas.dll">
+              <Actions />
+            </File>
+            <File FileName="Forxap.Framework.pdb">
+              <Actions />
+            </File>
+            <File FileName="Forxap.Framework.ServiceLayer.pdb">
+              <Actions />
+            </File>
+            <File FileName="ICSharpCode.SharpZipLib.dll">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.dll">
+              <Actions />
+            </File>
+            <File FileName="Newtonsoft.Json.xml">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.dll">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.xml">
+              <Actions />
+            </File>
+            <File FileName="SAPBusinessOneSDK.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.BO.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.BO.pdb">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.DAL.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.DAL.pdb">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.b1s">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.exe">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.exe.config">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.pdb">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.vshost.exe">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.vshost.exe.config">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.vshost.exe.manifest">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Banco.UI.Win.xml">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Framework.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Framework.pdb">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Framework.ServiceLayer.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Framework.ServiceLayer.pdb">
+              <Actions />
+            </File>
+            <File FileName="Files\UserFields.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserMenus.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserObjects.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserPermissions.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserScripts.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserTables.xml">
+              <Actions />
+            </File>
+            <File FileName="Images\Icon.png">
+              <Actions />
+            </File>
+            <File FileName="Images\Icon_16x16.png">
+              <Actions />
+            </File>
+            <File FileName="Images\Wizard.JPG">
+              <Actions />
+            </File>
+          </Files>
+        </Uninstallation>
+      </x64>
+    </Addon>
+  </Addons>
+  <XApps>
+    <XApp Name="" Path="" FileName="" />
+  </XApps>
+  <UDQs>
+    <UDQ udqname="">
+      <Hana FileName="" />
+    </UDQ>
+  </UDQs>
+</AddOnRegData>

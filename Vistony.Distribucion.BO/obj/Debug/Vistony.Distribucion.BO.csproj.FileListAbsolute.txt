@@ -1,0 +1,18 @@
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BO\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BO\obj\Debug\Vistony.Distribucion.BO.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BO\bin\Debug\Vistony.Distribucion.BO.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BO\bin\Debug\Vistony.Distribucion.BO.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BO\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BO\obj\Debug\Vistony.Distribucion.BO.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BO\obj\Debug\Vistony.Distribucion.BO.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BO\obj\Debug\Vistony.Distribucion.BO.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BO\bin\Debug\Vistony.Distribucion.BO.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BO\bin\Debug\Vistony.Distribucion.BO.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BO\bin\Debug\Forxap.Framework.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BO\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BO\obj\Debug\Vistony.Distribucion.BO.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BO\obj\Debug\Vistony.Distribucion.BO.pdb

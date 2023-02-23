@@ -1,0 +1,33 @@
+c:\users\percy\documents\visual studio 2013\Projects\SBOAddonProject8\SBOAddonProject8\bin\Debug\Despacho.exe
+c:\users\percy\documents\visual studio 2013\Projects\SBOAddonProject8\SBOAddonProject8\bin\Debug\Despacho.pdb
+c:\users\percy\documents\visual studio 2013\Projects\SBOAddonProject8\SBOAddonProject8\obj\Debug\Despacho.exe
+c:\users\percy\documents\visual studio 2013\Projects\SBOAddonProject8\SBOAddonProject8\obj\Debug\Despacho.pdb
+c:\users\percy\documents\visual studio 2013\Projects\SBOAddonProject8\SBOAddonProject8\obj\Debug\Mixercon.Despacho.UI.Win.csprojResolveAssemblyReference.cache
+C:\Mixercon\Mixercon.Despacho.UI.Win\obj\Debug\Mixercon.Despacho.UI.Win.csprojResolveAssemblyReference.cache
+C:\Mixercon\Mixercon.Despacho.UI.Win\bin\Debug\Despacho.exe
+C:\Mixercon\Mixercon.Despacho.UI.Win\bin\Debug\Despacho.pdb
+C:\Mixercon\Mixercon.Despacho.UI.Win\bin\Debug\Forxap.Framework.dll
+C:\Mixercon\Mixercon.Despacho.UI.Win\bin\Debug\Mixercon.Despacho.BLL.dll
+C:\Mixercon\Mixercon.Despacho.UI.Win\bin\Debug\Mixercon.Despacho.BO.dll
+C:\Mixercon\Mixercon.Despacho.UI.Win\bin\Debug\Mixercon.Despacho.DAL.dll
+C:\Mixercon\Mixercon.Despacho.UI.Win\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Mixercon\Mixercon.Despacho.UI.Win\bin\Debug\Forxap.Framework.pdb
+C:\Mixercon\Mixercon.Despacho.UI.Win\bin\Debug\Mixercon.Despacho.BLL.pdb
+C:\Mixercon\Mixercon.Despacho.UI.Win\bin\Debug\Mixercon.Despacho.BO.pdb
+C:\Mixercon\Mixercon.Despacho.UI.Win\bin\Debug\Mixercon.Despacho.DAL.pdb
+C:\Mixercon\Mixercon.Despacho.UI.Win\obj\Debug\Despacho.exe
+C:\Mixercon\Mixercon.Despacho.UI.Win\obj\Debug\Despacho.pdb
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\bin\Debug\Despacho.exe
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\bin\Debug\Despacho.pdb
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\bin\Debug\Forxap.Framework.dll
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\bin\Debug\Mixercon.Despacho.BLL.dll
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\bin\Debug\Mixercon.Despacho.BO.dll
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\bin\Debug\Mixercon.Despacho.DAL.dll
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\bin\Debug\Forxap.Framework.pdb
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\bin\Debug\Mixercon.Despacho.BLL.pdb
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\bin\Debug\Mixercon.Despacho.BO.pdb
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\bin\Debug\Mixercon.Despacho.DAL.pdb
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\obj\Debug\Mixercon.Despacho.UI.Win.csprojResolveAssemblyReference.cache
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\obj\Debug\Despacho.exe
+C:\Mixercon\solucionmixercon\Mixercon.Despacho.UI.Win\obj\Debug\Despacho.pdb

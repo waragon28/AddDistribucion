@@ -1,0 +1,14 @@
+D:\Forxap\RRHH\Forxap.HumanResources.Win\bin\Debug\Forxap.Framework.dll
+D:\Forxap\RRHH\Forxap.HumanResources.Win\bin\Debug\Forxap.Payroll.BLL.dll
+D:\Forxap\RRHH\Forxap.HumanResources.Win\bin\Debug\Forxap.Payroll.BO.dll
+D:\Forxap\RRHH\Forxap.HumanResources.Win\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Forxap\RRHH\Forxap.HumanResources.Win\bin\Debug\Forxap.Payroll.DAL.dll
+D:\Forxap\RRHH\Forxap.HumanResources.Win\bin\Debug\Forxap.Framework.pdb
+D:\Forxap\RRHH\Forxap.HumanResources.Win\bin\Debug\Forxap.Payroll.BLL.pdb
+D:\Forxap\RRHH\Forxap.HumanResources.Win\bin\Debug\Forxap.Payroll.BO.pdb
+D:\Forxap\RRHH\Forxap.HumanResources.Win\bin\Debug\Forxap.Payroll.DAL.pdb
+D:\Forxap\RRHH\Forxap.HumanResources.Win\obj\Debug\Forxap.Payroll.WinOLd.csprojResolveAssemblyReference.cache
+D:\Forxap\RRHH\Forxap.HumanResources.Win\bin\Debug\Forxap.Payroll.Win.exe
+D:\Forxap\RRHH\Forxap.HumanResources.Win\bin\Debug\Forxap.Payroll.Win.pdb
+D:\Forxap\RRHH\Forxap.HumanResources.Win\obj\Debug\Forxap.Payroll.Win.exe
+D:\Forxap\RRHH\Forxap.HumanResources.Win\obj\Debug\Forxap.Payroll.Win.pdb

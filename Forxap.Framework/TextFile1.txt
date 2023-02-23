@@ -1,0 +1,517 @@
+﻿Object Types
+The following table shows the SAP Business One (sbo) object types which are also known as transaction types or transtypes. The last update of the table was done on December 30th 2013.
+
+Value	Description
+1	ChartOfAccounts object
+2	BusinessPartners object
+3	Banks object
+4	Items object
+5	VatGroups object
+6	PriceLists object
+7	SpecialPrices object
+8	ItemProperties object
+12	Users object   OJO
+13	Documents object that represents a sales invoice document
+14	Documents object that represents a sales credit note document
+15	Documents object that represents a sales delivery note document
+16	Documents object that represents a sales return document
+17	Documents object that represents a sales order document
+18	Documents object that represents a purchase invoice document
+19	Documents object that represents a purchase credit note document
+20	Documents object that represents a purchase delivery note document
+21	Documents object that represents a a purchase return document
+22	Documents object that represents a purchase order document
+23	Documents object that represents a sales quotation document
+24	Payments object
+28	JournalVouchers object
+30	JournalEntries object that represents a normal journal entry
+31	StockTaking object
+33	Contacts object
+36	CreditCards object
+37	Currencies object  MONEDAS
+40	PaymentTermsTypes object
+42	BankPages object
+43	Manufacturers object
+46	Payments object that represents payments to vendors
+48	LandedCostsCodes object
+49	ShippingTypes object
+50	LengthMeasures object
+51	WeightMeasures object
+52	ItemGroups object
+53	SalesPersons object
+56	CustomsGroups object
+57	ChecksforPayment object
+59	Documents object for entering general items to inventory
+60	Documents object for removing general items from inventory
+64	Warehouses object
+65	CommissionGroups object
+66	ProductTrees object
+67	StockTransfer object
+68	WorkOrders object
+70	CreditPaymentMethods object
+71	CreditCardPayments object
+73	AlternateCatNum object
+77	Budget object
+78	BudgetDistribution object
+81	Messages object
+91	BudgetScenarios object
+97	SalesOpportunities object
+93	UserDefaultGroups object
+101	SalesStages object
+103	ActivityTypes object
+104	ActivityLocations object
+112	Documents object that represents a draft document
+116	DeductionTaxHierarchies object
+117	DeductionTaxGroups object
+125	AdditionalExpenses object
+126	SalesTaxAuthorities object
+127	SalesTaxAuthoritiesTypes object
+128	SalesTaxCodes object
+134	QueryCategories object
+138	FactoringIndicators object
+140	Payments object
+142	AccountSegmentations object
+143	AccountSegmentationCategories object
+144	WarehouseLocations object
+145	Forms1099 object
+146	InventoryCycles object
+147	WizardPaymentMethods object
+150	BPPriorities object
+151	DunningLetters object
+152	UserFieldsMD object
+153	UserTablesMD object
+156	PickLists object
+158	PaymentRunExport object
+160	UserQueries object
+162	MaterialRevaluation object
+163	Documents object that represents a purchase invoice correction document
+164	Documents object that represents a reverse purchase invoice correction document
+165	Documents object that represents a correction invoice document
+166	Documents object that represents a reverse invoice correction document
+170	ContractTemplates object
+171	EmployeesInfo object
+176	CustomerEquipmentCards object
+178	WithholdingTaxCodes object
+182	BillOfExchangeTransaction object
+189	KnowledgeBaseSolutions object
+190	ServiceContracts object
+191	ServiceCalls object
+193	UserKeysMD object
+194	Queue object
+198	SalesForecast object
+200	Territories object
+201	Industries object
+202	ProductionOrders object
+205	PackagesTypes object
+206	UserObjectsMD object
+211	Teams object
+212	Relationships object
+214	UserPermissionTree object
+217	ActivityStatus object
+218	ChooseFromList object
+219	FormattedSearches object
+221	Attachments2 object
+223	UserLanguages object
+224	MultiLanguageTranslations object
+229	DynamicSystemStrings object
+231	HouseBankAccounts object
+247	BusinessPlaces object
+250	LocalEra object
+280	Sales tax invoice object
+281	Purchase tax invoice object
+300	Recordset object
+305	SBObob object
+260	NotaFiscalUsage object
+258	NotaFiscalCFOP object
+259	NotaFiscalCST object
+261	ClosingDateProcedure object
+10	BusinessPartnerGroups object
+278	BPFiscalRegistryID object
+203	Documents object that represents a down payments document
+204	Documents object that represents a purchase down payments document
+1179	StockTransfer draft object
+540000006	Documents object that represents a purchase quotation document
+1250000001	StockTransfer request object
+1470000113	PurchaseRequest object
+
+
+Form Types
+Taken from Developers Wiki
+
+Form Type	Description
+7	Drag & Relate
+10	Query Wizard
+19	EU Sales Report -Selection Criteria
+20	Define and Update Serial Numbers – Selection Criteria
+21	Define and Update Serial Numbers
+22	Serial Number Transactions Report – Selection Criteria
+23	Serial Number Transactions Report
+25	Serial Numbers – Selection Criteria
+26	Serial Number Completion
+27	Serial Number Completion – Selection Criteria
+31	Manage User Fields
+39	Document Journal
+40	Batch No. for Receipt – Selection Criteria
+41	Define and Update Batch Numbers
+42	Batch Number – Selection Criteria
+43	Batch Number Completion
+44	Batch Number Completion
+45	Batch Number Transactions Report
+46	Batch Number Transactions Report – Selection Criteria
+47	Tax Report
+48	EU Sales Report
+50	Define Sales Tax Jurisdictions – Selection Criteria
+51	Define Sales Tax Codes
+53	Tax Report – Selection Criteria
+62	Define Warehouses
+63	Define Item Groups
+64	Define Account Segmentation
+65	Purchase Order Confirmation
+66	Define %s Segment Codes
+67	Define Inventory Cycles
+71	Tax Report – Selection Criteria
+72	Tax Report
+75	Reverse Transactions
+76	Tax Jurisdiction
+80	Release List – Selection Criteria
+81	Release List
+83	Link Invoices to Payments – Selection Criteria
+84	Link Invoices to Payments
+85	Pick List
+90	Inactive Items
+91	Inactive Items – Selection Criteria
+92	Inactive Customers – Selection Criteria
+93	Inactive Customers
+96	Last Prices Report
+120	Trial Balance
+129	BP
+133	A/R Invoice
+134	Business Partner Master Data
+136	Company Details
+137	Correction Invoice
+138	General Settings
+139	Order
+140	Delivery
+141	A/P Invoice
+142	Purchase Order
+143	Goods Receipt PO
+146	Payment Means
+148	Define Currencies
+149	Quotation
+150	Item Master Data
+152	Open Items List
+154	Inventory Status
+155	Price Lists
+157	Price List
+161	Transaction Journal Report
+165	Balance Sheet – Selection Criteria
+166	Trial Balance – Selection Criteria
+168	G/L Accounts Opening Balance
+169	Command Centre
+170	Incoming Payments
+171	Cycle Count Recommendations
+172	Document Numbering
+174	Define Customer Groups
+177	Define Payment Terms
+179	A/R Credit Memo
+180	Returns
+181	A/P Credit Memo
+182	Goods Returns
+183	Print Preferences
+184	Document Printing – Selection Criteria
+188	Send Message
+189	Test Report Balance Settings
+190	Save as Distribution List
+191	Print
+194	Execute Commands
+202	Alerts Management
+210	Save Report
+228	Document Settings
+229	Journal Vouchers
+239	Gross Profit of Order
+240	Gross Profit of Delivery
+241	Gross Profit of Outgoing Invoice
+245	Trial Balance Budget Report – Selection Criteria
+247	Define Vendor Groups
+251	Define Formatted Search
+260	Balance Sheet Budget Report – Selection Criteria
+265	Balance Sheet Comparison – Selection Criteria
+267	Profit and Loss Statement Comparison – Selection Criteria
+280	Trial Balance Comparison – Selection Criteria
+285	Show History
+290	Price List Item Details
+291	Define Hierarchies for Price List
+296	Organize User Menu
+305	Dynamic Opportunity Analysis
+307	Opportunity Analysis – Selection Criteria
+309	Opportunities Pipeline
+313	Opportunities Won
+314	Opportunity List
+315	Opportunities Won – Selection Criteria
+319	Stage Analysis – Selection Criteria
+320	Sales Opportunity
+333	Special Prices – Item Details
+335	Special Prices – Hierarchies
+336	Copy Special Prices to Selection Criteria
+337	
+339	Update Special Prices Globally
+350	G/L Account Determination
+352	Define Sales Stages
+369	Exchange Rate Differences
+370	Exchange Rate Differences – Selection Criteria
+371	Conversion Differences
+372	Conversion Differences – Selection Criteria
+385	Process External Bank Statement
+386	Reconciliation – Selection Criteria
+387	Reconciliation
+388	Manage Previous Reconciliations – Selection Criteria
+389	Manage Previous Reconciliations
+390	Journal Entry
+392	Journal Entry
+401	Tax Reporting
+402	Advances on Corporate Income Tax on Sales Report
+403	Tax Report Detailed by Months
+411	Period-End Closing – Selection Criteria
+419	Define Address Formats
+420	Profit and Loss Statement – Selection Criteria
+421	Profit and Loss Statement Budget Report – Selection Criteria
+422	Define Business Partner Properties
+424	Define Credit Cards
+426	Payments to Vendors
+429	Define Item Properties
+430	Business Partners Opening Balance
+435	Define Credit Card Payment Methods
+436	Define Credit Card Payment
+437	Credit Card Management
+440	Credit Card Management – Selection Criteria
+441	Define Budget Distribution Methods
+443	Define Budget
+444	Define Budget
+446	Budget Report – Selection Criteria
+447	Budget Report
+448	Restore Budget Balances
+452	Budget Scenarios
+453	Import Budget Scenarios
+501	General Ledger
+502	Transaction Report by Projects – Selection Criteria
+504	Payment Wizard
+505	Define Payment Methods
+510	Vendor Withholding Tax – Selection Criteria
+515	Withholding Tax Report
+520	Check Document Numbering
+521	Create/Edit Categories
+530	Documents serial numbering list
+540	Item Query
+550	Inventory Posting List – Selection Criteria
+600	Items List – Selection Criteria
+601	Items List
+603	Check Fund – Selection Criteria
+604	General Ledger – Selection Criteria
+606	Deposit
+607	Check Fund
+609	Document Journal – Selection Criteria
+612	Postdated Check Deposit
+614	Postdated Credit Voucher Deposit
+636	Posting Period
+640	Define Hierarchies and Expansions
+651	Contacts with Business Partners
+653	Define Cash Discount
+655	Payment Drafts Report
+664	Define Commission Groups
+666	Define Sales Employees
+668	Special Prices for Business Partners
+670	Recurring Postings
+672	Define Bill of Materials
+673	Open Work Orders Report
+674	Bill of Materials Report – Selection Criteria
+675	Production Recommendations
+677	Work Order
+679	Bill of Materials Report
+680	Confirmation for recurring postings
+681	Cycle Count Recommendations – Selection Criteria
+682	Restore Item Balances
+689	Inventory Status – Selection Criteria
+703	Financial Report Template – Expansion
+704	Financial Report Templates
+705	Define Banks
+706	Financial Report Template
+708	Formula for Profit and Loss Template
+710	Define Transaction Codes
+711	Define Projects
+712	Define %s Rates
+713	Define Sales Tax Jurisdiction Types
+720	Goods Issue
+721	Goods Receipt
+733	Define Sales Stages
+735	Define Partners
+736	Define Competitors
+750	Edit Chart of Accounts
+751	Edit Chart of Accounts
+752	Transaction Journal Report – Selection Criteria
+753	Account Code Generator
+771	Inventory in Warehouse Report
+772	Inventory in Warehouse Report – Selection Criteria
+776	Define Locations
+779	Define 1099 Table
+800	Posting Templates
+804	Chart of Accounts
+806	Chart of Accounts
+810	Define Profit Centers
+811	Define Distribution Rules
+812	Table of Profit Centers and Distribution Rules
+819	Profit Center – Report – Selection Criteria
+820	Choose Company
+823	Profit Center – Report
+840	Inventory Tracking
+841	Check and Restore Former Reconciliations
+850	Checks for Payment Drafts
+852	Define Users
+854	Checks for Payment
+855	G/L Accounts and Business Partners
+856	Voiding Checks for Payment
+857	Sales Analysis Report – Selection Criteria
+858	Voiding Checks for Payment
+864	Restore G/L Account and Business Partner Balances
+865	Define Indexes
+866	Define foreign currency exchange rates
+869	
+870	Purchase Analysis – Selection Criteria
+876	Define Interest Rates
+878	Define Credit Vendors
+892	G/L Accounts and Business Partners – Selection Criteria
+893	Define Length and Width UoM
+894	Define Weight UoM
+895	Define Tax Groups
+896	Define Customs Groups
+897	Define Manufacturers
+898	Define Landed Costs
+899	Define Shipping Types
+900	Inventory Valuation – Selection Criteria
+901	Inventory Valuation Report
+902	Update After Inventory
+906	Entering stock balance sheet
+907	Beginning Quantities and Cycle Counting
+916	Year Transfer
+922	Business Partners Opening Balance – Selection Criteria
+923	G/L Accounts Opening Balance – Selection Criteria
+940	Stock Transfer
+941	Define Countries
+953	Automatic Summary Wizard
+958	Define Discount Groups
+959	Search Results
+960	Cash Flow – Selection Criteria
+961	Cash Flow
+962	Customer Receivables Aging – Selection Criteria
+963	Vendor Liabilities Aging – Selection Criteria
+964	Customer Receivables Aging
+965	Vendor Liabilities Aging
+968	Restore
+969	Restore Wizard
+971	Restore Open Check Balances
+975	Contact Overview – Selection Criteria
+976	Contact Overview
+977	Data Migration Packages
+980	Choose language
+981	Create new language
+992	Landed Costs
+993	Define Business Partner Catalog Numbers
+994	Global Update to Business Partner Catalog Numbers
+998	Settings
+1011	Sales Journal
+1012	Cash Report
+1020	Tax Report – Purchasing Preferences
+1021	Tax Report
+3001	Document Drafts – Selection Criteria
+3002	Document Drafts
+3900	1099 Editing – Selection Criteria
+3901	1099 Editing
+3904	1099 Report – Selection Criteria
+3905	1099 Report
+3906	1099 Detailed Report per Vendor
+3907	1099 Opening Balance – Selection Criteria
+3908	1099 Opening Balance
+3910	Define Late Payments Fees
+3915	EST
+4666	User Reports
+5003	Update Control Report
+8001	Define Business Partner Priorities
+8002	Define Dunning Levels
+8004	Define Payment Blocks
+8008	Define Service Call Statuses
+8018	Define Doubtful Receivables
+20209	Sales Analysis for Customer
+20210	Sales Analysis for Customer
+20221	Purchases Analysis for Vendors
+20232	Sales Analysis Report by Customer (Detailed)
+20240	Sales Analysis Report by Item (Detailed)
+20251	Purchase Analysis Rep. by Vendor (Detailed)
+20259	Purchase Analysis Rep. by Vendor (Detailed)
+20302	Delivery Notes – Selection Criteria
+20303	Delivery Summary Report – Selection Criteria
+20306	Invoices Summary Report – Selection Criteria
+20307	Export general data file
+20310	
+20311	Define Retail Stores
+20320	Interest Calculation Report – Selection Criteria
+20321	Interest Report
+20330	Payments to Vendors
+20331	Unapproved Payments to Vendors Report
+20450	Credit Card Summary – Selection Criteria
+20451	Credit Card Summary
+20700	Define Users
+20702	Define Payment Run Defaults
+40014	Define Alternative Items
+50101	Define Approval Stages
+50102	Define Approval Templates
+50104	Approval Status Report – Selection Criteria
+50105	Approval Status Report
+50107	Approval Decision Report – Selection Criteria
+50108	Approval Decision Report
+60000	Machine ID
+60001	Properties
+60002	Connected Users
+60003	License Removal
+60050	Bill of Exchange Managment
+60051	Bill of Exchange Managment
+60052	Bill of Exchange Transactions
+60053	Bill of Exchange – Receivables
+60056	Bill of Exchange – Payables
+60090	A/R Invoice
+60091	A/R Reserve Invoice
+60092	A/P Reserve Invoice
+60100	Employee Master Data
+60105	Employee / Phone Book Report – Selection Criteria
+60106	Employees List
+60107	Phone Book
+60109	Employees Absence Report
+60110	Service Call
+60120	Knowledge Base Solution
+60125	Contract Templates
+60126	Service Contract
+60130	Service Calls Report – Selection Criteria
+60131	Service Calls
+60133	Service Monitor
+60135	Service Contracts Report – Selection Criteria
+60136	Service Contracts
+60138	Average Closure Time
+60139	Average Closure Time Report – Selection Criteria
+60140	My Open Service Calls
+60141	My Service Calls
+60142	My Overdue Service Calls
+60150	Customer Equipment Card
+60151	Customer Equipment Report – Selection Criteria
+60152	Customer Equipment Report
+60265	Balance Sheet Comparison – Selection Criteria
+60300	Tax Report – Selection Criteria
+60301	Withholding Tax Report – Selection Criteria
+60350	Tax Summary Report
+60410	Period-End Closing – Selection Criteria
+60414	Period-End Closing
+60501	Bill of Exchange Fund
+60502	Bill of Exchange Fund – Selection Criteria
+60555	Document Journal
+65000	WT Mode
+65011	347 Report
+65014	349 Report
+65015	Define Withholding Tax Codes
+65018	Update Parent Item Prices – Selection Criteria

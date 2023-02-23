@@ -1,0 +1,327 @@
+﻿Table	Table description	Primary Key	Object Type
+OACT	G/L Accounts	AcctCode	1
+OCRD	Business Partner	CardCode	2
+ODSC	Bank Codes	AbsEntry	3
+OITM	Items	ItemCode	4
+OVTG	Tax Definition	Code	5
+OPLN	Price Lists	ListNum	6
+OSPP	Special Prices	CardCode, ItemCode	7
+OITG	Item Properties	ItmsTypCod	8
+ORTM	Rate Differences	LineNum, IsSysCurr	9
+OCRG	Card Groups	GroupCode	10
+OCPR	Contact Persons	CntctCode	11
+OUSR	Users	USERID	12
+OINV	A/R Invoice	DocEntry	13
+ORIN	A/R Credit Memo	DocEntry	14
+ODLN	Delivery	DocEntry	15
+ORDN	Returns	DocEntry	16
+ORDR	Sales Order	DocEntry	17
+OPCH	A/P Invoice	DocEntry	18
+ORPC	A/P Credit Memo	DocEntry	19
+OPDN	Goods Receipt PO	DocEntry	20
+ORPD	Goods Return	DocEntry	21
+OPOR	Purchase Order	DocEntry	22
+OQUT	Sales Quotation	DocEntry	23
+ORCT	Incoming Payment	DocEntry	24
+ODPS	Deposit	DeposId	25
+OMTH	Reconciliation History	MthAcctCod, IsInternal, MatchNum	26
+OCHH	Check Register	CheckKey	27
+OBTF	Journal Voucher Entry	BatchNum, TransId	28
+OBTD	Journal Vouchers List	BatchNum	29
+OJDT	Journal Entry	TransId	30
+OITW	Items – Warehouse	ItemCode, WhsCode	31
+OADP	Print Preferences	PrintId	32
+OCLG	Activities	ClgCode	33
+ORCR	Recurring Postings	RcurCode, Instance	34
+ONNM	Document Numbering	ObjectCode, DocSubType	35
+OCRC	Credit Cards	CreditCard	36
+OCRN	Currency Codes	CurrCode	37
+OIDX	CPI Codes	IdexCode	38
+OADM	Administration	Code	39
+OCTG	Payment Terms	GroupNum	40
+OPRF	Preferences	FormNumber, UserSign	41
+OBNK	External Bank Statement Received	AcctCode, Sequence	42
+OMRC	Manufacturers	FirmCode	43
+OCQG	Card Properties	GroupCode	44
+OTRC	Journal Entry Codes	TrnsCode	45
+OVPM	Outgoing Payments	DocEntry	46
+OSRL	Serial Numbers	ItemCode, SerialNum	47
+OALC	Loading Expenses	AlcCode	48
+OSHP	Delivery Types	TrnspCode	49
+OLGT	Length Units	UnitCode	50
+OWGT	Weight Units	UnitCode	51
+OITB	Item Groups	ItmsGrpCod	52
+OSLP	Sales Employee	SlpCode	53
+OFLT	Report – Selection Criteria	FormNum, UserSign, FilterName	54
+OTRT	Posting Templates	TrtCode	55
+OARG	Customs Groups	CstGrpCode	56
+OCHO	Checks for Payment	CheckKey	57
+OINM	Whse Journal	TransNum, Instance	58
+OIGN	Goods Receipt	DocEntry	59
+OIGE	Goods Issue	DocEntry	60
+OPRC	Cost Center	PrcCode	61
+OOCR	Cost Rate	OcrCode	62
+OPRJ	Project Codes	PrjCode	63
+OWHS	Warehouses	WhsCode	64
+OCOG	Commission Groups	GroupCode	65
+OITT	Product Tree	Code	66
+OWTR	Inventory Transfer	DocEntry	67
+OWKO	Production Instructions	OrderNum	68
+OIPF	Landed Costs	DocEntry	69
+OCRP	Payment Methods	CrTypeCode	70
+OCDT	Credit Card Payment	Code	71
+OCRH	Credit Card Management	AbsId, Instance	72
+OSCN	Customer/Vendor Cat. No.	ItemCode, CardCode, Substitute	73
+OCRV	Credit Payments	AbsId, PayId, Instance	74
+ORTT	CPI and FC Rates	RateDate, Currency	75
+ODPT	Postdated Deposit	DeposId	76
+OBGT	Budget	AbsId	77
+OBGD	Budget Cost Assess. Mthd	BgdCode	78
+ORCN	Retail Chains	ChainCode	79
+OALT	Alerts Template	Code	80
+OALR	Alerts	Code	81
+OAIB	Received Alerts	AlertCode, UserSign	82
+OAOB	Message Sent	AlertCode, UserSign	83
+OCLS	Activity Subjects	Code	84
+OSPG	Special Prices for Groups	CardCode, ObjType, ObjKey	85
+SPRG	Application Start	LineNum, UserCode	86
+OMLS	Distribution List	Code	87
+OENT	Shipping Types	DocEntry	88
+OSAL	Outgoing	DocEntry	89
+OTRA	Transition	DocEntry	90
+OBGS	Budget Scenario	AbsId	91
+OIRT	Interest Prices	Numerator	92
+OUDG	User Defaults	Code	93
+OSRI	Serial Numbers for Items	ItemCode, SysSerial	94
+OFRT	Financial Report Templates	AbsId	95
+OFRC	Financial Report Categories	TemplateId, CatId	96
+OOPR	Opportunity	OpprId	97
+OOIN	Interest	Num	98
+OOIR	Interest Level	Num	99
+OOSR	Information Source	Num	100
+OOST	Opportunity Stage	Num	101
+OOFR	Defect Cause	Num	102
+OCLT	Activity Types	Code	103
+OCLO	Meetings Location	Code	104
+OISR	Service Calls	RequestNum	105
+OIBT	Batch No. for Item	ItemCode, BatchNum, WhsCode	106
+OALI	Alternative Items 2	OrigItem, AltItem	107
+OPRT	Partners	PrtId	108
+OCMT	Competitors	CompetId	109
+OUVV	User Validations	IndexID, LineNum	110
+OFPR	Posting Period	AbsEntry	111
+ODRF	Drafts	DocEntry	112
+OSRD	Batches and Serial Numbers	ItemCode, DocType, DocEntry, DocLineNum	113
+OUDC	User Display Cat.	CodeID	114
+OPVL	Lender – Pelecard	Code	115
+ODDT	Withholding Tax Deduction Hierarchy	Numerator	116
+ODDG	Withholding Tax Deduction Groups	Numerator	117
+OUBR	Branches	Code	118
+OUDP	Departments	Code	119
+OWST	Confirmation Level	WstCode	120
+OWTM	Approval Templates	WtmCode	121
+OWDD	Docs. for Confirmation	WddCode	122
+OCHD	Checks for Payment Drafts	CheckKey	123
+CINF	Company Info	Version	124
+OEXD	Freight Setup	ExpnsCode	125
+OSTA	Sales Tax Authorities	Code, Type	126
+OSTT	Sales Tax Authorities Type	AbsId	127
+OSTC	Sales Tax Codes	Code	128
+OCRY	Countries	Code	129
+OCST	States	Country, Code	130
+OADF	Address Formats	Code	131
+OCIN	A/R Correction Invoice	DocEntry	132
+OCDC	Cash Discount	Code	133
+OQCN	Query Catagories	CategoryId	134
+OIND	Triangular Deal	Code	135
+ODMW	Data Migration	Code	136
+OCSTN	Workstation ID	Code	137
+OIDC	Indicator	Code	138
+OGSP	Goods Shipment	Code	139
+OPDF	Payment Draft	DocEntry	140
+OQWZ	Query Wizard	Code	141
+OASG	Account Segmentation	AbsId	142
+OASC	Account Segmentation Categories	SegmentId, Code	143
+OLCT	Location	Code	144
+OTNN	1099 Forms	FormCode	145
+OCYC	Cycle	Code	146
+OPYM	Payment Methods for Payment Wizard	PayMethCod	147
+OTOB	1099 Opening Balance	VendCode, Form1099, Box1099	148
+ORIT	Dunning Interest Rate	Code	149
+OBPP	BP Priorities	PrioCode	150
+ODUN	Dunning Letters	LineNum	151
+CUFD	User Fields – Description	TableID, FieldID	152
+OUTB	User Tables	TableName	153
+OCUMI	My Menu Items	UserSign , Id_	154
+OPYD	Payment Run	Code	155
+OPKL	Pick List	AbsEntry	156
+OPWZ	Payment Wizard	IdNumber	157
+OPEX	Payment Results Table	AbsEntry	158
+OPYB	Payment Block	AbsEntry	159
+OUQR	Queries	IntrnalKey, Qcategory	160
+OCBI	Central Bank Ind.	Indicator	161
+OMRV	Inventory Revaluation	DocEntry	162
+OCPI	A/P Correction Invoice	DocEntry	163
+OCPV	A/P Correction Invoice Reversal	DocEntry	164
+OCSI	A/R Correction Invoice	DocEntry	165
+OCSV	A/R Correction Invoice Reversal	DocEntry	166
+OSCS	Service Call Statuses	statusID	167
+OSCT	Service Call Types	callTypeID	168
+OSCP	Service Call Problem Types	prblmTypID	169
+OCTT	Contract Template	TmpltName	170
+OHEM	Employees	empID	171
+OHTY	Employee Types	typeID	172
+OHST	Employee Status	statusID	173
+OHTR	Termination Reason	reasonID	174
+OHED	Education Types	edType	175
+OINS	Customer Equipment Card	insID	176
+OAGP	Agent Name	AgentCode	177
+OWHT	Withholding Tax	WTCode	178
+ORFL	Already Displayed 347, 349 and WTax Reports	DocEntry, ReportType, DocType, LineNum, TaxCode, OrdinalNum	179
+OVTR	Tax Report	AbsEntry	180
+OBOE	Bill of Exchange for Payment	BoeKey	181
+OBOT	Bill Of Exchang Transaction	AbsEntry	182
+OFRM	File Format	AbsEntry	183
+OPID	Period Indicator	Indicator	184
+ODOR	Doubtful Debts	AbsEntry	185
+OHLD	Holiday Table	HldCode	186
+OCRB	BP – Bank Account	Country, BankCode, Account, CardCode	187
+OSST	Service Call Solution Statuses	Number	188
+OSLT	Service Call Solutions	SltCode	189
+OCTR	Service Contracts	ContractID	190
+OSCL	Service Calls	callID	191
+OSCO	Service Call Origins	originID	192
+OUKD	User Key Description	TableName, KeyId	193
+OQUE	Queue	queueID	194
+OIWZ	Inflation Wizard	AbsEntry	195
+ODUT	Dunning Terms	TermCode	196
+ODWZ	Dunning Wizard	WizardId	197
+OFCT	Sales Forecast	AbsID	198
+OMSN	MRP Scenarios	AbsEntry	199
+OTER	Territories	territryID	200
+OOND	Industries	IndCode	201
+OWOR	Production Order	DocEntry	202
+ODPI	A/R Down Payment	DocEntry	203
+ODPO	A/P Down Payment	DocEntry	204
+OPKG	Package Types	PkgCode	205
+OUDO	User-Defined Object	Code	206
+ODOW	Data Ownership – Objects	Object, SubObject	207
+ODOX	Data Ownership – Exceptions	QueryId, Object, SubObject	208
+209
+OHPS	Employee Position	posID	210
+OHTM	Employee Teams	teamID	211
+OORL	Relationships	OrlCode	212
+ORCM	Recommendation Data	DocEntry	213
+OUPT	User Autorization Tree	AbsId	214
+OPDT	Predefined Text	AbsEntry	215
+OBOX	Box Definition	BoxCode, ReportType, BosCode	216
+OCLA	Activity Status	statusID	217
+OCHF	312	ObjName	218
+OCSHS	User-Defined Values	IndexID	219
+OACP	Periods Category	AbsEntry	220
+OATC	Attachments	AbsEntry	221
+OGFL	Grid Filter	FormID, GridID, UserCode	222
+OLNG	User Language Table	Code	223
+OMLT	Multi-Language Translation	TranEntry	224
+OAPA3			225
+OAPA4			226
+OAPA5			227
+SDIS	Dynamic Interface (Strings)	FormId, ItemId, ColumnId, Language	229
+OSVR	Saved Reconciliations	acctCode	230
+DSC1	House Bank Accounts	AbsEntry	231
+RDOC	Document	DocCode	232
+ODGP	Document Generation Parameter Sets	AbsEntry	233
+OMHD	#740	AlertCode	234
+OACG	Account Category	AbsId	238
+OBCA	Bank Charges Allocation Codes	Code	239
+OCFT	Cash Flow Transactions – Rows	CFTId	241
+OCFW	Cash Flow Line Item	CFWId	242
+OBPL	Business Place	BPLId	247
+OJPE	Local Era Calendar	Code	250
+ODIM	Cost Accounting Dimension	DimCode	251
+OSCD	Service Code Table	AbsEntry	254
+OSGP	Service Group for Brazil	AbsEntry	255
+OMGP	Material Group	AbsEntry	256
+ONCM	NCM Code	AbsEntry	257
+OCFP	CFOP for Nota Fiscal	ID	258
+OTSC	CST Code for Nota Fiscal	ID	259
+OUSG	Usage of Nota Fiscal	ID	260
+OCDP	Closing Date Procedure	ClsDateNum	261
+ONFN	Nota Fiscal Numbering	ObjectCode, DocSubType	263
+ONFT	Nota Fiscal Tax Category (Brazil)	AbsId	264
+OCNT	Counties	AbsId	265
+OTCD	Tax Code Determination	AbsId	266
+ODTY	BoE Document Type	AbsEntry	267
+OPTF	BoE Portfolio	AbsEntry	268
+OIST	BoE Instruction	AbsEntry	269
+OTPS	Tax Parameter	AbsId	271
+OTFC	Tax Type Combination	AbsId	275
+OFML	Tax Formula Master Table	AbsId	276
+OCNA	CNAE Code	AbsId	278
+OTSI	Sales Tax Invoice	DocEntry	280
+OTPI	Purchase Tax Invoice	DocEntry	281
+OCCD	Cargo Customs Declaration Numbers	CCDNum	283
+ORSC	Resources	ResCode	290
+ORSG	Resource Properties	ResTypCod	291
+ORSB	ResGrpCod	ResGrpCod	292
+RecordSet		300
+Bridge		305
+OITR	Internal Reconciliation	ReconNum	321
+OPOS	POS Master Data	EquipNo	541
+ODRF	Stock Transfer Draft	DocEntry	1179
+OMSG	Messaging Service Settings	USERID	10000105
+OBTN	Batch Numbers Master Data	AbsEntry	10000044
+OSRN	Serial Numbers Master Data	AbsEntry	10000045
+OIVK	IVL Vs OINM Keys	TransSeq	10000062
+OIQR	Inventory Posting	DocEntry	10000071
+OFYM	Financial Year Master	AbsId	10000073
+OSEC	Sections	AbsId	10000074
+OCSN	Certificate Series	AbsId	10000075
+ONOA	Nature of Assessee	AbsId	10000077
+RTYP	Document Type List	CODE	10000196
+OUGP	UoM Group	UgpEntry	10000197
+OUOM	UoM Master Data	UomEntry	10000199
+OBFC	Bin Field Configuration	AbsEntry	10000203
+OBAT	Bin Location Attribute	AbsEntry	10000204
+OBSL	Warehouse Sublevel	AbsEntry	10000205
+OBIN	Bin Location	AbsEntry	10000206
+ODNF	DNF Code	AbsEntry	140000041
+OUGR	Authorization Group	GroupId	231000000
+OEGP	E-Mail Group	EmlGrpCode	234000004
+OGPC	Government Payment Code	AbsId	243000001
+OIQI	Inventory Opening Balance	DocEntry	310000001
+OBTW	Batch Attributes in Location	AbsEntry	310000008
+OLLF	Legal List Format	AbsEntry	410000005
+OHET	Object: HR Employee Transfer	TransferID	480000001
+OTCX	Tax Code Determination	DocEntry	540000005
+OPQT	Purchase Quotation	DocEntry	540000006
+ORCP	Recurring Transaction Template	AbsEntry	540000040
+OCCT	Cost Center Type	CctCode	540000042
+OACR	Accrual Type	Code	540000048
+ONFM	Nota Fiscal Model	AbsEntry	540000056
+OBFI	Brazil Fuel Indexer	ID	540000067
+OBBI	Brazil Beverage Indexer	ID	540000068
+OCPT	Cockpit Main Table	AbsEntry	1210000000
+OWTQ	Inventory Transfer Request	DocEntry	1250000001
+OOAT	Blanket Agreement	AbsID	1250000025
+OKPI	Key Performance Indicator Package	AbsEntry	1320000000
+OTGG	Target Group	TargetCode	1320000002
+OCPN	Campaign	CpnNo	1320000012
+OROC	Retorno Operation Codes	AbsEntry	1320000028
+OPSC	Product Source Code	Code	1320000039
+ODTP	Fixed Assets Depreciation Types	Code	1470000000
+OADT	Fixed Assets Account Determination	Code	1470000002
+ODPA	Fixed Asset Depreciation Areas	Code	1470000003
+ODPP	Depreciation Type Pools	Code	1470000004
+OACS	Asset Classes	Code	1470000032
+OAGS	Asset Groups	Code	1470000046
+ODMC	G/L Account Determination Criteria – Inventory	DmcId	1470000048
+OACQ	Capitalization	DocEntry	1470000049
+OGAR	G/L Account Advanced Rules	AbsEntry	1470000057
+OACD	Credit Memo	DocEntry	1470000060
+OBCD	Bar Code Master Data	BcdEntry	1470000062
+OINC	Inventory Counting	DocEntry	1470000065
+OEDG	Discount Groups	AbsEntry	1470000077
+OCCS	Cycle Count Determination	WhsCode	1470000092
+OPRQ	Purchase Request	DocEntry	1470000113
+OWLS	Workflow – Task Details	TaskID	1620000000

@@ -1,0 +1,5 @@
+c:\users\percy\documents\visual studio 2013\Projects\SBOAddonProject8\SBOAddonProject8\bin\Debug\SBOAddonProject8.exe
+c:\users\percy\documents\visual studio 2013\Projects\SBOAddonProject8\SBOAddonProject8\bin\Debug\SBOAddonProject8.pdb
+c:\users\percy\documents\visual studio 2013\Projects\SBOAddonProject8\SBOAddonProject8\obj\Debug\SBOAddonProject8.csprojResolveAssemblyReference.cache
+c:\users\percy\documents\visual studio 2013\Projects\SBOAddonProject8\SBOAddonProject8\obj\Debug\SBOAddonProject8.exe
+c:\users\percy\documents\visual studio 2013\Projects\SBOAddonProject8\SBOAddonProject8\obj\Debug\SBOAddonProject8.pdb

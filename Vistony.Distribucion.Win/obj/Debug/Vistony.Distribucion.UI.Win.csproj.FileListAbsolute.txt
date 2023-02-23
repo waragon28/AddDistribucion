@@ -1,0 +1,28 @@
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\obj\Debug\Vistony.Distribucion.UI.Win.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.Properties.Resources.resources
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\obj\Debug\Vistony.Distribucion.UI.Win.csproj.GenerateResource.Cache
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.xml
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe.config
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\DLCuotas.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\RestSharp.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Distribucion.BO.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Distribucion.DAL.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Framework.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Framework.ServiceLayer.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Framework.ServiceLayer.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Framework.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Distribucion.BO.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Distribucion.DAL.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.xml
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\RestSharp.xml
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\obj\Debug\Vistony.Distribucion.UI.Win.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\obj\Debug\Vistony.Distribucion.UI.Win.csproj.GenerateResource.Cache
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Distribucion.UI.Win.exe.config
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Distribucion.UI.Win.xml
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Distribucion.UI.Win.exe
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Distribucion.UI.Win.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\obj\Debug\Vistony.Distribucion.UI.Win.Properties.Resources.resources
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\obj\Debug\Vistony.Distribucion.UI.Win.exe
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\obj\Debug\Vistony.Distribucion.UI.Win.pdb

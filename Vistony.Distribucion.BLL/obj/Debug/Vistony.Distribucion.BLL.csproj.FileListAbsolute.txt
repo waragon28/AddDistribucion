@@ -1,0 +1,50 @@
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\bin\Debug\Vistony.Banco.BLL.dll.config
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\bin\Debug\Vistony.Banco.BLL.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\bin\Debug\Vistony.Banco.BLL.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\bin\Debug\Vistony.Banco.BO.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\bin\Debug\Vistony.Banco.DAL.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\bin\Debug\Forxap.Framework.ServiceLayer.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\bin\Debug\Newtonsoft.Json.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\bin\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\bin\Debug\Vistony.Banco.DAL.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\bin\Debug\Newtonsoft.Json.xml
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\obj\Debug\Vistony.Distribucion.BLL.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\obj\Debug\Vistony.Banco.BLL.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BLL\obj\Debug\Vistony.Banco.BLL.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\obj\Debug\Vistony.Distribucion.BLL.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\obj\Debug\Vistony.Banco.BLL.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\obj\Debug\Vistony.Banco.BLL.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Vistony.Banco.BLL.dll.config
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Vistony.Banco.BLL.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Vistony.Banco.BLL.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Vistony.Distribucion.BO.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Vistony.Distribucion.DAL.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Vistony.Framework.ServiceLayer.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Newtonsoft.Json.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Vistony.Framework.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Vistony.Distribucion.BO.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Vistony.Distribucion.DAL.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Vistony.Framework.ServiceLayer.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Newtonsoft.Json.xml
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Vistony.Framework.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.BLL.dll.config
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.BLL.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.BLL.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Forxap.Framework.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.BO.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.DAL.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Forxap.Framework.ServiceLayer.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\RestSharp.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Newtonsoft.Json.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.BO.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.DAL.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Forxap.Framework.ServiceLayer.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\RestSharp.xml
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Newtonsoft.Json.xml
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\obj\Debug\Vistony.Distribucion.BLL.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\obj\Debug\Vistony.Distribucion.BLL.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\obj\Debug\Vistony.Distribucion.BLL.pdb

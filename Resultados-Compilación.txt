@@ -1,0 +1,8 @@
+﻿1>------ Operación Compilar iniciada: proyecto: Vistony.Distribucion.BO, configuración: Debug Any CPU ------
+1>  Vistony.Distribucion.BO -> D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BO\bin\Debug\Vistony.Distribucion.BO.dll
+2>------ Operación Compilar iniciada: proyecto: Vistony.Distribucion.DAL, configuración: Debug Any CPU ------
+2>  Vistony.Distribucion.DAL -> D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\bin\Debug\Vistony.Distribucion.DAL.dll
+3>------ Operación Compilar iniciada: proyecto: Vistony.Distribucion.BLL, configuración: Debug Any CPU ------
+3>C:\Program Files (x86)\MSBuild\14.0\bin\Microsoft.Common.CurrentVersion.targets(1611,5): warning : The referenced project '..\..\..\..\Forxap\Forxap.Framework\Forxap.Framework.csproj' does not exist.
+3>  Vistony.Distribucion.BLL -> D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.BLL.dll
+========== Compilar: 3 correctos, 0 incorrectos, 0 actualizados, 0 omitidos ==========

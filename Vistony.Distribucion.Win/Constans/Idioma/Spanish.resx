@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddonName" xml:space="preserve">
+    <value>Vistony Addon de Distribución</value>
+  </data>
+  <data name="FinishLoading" xml:space="preserve">
+    <value>Carga Finalizada ...</value>
+  </data>
+  <data name="Message001" xml:space="preserve">
+    <value>Iniciando Carga de Menu...</value>
+  </data>
+  <data name="Message003" xml:space="preserve">
+    <value>Error al Cargar el Menu</value>
+  </data>
+  <data name="Message100" xml:space="preserve">
+    <value>Seleccione la fecha desde</value>
+  </data>
+  <data name="Message101" xml:space="preserve">
+    <value>Seleccione la fecha hasta</value>
+  </data>
+  <data name="Message102" xml:space="preserve">
+    <value>Seleccione Trabajador</value>
+  </data>
+  <data name="Message103" xml:space="preserve">
+    <value>Seleccione Estado</value>
+  </data>
+  <data name="Message104" xml:space="preserve">
+    <value>Seleccione Unidad de negocio</value>
+  </data>
+  <data name="Message105" xml:space="preserve">
+    <value>Seleccione Código de Vendedor</value>
+  </data>
+  <data name="Message120" xml:space="preserve">
+    <value>Fecha Desde no puede ser inferior a : {0}</value>
+  </data>
+  <data name="Message122" xml:space="preserve">
+    <value>Siguiente &gt;</value>
+  </data>
+  <data name="Message123" xml:space="preserve">
+    <value>Finalizar</value>
+  </data>
+  <data name="Message208" xml:space="preserve">
+    <value>Despacho ya se encuentra consolidado</value>
+  </data>
+  <data name="Message209" xml:space="preserve">
+    <value>Documento : {0}  fue consolidado satisfactoriamente</value>
+  </data>
+  <data name="Message210" xml:space="preserve">
+    <value>Documento : {0} se esta procesando</value>
+  </data>
+  <data name="Message211" xml:space="preserve">
+    <value>Documento :  {0} asignado al  Chofer:  {1}</value>
+  </data>
+  <data name="Message212" xml:space="preserve">
+    <value>Paso  {0} de {1}</value>
+  </data>
+  <data name="Message301" xml:space="preserve">
+    <value>No Marcó ningún registro</value>
+  </data>
+  <data name="Message302" xml:space="preserve">
+    <value>Error en rango de fechas establecido</value>
+  </data>
+  <data name="Message303" xml:space="preserve">
+    <value>Seleccione Chofer</value>
+  </data>
+  <data name="Message304" xml:space="preserve">
+    <value>Seleccione Placa</value>
+  </data>
+  <data name="Message305" xml:space="preserve">
+    <value>Seleccione Ayudante</value>
+  </data>
+  <data name="Message306" xml:space="preserve">
+    <value>Seleccione Fecha</value>
+  </data>
+  <data name="Message307" xml:space="preserve">
+    <value>¿Seguro de hacer la programación de los documentos marcados?</value>
+  </data>
+  <data name="Message308" xml:space="preserve">
+    <value>Asignación de Chofer Culminada</value>
+  </data>
+  <data name="Message309" xml:space="preserve">
+    <value>¿Seguro de cambiar el estado de despacho para los documentos marcados?</value>
+  </data>
+  <data name="Message310" xml:space="preserve">
+    <value>Proceso Culminado</value>
+  </data>
+  <data name="Message311" xml:space="preserve">
+    <value>¿Seguro de cambiar el estado de despacho a Entregado para los documentos marcados?</value>
+  </data>
+  <data name="Message312" xml:space="preserve">
+    <value>Debe seleccionar un tipo de Ocurrencia</value>
+  </data>
+  <data name="Message313" xml:space="preserve">
+    <value>Debe seleccionar un tipo de Estado</value>
+  </data>
+  <data name="Message314" xml:space="preserve">
+    <value>Debe seleccionar una opción a programar</value>
+  </data>
+  <data name="Message315" xml:space="preserve">
+    <value>Debe seleccionar data a programar</value>
+  </data>
+  <data name="Message316" xml:space="preserve">
+    <value>Seleccione un tipo de consolidado</value>
+  </data>
+  <data name="Message317" xml:space="preserve">
+    <value>¿Está Seguro de grabar al {0} a los registros marcados?</value>
+  </data>
+  <data name="Message318" xml:space="preserve">
+    <value>Documento: {0}   No se pudo actualizar {1}</value>
+  </data>
+  <data name="Message319" xml:space="preserve">
+    <value>¿Seguro de cambiar el estado de despacho a Programado para los documentos marcados?</value>
+  </data>
+  <data name="Message320" xml:space="preserve">
+    <value>Agregando Registro de Hoja de despacho</value>
+  </data>
+  <data name="Message321" xml:space="preserve">
+    <value>¿Seguro de cambiar el estado de despacho a Programado para los documentos marcados?</value>
+  </data>
+  <data name="Message322" xml:space="preserve">
+    <value>¿Está seguro de cambiar el estado de despacho a Programado para los documentos marcados?</value>
+  </data>
+  <data name="Message324" xml:space="preserve">
+    <value>Se creo la Hoja de despacho para el chofer '{0}'</value>
+  </data>
+  <data name="Message325" xml:space="preserve">
+    <value>Acualizando Seguimiento de Despacho</value>
+  </data>
+  <data name="Message326" xml:space="preserve">
+    <value>Seguimiento de Despacho Actualizados</value>
+  </data>
+  <data name="Message327" xml:space="preserve">
+    <value>Selecciona minimo 1 registro</value>
+  </data>
+  <data name="Message328" xml:space="preserve">
+    <value>Selecciona un Estado</value>
+  </data>
+  <data name="Message329" xml:space="preserve">
+    <value>El Pedido ya se encuentra Programado</value>
+  </data>
+  <data name="Message330" xml:space="preserve">
+    <value>Selecciona una Ocurrencia</value>
+  </data>
+  <data name="Message331" xml:space="preserve">
+    <value>Imei Incorrecto</value>
+  </data>
+  <data name="Message332" xml:space="preserve">
+    <value>El Imei Esta Asignado a otro empleado \n ¿ Desea Actualizarlo ?</value>
+  </data>
+  <data name="Message333" xml:space="preserve">
+    <value>Se Actualizo Correctamente el IMEI</value>
+  </data>
+  <data name="Message334" xml:space="preserve">
+    <value>Validando Datos</value>
+  </data>
+  <data name="MessageFinTracker" xml:space="preserve">
+    <value>Carga de Tracker Finalizado</value>
+  </data>
+  <data name="MessageInicioTracker" xml:space="preserve">
+    <value>Iniciando Carga de Tracker</value>
+  </data>
+  <data name="NotRowFound" xml:space="preserve">
+    <value>No se encontraron datos con los criterios seleccionados</value>
+  </data>
+  <data name="SAPNotRunning" xml:space="preserve">
+    <value>SAP Business One, no se encuentra ejecutandose</value>
+  </data>
+  <data name="StartLoading" xml:space="preserve">
+    <value>Iniciando Carga ...</value>
+  </data>
+</root>

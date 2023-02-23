@@ -1,0 +1,194 @@
+C:\Addons\Bancos\Bancos\Forxap.Demo.Win\obj\Debug\Vistony.Banco.UI.Win.csprojResolveAssemblyReference.cache
+C:\Addons\Bancos\Bancos\Forxap.Demo.Win\obj\Debug\Forxap.Demo.UI.Win.Properties.Resources.resources
+C:\Addons\Bancos\Bancos\Forxap.Demo.Win\obj\Debug\Vistony.Banco.UI.Win.csproj.GenerateResource.Cache
+C:\Addons\Bancos\Bancos\Forxap.Demo.Win\obj\Debug\Forxap.Demo.UI.Win.exe
+C:\Addons\Bancos\Bancos\Forxap.Demo.Win\obj\Debug\Forxap.Demo.UI.Win.pdb
+C:\Addons\Bancos\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csprojResolveAssemblyReference.cache
+C:\Addons\Bancos\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.Properties.Resources.resources
+C:\Addons\Bancos\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csproj.GenerateResource.Cache
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe.config
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.xml
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.pdb
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\DLBanco.dll
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Forxap.Framework.dll
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Forxap.Framework.ServiceLayer.dll
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.dll
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\RestSharp.dll
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\SAPBusinessOneSDK.dll
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.dll
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.dll
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Forxap.Framework.ServiceLayer.pdb
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Forxap.Framework.pdb
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.pdb
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.pdb
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.xml
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\bin\Debug\RestSharp.xml
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csprojResolveAssemblyReference.cache
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.Properties.Resources.resources
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csproj.GenerateResource.Cache
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.exe
+F:\Percy\Addons\Bancos\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.pdb
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe.config
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.xml
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.exe
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.pdb
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.pdb
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.dll
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.ServiceLayer.dll
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.dll
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\RestSharp.dll
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\SAPBusinessOneSDK.dll
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.dll
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.dll
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.ServiceLayer.pdb
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.pdb
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.pdb
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.pdb
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.xml
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\RestSharp.xml
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csprojResolveAssemblyReference.cache
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.Properties.Resources.resources
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csproj.GenerateResource.Cache
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.Win\bin\Debug\DLCuotas.dll
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe.config
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.xml
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.exe
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.pdb
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.pdb
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\DLCuotas.dll
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Forxap.Framework.dll
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Forxap.Framework.ServiceLayer.dll
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.dll
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\RestSharp.dll
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\SAPBusinessOneSDK.dll
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.dll
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.dll
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Forxap.Framework.ServiceLayer.pdb
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Forxap.Framework.pdb
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.pdb
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.pdb
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.xml
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\bin\Debug\RestSharp.xml
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csprojResolveAssemblyReference.cache
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.Properties.Resources.resources
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csproj.GenerateResource.Cache
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe.config
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.xml
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.exe
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.pdb
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csprojResolveAssemblyReference.cache
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.Properties.Resources.resources
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csproj.GenerateResource.Cache
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.pdb
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\DLCuotas.dll
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.dll
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.ServiceLayer.dll
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.dll
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\RestSharp.dll
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\SAPBusinessOneSDK.dll
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.dll
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.dll
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.ServiceLayer.pdb
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.pdb
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.pdb
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.pdb
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.xml
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.Win\bin\Debug\RestSharp.xml
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe.config
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.xml
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.exe
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.pdb
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.pdb
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\DLCuotas.dll
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.dll
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.ServiceLayer.dll
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.dll
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\RestSharp.dll
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\SAPBusinessOneSDK.dll
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.dll
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.dll
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.ServiceLayer.pdb
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.pdb
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.pdb
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.pdb
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.xml
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\RestSharp.xml
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csprojResolveAssemblyReference.cache
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.Properties.Resources.resources
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csproj.GenerateResource.Cache
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.Properties.Resources.resources
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csproj.GenerateResource.Cache
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe.config
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.xml
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.pdb
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\DLCuotas.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\RestSharp.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Framework.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Framework.ServiceLayer.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.ServiceLayer.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Forxap.Framework.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Framework.ServiceLayer.pdb
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Framework.pdb
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.pdb
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.xml
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\bin\Debug\RestSharp.xml
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.exe
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.pdb
+D:\Desarrollo\AddSectoristas\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe.config
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.xml
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.exe
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.Properties.Resources.resources
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csproj.GenerateResource.Cache
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\DLCuotas.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\RestSharp.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Framework.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Framework.ServiceLayer.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Framework.ServiceLayer.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Framework.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.xml
+D:\Desarrollo\AddDistribucion\Vistony.Banco.Win\bin\Debug\RestSharp.xml
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe.config
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.xml
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.exe
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.exe
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Banco.UI.Win.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\DLCuotas.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\RestSharp.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Framework.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Framework.ServiceLayer.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Framework.ServiceLayer.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Framework.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Vistony.Banco.DAL.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\Newtonsoft.Json.xml
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\bin\Debug\RestSharp.xml
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.Properties.Resources.resources
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.Win\obj\Debug\Vistony.Banco.UI.Win.csproj.GenerateResource.Cache

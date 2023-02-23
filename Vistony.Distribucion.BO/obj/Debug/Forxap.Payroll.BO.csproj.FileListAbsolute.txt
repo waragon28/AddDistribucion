@@ -1,0 +1,12 @@
+D:\Forxap\RRHH\Forxap.HumanResource.BO\bin\Debug\Forxap.Payroll.BO.dll
+D:\Forxap\RRHH\Forxap.HumanResource.BO\bin\Debug\Forxap.Payroll.BO.pdb
+D:\Forxap\RRHH\Forxap.HumanResource.BO\obj\Debug\Forxap.Payroll.BO.dll
+D:\Forxap\RRHH\Forxap.HumanResource.BO\obj\Debug\Forxap.Payroll.BO.pdb
+D:\Forxap\RRHH\Forxap.Payroll.BO\bin\Debug\Forxap.Payroll.BO.dll
+D:\Forxap\RRHH\Forxap.Payroll.BO\bin\Debug\Forxap.Payroll.BO.pdb
+D:\Forxap\RRHH\Forxap.Payroll.BO\obj\Debug\Forxap.Payroll.BO.csprojResolveAssemblyReference.cache
+D:\Forxap\RRHH\Forxap.Payroll.BO\obj\Debug\Forxap.Payroll.BO.dll
+D:\Forxap\RRHH\Forxap.Payroll.BO\obj\Debug\Forxap.Payroll.BO.pdb
+D:\Forxap\RRHH\Forxap.Payroll.BO\bin\Debug\Forxap.Framework.dll
+D:\Forxap\RRHH\Forxap.Payroll.BO\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Forxap\RRHH\Forxap.Payroll.BO\bin\Debug\Forxap.Framework.pdb

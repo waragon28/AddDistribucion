@@ -1,0 +1,34 @@
+<Application>
+  <Menus>
+    <action type="add">
+
+
+      <!-- Menu del AddOn Distribución y última milla como modulo-->
+      <Menu Checked="0" Enabled="1" FatherUID="43520"  Image="" Position="5" String="Distribución" Type="2" UniqueID="dis001"></Menu>
+      
+      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="1" String="Consolidación de Entregas" Type="1" UniqueID="dis_entrega"> </Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="2" String="Programación de Despachos Automático" Type="1" UniqueID="dis_asigna"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="3" String="Programación de Despachos Manual" Type="1" UniqueID="dis_asigna_Manual"></Menu>
+
+     <!-- <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="4" String="Asistente de Programación de Despachos" Type="1" UniqueID="dis_wizard"></Menu>-->
+      <!--<Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="5" String="Actualizar Ruta Despacho" Type="1" UniqueID="dis_005"></Menu>-->
+      
+      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="5" String="Última Milla" Type="2" UniqueID="dis002"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="1" String="Ruta de Despacho" Type="1" UniqueID="dis_rutTra"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="2" String="Seguimiento de Despachos - Choferes" Type="1" UniqueID="dis_seguimiento"></Menu>
+      <!--<Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="2" String="Seguimiento de Despachos - Vendedores" Type="1" UniqueID="dis_DispaTruckVent"></Menu>-->
+      <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="3" String="Estado de Despachos" Type="1" UniqueID="dis_estado"></Menu>
+      
+      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="6" String="Informes de distribución" Type="2" UniqueID="dis77111"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="dis77111" Image="" Position="1" String="Control Documentario Diario" Type="1" UniqueID="CDDA2"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="dis77111" Image="" Position="2" String="Control de Despacho" Type="1" UniqueID="CDA2"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="dis77111" Image="" Position="3" String="Hoja Alistado - Chofer Almacen" Type="1" UniqueID="HACAA2"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="dis77111" Image="" Position="4" String="Resumen Consolidado - Almacenes" Type="1" UniqueID="RCA2"></Menu>
+      
+     <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="9" String="Mantenimiento de Choferes" Type="2" UniqueID="dis003"></Menu>
+     <Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="1" String="Actualizar IMEI" Type="1" UniqueID="dis_AIMEI"></Menu>
+     <Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="2" String="Actualizar Ubigeo" Type="1" UniqueID="dis_UPDATEUBI"></Menu>
+       
+    </action>
+  </Menus>
+</Application>

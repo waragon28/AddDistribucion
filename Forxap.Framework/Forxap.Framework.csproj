@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B4FCB577-E8EA-4C31-BAB9-2747D6ED2CF7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Forxap.Framework</RootNamespace>
+    <AssemblyName>Forxap.Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\x64\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="SAPBusinessOneSDK, Version=1.0.0.1, Culture=neutral, PublicKeyToken=c7c3cb60e45d119f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\sap\SAP Business One SDK\Lib\SAPBusinessOneSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base.cs" />
+    <Compile Include="Constants\Forms.cs" />
+    <Compile Include="Constants\MenuItem.cs" />
+    <Compile Include="Constants\MessageInfo.cs" />
+    <Compile Include="Constants\Tables.cs" />
+    <Compile Include="Constants\UserFiles.cs" />
+    <Compile Include="DI\Admin.cs" />
+    <Compile Include="DI\Bancos\Banks.cs" />
+    <Compile Include="DI\Convertcs.cs" />
+    <Compile Include="DI\Data.cs" />
+    <Compile Include="DI\Helper\Database.cs" />
+    <Compile Include="DI\Helper\Querys.cs" />
+    <Compile Include="DI\Inventory\oInventoryGenEntry.cs" />
+    <Compile Include="DI\Inventory\oInventoryGenExit.cs" />
+    <Compile Include="DI\Inventory\PriceList.cs" />
+    <Compile Include="DI\UserScripts\FormattedSearches.cs" />
+    <Compile Include="DI\UserScripts\QueryCategory.cs" />
+    <Compile Include="DI\UserScripts\ProcedureUser.cs" />
+    <Compile Include="DI\MetaData\UserFields.cs" />
+    <Compile Include="DI\UserScripts\QueryUser.cs" />
+    <Compile Include="DI\MetaData\UserObjects.cs" />
+    <Compile Include="DI\MetaData\UserPermissions.cs" />
+    <Compile Include="DI\Users.cs" />
+    <Compile Include="DI\MetaData\UserTables.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Extensions\BaseExtension.cs" />
+    <Compile Include="Extensions\ComboBoxExtensions.cs" />
+    <Compile Include="Extensions\DataTableExtensions.cs" />
+    <Compile Include="Extensions\DbDataSourceExtension.cs" />
+    <Compile Include="Extensions\EditTextExtensions.cs" />
+    <Compile Include="Extensions\FormExtensions.cs" />
+    <Compile Include="Extensions\GridExtensions.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
+    <Compile Include="Extensions\MatrixExtensions.cs" />
+    <Compile Include="Extensions\RecordsetExtension .cs" />
+    <Compile Include="Extensions\StaticTextExtension.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\UserDataSourceExtension.cs" />
+    <Compile Include="Extensions\UserProcedureMDExtensions.cs" />
+    <Compile Include="Extensions\ValidValues.cs" />
+    <Compile Include="Initialize.cs" />
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\App.cs" />
+    <Compile Include="Extensions\DbDataSourcesExtensions.cs" />
+    <Compile Include="UI\Dialog.cs" />
+    <Compile Include="UI\Menu.cs" />
+    <Compile Include="UI\Messages.cs" />
+    <Compile Include="UI\Controls.cs" />
+    <Compile Include="UI\Windows.cs" />
+    <Compile Include="UI\WindowWrapper.cs" />
+    <Compile Include="Utils\Autorization.cs" />
+    <Compile Include="Utils\Compresion.cs" />
+    <Compile Include="DI\Convert.cs" />
+    <Compile Include="Utils\Configuration.cs" />
+    <Compile Include="Utils\Convert.cs" />
+    <Compile Include="Utils\Cryptography.cs" />
+    <Compile Include="Utils\Currency.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Utils\Errors.cs" />
+    <Compile Include="Utils\IniFile.cs" />
+    <Compile Include="Utils\Interface.cs" />
+    <Compile Include="Utils\LogFile.cs" />
+    <Compile Include="Extensions\DoubleExtensions.cs" />
+    <Compile Include="Utils\Paths.cs" />
+    <Compile Include="Utils\XmlFile.cs" />
+    <Compile Include="DI\ValidValues.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TextFile1.txt" />
+    <Content Include="TextFile2.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

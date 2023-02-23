@@ -1,0 +1,15 @@
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\obj\Debug\Forxap.FrameWork.SL.csprojResolveAssemblyReference.cache
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\obj\Debug\Forxap.FrameWork.SL.csproj.GenerateResource.Cache
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\bin\Debug\Forxap.FrameWork.SL.dll
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\bin\Debug\Forxap.FrameWork.SL.pdb
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\bin\Debug\Newtonsoft.Json.dll
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\bin\Debug\RestSharp.dll
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\bin\Debug\Newtonsoft.Json.pdb
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\bin\Debug\Newtonsoft.Json.xml
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\bin\Debug\RestSharp.xml
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\obj\Debug\Forxap.FrameWork.SL.dll
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\obj\Debug\Forxap.FrameWork.SL.pdb
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\bin\Debug\ResourceSL.resx
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\bin\Debug\ResourceSL.Designer.cs
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\obj\Debug\Forxap.FrameWork.SL.ResourceSL.resources
+F:\Forxap\Forxap.Framework\SL\Forxap.FrameWork.SL\obj\Debug\Forxap.FrameWork.SL.ResourceServiceLayer.resources

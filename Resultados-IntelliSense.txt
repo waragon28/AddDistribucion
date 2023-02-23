@@ -1,0 +1,5 @@
+﻿[Error] No se puede encontrar una parte de la ruta de acceso 'C:\Users\plazarte\AppData\Local\Temp\46\.NETFramework,Version=v4.5.2.AssemblyAttributes.cs'.
+[Error] No se puede encontrar una parte de la ruta de acceso 'C:\Users\plazarte\AppData\Local\Temp\46\.NETFramework,Version=v4.5.2.AssemblyAttributes.cs'.
+[Error] No se puede encontrar una parte de la ruta de acceso 'C:\Users\plazarte\AppData\Local\Temp\46\.NETFramework,Version=v4.5.2.AssemblyAttributes.cs'.
+[Error] No se puede encontrar una parte de la ruta de acceso 'C:\Users\plazarte\AppData\Local\Temp\46\.NETFramework,Version=v4.5.2.AssemblyAttributes.cs'.
+[Error] No se puede encontrar una parte de la ruta de acceso 'C:\Users\plazarte\AppData\Local\Temp\46\.NETFramework,Version=v4.5.2.AssemblyAttributes.cs'.

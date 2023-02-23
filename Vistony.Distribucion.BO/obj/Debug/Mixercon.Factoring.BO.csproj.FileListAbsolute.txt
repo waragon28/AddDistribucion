@@ -1,0 +1,11 @@
+C:\MIxercon SAP\Addon\Factoring\SBOAddonProject1\Mixercon.Factoring.BO\bin\Debug\Mixercon.Factoring.BO.dll
+C:\MIxercon SAP\Addon\Factoring\SBOAddonProject1\Mixercon.Factoring.BO\bin\Debug\Mixercon.Factoring.BO.pdb
+C:\MIxercon SAP\Addon\Factoring\SBOAddonProject1\Mixercon.Factoring.BO\obj\Debug\Mixercon.Factoring.BO.dll
+C:\MIxercon SAP\Addon\Factoring\SBOAddonProject1\Mixercon.Factoring.BO\obj\Debug\Mixercon.Factoring.BO.pdb
+C:\MIxercon SAP\Addon\SAP\Mixercon.Factoring.BO\bin\Debug\Mixercon.Factoring.BO.dll
+C:\MIxercon SAP\Addon\SAP\Mixercon.Factoring.BO\bin\Debug\Mixercon.Factoring.BO.pdb
+C:\MIxercon SAP\Addon\SAP\Mixercon.Factoring.BO\bin\Debug\Forxap.Framework.dll
+C:\MIxercon SAP\Addon\SAP\Mixercon.Factoring.BO\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\MIxercon SAP\Addon\SAP\Mixercon.Factoring.BO\bin\Debug\Forxap.Framework.pdb
+C:\MIxercon SAP\Addon\SAP\Mixercon.Factoring.BO\obj\Debug\Mixercon.Factoring.BO.dll
+C:\MIxercon SAP\Addon\SAP\Mixercon.Factoring.BO\obj\Debug\Mixercon.Factoring.BO.pdb

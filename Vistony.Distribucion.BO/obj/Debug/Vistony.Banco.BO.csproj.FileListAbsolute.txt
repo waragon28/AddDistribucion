@@ -1,0 +1,54 @@
+C:\Addons\Bancos\Vistony.Banco.BO\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Addons\Bancos\Vistony.Banco.BO\bin\Debug\Forxap.Framework.pdb
+C:\Addons\Bancos\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.csprojResolveAssemblyReference.cache
+C:\Addons\Bancos\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.dll
+C:\Addons\Bancos\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.pdb
+C:\Addons\Bancos\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.dll
+C:\Addons\Bancos\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.pdb
+F:\Percy\Addons\Bancos\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.dll
+F:\Percy\Addons\Bancos\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.pdb
+F:\Percy\Addons\Bancos\Vistony.Banco.BO\bin\Debug\SAPBusinessOneSDK.dll
+F:\Percy\Addons\Bancos\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.dll
+F:\Percy\Addons\Bancos\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.pdb
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.dll
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.pdb
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.BO\bin\Debug\SAPBusinessOneSDK.dll
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.csprojResolveAssemblyReference.cache
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.dll
+F:\Percy\Addons\AddOnCuotas\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.pdb
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.dll
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.pdb
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.BO\bin\Debug\SAPBusinessOneSDK.dll
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.csprojResolveAssemblyReference.cache
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.dll
+F:\Percy\Addons\AddAprobarPedidos_OK\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.pdb
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.dll
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.pdb
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.BO\bin\Debug\SAPBusinessOneSDK.dll
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.csprojResolveAssemblyReference.cache
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.dll
+F:\Percy\Addons\AddSectoristas\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.pdb
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.dll
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.pdb
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.BO\bin\Debug\SAPBusinessOneSDK.dll
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.csprojResolveAssemblyReference.cache
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.dll
+D:\Juan\Desarrollo\AddSectoristas\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddSectoristas\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddSectoristas\Vistony.Banco.BO\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.dll
+D:\Desarrollo\AddSectoristas\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddSectoristas\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BO\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.dll
+D:\Desarrollo\AddDistribucion\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BO\bin\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BO\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.dll
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.pdb
+D:\Desarrollo\AddDistribucion - Copy\Vistony.Banco.BO\obj\Debug\Vistony.Banco.BO.csprojResolveAssemblyReference.cache

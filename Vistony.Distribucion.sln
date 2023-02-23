@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vistony.Distribucion.BO", "Vistony.Distribucion.BO\Vistony.Distribucion.BO.csproj", "{939FE266-735B-4A4C-A5F2-696CD98A1270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vistony.Distribucion.DAL", "Vistony.Distribucion.DAL\Vistony.Distribucion.DAL.csproj", "{FE704F41-B43C-4A5B-80E4-88B411C4BC64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vistony.Distribucion.BLL", "Vistony.Distribucion.BLL\Vistony.Distribucion.BLL.csproj", "{62869991-12B4-49F2-9A78-69A3F385E017}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vistony.Distribucion.Win", "Vistony.Distribucion.Win\Vistony.Distribucion.Win.csproj", "{6014541C-7256-42EF-99C0-A87035730D05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forxap.Framework.Utils", "Forxap.Framework.Utils\Forxap.Framework.Utils.csproj", "{25250DED-F283-491F-81DB-B3BFEB71FF6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forxap.Framework.ServiceLayer", "Forxap.Framework.ServiceLayer\Forxap.Framework.ServiceLayer.csproj", "{9B41A12D-B8D0-4607-8C26-3EFB4EB9C2AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forxap.Framework", "Forxap.Framework\Forxap.Framework.csproj", "{B4FCB577-E8EA-4C31-BAB9-2747D6ED2CF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{939FE266-735B-4A4C-A5F2-696CD98A1270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939FE266-735B-4A4C-A5F2-696CD98A1270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939FE266-735B-4A4C-A5F2-696CD98A1270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939FE266-735B-4A4C-A5F2-696CD98A1270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE704F41-B43C-4A5B-80E4-88B411C4BC64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE704F41-B43C-4A5B-80E4-88B411C4BC64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE704F41-B43C-4A5B-80E4-88B411C4BC64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE704F41-B43C-4A5B-80E4-88B411C4BC64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62869991-12B4-49F2-9A78-69A3F385E017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62869991-12B4-49F2-9A78-69A3F385E017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62869991-12B4-49F2-9A78-69A3F385E017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62869991-12B4-49F2-9A78-69A3F385E017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6014541C-7256-42EF-99C0-A87035730D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6014541C-7256-42EF-99C0-A87035730D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6014541C-7256-42EF-99C0-A87035730D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6014541C-7256-42EF-99C0-A87035730D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25250DED-F283-491F-81DB-B3BFEB71FF6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25250DED-F283-491F-81DB-B3BFEB71FF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25250DED-F283-491F-81DB-B3BFEB71FF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25250DED-F283-491F-81DB-B3BFEB71FF6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B41A12D-B8D0-4607-8C26-3EFB4EB9C2AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B41A12D-B8D0-4607-8C26-3EFB4EB9C2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B41A12D-B8D0-4607-8C26-3EFB4EB9C2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B41A12D-B8D0-4607-8C26-3EFB4EB9C2AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4FCB577-E8EA-4C31-BAB9-2747D6ED2CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4FCB577-E8EA-4C31-BAB9-2747D6ED2CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4FCB577-E8EA-4C31-BAB9-2747D6ED2CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4FCB577-E8EA-4C31-BAB9-2747D6ED2CF7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

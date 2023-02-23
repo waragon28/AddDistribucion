@@ -1,0 +1,68 @@
+<Application>
+  <Menus>
+    <action type="add">
+
+
+      <!-- Menu del AddOn Distribución y última milla como modulo-->
+      <Menu Checked="0" Enabled="1" FatherUID="43520"  Image="" Position="5" String="Distribución" Type="2" UniqueID="dis001"></Menu>
+      
+      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="1" String="Consolidación de Entregas" Type="1" UniqueID="dis_entrega"> </Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="2" String="Programación de Despachos Automático" Type="1" UniqueID="dis_asigna"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="3" String="Programación de Despachos Manual" Type="1" UniqueID="dis_asigna_Manual"></Menu>
+
+      <!-- <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="4" String="Asistente de Programación de Despachos" Type="1" UniqueID="dis_wizard"></Menu>
+     <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="5" String="Actualizar Ruta Despacho" Type="1" UniqueID="dis_005"></Menu>-->
+      
+       <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="4" String="Última Milla" Type="2" UniqueID="dis002"></Menu>
+            <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="1" String="Ruta de Despacho" Type="1" UniqueID="dis_rutTra"></Menu>
+            <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="2" String="Seguimiento de Despachos - Choferes" Type="1" UniqueID="dis_seguimiento"></Menu>
+            <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="3" String="Seguimiento de Despachos - Vendedores" Type="1" UniqueID="dis_DispaTruckVent"></Menu>
+            <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="4" String="Estado de Despachos" Type="1" UniqueID="dis_estado"></Menu>
+
+      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="5" String="Informes Ultima Milla" Type="2" UniqueID="dis77111"></Menu>
+        <Menu Checked="0" Enabled="1" FatherUID="dis77111" Image="" Position="1" String="Informes Ancón" Type="2" UniqueID="AnconMenu"></Menu>
+           <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="1" String="Indicadores" Type="2" UniqueID="AnconMenuIndicadres"></Menu>
+            
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="2" String="Control Documentario Diario" Type="1" UniqueID="CDDA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="3" String="Hoja de Alistado Resumen - Ancon" Type="1" UniqueID="HARA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="4" String="Hoja de Consolidado x chofer agencias - Ancon" Type="1" UniqueID="HCCAA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="5" String="Hoja de Alistado Detalle Agencia - Ancon" Type="1" UniqueID="HADAA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="6" String="Hoja de Alistado Agencia (Provincias) - Ancon" Type="1" UniqueID="HAAPA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="7" String="Resumen de Consolidado - Lima" Type="1" UniqueID="RCA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="8" String="Hoja de Consolidado Global Agencias - Ancon" Type="1" UniqueID="HCGAA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="9" String="Resumen Consolidado -  Global Lima" Type="1" UniqueID="RCGLA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="10" String="Consolidado Ubicacion" Type="1" UniqueID="CUA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="11" String="Detalle Despacho Choferes - Ultima Milla" Type="1" UniqueID="DDCUMA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="12" String="Resumen Despacho Choferes - Ultima Milla" Type="1" UniqueID="RDCUMA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="13" String="Resumen Carga de Agencia" Type="1" UniqueID="RCAA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="14" String="Control de Despacho" Type="1" UniqueID="CDA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="15" String="Resumen Carga - Ruta Ubigeo" Type="1" UniqueID="RCRUA"></Menu>
+
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="16" String="Solicitud de devolución (artículo)" Type="1" UniqueID="SDAA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="17" String="Resumen Alistado Provincias" Type="1" UniqueID="RAPA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="18" String="Resumen Cilindros - local" Type="1" UniqueID="RCLA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="19" String="Guia Electronica Chofer (Blu/Vis)" Type="1" UniqueID="GECBVA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="20" String="Evaluacion de rentabilidad de reparto" Type="1" UniqueID="ERRA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="21" String="Guia Electronica Chofer Fecha (Blu/Vis)" Type="1" UniqueID="GECFA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="22" String="Resumen Consolidado Agencia Global" Type="1" UniqueID="RCAGA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="23" String="Ruta de Despacho" Type="1" UniqueID="RDA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="24" String="Detalle Seguimiento de Despacho" Type="1" UniqueID="DSDA"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="25" String="Guía Electronica por Fecha V3" Type="1" UniqueID="GEFVA"></Menu>
+            
+
+           <Menu Checked="0" Enabled="1" FatherUID="dis77111" Image="" Position="2" String="Informes Sucursales" Type="2" UniqueID="SucursalesMenu"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="SucursalesMenu" Image="" Position="1" String="Control Documentario Diario" Type="1" UniqueID="CDDA2"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="SucursalesMenu" Image="" Position="2" String="Control de Despacho" Type="1" UniqueID="CDA2"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="SucursalesMenu" Image="" Position="3" String="Hoja Alistado - Chofer Almacen" Type="1" UniqueID="HACAA2"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="SucursalesMenu" Image="" Position="4" String="Resumen Consolidado - Almacenes" Type="1" UniqueID="RCA2"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="SucursalesMenu" Image="" Position="5" String="Guia Electronica SerieAG" Type="1" UniqueID="GESAA2"></Menu>
+              <Menu Checked="0" Enabled="1" FatherUID="SucursalesMenu" Image="" Position="6" String="Guía Electronica por Fecha V3" Type="1" UniqueID="GEFVA2"></Menu>
+      
+          <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="6" String="Mantenimiento de Choferes" Type="2" UniqueID="dis003"></Menu>
+             <Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="1" String="Actualizar IMEI" Type="1" UniqueID="dis_AIMEI"></Menu>
+             <Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="2" String="Actualizar Ubigeo" Type="1" UniqueID="dis_UPDATEUBI"></Menu>
+             <Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="3" String="Administración Punto Emisión Usuario" Type="1" UniqueID="dis_PuntoEmiUsu"></Menu>
+
+    </action>
+  </Menus>
+</Application>

@@ -1,0 +1,144 @@
+﻿1>------ Build started: Project: Vistony.Trasvase, Configuration: Debug Any CPU ------
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Configuracion\frmParametrizacion.b1f.cs(70,38,70,39): warning CS0642: Possible mistaken empty statement
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\DatosMaestros\frmEmbarcaciones.b1f.cs(480,82,480,83): warning CS0642: Possible mistaken empty statement
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\MainMenuEvent.cs(29,1,29,1): warning CS1570: XML comment has badly formed XML -- 'Expected an end tag for element 'summary'.'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Utils.cs(158,13,158,14): warning CS1570: XML comment has badly formed XML -- 'End tag was not expected at this location.'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\DatosMaestros\frmEmbarcaciones.b1f.cs(11,7,11,29): warning CS0105: The using directive for 'Forxap.Trasvase.UI.Win' appeared previously in this namespace
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Configuracion\frmBase.b1f.cs(16,23,16,31): warning CS0108: 'frmBase.FormType' hides inherited member 'FormBase.FormType'. Use the new keyword if hiding was intended.
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Documentos\frmTrasvaseArticulo.b1f.cs(362,28,362,38): warning CS0108: 'frmTrasvaseArticulo.ShowObject(string)' hides inherited member 'BaseUDOForm.ShowObject(string)'. Use the new keyword if hiding was intended.
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\DatosMaestros\frmCapitanes.b1f.cs(28,29,28,39): warning CS0108: 'frmCapitanes.ShowObject(string)' hides inherited member 'BaseUDOForm.ShowObject(string)'. Use the new keyword if hiding was intended.
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\DatosMaestros\frmEmbarcaciones.b1f.cs(174,28,174,38): warning CS0108: 'frmEmbarcaciones.ShowObject(string)' hides inherited member 'BaseUDOForm.ShowObject(string)'. Use the new keyword if hiding was intended.
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\DatosMaestros\frmEspecies.b1f.cs(20,28,20,38): warning CS0108: 'frmEspecies.ShowObject(string)' hides inherited member 'BaseUDOForm.ShowObject(string)'. Use the new keyword if hiding was intended.
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Connection.cs(65,30,65,32): warning CS0168: The variable 'ex' is declared but never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\FormMenuEvent.cs(64,30,64,32): warning CS0168: The variable 'ex' is declared but never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\DatosMaestros\frmCapitanes.b1f.cs(93,30,93,32): warning CS0168: The variable 'ex' is declared but never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\DatosMaestros\frmCapitanes.b1f.cs(117,30,117,32): warning CS0168: The variable 'ex' is declared but never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\MetaData.cs(28,29,28,31): warning CS0168: The variable 'ex' is declared but never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\MetaData.cs(47,29,47,31): warning CS0168: The variable 'ex' is declared but never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\MetaData.cs(87,29,87,31): warning CS0168: The variable 'ex' is declared but never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\MetaData.cs(111,29,111,31): warning CS0168: The variable 'ex' is declared but never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\MetaData.cs(133,29,133,31): warning CS0168: The variable 'ex' is declared but never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\MetaData.cs(152,30,152,32): warning CS0168: The variable 'ex' is declared but never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Utils.cs(400,40,400,46): warning CS0219: The variable 'oChild' is assigned but its value is never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Utils.cs(401,50,401,59): warning CS0219: The variable 'oChildren' is assigned but its value is never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Configuracion\frmBase.b1f.cs(14,34,14,43): warning CS0649: Field 'frmBase.btnCancel' is never assigned to, and will always have its default value null
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\MainMenuEvent.cs(25,31,25,36): warning CS0169: The field 'MainMenuEvent.oForm' is never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\BaseUDOForm.b1f.cs(13,32,13,42): warning CS0649: Field 'BaseUDOForm.activeForm' is never assigned to, and will always have its default value null
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Configuracion\frmBase.b1f.cs(15,34,15,41): warning CS0649: Field 'frmBase.oMatrix' is never assigned to, and will always have its default value null
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Configuracion\frmBase.b1f.cs(13,34,13,39): warning CS0649: Field 'frmBase.btnOK' is never assigned to, and will always have its default value null
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\DatosMaestros\frmEmbarcaciones.b1f.cs(19,35,19,42): warning CS0414: The field 'frmEmbarcaciones.oColumn' is assigned but its value is never used
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\ApplicationEvents.cs(9,18,9,34): warning CS1591: Missing XML comment for publicly visible type or member 'ApplicationEvent'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Connection.cs(15,18,15,31): warning CS1591: Missing XML comment for publicly visible type or member 'Sb1Connection'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\FormMenuEvent.cs(13,18,13,31): warning CS1591: Missing XML comment for publicly visible type or member 'FormMenuEvent'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Globals.cs(31,30,31,34): warning CS1591: Missing XML comment for publicly visible type or member 'Globals.Path'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\MainMenuEvent.cs(22,18,22,31): warning CS1591: Missing XML comment for publicly visible type or member 'MainMenuEvent'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\MetaData.cs(14,18,14,29): warning CS1591: Missing XML comment for publicly visible type or member 'Sb1MetaData'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Utils.cs(17,18,17,23): warning CS1591: Missing XML comment for publicly visible type or member 'Utils'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Utils.cs(70,28,70,42): warning CS1591: Missing XML comment for publicly visible type or member 'Utils.LoadTipoSalida(ref ComboBox)'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Utils.cs(114,26,114,35): warning CS1572: XML comment has a param tag for 'oComboBox', but there is no parameter by that name
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Utils.cs(115,61,115,68): warning CS1573: Parameter 'oColumn' has no matching param tag in the XML comment for 'Utils.LoadUsers(ref Column)' (but other parameters do)
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Utils.cs(206,26,206,35): warning CS1572: XML comment has a param tag for 'oComboBox', but there is no parameter by that name
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Utils.cs(329,65,329,74): warning CS1573: Parameter 'datatable' has no matching param tag in the XML comment for 'Utils.findDataTable(DataTable, string, string)' (but other parameters do)
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Utils.cs(329,83,329,95): warning CS1573: Parameter 'numeroPedido' has no matching param tag in the XML comment for 'Utils.findDataTable(DataTable, string, string)' (but other parameters do)
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Utils.cs(329,105,329,116): warning CS1573: Parameter 'lineaPedido' has no matching param tag in the XML comment for 'Utils.findDataTable(DataTable, string, string)' (but other parameters do)
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Utils.cs(354,30,354,40): warning CS1591: Missing XML comment for publicly visible type or member 'Utils.InitConfig()'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\LayoutForms .cs(9,25,9,36): warning CS1591: Missing XML comment for publicly visible type or member 'LayoutForms'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\LayoutForms .cs(11,29,11,40): warning CS1591: Missing XML comment for publicly visible type or member 'LayoutForms.frmEspecies'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\LayoutForms .cs(12,29,12,41): warning CS1591: Missing XML comment for publicly visible type or member 'LayoutForms.frmCapitanes'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(9,18,9,31): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(11,29,11,42): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.AddonMainMenu'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(13,29,13,45): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Demo_defi_tipDoc'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(15,29,15,52): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Trasvase_defi_articulos'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(16,29,16,46): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Demo_defi_paragen'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(18,29,18,44): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Demo_defi_Aux01'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(19,29,19,44): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Demo_defi_Aux02'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(20,29,20,44): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Demo_defi_Aux03'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(21,29,21,44): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Demo_defi_Aux04'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(22,29,22,44): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Demo_defi_Aux05'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(23,29,23,44): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Demo_defi_Aux06'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(30,29,30,47): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Demo_Embarcaciones'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(31,29,31,43): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Demo_Capitanes'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(32,29,32,42): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Demo_Especies'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MenuItem.cs(33,29,33,44): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMenuItem.Demo_OrdenPesca'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(9,18,9,34): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(12,29,12,38): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.AddonName'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(14,29,14,42): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.SAPNotRunning'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(16,29,16,41): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.StartLoading'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(17,29,17,42): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.FinishLoading'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(19,29,19,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message001'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(20,29,20,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message002'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(21,29,21,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message003'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(23,29,23,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message004'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(24,29,24,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message005'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(25,29,25,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message006'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(27,29,27,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message007'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(28,29,28,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message008'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(29,29,29,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message009'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(31,29,31,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message010'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(32,29,32,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message011'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(33,29,33,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message012'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(35,29,35,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message013'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(36,29,36,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message014'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(37,29,37,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message015'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(39,29,39,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message016'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(40,29,40,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message017'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(41,29,41,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message018'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(43,29,43,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message019'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(44,29,44,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message020'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(45,29,45,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message021'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(48,29,48,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message100'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(49,29,49,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message101'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(50,29,50,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message102'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(51,29,51,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message103'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(52,29,52,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message104'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(53,29,53,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message105'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(55,29,55,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message106'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(57,29,57,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message107'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(61,29,61,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message120'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(62,29,62,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message121'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(63,29,63,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message122'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(64,29,64,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message123'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(67,29,67,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message200'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(68,29,68,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message201'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(69,29,69,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message202'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(70,29,70,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message203'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(71,29,71,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message204'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(72,29,72,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message205'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\MessageInfo.cs(73,29,73,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonMessageInfo.Message206'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserFile.cs(11,18,11,32): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserFiles'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserFile.cs(13,29,13,38): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserFiles.UserMenus'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserFile.cs(14,29,14,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserFiles.UserTables'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserFile.cs(15,29,15,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserFiles.UserFields'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserFile.cs(16,29,16,40): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserFiles.UserObjects'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserFile.cs(17,29,17,43): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserFiles.UserProcedures'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserFile.cs(18,29,18,44): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserFiles.UserPermissions'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserFile.cs(19,29,19,40): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserFiles.UserScripts'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserFile.cs(22,29,22,33): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserFiles.Icon'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserFile.cs(23,29,23,35): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserFiles.Wizard'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserObjects.cs(9,18,9,34): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserObjects'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserObjects.cs(11,29,11,40): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserObjects.oOrdenPesca'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserObjects.cs(12,29,12,41): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserObjects.oEmbarcacion'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserObjects.cs(13,29,13,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserObjects.oCapitanes'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserTables.cs(9,18,9,33): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserTables'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserTables.cs(16,29,16,40): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserTables.TipoEntrada'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserTables.cs(17,29,17,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserTables.TipoSalida'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserTables.cs(21,29,21,45): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserTables.TrasvaseArticulo'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserTables.cs(22,29,22,46): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserTables.TrasvaseArticulo1'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserTables.cs(25,29,25,46): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserTables.TrasvaseMercancia'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\UserTables.cs(26,29,26,47): warning CS1591: Missing XML comment for publicly visible type or member 'AddonUserTables.TrasvaseMercancia1'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\WinForms.cs(9,26,9,39): warning CS1591: Missing XML comment for publicly visible type or member 'AddonWinForms'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\WinForms.cs(16,30,16,50): warning CS1591: Missing XML comment for publicly visible type or member 'AddonWinForms.frmTrasvaseArticulos'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\WinForms.cs(17,30,17,42): warning CS1591: Missing XML comment for publicly visible type or member 'AddonWinForms.frmCapitanes'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\WinForms.cs(18,30,18,41): warning CS1591: Missing XML comment for publicly visible type or member 'AddonWinForms.frmEspecies'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\WinForms.cs(20,30,20,46): warning CS1591: Missing XML comment for publicly visible type or member 'AddonWinForms.frmEmbarcaciones'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Constans\WinForms.cs(21,30,21,41): warning CS1591: Missing XML comment for publicly visible type or member 'AddonWinForms.frmTrasvase'
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Connection.cs(51,40,51,41): warning CS1587: XML comment is not placed on a valid language element
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Connection.cs(54,39,54,40): warning CS1587: XML comment is not placed on a valid language element
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\DatosMaestros\frmEspecies.b1f.cs(33,11,33,12): warning CS1587: XML comment is not placed on a valid language element
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\DatosMaestros\frmEspecies.b1f.cs(35,11,35,12): warning CS1587: XML comment is not placed on a valid language element
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\MainMenuEvent.cs(94,32,94,33): warning CS1587: XML comment is not placed on a valid language element
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Program.cs(36,17,36,18): warning CS1587: XML comment is not placed on a valid language element
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Program.cs(38,17,38,18): warning CS1587: XML comment is not placed on a valid language element
+1>F:\Percy\Addons\Transvase\Forxap.Demo.Win\Program.cs(40,17,40,18): warning CS1587: XML comment is not placed on a valid language element
+1>  Vistony.Trasvase -> F:\Percy\Addons\Transvase\Forxap.Demo.Win\bin\Debug\Forxap.Demo.UI.Win.exe
+========== Build: 1 succeeded, 0 failed, 3 up-to-date, 0 skipped ==========

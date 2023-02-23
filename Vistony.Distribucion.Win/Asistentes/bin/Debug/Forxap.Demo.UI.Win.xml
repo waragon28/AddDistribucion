@@ -1,0 +1,360 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Forxap.Demo.UI.Win</name>
+    </assembly>
+    <members>
+        <member name="M:Forxap.Demo.UI.Win.ApplicationEvent.SB1_Application_AppEvent(SAPbouiCOM.BoAppEventTypes)">
+            <summary>
+            
+            </summary>
+            <param name="EventType"></param>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Asistentes.BaseWizard.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Asistentes.BaseWizard.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="P:Forxap.Demo.UI.Win.Asistentes.BaseWizard.PaneLevel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Forxap.Demo.UI.Win.Asistentes.BaseWizard.PaneMax">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.BaseUDOForm.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.BaseUDOForm.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Sb1Connection.ConnectToSAP">
+            <summary>
+            Conecta el AddOn a la instancia de SAP que se encuentra cargada (desarrollo) o en la instancia
+            que lo invoca en Producción.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Configuracion.frmBase.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Configuracion.frmBase.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Configuracion.frmParametrizacion.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Configuracion.frmParametrizacion.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="F:Forxap.Demo.UI.Constans.AddonWinForms.frmParametros">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.DatosMaestros.frmCapitanes.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.DatosMaestros.frmCapitanes.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.DatosMaestros.frmEmbarcaciones.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.DatosMaestros.frmEmbarcaciones.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.DatosMaestros.frmEmbarcaciones.Validate">
+            <summary>
+             Valida regla de negocio para este formulario
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.DatosMaestros.frmEspecies.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.DatosMaestros.frmEspecies.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Documentos.frmTipDocumento.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Documentos.frmTipDocumento.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Documentos.SystemForm3.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Documentos.SystemForm3.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.FormMenuEvent.SB1_Application_FormMenuEvent(SAPbouiCOM.MenuEvent@,System.Boolean@)">
+            <summary>
+            
+            </summary>
+            <param name="pVal"></param>
+            <param name="BubbleEvent"></param>
+        </member>
+        <member name="T:Forxap.Demo.UI.Win.Globals">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Forxap.Demo.UI.Win.Globals.oCompany">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Forxap.Demo.UI.Win.Globals.oCompanyService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Forxap.Demo.UI.Win.Globals.DbServerType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Forxap.Demo.UI.Win.Globals.CompanyName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Forxap.Demo.UI.Win.Globals.CompanyDB">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Forxap.Demo.UI.Win.Globals.Autorizacion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Forxap.Demo.UI.Win.Globals.oForm">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Forxap.Demo.UI.Win.Globals.UserSignature">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Forxap.Demo.UI.Win.Globals.UserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.Win.Interfaz.Importar.frmImportar.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.Win.Interfaz.Importar.frmImportar.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.Win.Interfaz.Importar.wzdImport.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.Win.Interfaz.Importar.wzdImport.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Interfaz.Exportar.wzdAFPNet.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Interfaz.Exportar.wzdAFPNet.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Interfaz.Exportar.wzdPlame.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Interfaz.Exportar.wzdPlame.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Interfaz.Exportar.wzdTRegistro.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Interfaz.Exportar.wzdTRegistro.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Interfaz.wzdAnulaDoc.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Interfaz.wzdAnulaDoc.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.MainMenuEvent.SB1_Application_MainMenuEvent(SAPbouiCOM.MenuEvent@,System.Boolean@)">
+            <param name="pVal"></param>
+            <param name="BubbleEvent"></param>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.MainMenuEvent.OnShowParametrizacion">
+            fin del  metodo
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Sb1MetaData.AddMenus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Sb1MetaData.AddTables">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Sb1MetaData.AddFields">
+            <summary>
+            e
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Sb1MetaData.AddUdos">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Sb1MetaData.AddUserScripts">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Sb1MetaData.AddPermissions">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Sb1MetaData.AddIcon">
+            <summary>
+            ddd
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Documentos.frmOrdenPesca.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Documentos.frmOrdenPesca.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Program.Main(System.String[])">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:Forxap.Demo.UI.Win.Properties.Resources">
+            <summary>
+              Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:Forxap.Demo.UI.Win.Properties.Resources.ResourceManager">
+            <summary>
+              Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:Forxap.Demo.UI.Win.Properties.Resources.Culture">
+            <summary>
+              Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+            </summary>
+        </member>
+        <member name="P:Forxap.Demo.UI.Win.Properties.Resources.String1">
+            <summary>
+              Busca una cadena traducida similar a 1.
+            </summary>
+        </member>
+        <member name="P:Forxap.Demo.UI.Win.Properties.Resources.String2">
+            <summary>
+              Busca una cadena traducida similar a 2.
+            </summary>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Utils.LoadUsers(SAPbouiCOM.ComboBox@)">
+            <summary>
+            Carga un combobox con los usuarios
+            </summary>
+            <param name="oComboBox"></param>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Utils.LoadUsers(SAPbouiCOM.Column@)">
+            <summary>
+            Carga un combobox dentro de una grilla con los usuarios
+            </summary>
+            <param name="oComboBox"></param>
+        </member>
+        <member name="M:Forxap.Demo.UI.Win.Utils.LoadMiscelaneo(SAPbouiCOM.ComboBox@,System.String)">
+            <summary>
+            /
+            </summary>
+            <param name="oComboBox"></param>
+            <param name="tableName"></param>
+        </member>
+        <!-- El comentario XML con formato incorrecto se omite para el miembro "M:Forxap.Demo.UI.Win.Utils.LoadMiscelaneo(SAPbouiCOM.Column@,System.String)" -->
+        <member name="M:Forxap.Demo.UI.Win.Utils.findDataTable(SAPbouiCOM.DataTable,System.String,System.String)">
+            <summary>
+            Carga un combobox dentro de una grilla con los estados civiles
+            </summary>
+            <param name="oComboBox"></param>
+        </member>
+    </members>
+</doc>

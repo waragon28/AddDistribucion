@@ -1,0 +1,14 @@
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\bin\Debug\Forxap.Demo.BLL.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\bin\Debug\Forxap.Demo.BLL.pdb
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\bin\Debug\Forxap.Demo.BO.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\bin\Debug\Forxap.Demo.DAL.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\bin\Debug\Forxap.Framework.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\bin\Debug\Forxap.Framework.pdb
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\bin\Debug\Forxap.Demo.BO.pdb
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\bin\Debug\Forxap.Demo.DAL.pdb
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\bin\Debug\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\obj\Debug\Forxap.Demo.BLL.csprojResolveAssemblyReference.cache
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\obj\Debug\Forxap.Demo.BLL.dll
+D:\Forxap\Saperos Elite\Forxap.Demo.BLL\obj\Debug\Forxap.Demo.BLL.pdb

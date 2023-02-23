@@ -1,0 +1,10 @@
+F:\Trasvase\Framework\Framework\Forxap.Framework.Utils\bin\Release\Forxap.Framework.Utils.dll
+F:\Trasvase\Framework\Framework\Forxap.Framework.Utils\bin\Release\Forxap.Framework.Utils.pdb
+F:\Trasvase\Framework\Framework\Forxap.Framework.Utils\bin\Release\SAPBusinessOneSDK.dll
+F:\Trasvase\Framework\Framework\Forxap.Framework.Utils\obj\Release\Forxap.Framework.Utils.dll
+F:\Trasvase\Framework\Framework\Forxap.Framework.Utils\obj\Release\Forxap.Framework.Utils.pdb
+D:\Framework\Forxap.Framework.Utils\bin\Release\Forxap.Framework.Utils.dll
+D:\Framework\Forxap.Framework.Utils\bin\Release\Forxap.Framework.Utils.pdb
+D:\Framework\Forxap.Framework.Utils\bin\Release\SAPBusinessOneSDK.dll
+D:\Framework\Forxap.Framework.Utils\obj\Release\Forxap.Framework.Utils.dll
+D:\Framework\Forxap.Framework.Utils\obj\Release\Forxap.Framework.Utils.pdb
