@@ -344,7 +344,7 @@ namespace Vistony.Distribucion.BLL
 
 
         public Programacion ObtenerCabeceraDocuemtProgramacion(SAPbouiCOM.Grid dt, string docDate, string driverCode,
-        string driverName,string assistantCode,string assistantName,string vehiculeCode,string vehiculeName,double vehiculeapacity, string documentsWeight,
+        string driverName,string assistantCode,string assistantName,string vehiculeCode,string vehiculeName,string vehiculeapacity, string documentsWeight,
         string successQuantity,string failedQuantity,string documentsQuantity)
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())
@@ -355,7 +355,7 @@ namespace Vistony.Distribucion.BLL
         }
 
         public string  GuardarHojaDespacho(SAPbouiCOM.Grid dt, string docDate, string driverCode,string driverName, string assistantCode,
-            string assistantName, string vehiculeCode, string vehiculeName,double? vehiculeCapacity, string documentsWeight,  
+            string assistantName, string vehiculeCode, string vehiculeName,string vehiculeCapacity, string documentsWeight,  
             string successQuantity, string failedQuantity, string documentsQuantity)
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())

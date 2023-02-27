@@ -1,7 +1,7 @@
 ﻿//#define AD_BO
-#define AD_PE
+//#define AD_PE
 //#define AD_ES
-//#define AD_PY
+#define AD_PY
 
 using System;
 using System.Collections.Generic;
@@ -680,7 +680,7 @@ namespace Vistony.Distribucion.DAL
             }
         }
         public Programacion ObtenerRutaTransportista(SAPbouiCOM.Grid dt, string docDate, string driverCode, string driverName, string assistantCode, 
-            string assistantName, string vehiculeCode, string vehiculeName, double? vehiculeCapacity, string documentsWeight,
+            string assistantName, string vehiculeCode, string vehiculeName, string vehiculeCapacity, string documentsWeight,
         string successQuantity, string failedQuantity, string documentsQuantity)
         {
             Programacion DocumentoProgramacion = new Programacion();
@@ -827,7 +827,7 @@ namespace Vistony.Distribucion.DAL
         }
 
         public string GuardarProgramacion(SAPbouiCOM.Grid dt,string docDate, string driverCode, string driverName, string assistantCode, 
-            string assistantName, string vehiculeCode, string vehiculeName,double? vehiculeCapacity, string documentsWeight, string successQuantity, string failedQuantity, string documentsQuantity)
+            string assistantName, string vehiculeCode, string vehiculeName,string vehiculeCapacity, string documentsWeight, string successQuantity, string failedQuantity, string documentsQuantity)
         {
             string ret = string.Empty;
 

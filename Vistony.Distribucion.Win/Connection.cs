@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SAPbobsCOM;
 
 using SAPbouiCOM.Framework;
 using Forxap.Framework;
 using Forxap.Framework.UI;
 using Vistony.Distribucion.Constans;
+using System.Globalization;
 
 namespace Vistony.Distribucion.Win
 {
@@ -27,13 +29,12 @@ namespace Vistony.Distribucion.Win
             try
             {
                 AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
-
-
+                
                 Sb1Globals.oCompany = (SAPbobsCOM.Company)Application.SBO_Application.Company.GetDICompany();
                 Sb1Globals.oCompanyService = Sb1Globals.oCompany.GetCompanyService();
                 Sb1Globals.DbServerType = Sb1Globals.oCompany.DbServerType.ToString();
                 Sb1Globals.Path = System.Windows.Forms.Application.StartupPath;
-
+                SAPbouiCOM.BoLanguages lenguaje = Application.SBO_Application.Language;
                 Sb1Initialize.SetFramework(Application.SBO_Application, Sb1Globals.oCompany);//inicializa el framework.
                 Vistony.Distribucion.DAL.BaseDAL.SetDataAccesLayer(Application.SBO_Application, Sb1Globals.oCompany);//inicializa el DAL
                 Forxap.Framework.ServiceLayer.Sb1Initialize.SetFramework(Application.SBO_Application, Sb1Globals.oCompany);
@@ -72,8 +73,10 @@ namespace Vistony.Distribucion.Win
                     {
                         Sb1MetaData.AddMenusEspanol(); // agrega el menu del addon
                     }
-                   
                 }
+
+                Sb1Globals.cultura.NumberFormat.NumberDecimalSeparator = Utils.GetNumberDecimalSeparator(addonMessageInfo.QueryObtenerDecimalSeparator);
+                Sb1Globals.cultura.NumberFormat.NumberGroupSeparator = Utils.GetNumberMilesSeparator(addonMessageInfo.QueryObtenerMilesSeparator);
 
                 Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaStartLoading(Sb1Globals.Idioma)), SAPbouiCOM.BoMessageTime.bmt_Short);
 
@@ -84,23 +87,17 @@ namespace Vistony.Distribucion.Win
                 Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaFinishLoading(Sb1Globals.Idioma)), SAPbouiCOM.BoMessageTime.bmt_Short);
 
                 ret = true;
+
             }
             catch (Exception ex)
             {
-                //  if (Messages != null)
                 Sb1Messages.ShowError(ex.Message);
             }
-
-
-
+            
             return ret;
 
         }// fin del metodo connectToSAP
-
- 
-
-
-
+        
     }// fin de la clase
 
 }// fin del namespace

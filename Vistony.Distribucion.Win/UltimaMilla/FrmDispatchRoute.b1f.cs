@@ -1,4 +1,5 @@
-﻿#define AD_PE
+﻿//#define AD_PE
+#define AD_PY
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,10 @@ using Vistony.Distribucion.BO;
 using Newtonsoft.Json;
 using Forxap.Framework.Constants;
 using Forxap.Framework.UI;
+using Vistony.Distribucion.Constans;
 
 namespace Vistony.Distribucion.Win.UltimaMilla
 {
-    
-
     [FormAttribute("DispatchRoute", "UltimaMilla/FrmDispatchRoute.b1f")]
     class FrmDispatchRoute : UserFormBase
     {
@@ -77,6 +77,10 @@ namespace Vistony.Distribucion.Win.UltimaMilla
         public static string U_SYP_VEMA = "";
         public static string DocEntryEntrega;
         public static string EstadoEntrega;
+        private SAPbouiCOM.Button Button3;
+        public static dynamic objDeleteDespachoJson = "";
+        public static string Cancelar = "";
+        public static AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
         public FrmDispatchRoute()
         {
         }
@@ -93,6 +97,18 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             return objDespacho;
 
         }
+
+        public static void ValidarCamposORDT(Recordset GetDataODLN,string DocEntry)
+        {
+            string ValidarCamposODRT = string.Format(addonMessageInfo.QueryValidacionProgramacion, DocEntry);
+            GetDataODLN.DoQuery(ValidarCamposODRT);
+        }
+        public static void ObtenerDatosChofer(Recordset recordset,string Query,string Parametro)
+        {
+            string ValidarCamposODRT = string.Format(Query, Parametro);
+            recordset.DoQuery(ValidarCamposODRT);
+        }
+
         public static void formEvent(ref SAPbouiCOM.BusinessObjectInfo BusinessObjectInfo, out bool BubbleEvent)
         {
             BubbleEvent = true;
@@ -100,61 +116,89 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                 if (BusinessObjectInfo.ActionSuccess &&
                     !BusinessObjectInfo.BeforeAction)
                 {
-                    if (BusinessObjectInfo.EventType == SAPbouiCOM.BoEventTypes.et_FORM_DATA_UPDATE)
-                    {
+                if (BusinessObjectInfo.EventType == SAPbouiCOM.BoEventTypes.et_FORM_DATA_UPDATE)
+                {
                     Sb1Messages.ShowWarning("Iniciando Actualizacion...");
-                        bool isUpdated = false;
-                        SAPbouiCOM.Form oForm = null;
-                        oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(BusinessObjectInfo.FormUID);
-                        SAPbouiCOM.DBDataSource oDatasource = oForm.GetDBDataSource("@VIS_DIS_DRT1");
+                    bool isUpdated = false;
+                    SAPbouiCOM.Form oForm = null;
+                    oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(BusinessObjectInfo.FormUID);
+                    SAPbouiCOM.DBDataSource oDatasource = oForm.GetDBDataSource("@VIS_DIS_DRT1");
 
-                        string Conductor = string.Format("SELECT * FROM \"@SYP_CONDUC\" T0 WHERE \"Code\"='{0}'", 
-                            oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DriverCode", 0));
+                    //VALIDAR SI SE ACTUALIZO LOS CAMPOS QUE AFECTAN A LAS ENTREGAS
+                    Recordset GetDataODLN = null;
+                    for (int i= 0; i < 1; i++)
+                    {
+                        #if AD_PE
+                                ValidarCamposORDT(GetDataODLN, oDatasource.GetString("U_DocEntry", i));
+                        #else
+                                ValidarCamposORDT(GetDataODLN, oDatasource.GetString("U_DocEntry", i));
+                        #endif
+                    }
+
+                    if (GetDataODLN.Fields.Item("U_SYP_MDFN").Value.ToString() != oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DriverName", 0) ||
+                        oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantName", 0) != GetDataODLN.Fields.Item("U_SYP_DT_AYUDANTE").Value.ToString() ||
+                        oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DocDate", 0) != GetDataODLN.Fields.Item("U_SYP_DT_FCDES").Value.ToString())
+                    {
                         Recordset Conductorrecordset = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
-                        Conductorrecordset.DoQuery(Conductor);
-                        string NombreConductor = Conductorrecordset.Fields.Item("Name").Value.ToString();
-                        string LicenciaConductor = Conductorrecordset.Fields.Item("U_SYP_CHLI").Value.ToString();
+                        ObtenerDatosChofer(Conductorrecordset, addonMessageInfo.QueryObtenerDescripcionVehiculo,
+                            oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DriverCode", 0));
 
-                        string Vehiculo = string.Format("SELECT * FROM \"@SYP_VEHICU\" T0 WHERE \"Code\"='{0}'",
-                        oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_VehiculeCode", 0));
                         Recordset Vehiculorecordset = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
-                        Vehiculorecordset.DoQuery(Vehiculo);
-                        string MarcaConductor = Vehiculorecordset.Fields.Item("U_SYP_VEMA").Value.ToString();
-                        string PlacaConductor = Vehiculorecordset.Fields.Item("U_SYP_VEPL").Value.ToString();
-
-                        string FechaProg = oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DocDate", 0);
-                        string CodAyudante = oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantCode", 0);
-                        string Ayudante = oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantName", 0);
+                        ObtenerDatosChofer(Vehiculorecordset, addonMessageInfo.QueryObtenerDescripcionConducor,
+                            oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DriverCode", 0));
 
                         UpdateEntregaDespacho objDespacho = new UpdateEntregaDespacho();
-                        objDespacho = GetObjDespacho(PlacaConductor, MarcaConductor, LicenciaConductor, NombreConductor,
-                                                    FechaProg, CodAyudante, Ayudante);
+                        objDespacho = GetObjDespacho(Vehiculorecordset.Fields.Item("U_SYP_VEPL").Value.ToString(), 
+                                                     Vehiculorecordset.Fields.Item("U_SYP_VEMA").Value.ToString(), 
+                                                     Conductorrecordset.Fields.Item("U_SYP_CHLI").Value.ToString(),
+                                                     Conductorrecordset.Fields.Item("Name").Value.ToString(),
+                                                     oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DocDate", 0),
+                                                     oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantCode", 0),
+                                                     oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantName", 0));
+                        
                         dynamic objDespachoJson = JsonConvert.SerializeObject(objDespacho);
 
-                        for (int oRows = 0; oRows < oDatasource.Size; oRows++)
-                        {
-                        string docEntry = oDatasource.GetString("U_DocEntry", oRows);
-                                if (docEntry!="")
+                            for (int oRows = 0; oRows < oDatasource.Size; oRows++)
+                            {
+                                string docEntry = oDatasource.GetString("U_DocEntry", oRows);
+                                if (docEntry != "")
                                 {
                                     using (EntregaBLL entregaBLL = new EntregaBLL())
                                     {
                                         string response = "";
-                                        isUpdated = entregaBLL.UpdateEstadoEntrega(Convert.ToInt32(docEntry), objDespachoJson, ref response); 
+                                        isUpdated = entregaBLL.UpdateEstadoEntrega(Convert.ToInt32(docEntry), objDespachoJson, ref response);
+                                        Sb1Messages.ShowSuccess("Se Actualizaron : " + oRows +" de "+oDatasource.Size);
                                     }
                                 }
-                        }
-                        if (isUpdated)
-                        {
-                            if (objDeleteDespachoJson != "")
-                            {
-                                string response1 = "";
-                                isUpdated = UpdateEstadoEntrega(Convert.ToInt32(DocEntryEntrega), objDeleteDespachoJson, ref response1);
-                                objDeleteDespachoJson = "";
                             }
 
+                    }
+
+                        if (objDeleteDespachoJson != "")
+                        {
+                            string response1 = "";
+                            isUpdated = UpdateEstadoEntrega(Convert.ToInt32(DocEntryEntrega), objDeleteDespachoJson, ref response1);
                         }
 
-                }
+                        if (Cancelar == "Cancelar")
+                        {
+                            for (int oRows = 0; oRows < oDatasource.Size; oRows++)
+                            {
+                                if (oDatasource.GetString("U_DocEntry", oRows) != "")
+                                {
+                                    using (EntregaBLL entregaBLL = new EntregaBLL())
+                                    {
+                                        string response = "";
+                                        string JsonV = "{\"U_SYP_DT_ESTDES\"" +":"+"\"V\" }";
+                                        isUpdated = entregaBLL.UpdateEstadoEntrega(Convert.ToInt32(oDatasource.GetString("U_DocEntry", oRows)), JsonV, ref response);
+                                        
+                                    }
+                                }
+                            }
+                        }
+
+
+                    }
 
                 }
         }
@@ -184,6 +228,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             this.EditText8.ClickAfter += new SAPbouiCOM._IEditTextEvents_ClickAfterEventHandler(this.EditText8_ClickAfter);
             this.EditText10 = ((SAPbouiCOM.EditText)(this.GetItem("Item_25").Specific));
             this.EditText11 = ((SAPbouiCOM.EditText)(this.GetItem("Item_26").Specific));
+            this.EditText11.ClickAfter += new SAPbouiCOM._IEditTextEvents_ClickAfterEventHandler(this.EditText11_ClickAfter);
             this.EditText11.ChooseFromListAfter += new SAPbouiCOM._IEditTextEvents_ChooseFromListAfterEventHandler(this.EditText11_ChooseFromListAfter);
             this.EditText12 = ((SAPbouiCOM.EditText)(this.GetItem("Item_27").Specific));
             this.EditText13 = ((SAPbouiCOM.EditText)(this.GetItem("Item_28").Specific));
@@ -215,7 +260,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             this.EditText19.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText19_KeyDownAfter);
             this.StaticText16 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_41").Specific));
             this.ComboBox1 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_42").Specific));
-            //  this.LinkedButton0 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_43").Specific));
+            //   this.LinkedButton0 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_43").Specific));
             this.StaticText17 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_44").Specific));
             this.ComboBox2 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_45").Specific));
             this.Button3 = ((SAPbouiCOM.Button)(this.GetItem("Item_47").Specific));
@@ -229,17 +274,15 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             this.OnCustomInitialize();
 
         }
-
         /// <summary>
         /// Initialize form event. Called by framework before form creation.
         /// </summary>
         public override void OnInitializeFormEvents()
         {
             this.LoadAfter += new SAPbouiCOM.Framework.FormBase.LoadAfterHandler(this.Form_LoadAfter);
-            this.ActivateAfter += new ActivateAfterHandler(this.Form_ActivateAfter);
+            this.ActivateAfter += new SAPbouiCOM.Framework.FormBase.ActivateAfterHandler(this.Form_ActivateAfter);
 
         }
-
         private void OnCustomInitialize()
         {
             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
@@ -249,11 +292,11 @@ namespace Vistony.Distribucion.Win.UltimaMilla
 
             oForm.EnabledMenuMatrix();
         }
-        public static dynamic objDeleteDespachoJson="";
         public static void MenuEvent(ref SAPbouiCOM.MenuEvent pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
             objDeleteDespachoJson = "";
+            Cancelar = "";
             if (pVal.MenuUID == SboMenuItem.AddRow && pVal.BeforeAction == true)
             {
                 BubbleEvent = false;
@@ -261,19 +304,28 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             }
             else if (pVal.MenuUID == SboMenuItem.DeleteRow && pVal.BeforeAction == true)
             {
-                oForm.Freeze(true);
-                SAPbouiCOM.Matrix oMatrix = ((SAPbouiCOM.Matrix)oForm.Items.Item("3").Specific);
-                SAPbouiCOM.DBDataSource oDBDataSource = oForm.DataSources.DBDataSources.Item("@VIS_DIS_DRT1");
-                int nRow = (int)oMatrix.GetNextSelectedRow(0, SAPbouiCOM.BoOrderType.ot_RowOrder);
-                oMatrix.FlushToDataSource();
-                oDBDataSource.RemoveRecord(nRow - 1);
-                oForm.Mode = SAPbouiCOM.BoFormMode.fm_UPDATE_MODE;
-                oMatrix.LoadFromDataSource();
-                UpdateEstadoDespacho objDespacho = new UpdateEstadoDespacho();
-                objDespacho = UpdateDespacho("V");
-                objDeleteDespachoJson = JsonConvert.SerializeObject(objDespacho);
-                BubbleEvent = false;
-                oForm.Freeze(false);
+                var Menssage = Sb1Messages.ShowMessageBox("Esta seguro de Eliminar este registro,\n recordar que el documento pasara a estado Volver a programar");
+                if (Menssage==1)
+                {
+                    oForm.Freeze(true);
+                    SAPbouiCOM.Matrix oMatrix = ((SAPbouiCOM.Matrix)oForm.Items.Item("3").Specific);
+                    SAPbouiCOM.DBDataSource oDBDataSource = oForm.DataSources.DBDataSources.Item("@VIS_DIS_DRT1");
+                    int nRow = (int)oMatrix.GetNextSelectedRow(0, SAPbouiCOM.BoOrderType.ot_RowOrder);
+                    oMatrix.FlushToDataSource();
+                    oDBDataSource.RemoveRecord(nRow - 1);
+                    oForm.Mode = SAPbouiCOM.BoFormMode.fm_UPDATE_MODE;
+                    oMatrix.LoadFromDataSource();
+                    UpdateEstadoDespacho objDespacho = new UpdateEstadoDespacho();
+                    objDespacho = UpdateDespacho("V");
+                    objDeleteDespachoJson = JsonConvert.SerializeObject(objDespacho);
+                    BubbleEvent = false;
+                    oForm.Freeze(false);
+                }
+                else
+                {
+                    BubbleEvent = false;
+                }
+               
             }
             else if (pVal.MenuUID == SboMenuItem.Delete && pVal.BeforeAction == true)
             {
@@ -282,8 +334,16 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             }
             else if (pVal.MenuUID == SboMenuItem.Cancel && pVal.BeforeAction == true)
             {
-                BubbleEvent = false;
-                Sb1Messages.ShowWarning("No se puede cancelar el registro");
+                 BubbleEvent = true;
+                var Menssage = Sb1Messages.ShowMessageBox("Esta seguro de Cancelar este registro,\n recordar que los documentos pasaran a estado Volver a programar");
+                if (Menssage == 1)
+                {
+                    Cancelar = "Cancelar";
+                }
+                else
+                {
+                    Cancelar = "";
+                }
             }
             else if (pVal.MenuUID == SboMenuItem.Close && pVal.BeforeAction == true)
             {
@@ -362,14 +422,11 @@ namespace Vistony.Distribucion.Win.UltimaMilla
            // throw new System.NotImplementedException();
 
         }
-        private SAPbouiCOM.Button Button3;
-
         private void Button3_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
            BubbleEvent = true;
             //throw new System.NotImplementedException();
         }
-
         public bool Layout_Preview(string ReportName, string DocNum)
         {
             SAPbobsCOM.Recordset oRS = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
@@ -393,7 +450,6 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             }
 
         }
-
         public  SAPbouiCOM.Matrix GetMatrix()
         {
             return SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID).GetMatrix("Matrix1");
@@ -412,13 +468,11 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             //throw new System.NotImplementedException();
             Layout_Preview("Informe Ruta de Despacho", EditText8.Value);
         }
-
         private void EditText8_ClickAfter(object sboObject, SBOItemEventArg pVal)
         {
      
 
         }
-
         private void Matrix1_LinkPressedBefore(object sboObject, SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
@@ -433,13 +487,6 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             if (pVal.ColUID == "Entrega")
 
             {
-
-                //int rowSelected = Grid0.Rows.SelectedRows.Item(0, SAPbouiCOM.BoOrderType.ot_RowOrder);
-
-             //   docEntry = Matrix1.Columns["DocEntry"]. Grid0.DataTable.GetValue("DocEntry", Grid0.GetDataTableRowIndex(rowIndex)).ToString();
-
-           //     docEntry = (Matrix1.GetCellSpecific("DocEntry", pVal.Row) as SAPbouiCOM.EditText).Value;
-
                 docEntry = oForm.GetDBDataSource("@VIS_DIS_DRT1").GetString("U_DocEntry", pVal.Row -1);
 
 
@@ -449,9 +496,6 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                 LinkedButton2.LinkedObject =  BoLinkedObject.lf_DeliveryNotes;
                 LinkedButton2.Item.Click(SAPbouiCOM.BoCellClickType.ct_Linked);
 
-                // quito por un instante el codigo de objeto al cual esta relacionado el linkedbutton
-             //  col = ((SAPbouiCOM.EditText)(Matrix1.Columns.Item("Entrega")));
-             //   col.Clear();// .LinkedObjectType =  string.Empty;// 
             }
 
 
@@ -459,90 +503,42 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             else if (pVal.ColUID == "NroFactura")
 
             {
-
-                //int rowSelected = Grid0.Rows.SelectedRows.Item(0, SAPbouiCOM.BoOrderType.ot_RowOrder);
-
-             //   docEntry = Grid0.DataTable.GetValue("DocEntry_Fac", Grid0.GetDataTableRowIndex(rowIndex)).ToString();
-
                 EditText4.Value = docEntry;
-
-                //EditText11.SetFocus();
-
                 LinkedButton0.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
                 LinkedButton0.Item.Click(SAPbouiCOM.BoCellClickType.ct_Linked);
-
-                // quito por un instante el codigo de objeto al cual esta relacionado el linkedbutton
-          //      col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("NroFactura")));
-                //col.LinkedObjectType = string.Empty;// 
-            }
+             }
 
             else if (pVal.ColUID == "Chofer")
             {
-         //       code = Grid0.DataTable.GetValue("CodChofer", Grid0.GetDataTableRowIndex(rowIndex)).ToString();
                 EditText4.Value = code;
-
-                //EditText11.SetFocus();
 
                 LinkedButton0.LinkedObjectType = "CONDUC";
                 LinkedButton0.Item.Click(SAPbouiCOM.BoCellClickType.ct_Linked);
-
-                // quito por un instante el codigo de objeto al cual esta relacionado el linkedbutton
-            //    col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("Chofer")));
-              //  col.LinkedObjectType = string.Empty;// 
-
             }
 
             else if (pVal.ColUID == "Vehiculo")
             {
-            //    code = Grid0.DataTable.GetValue("CodVehiculo", Grid0.GetDataTableRowIndex(rowIndex)).ToString();
                 EditText4.Value = code;
-
-                //  EditText11.SetFocus();
-
                 LinkedButton0.LinkedObjectType = "VEHICU";
                 LinkedButton0.Item.Click(SAPbouiCOM.BoCellClickType.ct_Linked);
-
-                // quito por un instante el codigo de objeto al cual esta relacionado el linkedbutton
-              //  col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("Vehiculo")));
-            //    col.LinkedObjectType = string.Empty;// 
-
             }
 
             else if (pVal.ColUID == "Ayudante")
             {
-              //  code = Grid0.DataTable.GetValue("CodAyudante", Grid0.GetDataTableRowIndex(rowIndex)).ToString();
-                EditText4.Value = code;
-
-                //EditText11.SetFocus();
-
+               EditText4.Value = code;
                 LinkedButton0.LinkedObjectType = "OAYD";
                 LinkedButton0.Item.Click(SAPbouiCOM.BoCellClickType.ct_Linked);
-
-                // quito por un instante el codigo de objeto al cual esta relacionado el linkedbutton
-            //    col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("Ayudante")));
-            //    col.LinkedObjectType = string.Empty;// 
-
             }
 
 
             else if (pVal.ColUID == "Vendedor")
             {
-             //   code = Grid0.DataTable.GetValue("Vendedor_ID", Grid0.GetDataTableRowIndex(rowIndex)).ToString();
                 EditText4.Value = code;
-
-                //EditText11.SetFocus();
-
                 LinkedButton0.LinkedObjectType = "53";
                 LinkedButton0.Item.Click(SAPbouiCOM.BoCellClickType.ct_Linked);
-
-                // quito por un instante el codigo de objeto al cual esta relacionado el linkedbutton
-             //   col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("Vendedor")));
-             //   col.LinkedObjectType = "";// 
-
             }
 
         }
-        
         private void EditText9_ChooseFromListAfter(object sboObject, SBOItemEventArg pVal)
         {
             SAPbouiCOM.SBOChooseFromListEventArg ChooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
@@ -563,7 +559,6 @@ namespace Vistony.Distribucion.Win.UltimaMilla
 
             }
         }
-
         private void EditText11_ChooseFromListAfter(object sboObject, SBOItemEventArg pVal)
         {
             SAPbouiCOM.SBOChooseFromListEventArg ChooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
@@ -583,7 +578,6 @@ namespace Vistony.Distribucion.Win.UltimaMilla
 
             }
         }
-
         private void Button2_ClickAfter(object sboObject, SBOItemEventArg pVal)
         {
 
@@ -593,5 +587,14 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             DocEntryEntrega = oForm.GetDBDataSource("@VIS_DIS_DRT1").GetString("U_DocEntry", pVal.Row - 1);
             EstadoEntrega = oForm.GetDBDataSource("@VIS_DIS_DRT1").GetString("U_Delivered", pVal.Row - 1);
         }
+        private void Form_DataUpdateBefore(BusinessObjectInfo pVal, bool BubbleEvent)
+        {
+            BubbleEvent = true;
+        }
+        private void EditText11_ClickAfter(object sboObject, SBOItemEventArg pVal)
+        {
+
+        }
+
     }
 }

@@ -976,6 +976,12 @@ namespace Vistony.Distribucion.Constans
         public string QueryComboBoxSucursales = "CALL ADDON_ULT_MIL_GET_LIST_PUNT_EMI('{0}')";
         public string QueryComboBoxSucursalesDefault = "CALL ADDON_ULT_MIL_GET_DEFAULT_PUNT_EMI('{0}')";
         public string QueryGetIDSucursal = "CALL SP_VIS_DIS_OBTENERIDSUCUSU('{0}')";
+        public string QueryValidacionCampos = "CALL ADDON_ULT_MIL_VALIDATE_CAMPOS('{0}')";
+        public string QueryValidacionProgramacion = "Select * from \"ODLN\" WHERE \"DocEntry\"='{0}' ";
+        public string QueryObtenerDescripcionConducor = "SELECT * FROM \"@SYP_CONDUC\" T0 WHERE \"Code\"='{0}'";
+        public string QueryObtenerDescripcionVehiculo = "SELECT * FROM \"@SYP_VEHICU\" T0 WHERE \"Code\"='{0}'";
+        public string QueryObtenerDecimalSeparator = "SELECT \"DecSep\" as \"Decimales\" FROM OADM ";
+        public string QueryObtenerMilesSeparator = "SELECT \"ThousSep\" as \"Miles\" FROM OADM ";
 
     }// fin de la clase
 

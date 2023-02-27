@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,6 +68,9 @@ namespace Vistony.Distribucion.Win
         public static string AdminPuntoEmision = string.Empty;
         public static string SucursalDefault = string.Empty;
 
+        public static  CultureInfo cultura = new CultureInfo("es-PE");
+
     }// fin de la clase
+
 
 }// fin del namespace

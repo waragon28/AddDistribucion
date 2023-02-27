@@ -113,6 +113,36 @@ namespace Vistony.Distribucion.Win
                 return null;
             }
         }
+        public static string GetNumberDecimalSeparator(string Consulta)
+        {
+            try
+            {
+                SAPbobsCOM.Recordset oRS = (SAPbobsCOM.Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+
+                oRS.DoQuery(Consulta);
+                string Resultado = oRS.Fields.Item("Decimales").Value.ToString();
+                return Resultado;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public static string GetNumberMilesSeparator(string Consulta)
+        {
+            try
+            {
+                SAPbobsCOM.Recordset oRS = (SAPbobsCOM.Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+
+                oRS.DoQuery(Consulta);
+                string Resultado = oRS.Fields.Item("Miles").Value.ToString();
+                return Resultado;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public static string GetIDSucursal(string Consulta)
         {
             try
@@ -277,7 +307,7 @@ namespace Vistony.Distribucion.Win
             return ret;
         }
 
-        public static string GetVehiculeCode(string placa, ref double? capacity , ref string brandName )
+        public static string GetVehiculeCode(string placa, ref double capacity , ref string brandName )
         {
             SAPbobsCOM.Recordset recordSet = null;
             string code = string.Empty;

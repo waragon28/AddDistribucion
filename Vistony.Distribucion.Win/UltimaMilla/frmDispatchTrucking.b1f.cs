@@ -1,4 +1,6 @@
-﻿using SAPbouiCOM.Framework;
+﻿#define AD_PY
+//#define AD_PE
+using SAPbouiCOM.Framework;
 using System.Drawing;
 using Forxap.Framework.Extensions;
 using WebBrowser = SHDocVw.WebBrowser;
@@ -132,6 +134,22 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_3");
             entregaBLL.GetInfoUsuario(Usuario, oDT);
               string a = oDT.GetString("position", 0);
+#if AD_PY
+             if (oDT.GetString("U_Admin_Sucursal", 0) == "Y") /* CONTROLLER ADM. */
+            {
+                Sucursales(true);
+                Utils.LoadQueryDynamic(ref ComboBox0, AddonMessageInfo.QueryPuntoEmisionAdminSucursales);
+                ComboBox0.Item.Enabled = true;
+            }
+            else
+            {
+                Utils.LoadQueryDynamic(ref ComboBox0, AddonMessageInfo.QueryPuntoEmisionAdminSucursales);
+                ComboBox0.Select(oDT.GetString("U_SYP_NDED", 0), SAPbouiCOM.BoSearchKey.psk_ByValue);
+                Sucursales(true);
+                ComboBox0.Item.Enabled = false;
+            }
+
+#else
             if (oDT.GetString("position", 0) == "61") /* CONTROLLER ADM. */
             {
                 Sucursales(true);
@@ -154,19 +172,15 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                 DepUSU = oDT.GetString("dept", 0);
                 Sucursales(true);
             }
-            else {
+            else
+            {
                 Utils.LoadQueryDynamic(ref ComboBox0, AddonMessageInfo.QueryPuntoEmisionAdminSucursales);
                 ComboBox0.Select(oDT.GetString("U_SYP_NDED", 0), SAPbouiCOM.BoSearchKey.psk_ByValue);
-                string aAAAA= oDT.GetString("U_SYP_NDED", 0);
+                string aAAAA = oDT.GetString("U_SYP_NDED", 0);
                 DepUSU = oDT.GetString("dept", 0);
                 Sucursales(true);
             }
-                //if (oDT.GetString("position", 0) == "12")  /*Usuario*/
-            //{
-            //    Sucursales(true);
-            //    Utils.LoadQueryDynamic(ref ComboBox0, AddonMessageInfo.QueryPuntoEmisionAdminSucursales);
-            //    ComboBox0.Select(oDT.GetString("U_SYP_NDED", 0), SAPbouiCOM.BoSearchKey.psk_ByValue);
-            //}
+#endif
 
             EditText1.SetNow();
             EditText0.SetValue("0000");
@@ -184,18 +198,6 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             ResizeControls();
 
             InitializeGrid();
-
-            //oItemX = this.UIAPIRawForm.Items.Add("Browser", SAPbouiCOM.BoFormItemTypes.it_ACTIVE_X);
-
-            //oItemX.Height = this.UIAPIRawForm.Height - 400;
-
-            //oItemX.Width = this.UIAPIRawForm.Width - 200;
-
-            // oActiveX = oItem.Specific
-
-            // oActiveX.ClassID = "Shell.Explorer.2"
-
-            // oWeb = oActiveX.Object // i got error this line
 
             // oWeb.Navigate("http://emergys.co.in/")
             StaticText6.Caption = "PORCENTAJE";

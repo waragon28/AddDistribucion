@@ -107,7 +107,6 @@ namespace Vistony.Distribucion.Win.Formularios
 
 
         }
-
         /// <summary>
         /// Initialize components. Called by framework after form created.
         /// </summary>
@@ -136,7 +135,6 @@ namespace Vistony.Distribucion.Win.Formularios
             this.OnCustomInitialize();
 
         }
-
         /// <summary>
         /// Initialize form event. Called by framework before form creation.
         /// </summary>
@@ -145,15 +143,11 @@ namespace Vistony.Distribucion.Win.Formularios
             this.LoadAfter += new LoadAfterHandler(this.Form_LoadAfter);
 
         }
-
-
         private void OnCustomInitialize()
         {
             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
             oForm.ScreenCenter();
         }
-  
-        
         private void EditText1_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
         //    SAPbouiCOM.SBOChooseFromListEventArg chooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
@@ -179,11 +173,6 @@ namespace Vistony.Distribucion.Win.Formularios
 
             //}
         }
-
-
-
-
-
         private void Button0_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             bool response = false;
@@ -229,11 +218,11 @@ namespace Vistony.Distribucion.Win.Formularios
 
                     // caso 1, solo seleccionan la fecha de la programación
 
-                    Thread myNewThread = new Thread(() => owner.UpdateDespacho(fechaDespacho, driverCode, driverName,driverLicence, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca));
-                    myNewThread.Start();
+                   // Thread myNewThread = new Thread(() => owner.UpdateDespacho(fechaDespacho, driverCode, driverName,driverLicence, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca));
+                   // myNewThread.Start();
 
 
-                    Thread myNewThread2 = new Thread(() => owner.AddRutaDespacho(fechaDespacho, driverCode, driverName, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca));
+                    Thread myNewThread2 = new Thread(() => owner.AddRutaDespacho(fechaDespacho, driverCode, driverName, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca, driverLicence));
                     myNewThread2.Start();
 
 
@@ -257,10 +246,9 @@ namespace Vistony.Distribucion.Win.Formularios
             }
 
         }
-
         private void EditText0_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
-            double? vehiculeCapacity = 0;
+            double vehiculeCapacity = 0;
             string brandName = string.Empty;
 
             SAPbouiCOM.SBOChooseFromListEventArg chooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
@@ -307,13 +295,12 @@ namespace Vistony.Distribucion.Win.Formularios
 
             }
         }
-
         private SAPbouiCOM.EditText EditText7;
-
         private void Form_LoadAfter(SAPbouiCOM.SBOItemEventArg pVal)
         {
            // throw new System.NotImplementedException();
 
         }
+
     }
 }

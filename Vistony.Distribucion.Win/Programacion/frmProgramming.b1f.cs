@@ -1,7 +1,7 @@
 ﻿//#define AD_BO
-#define AD_PE
+//#define AD_PE
 //#define AD_ES
-//#define AD_PY
+#define AD_PY
 
 using System;
 using System.Collections.Generic;
@@ -728,16 +728,6 @@ namespace Vistony.Distribucion.Win.Formularios
                         {
                             docEntry = Grid0.DataTable.GetInt("DocEntry", row);
                             docNum = Grid0.DataTable.GetString("Entrega", row);
-
-                            // driverCode = Grid0.DataTable.GetString("CodChofer", row);
-                            //  driverName = Grid0.DataTable.GetString("Chofer", row);
-                            //  choferLicencia = Grid0.DataTable.GetString("LicenciaChofer", row);
-
-                            //   vehiculoMarca = Grid0.DataTable.GetString("MarcaVehiculo", row);
-                            //   ayudanteName = Grid0.DataTable.GetString("Ayudante", row);
-
-                            //    vehiculoPlaca = Grid0.DataTable.GetString("Vehiculo", row);
-
                             oDT.Clear();
 
                             // realmente necesito obtener este numero ???
@@ -749,9 +739,9 @@ namespace Vistony.Distribucion.Win.Formularios
                             //////////////////////// obtengo los datos para actualizar la guia ////////////////////////////
                             EntregaDespacho objDespacho = new EntregaDespacho();
                             objDespacho = GetObjDespacho(driverLicence, ordenDespacho, dispatchDate, driverName, assistantName, vehiculeName, vehiculeBrandName, "P", "PE", "-1", "1", dispatchDate, dispatchDate);
+
+
                             dynamic objDespachoJson = JsonConvert.SerializeObject(objDespacho);
-
-
 
                             Sb1Messages.ShowMessage(string.Format(addonMessageInfo.MessageIdiomaMessage210(Sb1Globals.Idioma), docNum));
                             using (EntregaBLL entregaBLL = new EntregaBLL())
@@ -762,13 +752,7 @@ namespace Vistony.Distribucion.Win.Formularios
 
                             if (isUpdated)
                             {
-                                //HistoricoDespachos objHistorico = new HistoricoDespachos();
-                                //objHistorico = AsignaDatosObject(docEntry, NumDespacho.ToString(), "P", docNum, dispatchDate, driverCode, driverName, vehiculoPlaca, ayudanteName, "", usuario);
-                                //dynamic jsonHist = JsonConvert.SerializeObject(objHistorico);
-                                //string rpta = "";
-                                //EntregaDAL.GrabarHistorial(jsonHist, out rpta);
-                                //Sb1Messages.ShowMessage(string.Format( AddonMessageInfo.Message211,docNum,driverName));
-                                //NumDespacho++;
+                              
                             }
                             else
                             {
@@ -816,53 +800,31 @@ namespace Vistony.Distribucion.Win.Formularios
                 oForm.Freeze(false);
             }
         }
+        
 
-
-        //  public void UpdateRutaDespacho(string dispatchDate, string driverCode = "", string driverName = "")
-
-        public void AddRutaDespacho(string dispatchDate, string driverCode, string driverName, string assistantCode, string assistantName, string vehiculeCode, string vehiculeName, string vehiculeBrand)
+        public void AddRutaDespacho(string dispatchDate, string driverCode, string driverName, string assistantCode, string assistantName, string vehiculeCode,
+            string vehiculeName, string vehiculeBrand,string driverLicence)
         {
             string ret = string.Empty;
-
-            //   string dispatchDate = string.Empty;
-            //  string driverCode = string.Empty;
-            //  string driverName = string.Empty;
-            //  string assistantCode = string.Empty;
-            //  string assistantName = string.Empty;
-
-            //   string vehiculeCode = string.Empty;
-            //  string vehiculeName = string.Empty;
-            //  string vehiculeBrand = string.Empty;
-
-            double? vehiculeCapacity = 0;
-            string documentsWeight = "0";
+            double vehiculeCapacity = 0;
+            double documentsWeight = 0;
             string successQuantity = string.Empty;
             string failedQuantity = string.Empty;
             string documentsQuantity = string.Empty;
 
-
-
-            // leo datos para la cabecera
-
-            //  dispatchDate = DateTime.Now.ToString("yyyyMMdd");// fecha del documento HOja de despacho
-            //  driverCode = oForm.GetDBDataSource("@SYP_CONDUC").GetString("Code"); // codigo del chofer
-            //  driverName = oForm.GetDBDataSource("@SYP_CONDUC").GetString("Name"); // nombre del chofer
-
-            //  assistantCode = oForm.GetDBDataSource("@VIS_DIS_OAYD").GetString("Code"); // codigo de ayudante
-            //  assistantName = oForm.GetDBDataSource("@VIS_DIS_OAYD").GetString("Name"); // nombre de ayudante
-
-
             documentsQuantity = EditText8.GetString(); //cantidad de documentos
-            documentsWeight = EditText16.GetString(); // peso de los documentos
-                                                      //   vehiculeName = oForm.GetDBDataSource("@SYP_CONDUC").GetString("U_VIS_Vehiculo"); // Placa del vehiculo
+            documentsWeight = EditText16.GetDouble(); // peso de los documentos
 
             vehiculeCode = Utils.GetVehiculeCode(vehiculeName, ref vehiculeCapacity, ref vehiculeBrand); // // codigo del vehiculo
-
-            ret = entregaBLL.GuardarHojaDespacho(Grid0, dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName, vehiculeCapacity,
-               documentsWeight, successQuantity, failedQuantity, documentsQuantity);
+            string FormatovehiculeCapacity = vehiculeCapacity.ToString("N", Sb1Globals.cultura);
+            string FormatodocumentsWeight = documentsWeight.ToString("N", Sb1Globals.cultura);
+            ret = entregaBLL.GuardarHojaDespacho(Grid0, dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName, 
+                FormatovehiculeCapacity,FormatodocumentsWeight, 
+                successQuantity, failedQuantity, documentsQuantity);
 
             if (ret == "Created")
             {
+                UpdateDespacho(dispatchDate, driverCode, driverName, driverLicence, assistantCode, assistantName, vehiculeCode, vehiculeName, vehiculeBrand);
                 Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaMessage324(Sb1Globals.Idioma), driverName));
             }
             else
@@ -1179,9 +1141,9 @@ namespace Vistony.Distribucion.Win.Formularios
 
                     // obtengo el peso total de los documentos seleccionados
 #if AD_PY
-                    totalWeight = Convert.ToDouble(EditText16.Value, System.Globalization.CultureInfo.InvariantCulture);
+                    totalWeight = Convert.ToDouble(EditText16.Value, Sb1Globals.cultura);
 #else
-                    totalWeight = Convert.ToDouble(EditText16.Value);
+                    totalWeight = Convert.ToDouble(EditText16.Value, Sb1Globals.cultura);
 #endif
 
                     // debo marcar o desmarcar todo
@@ -1191,11 +1153,11 @@ namespace Vistony.Distribucion.Win.Formularios
                     EditText8.SetInt(rowSelected);
 
                     // asigno el peso para los documentos seleccionados
-                    EditText16.SetDouble(Convert.ToDouble(totalWeight,System.Globalization.CultureInfo.InvariantCulture));
+                    EditText16.SetDouble(Convert.ToDouble(EditText16.Value, Sb1Globals.cultura));
 #if AD_PY
-                    EditText16.SetDouble(Convert.ToDouble(totalWeight, System.Globalization.CultureInfo.InvariantCulture));
+                    EditText16.SetDouble(Convert.ToDouble(EditText16.Value, Sb1Globals.cultura));
 #else
-                   EditText16.SetDouble(Convert.ToDouble(totalWeight));
+                    EditText16.SetDouble(Convert.ToDouble(totalWeight, Sb1Globals.cultura));
 #endif
 
                 }
@@ -1210,9 +1172,9 @@ namespace Vistony.Distribucion.Win.Formularios
                     // obtengo el peso total de ala carga
 
 #if AD_PY
-                    totalWeight = Convert.ToDouble(EditText16.Value, System.Globalization.CultureInfo.InvariantCulture);
+                    totalWeight = Convert.ToDouble(EditText16.Value, Sb1Globals.cultura);
 #else
-                totalWeight = Convert.ToDouble(EditText16.Value);
+                    totalWeight = Convert.ToDouble(EditText16.Value, Sb1Globals.cultura);
 #endif
 
                     rowIndex = pVal.Row;
@@ -1222,9 +1184,9 @@ namespace Vistony.Distribucion.Win.Formularios
 
                     //Convert.ToDouble(totalWeight,System.Globalization.CultureInfo.InvariantCulture)
 #if AD_PY
-                    weightSelected = Convert.ToDouble(Grid0.DataTable.GetDouble("Peso", Grid0.GetDataTableRowIndex(rowIndex)), System.Globalization.CultureInfo.InvariantCulture);
+                    weightSelected = Convert.ToDouble(Grid0.DataTable.GetDouble("Peso", Grid0.GetDataTableRowIndex(rowIndex)), Sb1Globals.cultura);
 #else
-                  weightSelected = Convert.ToDouble(Grid0.DataTable.GetDouble("Peso", Grid0.GetDataTableRowIndex(rowIndex)));
+                    weightSelected = Convert.ToDouble(Grid0.DataTable.GetDouble("Peso", Grid0.GetDataTableRowIndex(rowIndex)), Sb1Globals.cultura);
 #endif
 
                     // si hicieron check
@@ -1248,9 +1210,9 @@ namespace Vistony.Distribucion.Win.Formularios
 
                     // asigno el peso para los documentos seleccionados
 #if AD_PY
-                    EditText16.SetDouble(Convert.ToDouble(Math.Round(totalWeight, 2), System.Globalization.CultureInfo.InvariantCulture));
+                    EditText16.SetDouble(Convert.ToDouble(Math.Round(totalWeight, 2), Sb1Globals.cultura));
 #else
-                    EditText16.SetDouble(Convert.ToDouble(Math.Round(totalWeight, 2)));
+                    EditText16.SetDouble(Convert.ToDouble(Math.Round(totalWeight, 2), Sb1Globals.cultura));
 #endif
 
                     //, System.Globalization.CultureInfo.InvariantCulture)
@@ -1315,7 +1277,7 @@ namespace Vistony.Distribucion.Win.Formularios
 
         private void Button6_ChooseFromListAfter(object sboObject, SBOItemEventArg pVal)
         {
-            double? vehiculeCapacity = 0;
+            double vehiculeCapacity = 0;
             string vehiculeName = string.Empty;
             SAPbouiCOM.SBOChooseFromListEventArg chooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
             try

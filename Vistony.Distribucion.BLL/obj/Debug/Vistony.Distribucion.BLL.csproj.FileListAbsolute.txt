@@ -33,7 +33,6 @@ D:\Desarrollo\AddDistribucion\Vistony.Banco.BLL\bin\Debug\Vistony.Framework.pdb
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.BLL.dll.config
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.BLL.dll
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.BLL.pdb
-D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Forxap.Framework.dll
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\SAPBusinessOneSDK.dll
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.BO.dll
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BLL\bin\Debug\Vistony.Distribucion.DAL.dll

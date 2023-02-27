@@ -1,9 +1,9 @@
 ﻿//#define AD_BO
-#define AD_PE
+//#define AD_PE
 //#define AD_MA
 //#define AD_ES
 //#define AD_CL
-//#define AD_PY
+#define AD_PY
 
 using System;
 using System.Collections.Generic;
@@ -399,7 +399,7 @@ namespace Vistony.Distribucion.Win.Formularios
             string hasta = string.Empty;
             string usuario = string.Empty;
             SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_0");
-
+            EditText9.Value="0";
             try
             {
                 consolidado = "N";
@@ -472,8 +472,7 @@ namespace Vistony.Distribucion.Win.Formularios
                     rowSelected = EditText8.GetInt();
 
                     // obtengo el peso total de los documentos seleccionados
-                    totalWeight = Convert.ToDouble(EditText9.Value);
-
+                    totalWeight = EditText9.GetDouble();
 
                     // debo marcar o desmarcar todo
                     Utils.CheckRowsEx(oForm, Grid1, ref totalWeight, ref rowSelected);
@@ -483,6 +482,7 @@ namespace Vistony.Distribucion.Win.Formularios
 
                     // asigno el peso para los documentos seleccionados
                     EditText9.SetDouble(totalWeight);
+                    //EditText9.SetDouble(totalWeight,Sb1Globals.cultura);
                 }
 
                 // si hicieron click enun registro valido dentro del Grid
@@ -493,13 +493,13 @@ namespace Vistony.Distribucion.Win.Formularios
                     // obtengo los registros seleccionados
                     rowSelected = EditText8.GetInt();
                     // obtengo el peso total de ala carga
-                    totalWeight = Convert.ToDouble(EditText9.Value);
+                    totalWeight = EditText9.GetDouble();
 
                     rowIndex = pVal.Row;
 
                     isCheck = Grid1.DataTable.GetString("Marca", Grid1.GetDataTableRowIndex(rowIndex)).ToString();
-                    weightSelected = Grid1.DataTable.GetDouble("Peso", Grid1.GetDataTableRowIndex(rowIndex));
-
+                    weightSelected =(Grid1.DataTable.GetDouble("Peso", Grid1.GetDataTableRowIndex(rowIndex)));
+                    /// Convert.ToDouble(totalWeight.ToString("N", Sb1Globals.cultura));
 
 
                     // si hicieron check
@@ -520,9 +520,10 @@ namespace Vistony.Distribucion.Win.Formularios
 
                     // asigno el nro de documentos seleccionados
                     EditText8.SetInt( rowSelected);
-
                     // asigno el peso para los documentos seleccionados
-                    EditText9.SetDouble(Math.Round(totalWeight,2));
+                    EditText9.SetDouble(totalWeight);
+                    
+                    // EditText9.SetDouble(totalWeight);
                 }
             }
             catch (Exception ex)

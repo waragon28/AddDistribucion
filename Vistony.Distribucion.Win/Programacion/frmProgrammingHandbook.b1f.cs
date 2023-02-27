@@ -1,7 +1,7 @@
 ﻿//#define AD_BO
-#define AD_PE
+//#define AD_PE
 //#define AD_ES
-//#define AD_PY
+#define AD_PY
 
 
 using System;
@@ -258,7 +258,7 @@ namespace Vistony.Distribucion.Win.Programacion
         }
         private void Button0_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
-            double? vehiculeCapacity = 0;
+            double vehiculeCapacity = 0;
             string vehiculeName = string.Empty;
             SAPbouiCOM.SBOChooseFromListEventArg chooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
             try
@@ -611,26 +611,24 @@ namespace Vistony.Distribucion.Win.Programacion
             string ret = string.Empty;
 
             ErrorUpdateDespacho = "";
-            double? vehiculeCapacity = 0;
-            string documentsWeight = "0";
+            double vehiculeCapacity = 0;
+            double documentsWeight = 0;
             string successQuantity = string.Empty;
             string failedQuantity = string.Empty;
             string documentsQuantity = string.Empty;
             
 
             documentsQuantity = EditText9.GetString(); //cantidad de documentos
-            documentsWeight = EditText10.GetString(); // peso de los documentos
+            documentsWeight = EditText10.GetDouble(); // peso de los documentos
 
             vehiculeCode = Utils.GetVehiculeCode(vehiculeName, ref vehiculeCapacity, ref vehiculeBrand); // // codigo del vehiculo
             SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_0");
 
-#if AD_PY
+            vehiculeCode = Utils.GetVehiculeCode(vehiculeName, ref vehiculeCapacity, ref vehiculeBrand); // // codigo del vehiculo
+            string  FormatovehiculeCapacity = vehiculeCapacity.ToString("N", Sb1Globals.cultura);
+            string  FormatodocumentsWeight = documentsWeight.ToString("N", Sb1Globals.cultura);
             ret = entregaBLL.GuardarHojaDespacho(Grid0,dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
-                vehiculeCapacity,documentsWeight.Replace(",","."), successQuantity, failedQuantity, documentsQuantity);
-#else
- ret = entregaBLL.GuardarHojaDespacho(Grid0,dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
-                vehiculeCapacity, documentsWeight.Replace(",", "."), successQuantity, failedQuantity, documentsQuantity);
-#endif
+                FormatovehiculeCapacity, FormatodocumentsWeight, successQuantity, failedQuantity, documentsQuantity);
 
 
             if (ret == "Created")

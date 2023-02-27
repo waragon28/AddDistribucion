@@ -39,7 +39,6 @@ namespace Forxap.Framework.DI
             return ret;
         }
 
-
         public static string GetDateSeparator()
         {
             string ret = string.Empty;
