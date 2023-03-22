@@ -3,7 +3,8 @@
 //#define AD_MA
 //#define AD_ES
 //#define AD_CL
-#define AD_PY
+//#define AD_PY
+#define AD_EC
 
 using System;
 using System.Collections.Generic;
@@ -187,6 +188,8 @@ namespace Vistony.Distribucion.Win.Formularios
                     Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "15");
 #elif AD_PY
                     Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "13");
+#elif AD_EC
+                    Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "15");
 #endif
             Grid1.Columns.Item("CodigoSN").LinkedObjectType(Grid1, "CodigoSN", "2");
             Grid1.Columns.Item("INDIC").Visible = false;
@@ -241,6 +244,8 @@ namespace Vistony.Distribucion.Win.Formularios
 #elif AD_CL
                  col.LinkedObjectType = "15";// muestra la flecha amariilla asociada al objeto pedidos 
 #elif AD_PY
+                col.LinkedObjectType = "15";// muestra la flecha amariilla asociada al objeto pedidos 
+#elif AD_EC
                 col.LinkedObjectType = "15";// muestra la flecha amariilla asociada al objeto pedidos 
 #endif
 

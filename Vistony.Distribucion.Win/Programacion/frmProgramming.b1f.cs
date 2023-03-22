@@ -1,7 +1,8 @@
 ﻿//#define AD_BO
 //#define AD_PE
 //#define AD_ES
-#define AD_PY
+//#define AD_PY
+#define AD_EC
 
 using System;
 using System.Collections.Generic;
@@ -111,7 +112,7 @@ namespace Vistony.Distribucion.Win.Formularios
             con1.CondVal = sucursalUsuarioLogin;
             cfl1.SetConditions(cons1);
 
-# elif AD_BO
+#elif AD_BO
             using (EntregaBLL entregaBLL = new EntregaBLL())
             {
                 sucursalUsuarioLogin = entregaBLL.ObtenerSucursal(oDT, usuario);
@@ -127,6 +128,21 @@ namespace Vistony.Distribucion.Win.Formularios
             con1.CondVal = sucursalUsuarioLogin;
             cfl1.SetConditions(cons1);
 #elif AD_PY
+            using (EntregaBLL entregaBLL = new EntregaBLL())
+            {
+                sucursalUsuarioLogin = entregaBLL.ObtenerSucursal(oDT, usuario);
+            }
+
+            // Conductores se filtran por sucursal 
+            SAPbouiCOM.ChooseFromList cfl1 = oForm.ChooseFromLists.Item("CFL_0");
+            SAPbouiCOM.Conditions cons1 = cfl1.GetConditions();
+            SAPbouiCOM.Condition con1;
+            con1 = cons1.Add();
+            con1.Alias = "U_VIS_BranchCode";
+            con1.Operation = SAPbouiCOM.BoConditionOperation.co_EQUAL;
+            con1.CondVal = sucursalUsuarioLogin;
+            cfl1.SetConditions(cons1);
+#elif AD_EC
             using (EntregaBLL entregaBLL = new EntregaBLL())
             {
                 sucursalUsuarioLogin = entregaBLL.ObtenerSucursal(oDT, usuario);
@@ -379,6 +395,8 @@ namespace Vistony.Distribucion.Win.Formularios
 
 #if AD_PE
                 Grid0.Columns.Item("DocDueDate").TitleObject.Caption = "Fecha Entrega";
+#elif AD_EC
+            Grid0.Columns.Item("DocDueDate").TitleObject.Caption = "Fecha Entrega";
 #elif AD_PY
                 Grid0.Columns.Item("DocDueDate").TitleObject.Caption = "Fecha Factura";
 #elif AD_BO
@@ -811,16 +829,16 @@ namespace Vistony.Distribucion.Win.Formularios
             string successQuantity = string.Empty;
             string failedQuantity = string.Empty;
             string documentsQuantity = string.Empty;
-
+            string TipoRuta = "15";
             documentsQuantity = EditText8.GetString(); //cantidad de documentos
             documentsWeight = EditText16.GetDouble(); // peso de los documentos
 
             vehiculeCode = Utils.GetVehiculeCode(vehiculeName, ref vehiculeCapacity, ref vehiculeBrand); // // codigo del vehiculo
             string FormatovehiculeCapacity = vehiculeCapacity.ToString("N", Sb1Globals.cultura);
             string FormatodocumentsWeight = documentsWeight.ToString("N", Sb1Globals.cultura);
-            ret = entregaBLL.GuardarHojaDespacho(Grid0, dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName, 
-                FormatovehiculeCapacity,FormatodocumentsWeight, 
-                successQuantity, failedQuantity, documentsQuantity);
+            ret = entregaBLL.GuardarHojaDespacho(Grid0, dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
+                vehiculeCapacity, documentsWeight, 
+                successQuantity, failedQuantity, documentsQuantity, TipoRuta);
 
             if (ret == "Created")
             {
@@ -902,6 +920,16 @@ namespace Vistony.Distribucion.Win.Formularios
             objDespacho.U_SYP_MDVN = marcaVehiculo;
             objDespacho.U_SYP_DT_ESTDES = status;
 #elif AD_ES
+            EntregaDespacho objDespacho = new EntregaDespacho();
+            objDespacho.U_SYP_MDFC = driverLicence;
+            objDespacho.U_SYP_DT_CORRDES = ordenDespacho;
+            objDespacho.U_SYP_DT_FCDES = fechaDespacho;
+            objDespacho.U_SYP_MDFN = nombreChofer;
+            objDespacho.U_SYP_DT_AYUDANTE = ayudanteName;
+            objDespacho.U_SYP_MDVC = placaVehiculo;
+            objDespacho.U_SYP_MDVN = marcaVehiculo;
+            objDespacho.U_SYP_DT_ESTDES = status;
+#elif AD_EC
             EntregaDespacho objDespacho = new EntregaDespacho();
             objDespacho.U_SYP_MDFC = driverLicence;
             objDespacho.U_SYP_DT_CORRDES = ordenDespacho;

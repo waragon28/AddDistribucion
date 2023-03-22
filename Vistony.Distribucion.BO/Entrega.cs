@@ -1,7 +1,8 @@
 ﻿//#define AD_BO
 //#define AD_PE
 //#define AD_ES
-#define AD_PY
+//#define AD_PY
+#define AD_EC
 
 using System;
 using System.Collections.Generic;
@@ -106,5 +107,17 @@ namespace Vistony.Distribucion.BO
         public string U_SYP_DT_ESTDES { get; set; }
         public string U_SYP_DT_OCUR { get; set; }
 
+    }
+
+    public class EntregaDespachoSLD
+    {
+        public string U_SYP_MDFC { get; set; } //SI
+        public string U_SYP_DT_CORRDES { get; set; }//SI
+        public string U_SYP_DT_FCDES { get; set; }//SI
+        public string U_SYP_MDFN { get; set; }//SI
+        public string U_SYP_MDVC { get; set; }//SI
+        public string U_SYP_MDVN { get; set; }//SI
+        public string U_SYP_DT_AYUDANTE { get; set; }//SI
+        public string U_SYP_DT_ESTDES { get; set; }//SI
     }
 }

@@ -118,11 +118,23 @@
     <Compile Include="Mantenimiento\FrmPuntoEmisionUsuario.b1f.cs">
       <DependentUpon>FrmPuntoEmisionUsuario.b1f</DependentUpon>
     </Compile>
+    <Compile Include="Programacion\frmConsolidationSLD.b1f.cs">
+      <DependentUpon>frmConsolidationSLD.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Programacion\frmConsolidationSLDAsignar.b1f.cs">
+      <DependentUpon>frmConsolidationSLDAsignar.b1f</DependentUpon>
+    </Compile>
     <Compile Include="Programacion\frmProgrammingHandbook.b1f.cs">
       <DependentUpon>frmProgrammingHandbook.b1f</DependentUpon>
     </Compile>
     <Compile Include="Programacion\frmProgrammingHandbookAsignar.b1f.cs">
       <DependentUpon>frmProgrammingHandbookAsignar.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Programacion\frmProgrammingSLD.b1f.cs">
+      <DependentUpon>frmProgrammingSLD.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Programacion\frmProgrammingSLDAsignar.b1f.cs">
+      <DependentUpon>frmProgrammingSLDAsignar.b1f</DependentUpon>
     </Compile>
     <Compile Include="UltimaMilla\frmCambiarEstadoDespacho.b1f.cs">
       <DependentUpon>frmCambiarEstadoDespacho.b1f</DependentUpon>
@@ -212,10 +224,22 @@
     <None Include="Mantenimiento\FrmPuntoEmisionUsuario.b1f">
       <FormCategory>UserForm</FormCategory>
     </None>
+    <None Include="Programacion\frmConsolidationSLD.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Programacion\frmConsolidationSLDAsignar.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
     <None Include="Programacion\frmProgrammingHandbook.b1f">
       <FormCategory>UserForm</FormCategory>
     </None>
     <None Include="Programacion\frmProgrammingHandbookAsignar.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Programacion\frmProgrammingSLD.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Programacion\frmProgrammingSLDAsignar.b1f">
       <FormCategory>UserForm</FormCategory>
     </None>
     <None Include="UltimaMilla\frmCambiarEstadoDespacho.b1f">
@@ -281,6 +305,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\Files\EC\UserProcedureEC.xml" />
     <Content Include="bin\Debug\Files\UserFields.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -313,6 +338,8 @@
     <Content Include="bin\Debug\Scripts\Hana\Bolivia\SP_VIS_DIS_GETSTATE.sql" />
     <Content Include="bin\Debug\Scripts\Hana\Bolivia\SP_VIS_DIS_CORR_DESPACHO.sql" />
     <Content Include="bin\Debug\Scripts\Hana\Bolivia\SP_VIS_DIS_SEARCHOPERATIONS.sql" />
+    <Content Include="bin\Debug\Scripts\Hana\Ecuador\FX_LENGUAGE_SAP.sql" />
+    <Content Include="bin\Debug\Scripts\Hana\Ecuador\SP_VIS_DIS_OBTENERSUCUSU.sql" />
     <Content Include="bin\Debug\Scripts\Hana\España\FX_LENGUAGE_SAP - Copia.sql" />
     <Content Include="bin\Debug\Scripts\Hana\España\FX_LENGUAGE_SAP.sql" />
     <Content Include="bin\Debug\Scripts\Hana\España\SP_VIS_DIS_SEARCHOPERATIONS.sql" />

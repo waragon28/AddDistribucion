@@ -15,7 +15,8 @@ namespace Vistony.Distribucion.Constans
         public const string dis_Vehiculos = "disdef004";
         public const string dis_Ayudantes = "disdef005";
         public const string dis_Andenes = "disdef006";
-
+        public const string dis_sld = "dis_sld";
+        public const string dis_CodSld = "dis_ConSld";
         public const string dis_ActualizarImei = "dis_AIMEI";
         public const string dis_UpdateUbi = "dis_UPDATEUBI";
         public const string dis_PuntoEmiUsu = "dis_PuntoEmiUsu";
@@ -31,9 +32,9 @@ namespace Vistony.Distribucion.Constans
 
         public const string dis_seguimiento = "dis_seguimiento";
         public const string dis_seguimientoSec = "dis_DispaTruckVent";
-
+        
         /*REPORTES*/
-                        /*REPORTES ULTIMA MILLA*/
+        /*REPORTES ULTIMA MILLA*/
         public const string dis_Control_Documentario_Diario = "CDDA";
         public const string dis_Hoja_listado_Resumen_Ancon = "HARA";
         public const string dis_Hoja_de_Consolidado_chofer_agencias_Ancon = "HCCAA";

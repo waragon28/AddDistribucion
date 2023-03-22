@@ -1,7 +1,8 @@
 ﻿//#define AD_BO
 //#define AD_PE
 //#define AD_ES
-#define AD_PY
+//#define AD_PY
+#define AD_EC
 
 using System;
 using System.Collections.Generic;
@@ -136,6 +137,16 @@ namespace Vistony.Distribucion.Win
                         case AddonMenuItem.dis_PuntoEmiUsu:
                             {
                                 OnShowPuntoEmisionUsuario();
+                            }
+                            break;
+                        case AddonMenuItem.dis_sld:
+                            {
+                                onShowProgramacionSLD();
+                            }
+                            break;
+                        case AddonMenuItem.dis_CodSld:
+                            {
+                                onShowProgramacionConsolSLD();
                             }
                             break;
                             
@@ -608,9 +619,34 @@ namespace Vistony.Distribucion.Win
                 Application.SBO_Application.MessageBox(ex.ToString(), 1, "Ok", "", "");
             }
         }/// fin del  metodo
-
-
         
+        private void onShowProgramacionConsolSLD()
+        {
+            try
+            {
+                frmConsolidationSLD form = new frmConsolidationSLD();
+                form.Show();
+            }
+            catch (Exception ex)
+            {
+
+                Forxap.Framework.UI.Sb1Messages.ShowError(ex.ToString());
+            }
+        }
+        private void onShowProgramacionSLD()
+        {
+            try
+            {
+                frmProgrammingSLD form = new frmProgrammingSLD();
+                form.Show();
+            }
+            catch (Exception ex)
+            {
+
+                Forxap.Framework.UI.Sb1Messages.ShowError(ex.ToString());
+            }
+        }
+
         private void OnShowPuntoEmisionUsuario()
         {
             try

@@ -867,6 +867,16 @@
               Busca una cadena traducida similar a Validando Datos.
             </summary>
         </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message335">
+            <summary>
+              Busca una cadena traducida similar a Validacion de Procedimientos Almacenados Finalizado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message336">
+            <summary>
+              Busca una cadena traducida similar a Validando Procedimientos Almacenados.
+            </summary>
+        </member>
         <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.MessageFinTracker">
             <summary>
               Busca una cadena traducida similar a Carga de Tracker Finalizado.
@@ -889,7 +899,7 @@
         </member>
         <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.StartLoading">
             <summary>
-              Busca una cadena traducida similar a Iniciando Carga ....
+              Busca una cadena traducida similar a Cargando.
             </summary>
         </member>
         <member name="M:Vistony.Distribucion.Win.Mantenimiento.FrmActualizarIMEI.OnInitializeComponent">
@@ -912,6 +922,26 @@
             Initialize form event. Called by framework before form creation.
             </summary>
         </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationSLD.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationSLD.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationSLDAsignar.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationSLDAsignar.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
         <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingHandbook.OnInitializeComponent">
             <summary>
             Initialize components. Called by framework after form created.
@@ -928,6 +958,26 @@
             </summary>
         </member>
         <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingHandbookAsignar.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingSLD.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingSLD.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingSLDAsignar.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingSLDAsignar.OnInitializeFormEvents">
             <summary>
             Initialize form event. Called by framework before form creation.
             </summary>
@@ -1167,13 +1217,19 @@
             </summary>
         </member>
         <!-- El comentario XML con formato incorrecto se ha omitido para el miembro "M:Vistony.Distribucion.Win.SB1_MainMenuEvent.SB1_Application_MainMenuEvent(SAPbouiCOM.MenuEvent@,System.Boolean@)" -->
-        <member name="M:Vistony.Distribucion.Win.SB1_MainMenuEvent.OnShowPuntoEmisionUsuario">
+        <member name="M:Vistony.Distribucion.Win.SB1_MainMenuEvent.onShowProgramacionConsolSLD">
             fin del  metodo
         </member>
         <member name="M:Vistony.Distribucion.Win.Sb1MetaData.AddMenusEnglisUnitedStates">
             <summary>
             
             </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Sb1MetaData.AddUserProcedure">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Vistony.Distribucion.Win.Sb1MetaData.AddIcon">
             <summary>

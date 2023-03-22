@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define AD_EC
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +31,8 @@ namespace Vistony.Distribucion.Win
             try
             {
                 AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
-                
+
+
                 Sb1Globals.oCompany = (SAPbobsCOM.Company)Application.SBO_Application.Company.GetDICompany();
                 Sb1Globals.oCompanyService = Sb1Globals.oCompany.GetCompanyService();
                 Sb1Globals.DbServerType = Sb1Globals.oCompany.DbServerType.ToString();
@@ -40,11 +43,15 @@ namespace Vistony.Distribucion.Win
                 Forxap.Framework.ServiceLayer.Sb1Initialize.SetFramework(Application.SBO_Application, Sb1Globals.oCompany);
                 
                 Sb1Globals.UserSignature = Sb1Globals.oCompany.UserSignature;// obtiene el codigo del usuario logeado
-                Sb1Globals.UserName = Sb1Globals.oCompany.UserName; // Nombre  del usuario logeado ejemplo plazarte
+                Sb1Globals.UserName = Sb1Globals.oCompany.UserName; // Nombre  del usuario logeado
                 Sb1Globals.Sucursal = Utils.GetSucursal(Sb1Globals.UserName);
                 Sb1Globals.Departamento = Utils.GetDepartamento(Sb1Globals.UserName);
                 Sb1Globals.CompanyName = Sb1Globals.oCompany.CompanyName; // Nombre de la compañia a la que esta logeado
-                
+
+#if AD_EC
+                Sb1MetaData.AddUserProcedure();//CREAR PROCEDIMIENTOS ALMACENADOS
+#endif
+
                 if (Sb1Globals.Idioma == "")
                 {
                     Sb1Globals.Idioma = Utils.GetIdiomaSAP(Sb1Globals.UserName);
@@ -52,37 +59,40 @@ namespace Vistony.Distribucion.Win
 
                 #region Creación del Menu, Iconos, Tablas, Campos, UDOs,Permisos, Scripts
 
-                if (Sb1Globals.Idioma== "English (United States)")
-                {
-                    Sb1MetaData.AddMenusEnglisUnitedStates(); // agrega el menu del addon
-                }
-                else if (Sb1Globals.Idioma == "French")
-                {
-                    Sb1MetaData.AddMenusFrench(); // agrega el menu del addon
-                }
-                else
-                {
-                    if (Sb1Globals.CompanyName == "VISTONY COMPAÑIA INDUSTRIAL DEL PERU S.A.C.")
-                    {
-                        Sb1MetaData.AddMenusEspanolPeru(); // agrega el menu del addon
-                        Sb1Globals.AdminPuntoEmision = Utils.GetMultiSucursal(string.Format(addonMessageInfo.QueryGetListAdminSucu, Sb1Globals.UserSignature)); // Consulta Usuario Multi Sucursal
-                        Sb1Globals.SucursalDefault = Utils.GetSucursalDefault(string.Format(addonMessageInfo.QueryComboBoxSucursalesDefault, Sb1Globals.UserSignature));
-                        Sb1Globals.IDSucursal = Utils.GetIDSucursal(string.Format(addonMessageInfo.QueryGetIDSucursal, Sb1Globals.SucursalDefault));
-                    }
-                    else
-                    {
-                        Sb1MetaData.AddMenusEspanol(); // agrega el menu del addon
-                    }
-                }
+                        if (Sb1Globals.Idioma== "English (United States)")
+                        {
+                            Sb1MetaData.AddMenusEnglisUnitedStates(); // agrega el menu del addon
+                        }
+                        else if (Sb1Globals.Idioma == "French")
+                        {
+                            Sb1MetaData.AddMenusFrench(); // agrega el menu del addon
+                        }
+                        else
+                        {
+                            if (Sb1Globals.CompanyName == "VISTONY COMPAÑIA INDUSTRIAL DEL PERU S.A.C.")
+                            {
+                                Sb1MetaData.AddMenusEspanolPeru(); // agrega el menu del addon
+                                Sb1Globals.AdminPuntoEmision = Utils.GetMultiSucursal(string.Format(addonMessageInfo.QueryGetListAdminSucu, Sb1Globals.UserSignature)); // Consulta Usuario Multi Sucursal
+                                Sb1Globals.SucursalDefault = Utils.GetSucursalDefault(string.Format(addonMessageInfo.QueryComboBoxSucursalesDefault, Sb1Globals.UserSignature));
+                                Sb1Globals.IDSucursal = Utils.GetIDSucursal(string.Format(addonMessageInfo.QueryGetIDSucursal, Sb1Globals.SucursalDefault));
+                            }
+                            else
+                            {
+                                Sb1MetaData.AddMenusEspanol(); // agrega el menu del addon
+                            }
+                        }
 
-                Sb1Globals.cultura.NumberFormat.NumberDecimalSeparator = Utils.GetNumberDecimalSeparator(addonMessageInfo.QueryObtenerDecimalSeparator);
-                Sb1Globals.cultura.NumberFormat.NumberGroupSeparator = Utils.GetNumberMilesSeparator(addonMessageInfo.QueryObtenerMilesSeparator);
+                        Sb1Globals.cultura.NumberFormat.NumberDecimalSeparator = Utils.GetNumberDecimalSeparator(addonMessageInfo.QueryObtenerDecimalSeparator);
+                        Sb1Globals.cultura.NumberFormat.NumberGroupSeparator = Utils.GetNumberMilesSeparator(addonMessageInfo.QueryObtenerMilesSeparator);
 
-                Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaStartLoading(Sb1Globals.Idioma)), SAPbouiCOM.BoMessageTime.bmt_Short);
-
+                        Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaStartLoading(Sb1Globals.Idioma)), SAPbouiCOM.BoMessageTime.bmt_Short);
+                               
                 Sb1MetaData.AddIcon();
 
+
                 #endregion
+
+              
 
                 Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaFinishLoading(Sb1Globals.Idioma)), SAPbouiCOM.BoMessageTime.bmt_Short);
 

@@ -21,7 +21,7 @@ namespace Vistony.Distribucion.Win.Programacion
         Grid Grilla;
         public frmProgrammingHandbookAsignar(frmProgrammingHandbook ownerForm, string usuario, string sucursal,Grid Grid0)
         {
-
+            //this, usuario, sucursalUsuarioLogin, Grid0);
             OwnerForm = ownerForm;
             Grilla = Grid0;
             // Conductores se filtran por sucursal 
@@ -193,6 +193,7 @@ namespace Vistony.Distribucion.Win.Programacion
                     {
                         oForm.GetDBDataSource("@SYP_CONDUC").SetString("Code", 0, chooseFromListEvent.SelectedObjects.GetValue("Code", 0).ToString());
                         oForm.GetDBDataSource("@SYP_CONDUC").SetString("Name", 0, chooseFromListEvent.SelectedObjects.GetValue("Name", 0).ToString());
+
                         oForm.GetDBDataSource("@SYP_CONDUC").SetString("U_SYP_CHLI", 0, chooseFromListEvent.SelectedObjects.GetValue("U_SYP_CHLI", 0).ToString());
                         oForm.GetDBDataSource("@SYP_CONDUC").SetString("U_SYP_FEGND", 0, chooseFromListEvent.SelectedObjects.GetValue("U_SYP_FEGND", 0).ToString());
                         LicenciaChofer = chooseFromListEvent.SelectedObjects.GetValue("U_SYP_CHLI", 0).ToString();

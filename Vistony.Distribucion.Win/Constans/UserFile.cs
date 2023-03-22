@@ -1,4 +1,5 @@
-﻿using System;
+﻿#define AD_EC
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,12 +15,15 @@ namespace Vistony.Distribucion.Constans
         public const string UserMenusEnglisUnitedStates = "Files/UserMenusEnglisUnitedStates.xml";
         public const string UserMenusFrench= "Files/UserMenusFrench.xml";
         public const string UserMenusPeru = "Files/UserMenusPeru.xml";
+#if AD_EC
+        public const string UserProcedures = "Files/EC/UserProcedureEC.xml";
+#else
+        public const string UserProcedures = "Files/UserProcedures.xml";
+#endif
 
-        
         //public const string UserTables = "Files/UserTables.xml";
         //public const string UserFields = "Files/UserFields.xml";
         //public const string UserObjects = "Files/UserObjects.xml";
-        //public const string UserProcedures = "Files/UserProcedures.xml";
         //public const string UserPermissions = "Files/UserPermissions.xml";
         //public const string UserScripts = "Files/UserScripts.xml";
 

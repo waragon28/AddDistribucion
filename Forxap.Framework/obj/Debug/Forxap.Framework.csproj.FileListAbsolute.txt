@@ -58,6 +58,7 @@ C:\Users\administrador\Desktop\Framework\Forxap.Framework\obj\Debug\Forxap.Frame
 D:\Desarrollo\AddDistribucion\Forxap.Framework\bin\Debug\Forxap.Framework.dll
 D:\Desarrollo\AddDistribucion\Forxap.Framework\bin\Debug\Forxap.Framework.pdb
 D:\Desarrollo\AddDistribucion\Forxap.Framework\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion\Forxap.Framework\obj\Debug\Forxap.Framework.csprojResolveAssemblyReference.cache
 D:\Desarrollo\AddDistribucion\Forxap.Framework\obj\Debug\Forxap.Framework.Messages.resources
 D:\Desarrollo\AddDistribucion\Forxap.Framework\obj\Debug\Forxap.Framework.csproj.GenerateResource.Cache
 D:\Desarrollo\AddDistribucion\Forxap.Framework\obj\Debug\Forxap.Framework.dll

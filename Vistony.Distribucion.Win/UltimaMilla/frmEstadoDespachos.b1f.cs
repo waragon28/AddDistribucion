@@ -1,8 +1,8 @@
 ﻿//#define AD_BO
 //#define AD_PE
 //#define AD_ES
-#define AD_PY
-
+//#define AD_PY
+#define AD_EC
 
 using System;
 using System.Collections.Generic;
@@ -910,23 +910,6 @@ namespace Vistony.Distribucion.Win.Formularios
                             {
                                 isUpdated = entregaBLL.UpdateEstadoEntrega(docEntry, objDespachoJson, ref response);
                             }
-
-
-                            if (isUpdated)
-                            {
-                                //HistoricoDespachos objHistorico = new HistoricoDespachos();
-                                ////objHistorico = AsignaDatosObject(docEntry, NumDespacho.ToString(), "P", docNum, dispatchDate, driverCode, driverName, vehiculoPlaca, ayudanteName, "", usuario);
-                                //dynamic jsonHist = JsonConvert.SerializeObject(objHistorico);
-                                //string rpta = "";
-                                //EntregaDAL.GrabarHistorial(jsonHist, out rpta);
-                                //Sb1Messages.ShowMessage(string.Format(AddonMessageInfo.Message211, docNum, driverName));
-                                //NumDespacho++;
-                            }
-                            else
-                            {
-                                Sb1Messages.ShowError(response);
-                            }
-
 
                         }
                     }

@@ -21,6 +21,7 @@ namespace Vistony.Distribucion.BO
         public string U_DocumentsQuantity { get; set; }
 
         public string U_DocDate { get; set; }
+        public string U_Type_Route { get; set; }
 
         public List<Programacion1> VIS_DIS_DRT1Collection { get; set; }
 

@@ -520,6 +520,24 @@ namespace Vistony.Distribucion.Win.Constans.Idioma {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Validacion de Procedimientos Almacenados Finalizado.
+        /// </summary>
+        internal static string Message335 {
+            get {
+                return ResourceManager.GetString("Message335", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Validando Procedimientos Almacenados.
+        /// </summary>
+        internal static string Message336 {
+            get {
+                return ResourceManager.GetString("Message336", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Carga de Tracker Finalizado.
         /// </summary>
         internal static string MessageFinTracker {
@@ -556,7 +574,7 @@ namespace Vistony.Distribucion.Win.Constans.Idioma {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Iniciando Carga ....
+        ///   Busca una cadena traducida similar a Cargando.
         /// </summary>
         internal static string StartLoading {
             get {

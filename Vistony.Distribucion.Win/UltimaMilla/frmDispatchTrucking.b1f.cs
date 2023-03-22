@@ -1,5 +1,7 @@
-﻿#define AD_PY
+﻿//#define AD_PY
 //#define AD_PE
+#define AD_EC
+
 using SAPbouiCOM.Framework;
 using System.Drawing;
 using Forxap.Framework.Extensions;
@@ -135,6 +137,20 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             entregaBLL.GetInfoUsuario(Usuario, oDT);
               string a = oDT.GetString("position", 0);
 #if AD_PY
+             if (oDT.GetString("U_Admin_Sucursal", 0) == "Y") /* CONTROLLER ADM. */
+            {
+                Sucursales(true);
+                Utils.LoadQueryDynamic(ref ComboBox0, AddonMessageInfo.QueryPuntoEmisionAdminSucursales);
+                ComboBox0.Item.Enabled = true;
+            }
+            else
+            {
+                Utils.LoadQueryDynamic(ref ComboBox0, AddonMessageInfo.QueryPuntoEmisionAdminSucursales);
+                ComboBox0.Select(oDT.GetString("U_SYP_NDED", 0), SAPbouiCOM.BoSearchKey.psk_ByValue);
+                Sucursales(true);
+                ComboBox0.Item.Enabled = false;
+            }
+#elif AD_EC
              if (oDT.GetString("U_Admin_Sucursal", 0) == "Y") /* CONTROLLER ADM. */
             {
                 Sucursales(true);

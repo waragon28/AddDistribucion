@@ -80,8 +80,6 @@ namespace Forxap.Framework.Utils
 
 
        }
-
-
        /// <summary>
        /// lee campos de usuarios desde un archivo xml 
        /// </summary>
@@ -243,8 +241,6 @@ namespace Forxap.Framework.Utils
            }
 
        }
-
-
        public static void LoadUserTables(string xmlFile, out SAPbouiCOM.DataTable oDataTable)
        {
            XmlDocument xmlDocument = new XmlDocument();
@@ -309,9 +305,6 @@ namespace Forxap.Framework.Utils
 
 
        }
-
-
-
        /// <summary>
        ///  lee el menu desde un archivo xml
        /// </summary>
@@ -346,9 +339,6 @@ namespace Forxap.Framework.Utils
              oApplication.SetStatusBarMessage(ex.Message.ToString(), SAPbouiCOM.BoMessageTime.bmt_Short, true);
            }
        }
-
-
-       
        /// <summary>
        /// lee objetos de usuarios desde un archivo XML 
        /// </summary>
@@ -615,9 +605,7 @@ namespace Forxap.Framework.Utils
 
 
        }
-
-
-            /// <summary>
+       /// <summary>
        /// lee los permisos de usuarios desde un archivo XML 
        /// </summary>
        /// <param name="xmlFile"></param>
@@ -719,8 +707,6 @@ namespace Forxap.Framework.Utils
            }
            return sb1Error;
        }
-
-
        /// <summary>
        /// lee los permisos de usuarios desde un archivo XML 
        /// </summary>
@@ -891,10 +877,6 @@ namespace Forxap.Framework.Utils
            }
            return sb1Error;
        }
-
-
-
-
        /// <summary>
        ///  Lee los procedimientos almacenados desde un archivo xml
        /// </summary>

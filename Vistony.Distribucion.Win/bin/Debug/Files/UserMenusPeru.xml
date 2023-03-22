@@ -5,21 +5,20 @@
 
       <!-- Menu del AddOn Distribución y última milla como modulo-->
       <Menu Checked="0" Enabled="1" FatherUID="43520"  Image="" Position="5" String="Distribución" Type="2" UniqueID="dis001"></Menu>
+        <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="1" String="Consolidación de Entregas" Type="1" UniqueID="dis_entrega"> </Menu>
+        <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="2" String="Programación de Despachos Automático" Type="1" UniqueID="dis_asigna"></Menu>
+        <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="3" String="Programación de Despachos Manual" Type="1" UniqueID="dis_asigna_Manual"></Menu>
       
-      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="1" String="Consolidación de Entregas" Type="1" UniqueID="dis_entrega"> </Menu>
-      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="2" String="Programación de Despachos Automático" Type="1" UniqueID="dis_asigna"></Menu>
-      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="3" String="Programación de Despachos Manual" Type="1" UniqueID="dis_asigna_Manual"></Menu>
-
-      <!-- <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="4" String="Asistente de Programación de Despachos" Type="1" UniqueID="dis_wizard"></Menu>
-     <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="5" String="Actualizar Ruta Despacho" Type="1" UniqueID="dis_005"></Menu>-->
+      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="4" String="Consolidación de Transferencia de Stock" Type="1" UniqueID="dis_ConSld"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="5" String="Programación de Despacho de Transferencia de Stock" Type="1" UniqueID="dis_sld"></Menu>
       
-       <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="4" String="Última Milla" Type="2" UniqueID="dis002"></Menu>
+       <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="6" String="Última Milla" Type="2" UniqueID="dis002"></Menu>
             <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="1" String="Ruta de Despacho" Type="1" UniqueID="dis_rutTra"></Menu>
             <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="2" String="Seguimiento de Despachos - Choferes" Type="1" UniqueID="dis_seguimiento"></Menu>
             <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="3" String="Seguimiento de Despachos - Vendedores" Type="1" UniqueID="dis_DispaTruckVent"></Menu>
             <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="4" String="Estado de Despachos" Type="1" UniqueID="dis_estado"></Menu>
-
-      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="5" String="Informes Ultima Milla" Type="2" UniqueID="dis77111"></Menu>
+      
+      <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="7" String="Informes Ultima Milla" Type="2" UniqueID="dis77111"></Menu>
         <Menu Checked="0" Enabled="1" FatherUID="dis77111" Image="" Position="1" String="Informes Ancón" Type="2" UniqueID="AnconMenu"></Menu>
            <Menu Checked="0" Enabled="1" FatherUID="AnconMenu" Image="" Position="1" String="Indicadores" Type="2" UniqueID="AnconMenuIndicadres"></Menu>
             
@@ -58,7 +57,7 @@
               <Menu Checked="0" Enabled="1" FatherUID="SucursalesMenu" Image="" Position="5" String="Guia Electronica SerieAG" Type="1" UniqueID="GESAA2"></Menu>
               <Menu Checked="0" Enabled="1" FatherUID="SucursalesMenu" Image="" Position="6" String="Guía Electronica por Fecha V3" Type="1" UniqueID="GEFVA2"></Menu>
       
-          <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="6" String="Mantenimiento de Choferes" Type="2" UniqueID="dis003"></Menu>
+          <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="8" String="Mantenimiento de Choferes" Type="2" UniqueID="dis003"></Menu>
              <Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="1" String="Actualizar IMEI" Type="1" UniqueID="dis_AIMEI"></Menu>
              <Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="2" String="Actualizar Ubigeo" Type="1" UniqueID="dis_UPDATEUBI"></Menu>
              <Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="3" String="Administración Punto Emisión Usuario" Type="1" UniqueID="dis_PuntoEmiUsu"></Menu>

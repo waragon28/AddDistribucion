@@ -1,5 +1,7 @@
-﻿//#define AD_PE
-#define AD_PY
+﻿#define AD_PE
+//#define AD_PY
+//#define AD_EC
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -100,13 +102,39 @@ namespace Vistony.Distribucion.Win.UltimaMilla
 
         public static void ValidarCamposORDT(Recordset GetDataODLN,string DocEntry)
         {
-            string ValidarCamposODRT = string.Format(addonMessageInfo.QueryValidacionProgramacion, DocEntry);
-            GetDataODLN.DoQuery(ValidarCamposODRT);
+            try
+            {
+                string ValidarCamposODRT = string.Format(addonMessageInfo.QueryValidacionProgramacion, DocEntry);
+                GetDataODLN.DoQuery(ValidarCamposODRT);
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
         public static void ObtenerDatosChofer(Recordset recordset,string Query,string Parametro)
         {
-            string ValidarCamposODRT = string.Format(Query, Parametro);
-            recordset.DoQuery(ValidarCamposODRT);
+            try
+            {
+                string ValidarCamposODRT = string.Format(Query, Parametro);
+                recordset.DoQuery(ValidarCamposODRT);
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+        public static void ObtenerDatosVehiculo(Recordset Vehiculorecordset, string Query, string Parametro)
+        {
+            try
+            {
+                string ValidarCamposODRT = string.Format(Query, Parametro);
+                Vehiculorecordset.DoQuery(ValidarCamposODRT);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public static void formEvent(ref SAPbouiCOM.BusinessObjectInfo BusinessObjectInfo, out bool BubbleEvent)
@@ -126,6 +154,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
 
                     //VALIDAR SI SE ACTUALIZO LOS CAMPOS QUE AFECTAN A LAS ENTREGAS
                     Recordset GetDataODLN = null;
+                    GetDataODLN = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+
                     for (int i= 0; i < 1; i++)
                     {
                         #if AD_PE
@@ -140,12 +170,20 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                         oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DocDate", 0) != GetDataODLN.Fields.Item("U_SYP_DT_FCDES").Value.ToString())
                     {
                         Recordset Conductorrecordset = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
-                        ObtenerDatosChofer(Conductorrecordset, addonMessageInfo.QueryObtenerDescripcionVehiculo,
+                        ObtenerDatosChofer(Conductorrecordset, addonMessageInfo.QueryObtenerDescripcionConducor,
                             oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DriverCode", 0));
 
                         Recordset Vehiculorecordset = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
-                        ObtenerDatosChofer(Vehiculorecordset, addonMessageInfo.QueryObtenerDescripcionConducor,
-                            oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DriverCode", 0));
+                        ObtenerDatosVehiculo(Vehiculorecordset, addonMessageInfo.QueryObtenerDescripcionVehiculo,
+                            oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_VehiculeCode", 0));
+
+                        string A1 = Vehiculorecordset.Fields.Item("U_SYP_VEPL").Value.ToString();
+                        string A2 = Vehiculorecordset.Fields.Item("U_SYP_VEMA").Value.ToString();
+                        string A3 = Conductorrecordset.Fields.Item("U_SYP_CHLI").Value.ToString();
+                        string A4 = Conductorrecordset.Fields.Item("Name").Value.ToString();
+                        string A5 = oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DocDate", 0);
+                        string A6 = oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantCode", 0);
+                        string A9 = oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantName", 0);
 
                         UpdateEntregaDespacho objDespacho = new UpdateEntregaDespacho();
                         objDespacho = GetObjDespacho(Vehiculorecordset.Fields.Item("U_SYP_VEPL").Value.ToString(), 
@@ -260,7 +298,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             this.EditText19.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText19_KeyDownAfter);
             this.StaticText16 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_41").Specific));
             this.ComboBox1 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_42").Specific));
-            //   this.LinkedButton0 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_43").Specific));
+            //    this.LinkedButton0 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_43").Specific));
             this.StaticText17 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_44").Specific));
             this.ComboBox2 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_45").Specific));
             this.Button3 = ((SAPbouiCOM.Button)(this.GetItem("Item_47").Specific));
@@ -271,6 +309,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             this.LinkedButton2 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_50").Specific));
             this.EditText22 = ((SAPbouiCOM.EditText)(this.GetItem("Item_14").Specific));
             this.StaticText18 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_51").Specific));
+            this.StaticText19 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_43").Specific));
+            this.ComboBox3 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_46").Specific));
             this.OnCustomInitialize();
 
         }
@@ -362,6 +402,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                 dynamic restResponse;
 
 #if AD_PE
+                restResponse = methods.PATCH("DeliveryNotes", docEntry, jsonData);
+#elif AD_EC
                 restResponse = methods.PATCH("DeliveryNotes", docEntry, jsonData);
 #elif AD_BO
                                     restResponse = methods.PATCH("Invoices", docEntry, jsonData);
@@ -596,5 +638,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
 
         }
 
+        private StaticText StaticText19;
+        private ComboBox ComboBox3;
     }
 }

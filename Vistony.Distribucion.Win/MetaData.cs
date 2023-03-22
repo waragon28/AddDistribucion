@@ -69,7 +69,7 @@ namespace Vistony.Distribucion.Win
                 Sb1Messages.ShowError(ex.ToString());
             }
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -135,23 +135,23 @@ namespace Vistony.Distribucion.Win
         /// 
         /// </summary>
         /// <returns></returns>
-        //public static void AddUserScripts()
-        //{
+        public static void AddUserProcedure()
+        {
 
-        //    try
-        //    {
-        //        Sb1Messages.ShowSuccess(string.Format(AddonMessageInfo.Message016), SAPbouiCOM.BoMessageTime.bmt_Short);
-        //        Sb1XmlFile.LoadUserScripts(AddonUserFiles.UserScripts);
-        //        Sb1Messages.ShowSuccess(string.Format(AddonMessageInfo.Message017), SAPbouiCOM.BoMessageTime.bmt_Short);
+            try
+            {
+                Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaMessage336(Sb1Globals.Idioma)), SAPbouiCOM.BoMessageTime.bmt_Short);
+                Sb1XmlFile.LoadUserScripts(AddonUserFiles.UserProcedures);
+                Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaMessage335(Sb1Globals.Idioma)), SAPbouiCOM.BoMessageTime.bmt_Short);
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Sb1Messages.ShowError(AddonMessageInfo.Message018, SAPbouiCOM.BoMessageTime.bmt_Medium);
-        //    }
+            }
+            catch (Exception ex)
+            {
+                Sb1Messages.ShowError(ex.ToString(), SAPbouiCOM.BoMessageTime.bmt_Medium);
+            }
 
 
-        //}
+        }
 
         /// <summary>
         /// 

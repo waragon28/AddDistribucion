@@ -1,8 +1,8 @@
 ﻿//#define AD_BO
 //#define AD_PE
 //#define AD_ES
-#define AD_PY
-
+//#define AD_PY
+#define AD_EC
 
 using System;
 using System.Collections.Generic;
@@ -605,7 +605,8 @@ namespace Vistony.Distribucion.Win.Programacion
         string ErrorUpdateDespacho = "";
         public void UpdateRutaDespacho(Grid Grilla, string dispatchDate, string driverCode, string driverName, string assistantCode, string assistantName, 
             string vehiculeCode, string vehiculeName, string vehiculeBrand,
-            string fechaDespacho2, string driverCode2, string driverName2, string driverLicence2, string ayudanteCode2, string ayudanteName2, string vehiculoCode2, string vehiculoPlaca2, string vehiculoMarca2
+            string fechaDespacho2, string driverCode2, string driverName2, string driverLicence2, string ayudanteCode2, string ayudanteName2,
+            string vehiculoCode2, string vehiculoPlaca2, string vehiculoMarca2
             )
         {
             string ret = string.Empty;
@@ -616,7 +617,7 @@ namespace Vistony.Distribucion.Win.Programacion
             string successQuantity = string.Empty;
             string failedQuantity = string.Empty;
             string documentsQuantity = string.Empty;
-            
+            string TipoRuta = "15";
 
             documentsQuantity = EditText9.GetString(); //cantidad de documentos
             documentsWeight = EditText10.GetDouble(); // peso de los documentos
@@ -627,8 +628,15 @@ namespace Vistony.Distribucion.Win.Programacion
             vehiculeCode = Utils.GetVehiculeCode(vehiculeName, ref vehiculeCapacity, ref vehiculeBrand); // // codigo del vehiculo
             string  FormatovehiculeCapacity = vehiculeCapacity.ToString("N", Sb1Globals.cultura);
             string  FormatodocumentsWeight = documentsWeight.ToString("N", Sb1Globals.cultura);
+
+#if AD_PY
+            ret = entregaBLL.GuardarHojaDespacho(Grid0, dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
+                Convert.ToDouble(Convert.ToString(vehiculeCapacity).Replace(",", ".")), Convert.ToDouble(Convert.ToString(documentsWeight).Replace(",", ".")), successQuantity, failedQuantity, documentsQuantity);
+#else
+
             ret = entregaBLL.GuardarHojaDespacho(Grid0,dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
-                FormatovehiculeCapacity, FormatodocumentsWeight, successQuantity, failedQuantity, documentsQuantity);
+                vehiculeCapacity, Convert.ToDouble(documentsWeight), successQuantity, failedQuantity, documentsQuantity, TipoRuta);
+#endif
 
 
             if (ret == "Created")
@@ -773,7 +781,16 @@ namespace Vistony.Distribucion.Win.Programacion
             objDespacho.U_SYP_MDVC = placaVehiculo;
             objDespacho.U_SYP_MDVN = marcaVehiculo;
             objDespacho.U_SYP_DT_ESTDES = status;
-
+#elif AD_EC
+            EntregaDespacho objDespacho = new EntregaDespacho();
+            objDespacho.U_SYP_MDFC = driverLicence;
+            objDespacho.U_SYP_DT_CORRDES = ordenDespacho;
+            objDespacho.U_SYP_DT_FCDES = fechaDespacho;
+            objDespacho.U_SYP_MDFN = nombreChofer;
+            objDespacho.U_SYP_DT_AYUDANTE = ayudanteName;
+            objDespacho.U_SYP_MDVC = placaVehiculo;
+            objDespacho.U_SYP_MDVN = marcaVehiculo;
+            objDespacho.U_SYP_DT_ESTDES = status;
 #endif
             return objDespacho;
 

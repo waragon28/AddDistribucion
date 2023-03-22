@@ -270,6 +270,12 @@
   <data name="Message334" xml:space="preserve">
     <value>Validando Datos</value>
   </data>
+  <data name="Message335" xml:space="preserve">
+    <value>Validacion de Procedimientos Almacenados Finalizado</value>
+  </data>
+  <data name="Message336" xml:space="preserve">
+    <value>Validando Procedimientos Almacenados</value>
+  </data>
   <data name="MessageFinTracker" xml:space="preserve">
     <value>Carga de Tracker Finalizado</value>
   </data>
@@ -283,6 +289,6 @@
     <value>SAP Business One, no se encuentra ejecutandose</value>
   </data>
   <data name="StartLoading" xml:space="preserve">
-    <value>Iniciando Carga ...</value>
+    <value>Cargando</value>
   </data>
 </root>

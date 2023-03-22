@@ -22,3 +22,4 @@ D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\bin\Debug\Forxap.Framework.
 D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\bin\Debug\SAPBusinessOneSDK.dll
 D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\obj\Debug\Forxap.Framework.Utils.dll
 D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\obj\Debug\Forxap.Framework.Utils.pdb
+D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\obj\Debug\Forxap.Framework.Utils.csprojResolveAssemblyReference.cache

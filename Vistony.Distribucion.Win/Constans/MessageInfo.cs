@@ -961,7 +961,40 @@ namespace Vistony.Distribucion.Constans
             }
             return Message334;
         }
-
+        public string MessageIdiomaMessage335(string idioma)
+        {
+            string Message335;
+            switch (idioma)
+            {
+                case "English (United States)":
+                    Message335 = "";//EnglishUnited_States.Message33;
+                    break;
+                case "French":
+                    Message335 = "";//EnglishUnited_States.Message33;
+                    break;
+                default:
+                    Message335 = Spanish.Message335;
+                    break;
+            }
+            return Message335;
+        }
+        public string MessageIdiomaMessage336(string idioma)
+        {
+            string Message336;
+            switch (idioma)
+            {
+                case "English (United States)":
+                    Message336 = "";//EnglishUnited_States.Message33;
+                    break;
+                case "French":
+                    Message336 = "";//EnglishUnited_States.Message33;
+                    break;
+                default:
+                    Message336 = Spanish.Message336;
+                    break;
+            }
+            return Message336;
+        }
 
         public const string QueryStatusDelivery = "CALL SP_VIS_GETSTATUSDELIVERY()";
         public const string QueryListOcurrencia = "CALL SP_VIS_DIS_LIST_OCURRENCIAS()";
@@ -982,7 +1015,8 @@ namespace Vistony.Distribucion.Constans
         public string QueryObtenerDescripcionVehiculo = "SELECT * FROM \"@SYP_VEHICU\" T0 WHERE \"Code\"='{0}'";
         public string QueryObtenerDecimalSeparator = "SELECT \"DecSep\" as \"Decimales\" FROM OADM ";
         public string QueryObtenerMilesSeparator = "SELECT \"ThousSep\" as \"Miles\" FROM OADM ";
-
+        public string QueryObtenerSLD = "CALL ADDON_ULT_MIL_GET_SLD('{0}','{1}','{2}','{3}','{4}','{5}')";
+        public string QueryObtenerSLDConsol = "CALL ADDON_ULT_MIL_GET_SLD_CONSOL('{0}','{1}','{2}','{3}','{4}','{5}')";
     }// fin de la clase
 
 

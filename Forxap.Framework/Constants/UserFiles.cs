@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define AD_EC
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +10,14 @@ namespace Forxap.Framework.Constants
 {
     public class UserFiles
     {
-        public const string FolderHana = "/Scripts/Hana/";
+
+
+        #if AD_EC
+        public const string FolderHana = "/Scripts/Hana/Ecuador/";
+        #else
+           public const string FolderHana = "/Scripts/Hana/";
+        #endif
+
         public const string FolderSQL = "/Scripts/SQL/";
         
     }
