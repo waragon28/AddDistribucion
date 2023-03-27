@@ -12,6 +12,35 @@ namespace Vistony.Distribucion.BLL
 {
     public class EntregaBLL : IDisposable
     {
+        public void Consolidados(SAPbouiCOM.Form oForm,SAPbouiCOM.Matrix oMatrix, string Sucural)
+        {
+            try
+            {
+                using (EntregaDAL entregaDAL = new EntregaDAL())
+                {
+                    entregaDAL.Consolidados(oForm, oMatrix, Sucural);
+                }
+            }
+            catch (Exception)
+            {
+
+                //
+            }
+        }
+        public double CalcularDistancia(double lat1, double lon1, double lat2, double lon2)
+        {
+            try
+            {
+                using (EntregaDAL entregaDAL = new EntregaDAL())
+                {
+                    return entregaDAL.CalcularDistancia(lat1, lon1, lat2,lon2);
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
         public SAPbouiCOM.DataTable GetInfoUsuario(string USUARIO, SAPbouiCOM.DataTable oDT)
         {
             try
@@ -166,13 +195,13 @@ namespace Vistony.Distribucion.BLL
         }
        
         public SAPbouiCOM.DataTable SP_VIS_DIS_GET_TRACKER_C_TEST(ref SAPbouiCOM.DataTable oDT, string fecha,
-            string TRACKER, string Sucursal)
+            string TRACKER, string Sucursal,string TipoRuta)
         {
             try
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                    return entregaDAL.SP_VIS_DIS_GET_TRACKER_C_TEST(ref oDT, fecha,TRACKER,Sucursal);
+                    return entregaDAL.SP_VIS_DIS_GET_TRACKER_C_TEST(ref oDT, fecha,TRACKER,Sucursal, TipoRuta);
                 }
             }
             catch (Exception ex)

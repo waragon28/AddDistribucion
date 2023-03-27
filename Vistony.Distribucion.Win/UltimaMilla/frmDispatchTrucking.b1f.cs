@@ -1,6 +1,6 @@
 ﻿//#define AD_PY
-//#define AD_PE
-#define AD_EC
+#define AD_PE
+//#define AD_EC
 
 using SAPbouiCOM.Framework;
 using System.Drawing;
@@ -105,6 +105,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             this.StaticText12 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_18").Specific));
             this.ComboBox0 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_19").Specific));
             this.ComboBox0.ComboSelectAfter += new SAPbouiCOM._IComboBoxEvents_ComboSelectAfterEventHandler(this.ComboBox0_ComboSelectAfter);
+            this.StaticText14 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_21").Specific));
+            this.ComboBox1 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_22").Specific));
             this.OnCustomInitialize();
 
         }
@@ -115,7 +117,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
         public override void OnInitializeFormEvents()
         {
             this.LoadAfter += new SAPbouiCOM.Framework.FormBase.LoadAfterHandler(this.Form_LoadAfter);
-            this.ResizeAfter += new ResizeAfterHandler(this.Form_ResizeAfter);
+            this.ResizeAfter += new SAPbouiCOM.Framework.FormBase.ResizeAfterHandler(this.Form_ResizeAfter);
+            this.ClickAfter += new ClickAfterHandler(this.Form_ClickAfter);
 
         }
 
@@ -133,9 +136,12 @@ namespace Vistony.Distribucion.Win.UltimaMilla
         {
             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
             Sucursales(false);
+            Utils.LoadQueryDynamic(ref ComboBox1, addonMessageInfo.QueryObtenerTipoRuta);
+            ComboBox1.Select(1, SAPbouiCOM.BoSearchKey.psk_Index);
+
             SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_3");
             entregaBLL.GetInfoUsuario(Usuario, oDT);
-              string a = oDT.GetString("position", 0);
+            string a = oDT.GetString("position", 0);
 #if AD_PY
              if (oDT.GetString("U_Admin_Sucursal", 0) == "Y") /* CONTROLLER ADM. */
             {
@@ -217,9 +223,9 @@ namespace Vistony.Distribucion.Win.UltimaMilla
 
             // oWeb.Navigate("http://emergys.co.in/")
             StaticText6.Caption = "PORCENTAJE";
-            StaticText6.Item.FontSize = 20;
-          //  StaticText6.Item.RightJustified = true;
-            //StaticText6.Item.RightJustified = true;
+            StaticText6.Item.FontSize = 15;
+            StaticText6.Item.RightJustified = true;
+            StaticText6.Item.RightJustified = true;
             StaticText6.SetBold();
             StaticText6.SetColor(Color.White);
             StaticText6.Item.BackColor= ColorTranslator.ToOle(Color.LightGreen);
@@ -321,26 +327,36 @@ namespace Vistony.Distribucion.Win.UltimaMilla
         
         private void Form_ResizeAfter(SAPbouiCOM.SBOItemEventArg pVal)
         {
+            
             ResizeControls();
+           
+                Grid0.Item.Height = (oForm.Height/3)-30;
+                Grid0.Item.Width = (oForm.Width) - 40;
+
+                StaticText9.Item.Top= ((oForm.Height) - (Grid0.Item.Height *2))+25;
+
+                Grid1.Item.Top = StaticText9.Item.Top +20;
+                Grid1.Item.Height =(Grid0.Item.Height);
+                Grid1.Item.Width = (oForm.Width) - 40;
         }
 
         private void ResizeControls()
         {
             StaticText8.Item.Top = Grid0.Item.Top - 20;
             StaticText8.Item.Left = Grid0.Item.Left;
-            Grid0.Item.Width = oForm.Width - 30;
-            Grid1.Item.Width = oForm.Width - 30;
+            //Grid0.Item.Width = oForm.Width - 30;
+            //Grid1.Item.Width = oForm.Width - 30;
 
             StaticText9.Item.Top = Grid0.Item.Top + Grid0.Item.Height + 20;
-            Grid1.Item.Top  = StaticText9.Item.Top + 20;
+            //Grid1.Item.Top  = StaticText9.Item.Top + 20;
 
             StaticText9.Item.Left = Grid1.Item.Left;
 
             StaticText2.Item.Left = ((oForm.Width - 30) / 2); //avance
             StaticText5.Item.Left = ((oForm.Width - 30) / 2);
 
-            StaticText6.Item.Left = ((oForm.Width - 30) / 3); // porcentaje etiqueta
-            StaticText7.Item.Left =  ((oForm.Width - 30) / 3);// porcenyaje monto
+            StaticText6.Item.Left = ((oForm.Width - 20) / 3); // porcentaje etiqueta
+            StaticText7.Item.Left =  ((oForm.Width - 20) / 3);// porcenyaje monto
 
           //  StaticText4.Item.Left = StaticText11.Item.Left;
            
@@ -399,10 +415,12 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             Grid0.AutoResizeColumns();
             Grid1.AutoResizeColumns();
         }
-        public void ObtenerCalculoRegistros2(SAPbouiCOM.DataTable dt, SAPbouiCOM.DataTable dt_2,string tracker,string Sucursal)
+        public void ObtenerCalculoRegistros2(SAPbouiCOM.DataTable dt, SAPbouiCOM.DataTable dt_2,string tracker,string Sucursal,string TipoRuta)
         {
 
             oForm.Freeze(true);
+
+            Grid1.RemoveRows();
 
             int Entregados = 0;
             int Fallidos = 0;
@@ -411,7 +429,9 @@ namespace Vistony.Distribucion.Win.UltimaMilla
 
             using (BLL.EntregaBLL entregaBll = new BLL.EntregaBLL())
             {
-                entregaBll.SP_VIS_DIS_GET_TRACKER_C_TEST(ref dt, EditText1.Value, tracker, Sucursal);
+                entregaBll.SP_VIS_DIS_GET_TRACKER_C_TEST(ref dt, EditText1.Value, tracker, Sucursal, TipoRuta);
+
+
                 //Formato_Cabecera();
 
                 for (int i = 0; i < dt.Rows.Count; i++)
@@ -432,29 +452,40 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                     string CodVehiculo = dt.GetValue("CodVehiculo", i).ToString();
 
                     entregaBll.SP_VIS_DIS_GET_TRACKER_D(ref dt_2, Fecha, HORA_INI, HORA_FIN, Cod_Chofer, CodVehiculo);
-
-                    for (int oRows = 0; oRows < dt_2.Rows.Count; oRows++)
+                    if (dt.GetValue("Sucursal", i).ToString() != "")
                     {
-                        if (dt_2.GetValue("Estado", oRows).ToString() == "Entregado")
+                        for (int oRows = 0; oRows < dt_2.Rows.Count; oRows++)
                         {
-                            Entregados += 1;
-                        }
-                        else if (dt_2.GetValue("Estado", oRows).ToString() == "Programado")
-                        {
-                            Ruta += 1;
-                        }
-                        else
-                        {
-                            Fallidos += 1;
-                        }
-                    }
+                            if (dt_2.GetValue("DocEntry", oRows).ToString() != "")
+                            {
+                                if (dt_2.GetValue("Estado", oRows).ToString() == "Entregado")
+                                {
+                                    Entregados += 1;
+                                }
+                                else if (dt_2.GetValue("Estado", oRows).ToString() == "Programado")
+                                {
+                                    Ruta += 1;
+                                }
+                                else
+                                {
+                                    Fallidos += 1;
+                                }
+                            }
 
-                    Total_Entregas += dt_2.Rows.Count;
+                        }
+
+                        Total_Entregas += dt_2.Rows.Count;
+                    }
+                   
                 }
                 dt_2.Clear();
                 StaticText5.Caption = (Entregados + Fallidos) + " / " + Convert.ToString(Total_Entregas);
                 decimal Calculo_porcentaje = (100 * (Entregados + Fallidos));
-                decimal porcentaje = decimal.Round(Calculo_porcentaje / Total_Entregas, 2);
+                decimal? porcentaje = 0;
+                if (Calculo_porcentaje > 0 && Total_Entregas > 0)
+                {
+                    porcentaje = decimal.Round(Calculo_porcentaje / Total_Entregas, 2);
+                }
 
                 StaticText11.Caption = Convert.ToString(Entregados);
                 StaticText4.Caption = Convert.ToString(Ruta);
@@ -485,43 +516,51 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             SAPbouiCOM.DataTable dt_2 = oForm.GetDataTable("DT_2");
             //ObtenerCalculoRegistros(dt, dt_2);
 
-            string ValorCombo = ComboBox0.GetSelectedDescription();
+            string ValorCombo = ComboBox0.Value.ToString();
             if (DepUSU == "61") /* CONTROLLER ADMIN.*/
             {
                 if (ValorCombo=="TODOS")
                 {
-                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL_TODAS", ValorCombo);
+                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL_TODAS", ValorCombo,ComboBox1.GetSelectedValue());
                 }
                 else
                 {
-                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo);
+                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo, ComboBox1.GetSelectedValue());
                 }
             }
             else if (DepUSU=="11") /*DISTRIBUCION*/
             {
                 if (ValorCombo == "TODOS")
                 {
-                    ObtenerCalculoRegistros2(dt, dt_2, "TODAS", ValorCombo);
+                    ObtenerCalculoRegistros2(dt, dt_2, "TODAS", ValorCombo, ComboBox1.GetSelectedValue());
                 }
                 else if (ValorCombo == "SUCURSAL_TODAS")
                 {
-                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL_TODAS", ValorCombo);
+                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL_TODAS", ValorCombo, ComboBox1.GetSelectedValue());
                 }
                 else
                 {
-                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo);
+                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo, ComboBox1.GetSelectedValue());
                 }
             }
             else if (DepUSU == "12") /* USUARIOS SUCURSALES*/
             {
-                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo);
+                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo, ComboBox1.GetSelectedValue());
             }
             else
             {
-                ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo);
+                ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo, ComboBox1.GetSelectedValue());
             }
             Sb1Messages.ShowSuccess(addonMessageInfo.MessageIdiomaMessageFinTracker(Sb1Globals.Idioma));
-            Formato_Cabecera();
+            if (ComboBox1.GetValue()=="15")
+            {
+                Formato_Cabecera();
+            }
+            else
+            {
+                Formato_CabeceraTransfer();
+            }
+
         }
         public void Formato_Cabecera()
         {
@@ -538,6 +577,28 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             Grid0.Columns.Item("CodAyudante").TitleObject.Caption = "Código de Ayudante";
             Grid0.Columns.Item("PesoTotal").TitleObject.Caption = "Peso Total";
             Grid0.Columns.Item("CantEntregado").TitleObject.Caption = "Cantidad Entrega";
+            Grid0.Columns.Item("CantPendiente").TitleObject.Caption = "Cantidad Pendientes";
+            Grid0.Columns.Item("CantidadDoc").TitleObject.Caption = "Cantidad Documentos";
+            Grid0.Columns.Item("FechaProgramacion").TitleObject.Caption = "Fecha de Programación";
+            Grid0.Columns.Item("CargaUtil").TitleObject.Caption = "Carga Util";
+
+            Grid0.AutoResizeColumns();
+        }
+        public void Formato_CabeceraTransfer()
+        {
+            Grid0.Columns.Item("Chofer").LinkedObjectType(Grid0, "CodChofer", "CONDUC");// Chofer
+            Grid0.Columns.Item("CodChofer").TitleObject.Caption = "Código Chofer";
+            // Grid0.Columns.Item("CodChofer").Visible = false;
+            Grid0.Columns.Item("Chofer").TitleObject.Caption = "Chofer";
+            Grid0.Columns.Item("Vehiculo").TitleObject.Caption = "vehículo";
+            Grid0.Columns.Item("CodVehiculo").TitleObject.Caption = "Código de Vehículo"; // Vehiculo
+            //Grid0.Columns.Item("CodVehiculo").Visible = false;
+            Grid0.Columns.Item("CodVehiculo").LinkedObjectType(Grid0, "CodVehiculo", "VEHICU"); // Vehiculo/
+            Grid0.Columns.Item("CodAyudante").LinkedObjectType(Grid0, "CodAyudante", "OAYD"); // ayudante
+            //Grid0.Columns.Item("CodAyudante").Visible = false;
+            Grid0.Columns.Item("CodAyudante").TitleObject.Caption = "Código de Ayudante";
+            Grid0.Columns.Item("PesoTotal").TitleObject.Caption = "Peso Total";
+            Grid0.Columns.Item("CantEntregado").TitleObject.Caption = "Cantidad de Transferencias";
             Grid0.Columns.Item("CantPendiente").TitleObject.Caption = "Cantidad Pendientes";
             Grid0.Columns.Item("CantidadDoc").TitleObject.Caption = "Cantidad Documentos";
             Grid0.Columns.Item("FechaProgramacion").TitleObject.Caption = "Fecha de Programación";
@@ -583,6 +644,44 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             Grid1.AutoResizeColumns();
             // Grid0.Columns.Item("CodAyudante").Visible = false;
         }
+        public void Formato_DetalleTranfer()
+        {
+
+            Grid1.Columns.Item("Estado").TitleObject.Caption = "Estado";
+            Grid1.Columns.Item("Ocurrencia").TitleObject.Caption = "Ocurrencia";
+
+            Grid1.Columns.Item("DocEntry").Visible = false;
+            Grid1.Columns.Item("LineId").Visible = false;
+            Grid1.Columns.Item("OrdenVisita").Visible = false;
+            Grid1.Columns.Item("DocEntry_Ent").Visible = true;
+            Grid1.Columns.Item("DoEntry_Fac").Visible = true;
+            Grid1.Columns.Item("CodCliente").LinkedObjectType(Grid1, "CodCliente", "2");
+            Grid1.Columns.Item("DocEntry_Ent").LinkedObjectType(Grid1, "DocEntry_Ent", "67");
+
+            Grid1.Columns.Item("DocEntry_Ent").TitleObject.Caption = "Cod. Transferencia";
+
+            Grid1.Columns.Item("CodCliente").TitleObject.Caption = "Código Cliente";
+            Grid1.Columns.Item("Cliente").TitleObject.Caption = "Nombre Cliente";
+            Grid1.Columns.Item("Documento_Ent").TitleObject.Caption = "Nro. Transfencia";
+
+            Grid1.Columns.Item("DocumentoLegal_Fac").Visible = false;
+            Grid1.Columns.Item("DoEntry_Fac").Visible = false;
+            
+            Grid1.Columns.Item("Direccion").Visible = false;
+            Grid1.Columns.Item("Fecha_Emision").TitleObject.Caption = "Fecha Emisión";
+            Grid1.Columns.Item("TerminoPago").Visible = false;
+            Grid1.Columns.Item("HoraInicio").TitleObject.Caption = "Hora de Inicio";
+            Grid1.Columns.Item("HoraFin").TitleObject.Caption = "Hora Final";
+            Grid1.Columns.Item("FotoGuia").TitleObject.Caption = "Foto de la Transferencia";
+            Grid1.Columns.Item("FotoLocal").TitleObject.Caption = "Foto del Local";
+            Grid1.Columns.Item("PersonaContacto").TitleObject.Caption = "Persona de Contacto";
+            Grid1.Columns.Item("CodVendedor").Visible = false;
+            Grid1.Columns.Item("Saldo").Visible = false;
+            Grid1.Columns.Item("Vendedor").TitleObject.Caption = "Almacenero";
+            Grid1.AutoResizeColumns();
+            // Grid0.Columns.Item("CodAyudante").Visible = false;
+        }
+        
         private void EditText1_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             //throw new System.NotImplementedException();
@@ -667,7 +766,15 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             using (BLL.EntregaBLL entregaBll = new BLL.EntregaBLL())
             {
                 entregaBll.SP_VIS_DIS_GET_TRACKER_D(ref dt, Fecha, HORA_INI, HORA_FIN, Cod_Chofer, CodVehiculo);
-                Formato_Detalle();
+                if (ComboBox1.GetValue()=="15")
+                {
+                    Formato_Detalle();
+                }
+                else
+                {
+                    Formato_DetalleTranfer();
+
+                }
             }
         }
         public void ObtenerCalculoRegistros(SAPbouiCOM.DataTable dt, SAPbouiCOM.DataTable dt_2)
@@ -683,7 +790,14 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             using (BLL.EntregaBLL entregaBll = new BLL.EntregaBLL())
             {
                 entregaBll.SP_VIS_DIS_GET_TRACKER_C(ref dt, EditText1.Value);
-                Formato_Cabecera();
+                if (ComboBox1.GetValue() == "15")
+                {
+                    Formato_Cabecera();
+                }
+                else
+                {
+                    Formato_CabeceraTransfer();
+                }
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
@@ -829,39 +943,48 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             {
                 if (ValorCombo == "TODOS")
                 {
-                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL_TODAS", ValorCombo);
+                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL_TODAS", ValorCombo,ComboBox1.GetValue());
                 }
                 else
                 {
-                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo);
+                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo, ComboBox1.GetValue());
                 }
             }
             else if (DepUSU == "11") /*DISTRIBUCION*/
             {
                 if (ValorCombo == "TODOS")
                 {
-                    ObtenerCalculoRegistros2(dt, dt_2, "TODAS", ValorCombo);
+                    ObtenerCalculoRegistros2(dt, dt_2, "TODAS", ValorCombo, ComboBox1.GetValue());
                 }
                 else if (ValorCombo == "SUCURSAL_TODAS")
                 {
-                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL_TODAS", ValorCombo);
+                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL_TODAS", ValorCombo, ComboBox1.GetValue());
                 }
                 else
                 {
-                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo);
+                    ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo, ComboBox1.GetValue());
                 }
             }
             else if (DepUSU == "12") /* USUARIOS SUCURSALES*/
             {
-                ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo);
+                ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo, ComboBox1.GetValue());
             }
             else
             {
-                ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo);
+                ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo, ComboBox1.GetValue());
             }
             Sb1Messages.ShowWarning(addonMessageInfo.MessageIdiomaMessageFinTracker(Sb1Globals.Idioma));
 
 
         }
+
+        private void Form_ClickAfter(SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            
+
+        }
+
+        private SAPbouiCOM.StaticText StaticText14;
+        private SAPbouiCOM.ComboBox ComboBox1;
     }
 }

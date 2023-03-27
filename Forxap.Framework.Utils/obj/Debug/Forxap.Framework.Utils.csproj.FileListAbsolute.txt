@@ -19,7 +19,9 @@ C:\Users\administrador\Desktop\Framework\Forxap.Framework.Utils\obj\Debug\Forxap
 C:\Users\administrador\Desktop\Framework\Forxap.Framework.Utils\obj\Debug\Forxap.Framework.Utils.pdb
 D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\bin\Debug\Forxap.Framework.Utils.dll
 D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\bin\Debug\Forxap.Framework.Utils.pdb
+D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\bin\Debug\GoogleMapsApi.dll
 D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\bin\Debug\Newtonsoft.Json.dll
+D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\obj\Debug\Forxap.Framework.Utils.csprojResolveAssemblyReference.cache
 D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\obj\Debug\Forxap.Framework.Utils.dll
 D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\obj\Debug\Forxap.Framework.Utils.pdb
-D:\Desarrollo\AddDistribucion\Forxap.Framework.Utils\obj\Debug\Forxap.Framework.Utils.csprojResolveAssemblyReference.cache

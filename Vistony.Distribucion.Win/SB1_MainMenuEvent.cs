@@ -149,6 +149,11 @@ namespace Vistony.Distribucion.Win
                                 onShowProgramacionConsolSLD();
                             }
                             break;
+                        case AddonMenuItem.dis_Seguisld:
+                            {
+                                onShowProgramacionConsolSeguimientoDespachoSLD();
+                            }
+                            break;
                             
                         #endregion
 
@@ -619,7 +624,20 @@ namespace Vistony.Distribucion.Win
                 Application.SBO_Application.MessageBox(ex.ToString(), 1, "Ok", "", "");
             }
         }/// fin del  metodo
-        
+
+        private void onShowProgramacionConsolSeguimientoDespachoSLD()
+        {
+            try
+            {
+                frmDispatchTruckingSLD form = new frmDispatchTruckingSLD();
+                form.Show();
+            }
+            catch (Exception ex)
+            {
+
+                Forxap.Framework.UI.Sb1Messages.ShowError(ex.ToString());
+            }
+        }
         private void onShowProgramacionConsolSLD()
         {
             try

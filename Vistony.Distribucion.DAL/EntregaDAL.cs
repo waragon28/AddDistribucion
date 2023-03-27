@@ -1,28 +1,146 @@
 ﻿//#define AD_BO
-//#define AD_PE
+#define AD_PE
 //#define AD_ES
 //#define AD_PY
-#define AD_EC
+//#define AD_EC
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
 using SAPbobsCOM;
 using Forxap.Framework.Extensions;
 using Forxap.Framework.UI;
 using Newtonsoft.Json;
 using RestSharp;
-using Forxap.Distribucion.DAL;
 using Vistony.Distribucion.BO;
 using SAPbouiCOM;
+
+using GoogleMapsApi;
+using GoogleMapsApi.Entities.Directions.Request;
+using GoogleMapsApi.Entities.Directions.Response;
+using GoogleMapsApi.Entities.Geocoding.Request;
+using GoogleMapsApi.Entities.Geocoding.Response;
+
 
 namespace Vistony.Distribucion.DAL
 {
     public class EntregaDAL : BaseDAL, IDisposable
     {
+
+
+        public void Consolidados(SAPbouiCOM.Form oForm, SAPbouiCOM.Matrix oMatrix, string Sucural)
+        {
+            try
+            {
+                //EJECUTAR EL PROCEDIMIENTO ALMACENADO
+                SAPbouiCOM.DataTable exp;
+                exp = oForm.DataSources.DataTables.Item("DT_0");
+                string Query = Sucural;
+                exp.ExecuteQuery(Query);
+                //FIN DE EJECUCION DE PROCEDIMIENTO ALMACENADO
+                
+                SAPbouiCOM.DataTable udt = oForm.GetDataTable("DT_1");
+                oMatrix = oForm.GetMatrix("Item_2");
+                SAPbouiCOM.Columns oColumns;
+                oColumns = oMatrix.Columns;
+                SAPbouiCOM.Column oColumn;
+                var colItems = udt.Columns;
+
+                if (udt.Columns.Count == 0)
+                {
+
+                    colItems.Add("Marca", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("DocEntry", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("Entrega", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("Fecha", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("Numero Legal", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("FechaFinal", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("CodigoSN", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("NombreSN", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("Ubigeo", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("Consolidado", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("FConsolidacion", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("FReq", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("Peso", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("INDIC", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("Latitude", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("Longitude", BoFieldsType.ft_AlphaNumeric);
+                }
+                // Define las coordenadas de inicio y fin
+
+                int a = udt.Rows.Count;
+                if (oMatrix.RowCount > 0)
+                    
+
+                for (int oRow = 0; oRow < exp.Rows.Count; oRow++)
+                {
+                    udt.Rows.Add();
+                    udt.SetValue("Marca", oRow, exp.GetString("Marca", oRow));
+                    udt.SetValue("DocEntry", oRow, exp.GetString("DocEntry", oRow));
+                    udt.SetValue("Entrega", oRow, exp.GetString("Entrega", oRow));
+                    udt.SetValue("Fecha", oRow, exp.GetString("Fecha", oRow));
+                    udt.SetValue("Numero Legal", oRow, exp.GetString("Numero Legal", oRow));
+                    udt.SetValue("FechaFinal", oRow, exp.GetString("FechaFinal", oRow));
+                    udt.SetValue("CodigoSN", oRow, exp.GetString("CodigoSN", oRow));
+                    udt.SetValue("NombreSN", oRow, exp.GetString("NombreSN", oRow));
+                    udt.SetValue("Ubigeo", oRow, exp.GetString("Ubigeo", oRow));
+                    udt.SetValue("Consolidado", oRow, exp.GetString("Consolidado", oRow));
+                    udt.SetValue("FConsolidacion", oRow, exp.GetString("FConsolidacion", oRow));
+                    udt.SetValue("FReq", oRow, exp.GetString("FReq", oRow));
+                    udt.SetValue("Peso", oRow, exp.GetString("Peso", oRow));
+                    udt.SetValue("Latitude", oRow, exp.GetString("Latitude", oRow));
+                    udt.SetValue("Longitude", oRow, exp.GetString("Longitude", oRow));
+                    udt.SetValue("Kilometraje", oRow, 0);
+                }
+
+                oMatrix.Columns.Item("Col_0").DataBind.Bind("DT_1", "Marca");
+                oMatrix.Columns.Item("Col_1").DataBind.Bind("DT_1", "DocEntry");
+                oMatrix.Columns.Item("Col_2").DataBind.Bind("DT_1", "Entrega");
+                oMatrix.Columns.Item("Col_3").DataBind.Bind("DT_1", "Fecha");
+                oMatrix.Columns.Item("Col_4").DataBind.Bind("DT_1", "Numero Legal");
+                oMatrix.Columns.Item("Col_5").DataBind.Bind("DT_1", "FechaFinal");
+                oMatrix.Columns.Item("Col_6").DataBind.Bind("DT_1", "CodigoSN");
+                oMatrix.Columns.Item("Col_7").DataBind.Bind("DT_1", "NombreSN");
+                oMatrix.Columns.Item("Col_8").DataBind.Bind("DT_1", "Ubigeo");
+                oMatrix.Columns.Item("Col_9").DataBind.Bind("DT_1", "Consolidado");
+                oMatrix.Columns.Item("Col_10").DataBind.Bind("DT_1", "FConsolidacion");
+                oMatrix.Columns.Item("Col_11").DataBind.Bind("DT_1", "FReq");
+                oMatrix.Columns.Item("Col_12").DataBind.Bind("DT_1", "Peso");
+                oMatrix.Columns.Item("Col_13").DataBind.Bind("DT_1", "Latitude");
+                oMatrix.Columns.Item("Col_14").DataBind.Bind("DT_1", "Longitude");
+                oMatrix.Columns.Item("Col_15").DataBind.Bind("DT_1", "Kilometraje");
+
+                oColumn = oColumns.Item("Col_0");
+                oMatrix.LoadFromDataSource();
+                oMatrix.AutoResizeColumns();
+                
+            }
+            catch (Exception EX)
+            {
+
+
+                throw;
+            }
+
+        }
+
+        public double CalcularDistancia(double lat1, double lon1, double lat2, double lon2)
+        {
+            int radioTierra = 6371; // en kilómetros
+
+            // convertir las coordenadas de grados decimales a radianes
+            double dLat = (lat2 - lat1) * Math.PI / 180.0;
+            double dLon = (lon2 - lon1) * Math.PI / 180.0;
+
+            // aplicar la fórmula de Haversine
+            double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                       Math.Cos(lat1 * Math.PI / 180.0) * Math.Cos(lat2 * Math.PI / 180.0) *
+                       Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            double distancia = radioTierra * c;
+
+            return distancia;
+        }
+
         public void BuscarChoferesUbigeo(SAPbouiCOM.Form oForm, SAPbouiCOM.Matrix oMatrix, string Sucural)
         {
             SAPbouiCOM.DataTable udt;
@@ -286,11 +404,11 @@ namespace Vistony.Distribucion.DAL
                 return null;
             }
         }
-         public static SAPbouiCOM.DataTable BuscarDespachos(SAPbouiCOM.DataTable oDT, string usuario, string licencia, string fecha, string estado)
+         public static SAPbouiCOM.DataTable BuscarDespachos(SAPbouiCOM.DataTable oDT, string usuario, string licencia, string fecha, string estado, string TipoDespacho)
         {
             try
             {
-                string sSTRSQL = String.Format("CALL SP_VIS_DIS_OBTENER_DESPACHOS ('{0}','{1}','{2}','{3}')", usuario, licencia,fecha,estado);
+                string sSTRSQL = String.Format("CALL SP_VIS_DIS_OBTENER_DESPACHOS ('{0}','{1}','{2}','{3}','{4}')", usuario, licencia,fecha,estado, TipoDespacho);
                 oDT.ExecuteQuery(sSTRSQL);
                 return oDT;
             }
@@ -600,6 +718,7 @@ namespace Vistony.Distribucion.DAL
             }
 
         }
+        
         public void GetDatosChofer(ref string choferCode, ref string choferName, ref string choferLicencia, ref string vehiculoPlaca, ref string vehiculoMarca, ref string ayudanteCode, ref string ayudanteName, ref double pesoUtil )
         {
             SAPbobsCOM.Recordset recordSet = null;
@@ -814,11 +933,11 @@ namespace Vistony.Distribucion.DAL
             }
         }
         public SAPbouiCOM.DataTable SP_VIS_DIS_GET_TRACKER_C_TEST(ref SAPbouiCOM.DataTable oDT, string fecha,
-            string TRACKER, string Sucursal)
+            string TRACKER, string Sucursal,string TipoRuta)
         {
             try
             {
-                string sSTRSQL = String.Format("CALL SP_VIS_DIS_GET_TRACKER_C_TEST ('{0}','{1}','{2}')", fecha, TRACKER, Sucursal);
+                string sSTRSQL = String.Format("CALL SP_VIS_DIS_GET_TRACKER_C_TEST ('{0}','{1}','{2}','{3}')", fecha, TRACKER, Sucursal, TipoRuta);
                 oDT.ExecuteQuery(sSTRSQL);
                 return oDT;
             }

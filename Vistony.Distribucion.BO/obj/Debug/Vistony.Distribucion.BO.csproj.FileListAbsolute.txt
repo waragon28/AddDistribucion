@@ -16,3 +16,4 @@ D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BO\bin\Debug\SAPBusinessOneSD
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BO\obj\Debug\Vistony.Distribucion.BO.csprojResolveAssemblyReference.cache
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BO\obj\Debug\Vistony.Distribucion.BO.dll
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BO\obj\Debug\Vistony.Distribucion.BO.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.BO\bin\Debug\Newtonsoft.Json.dll

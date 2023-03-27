@@ -1017,6 +1017,8 @@ namespace Vistony.Distribucion.Constans
         public string QueryObtenerMilesSeparator = "SELECT \"ThousSep\" as \"Miles\" FROM OADM ";
         public string QueryObtenerSLD = "CALL ADDON_ULT_MIL_GET_SLD('{0}','{1}','{2}','{3}','{4}','{5}')";
         public string QueryObtenerSLDConsol = "CALL ADDON_ULT_MIL_GET_SLD_CONSOL('{0}','{1}','{2}','{3}','{4}','{5}')";
+        public string QueryObtenerTipoRuta = "CALL SP_VIS_DIS_GET_TIPO_RUTA()";
+
     }// fin de la clase
 
 

@@ -26,7 +26,7 @@ namespace Forxap.Framework.Constants
         public const string Inventory = "3072"; //
 
         public const string Definition = "43525";  //43537
-        public const string Close = "43525";  //43537
+        public const string Close = "1286";  //43537
 
 
 

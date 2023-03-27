@@ -82,6 +82,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
         private SAPbouiCOM.Button Button3;
         public static dynamic objDeleteDespachoJson = "";
         public static string Cancelar = "";
+        public static string BorrarLinea = "";
+        public static string DocEntryDelete = "";
         public static AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
         public FrmDispatchRoute()
         {
@@ -147,54 +149,83 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                 if (BusinessObjectInfo.EventType == SAPbouiCOM.BoEventTypes.et_FORM_DATA_UPDATE)
                 {
                     Sb1Messages.ShowWarning("Iniciando Actualizacion...");
+
                     bool isUpdated = false;
                     SAPbouiCOM.Form oForm = null;
+
                     oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(BusinessObjectInfo.FormUID);
                     SAPbouiCOM.DBDataSource oDatasource = oForm.GetDBDataSource("@VIS_DIS_DRT1");
-
                     //VALIDAR SI SE ACTUALIZO LOS CAMPOS QUE AFECTAN A LAS ENTREGAS
                     Recordset GetDataODLN = null;
                     GetDataODLN = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
-
-                    for (int i= 0; i < 1; i++)
+                    string E = oDatasource.GetString("U_DocEntry", 0);
+                    ValidarCamposORDT(GetDataODLN, oDatasource.GetString("U_DocEntry", 0));
+                    
+                    if (objDeleteDespachoJson != "")
                     {
-                        #if AD_PE
-                                ValidarCamposORDT(GetDataODLN, oDatasource.GetString("U_DocEntry", i));
-                        #else
-                                ValidarCamposORDT(GetDataODLN, oDatasource.GetString("U_DocEntry", i));
-                        #endif
+                            string response1 = "";
+                            isUpdated = UpdateEstadoEntrega(Convert.ToInt32(DocEntryEntrega), objDeleteDespachoJson, ref response1);
+                               
                     }
-
-                    if (GetDataODLN.Fields.Item("U_SYP_MDFN").Value.ToString() != oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DriverName", 0) ||
-                        oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantName", 0) != GetDataODLN.Fields.Item("U_SYP_DT_AYUDANTE").Value.ToString() ||
-                        oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DocDate", 0) != GetDataODLN.Fields.Item("U_SYP_DT_FCDES").Value.ToString())
+                    else if (Cancelar == "Cancelar")
                     {
-                        Recordset Conductorrecordset = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
-                        ObtenerDatosChofer(Conductorrecordset, addonMessageInfo.QueryObtenerDescripcionConducor,
-                            oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DriverCode", 0));
 
-                        Recordset Vehiculorecordset = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
-                        ObtenerDatosVehiculo(Vehiculorecordset, addonMessageInfo.QueryObtenerDescripcionVehiculo,
-                            oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_VehiculeCode", 0));
+                        SAPbouiCOM.DBDataSource oDatasource_ORDT = oForm.GetDBDataSource("@VIS_DIS_ODRT");
+                        SAPbouiCOM.Matrix oMatrix = oForm.GetMatrix("3");
 
-                        string A1 = Vehiculorecordset.Fields.Item("U_SYP_VEPL").Value.ToString();
-                        string A2 = Vehiculorecordset.Fields.Item("U_SYP_VEMA").Value.ToString();
-                        string A3 = Conductorrecordset.Fields.Item("U_SYP_CHLI").Value.ToString();
-                        string A4 = Conductorrecordset.Fields.Item("Name").Value.ToString();
-                        string A5 = oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DocDate", 0);
-                        string A6 = oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantCode", 0);
-                        string A9 = oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantName", 0);
+                        // for (int oRows = 0; oRows < oDatasource.Size; oRows++)
+                        for (int oRows = 0; oRows < oDatasource.Size; oRows++)
+                        {
+                                using (EntregaBLL entregaBLL = new EntregaBLL())
+                                {
+                                    string response = "";
+                                    string JsonV = "{\"U_SYP_DT_ESTDES\"" + ":" + "\"V\" }";
+                                    isUpdated = entregaBLL.UpdateEstadoEntrega(Convert.ToInt32(oDatasource.GetString("U_DocEntry",oRows)), JsonV, ref response);
+                                        if (isUpdated)
+                                        {
+                                            string UpdateRutaDespacho = "UPDATE \"@VIS_DIS_DRT1\" SET \"U_Delivered\" ='V' " +
+                                                                        "WHERE \"DocEntry\"= '{0}' AND  \"U_DocEntry\"='{1}' ";
+                                            string Query = string.Format(UpdateRutaDespacho, oDatasource_ORDT.GetString("DocEntry"), oDatasource.GetString("U_DocEntry", oRows));
 
-                        UpdateEntregaDespacho objDespacho = new UpdateEntregaDespacho();
-                        objDespacho = GetObjDespacho(Vehiculorecordset.Fields.Item("U_SYP_VEPL").Value.ToString(), 
-                                                     Vehiculorecordset.Fields.Item("U_SYP_VEMA").Value.ToString(), 
-                                                     Conductorrecordset.Fields.Item("U_SYP_CHLI").Value.ToString(),
-                                                     Conductorrecordset.Fields.Item("Name").Value.ToString(),
-                                                     oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DocDate", 0),
-                                                     oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantCode", 0),
-                                                     oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantName", 0));
-                        
-                        dynamic objDespachoJson = JsonConvert.SerializeObject(objDespacho);
+                                            GetDataODLN.DoQuery(Query);
+                                            Sb1Messages.ShowSuccess("Se Actualizaron : " + oRows + " de " + oDatasource.Size);
+                                        }
+                                }
+                        }
+                        if (isUpdated)
+                        {
+                           
+                        }
+                        else
+                        {
+                            Sb1Messages.ShowError("Error al Cerrar el Docuemnto Verificar las entregas");
+                        }
+                    }
+                    else
+                    {
+                      
+                        if ( GetDataODLN.Fields.Item("U_SYP_MDFN").Value.ToString() != oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DriverName", 0) ||
+                             oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantName", 0) != GetDataODLN.Fields.Item("U_SYP_DT_AYUDANTE").Value.ToString() ||
+                             oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DocDate", 0) != GetDataODLN.Fields.Item("U_SYP_DT_FCDES").Value.ToString())
+                        {
+                            Recordset Conductorrecordset = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+                            ObtenerDatosChofer(Conductorrecordset, addonMessageInfo.QueryObtenerDescripcionConducor,
+                                oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DriverCode", 0));
+
+                            Recordset Vehiculorecordset = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+                            ObtenerDatosVehiculo(Vehiculorecordset, addonMessageInfo.QueryObtenerDescripcionVehiculo,
+                                oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_VehiculeCode", 0));
+
+                            UpdateEntregaDespacho objDespacho = new UpdateEntregaDespacho();
+                            objDespacho = GetObjDespacho(Vehiculorecordset.Fields.Item("U_SYP_VEPL").Value.ToString(),
+                                                         Vehiculorecordset.Fields.Item("U_SYP_VEMA").Value.ToString(),
+                                                         Conductorrecordset.Fields.Item("U_SYP_CHLI").Value.ToString(),
+                                                         Conductorrecordset.Fields.Item("Name").Value.ToString(),
+                                                         oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DocDate", 0),
+                                                         oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantCode", 0),
+                                                         oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantName", 0));
+
+                            dynamic objDespachoJson = JsonConvert.SerializeObject(objDespacho);
 
                             for (int oRows = 0; oRows < oDatasource.Size; oRows++)
                             {
@@ -205,36 +236,14 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                                     {
                                         string response = "";
                                         isUpdated = entregaBLL.UpdateEstadoEntrega(Convert.ToInt32(docEntry), objDespachoJson, ref response);
-                                        Sb1Messages.ShowSuccess("Se Actualizaron : " + oRows +" de "+oDatasource.Size);
+                                        Sb1Messages.ShowSuccess("Se Actualizaron : " + oRows + " de " + oDatasource.Size);
                                     }
                                 }
                             }
 
+                        }
                     }
-
-                        if (objDeleteDespachoJson != "")
-                        {
-                            string response1 = "";
-                            isUpdated = UpdateEstadoEntrega(Convert.ToInt32(DocEntryEntrega), objDeleteDespachoJson, ref response1);
-                        }
-
-                        if (Cancelar == "Cancelar")
-                        {
-                            for (int oRows = 0; oRows < oDatasource.Size; oRows++)
-                            {
-                                if (oDatasource.GetString("U_DocEntry", oRows) != "")
-                                {
-                                    using (EntregaBLL entregaBLL = new EntregaBLL())
-                                    {
-                                        string response = "";
-                                        string JsonV = "{\"U_SYP_DT_ESTDES\"" +":"+"\"V\" }";
-                                        isUpdated = entregaBLL.UpdateEstadoEntrega(Convert.ToInt32(oDatasource.GetString("U_DocEntry", oRows)), JsonV, ref response);
-                                        
-                                    }
-                                }
-                            }
-                        }
-
+                        
 
                     }
 
@@ -298,7 +307,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             this.EditText19.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText19_KeyDownAfter);
             this.StaticText16 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_41").Specific));
             this.ComboBox1 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_42").Specific));
-            //    this.LinkedButton0 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_43").Specific));
+            //      this.LinkedButton0 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_43").Specific));
             this.StaticText17 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_44").Specific));
             this.ComboBox2 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_45").Specific));
             this.Button3 = ((SAPbouiCOM.Button)(this.GetItem("Item_47").Specific));
@@ -344,28 +353,40 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             }
             else if (pVal.MenuUID == SboMenuItem.DeleteRow && pVal.BeforeAction == true)
             {
-                var Menssage = Sb1Messages.ShowMessageBox("Esta seguro de Eliminar este registro,\n recordar que el documento pasara a estado Volver a programar");
-                if (Menssage==1)
+                BorrarLinea = "N";
+                SAPbouiCOM.Matrix oMatrix = ((SAPbouiCOM.Matrix)oForm.Items.Item("3").Specific);
+                SAPbouiCOM.DBDataSource oDBDataSource = oForm.DataSources.DBDataSources.Item("@VIS_DIS_DRT1");
+                int nRow = (int)oMatrix.GetNextSelectedRow(0, SAPbouiCOM.BoOrderType.ot_RowOrder);
+                DocEntryEntrega = oDBDataSource.GetString("U_DocEntry", nRow);
+                string AA=oDBDataSource.GetString("U_Delivered", nRow);
+                UpdateEstadoDespacho objDespacho = new UpdateEstadoDespacho();
+                if (oDBDataSource.GetString("U_Delivered", nRow)!="P")
                 {
-                    oForm.Freeze(true);
-                    SAPbouiCOM.Matrix oMatrix = ((SAPbouiCOM.Matrix)oForm.Items.Item("3").Specific);
-                    SAPbouiCOM.DBDataSource oDBDataSource = oForm.DataSources.DBDataSources.Item("@VIS_DIS_DRT1");
-                    int nRow = (int)oMatrix.GetNextSelectedRow(0, SAPbouiCOM.BoOrderType.ot_RowOrder);
-                    oMatrix.FlushToDataSource();
-                    oDBDataSource.RemoveRecord(nRow - 1);
-                    oForm.Mode = SAPbouiCOM.BoFormMode.fm_UPDATE_MODE;
-                    oMatrix.LoadFromDataSource();
-                    UpdateEstadoDespacho objDespacho = new UpdateEstadoDespacho();
-                    objDespacho = UpdateDespacho("V");
-                    objDeleteDespachoJson = JsonConvert.SerializeObject(objDespacho);
+                    Sb1Messages.ShowWarning("No se puede Eliminar el registro");
+                    objDespacho = null;
                     BubbleEvent = false;
-                    oForm.Freeze(false);
                 }
                 else
                 {
-                    BubbleEvent = false;
+                    var Menssage = Sb1Messages.ShowMessageBox("¿ Esta seguro de Eliminar esta linea ? ,\n recordar que el documento pasara a estado Volver a programar y se recalculara el peso de la programación de despacho");
+                    if (Menssage == 1)
+                    {
+                        oForm.Freeze(true);
+
+                        oMatrix.FlushToDataSource();
+                        oDBDataSource.RemoveRecord(nRow - 1);
+                        oForm.Mode = SAPbouiCOM.BoFormMode.fm_UPDATE_MODE;
+                        oMatrix.LoadFromDataSource();
+                        objDespacho = UpdateDespacho("V");
+                        objDeleteDespachoJson = JsonConvert.SerializeObject(objDespacho);
+                        BubbleEvent = false;
+                        oForm.Freeze(false);
+                    }
+                    else
+                    {
+                        BubbleEvent = false;
+                    }
                 }
-               
             }
             else if (pVal.MenuUID == SboMenuItem.Delete && pVal.BeforeAction == true)
             {
@@ -374,15 +395,36 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             }
             else if (pVal.MenuUID == SboMenuItem.Cancel && pVal.BeforeAction == true)
             {
-                 BubbleEvent = true;
-                var Menssage = Sb1Messages.ShowMessageBox("Esta seguro de Cancelar este registro,\n recordar que los documentos pasaran a estado Volver a programar");
-                if (Menssage == 1)
+                SAPbouiCOM.DBDataSource oDBDataSource = oForm.DataSources.DBDataSources.Item("@VIS_DIS_DRT1");
+                int RegistrosProgramdos = 0;
+
+                for (int Registros = 0; Registros < oDBDataSource.Size; Registros++)
                 {
-                    Cancelar = "Cancelar";
+                    if (oDBDataSource.GetString("U_Delivered", Registros)=="P")
+                    {
+                        RegistrosProgramdos += 1;
+                    }
+                }
+                if (oDBDataSource.Size== RegistrosProgramdos)
+                {
+                    var Menssage = Sb1Messages.ShowMessageBox("Esta seguro de Cancelar la ruta de despacho.\n recordar que los documentos pasaran a estado Volver a programar");
+                    if (Menssage == 1)
+                    {
+                        Cancelar = "Cancelar";
+
+                        BubbleEvent = true;
+                    }
+                    else
+                    {
+                        Cancelar = "";
+                        BubbleEvent = false;
+                    }
                 }
                 else
                 {
+                    Sb1Messages.ShowWarning("No se puede Cancelar el registro");
                     Cancelar = "";
+                    BubbleEvent = false;
                 }
             }
             else if (pVal.MenuUID == SboMenuItem.Close && pVal.BeforeAction == true)
@@ -452,7 +494,6 @@ namespace Vistony.Distribucion.Win.UltimaMilla
         }
         private void Form_ActivateAfter(SAPbouiCOM.SBOItemEventArg pVal)
         {
-           // Matrix1.AutoResizeColumns();
 
         }
         private void EditText6_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
@@ -640,5 +681,10 @@ namespace Vistony.Distribucion.Win.UltimaMilla
 
         private StaticText StaticText19;
         private ComboBox ComboBox3;
+
+        private void Button4_ClickAfter(object sboObject, SBOItemEventArg pVal)
+        {
+          
+        }
     }
 }

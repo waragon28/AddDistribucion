@@ -168,7 +168,7 @@ namespace Vistony.Distribucion.Win.Programacion
             Grid0.Columns.Item(0).Editable = true;
             Grid0.AutoResizeColumns();
 
-            Grid0.Columns.Item("DocEntry").LinkedObjectType(Grid0, "DocEntry", "1250000001");
+            Grid0.Columns.Item("DocEntry").LinkedObjectType(Grid0, "DocEntry", "67");
 
             // ampliio el ancho de la columna
             Grid0.RowHeaders.Width += 15;
@@ -261,7 +261,7 @@ namespace Vistony.Distribucion.Win.Programacion
                     totalWeight = EditText6.GetDouble();
 
                     // debo marcar o desmarcar todo
-                    Utils.CheckRowsEx(oForm, Grid0, ref totalWeight, ref rowSelected);
+                    Utils.CheckRows(oForm, Grid0, ref totalWeight, ref rowSelected);
 
                     // asigno el nro de documentos seleccionados
                     EditText5.SetInt(rowSelected);
@@ -480,8 +480,8 @@ namespace Vistony.Distribucion.Win.Programacion
                         }
                     }
 
-                    EditText4.SetInt(0);
-                    EditText3.SetInt(0);
+                    EditText5.SetInt(0);
+                    EditText6.SetInt(0);
 
                     ///////////////////////////////
                     Sb1Messages.ShowMessageBoxWarning(addonMessageInfo.MessageIdiomaMessage308(Sb1Globals.Idioma));

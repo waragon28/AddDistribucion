@@ -115,10 +115,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             {
                 Sb1Messages.ShowError(addonMessageInfo.MessageIdiomaMessage328(Sb1Globals.Idioma));
             }
-            //Thread mythr = new Thread(AsignarEstados);
-            //mythr.Name = "Estado";
-            //mythr.Start();
-            //mythr.IsBackground = true;
+
             oForm.Close();
         }
 

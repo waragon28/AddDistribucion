@@ -28,6 +28,7 @@ using System.ComponentModel;
 
 using Vistony.Distribucion.Win;
 using Vistony.Distribucion.BLL;
+using Vistony.Distribucion.Win.Programacion;
 
 namespace Vistony.Distribucion.Win.Formularios
 
@@ -123,6 +124,8 @@ namespace Vistony.Distribucion.Win.Formularios
             this.StaticText13.ClickAfter += new SAPbouiCOM._IStaticTextEvents_ClickAfterEventHandler(this.StaticText13_ClickAfter);
             this.StaticText14 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_8").Specific));
             this.ComboBox0 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_19").Specific));
+            this.Button6 = ((SAPbouiCOM.Button)(this.GetItem("Item_20").Specific));
+            this.Button6.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button6_ClickAfter);
             this.OnCustomInitialize();
 
         }
@@ -709,5 +712,12 @@ namespace Vistony.Distribucion.Win.Formularios
 
         private SAPbouiCOM.StaticText StaticText14;
         private SAPbouiCOM.ComboBox ComboBox0;
+        private SAPbouiCOM.Button Button6;
+
+        private void Button6_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            frmConsolidationV2 FrmConsolidationV2 = new frmConsolidationV2();
+            FrmConsolidationV2.Show();
+        }
     }
 }

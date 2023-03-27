@@ -83,6 +83,23 @@ namespace Vistony.Distribucion.Win
             }
 
         }
+
+        public static void LoadQueryTipoRuta(ref SAPbouiCOM.ComboBox oComboBox, string Query)
+        {
+            Dictionary<string, string> listObject;
+            if (oComboBox != null)
+            {
+
+                listObject = Forxap.Framework.DI.ValidValues.GetQueryCombos(Query);
+                foreach (var item in listObject)
+                {
+                    oComboBox.ValidValues.Add(item.Key, item.Value);
+                }
+                oComboBox.ValidValues.Remove(0, SAPbouiCOM.BoSearchKey.psk_Index);
+                // oComboBox.Item.DisplayDesc = true;
+            }
+
+        }
         public static string GetMultiSucursal(string Consulta)
         {
             try

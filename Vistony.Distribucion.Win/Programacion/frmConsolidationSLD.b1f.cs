@@ -78,7 +78,7 @@ namespace Vistony.Distribucion.Win.Programacion
         {
             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
             oForm.ScreenCenter();
-
+            Grid0.AutoResizeColumns();
         }
 
         private SAPbouiCOM.StaticText StaticText1;
@@ -225,6 +225,11 @@ namespace Vistony.Distribucion.Win.Programacion
             Grid0.Columns.Item("DocNum").LinkedObjectType(Grid0, "DocNum", "67");
             Grid0.Columns.Item("DocEntry").LinkedObjectType(Grid0, "DocEntry", "67");
 #endif
+            Grid0.Columns.Item("DocEntry").TitleObject.Caption = "Nº Interno";
+            Grid0.Columns.Item("DocNum").TitleObject.Caption = "Nº  Tranferencia";
+            Grid0.Columns.Item("CardCode").TitleObject.Caption = "Cod. Cliente";
+            Grid0.Columns.Item("CardName").TitleObject.Caption = "Nombre Cliente";
+            Grid0.Columns.Item("Address").TitleObject.Caption = "Dirección";
 
             // Grid0.Columns.Item("Docntry").Visible = false;
             Grid0.ReadOnlyColumns();
@@ -561,5 +566,6 @@ namespace Vistony.Distribucion.Win.Programacion
 
             }
         }
+
     }
 }

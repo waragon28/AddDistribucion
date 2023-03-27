@@ -1,8 +1,8 @@
 ﻿//#define AD_BO
-//#define AD_PE
+#define AD_PE
 //#define AD_ES
 //#define AD_PY
-#define AD_EC
+//#define AD_EC
 
 using System;
 using System.Collections.Generic;
@@ -135,6 +135,8 @@ namespace Vistony.Distribucion.Win.Formularios
             this.StaticText6 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_23").Specific));
             this.ComboBox1 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_24").Specific));
             this.ComboBox1.ClickAfter += new SAPbouiCOM._IComboBoxEvents_ClickAfterEventHandler(this.ComboBox1_ClickAfter);
+            this.StaticText7 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_25").Specific));
+            this.ComboBox2 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_26").Specific));
             this.OnCustomInitialize();
 
         }
@@ -154,6 +156,7 @@ namespace Vistony.Distribucion.Win.Formularios
         {
             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
             oForm.ScreenCenter();
+            Utils.LoadQueryTipoRuta(ref ComboBox2, addonMessageInfo.QueryObtenerTipoRuta);
 
 #if AD_PE
             if (Sb1Globals.AdminPuntoEmision == "1")
@@ -222,7 +225,7 @@ namespace Vistony.Distribucion.Win.Formularios
                 string Chofer = EditText1.Value;
                 string Licencia = EditText5.Value;
                 string Estado = ComboBox0.GetSelectedValue();
-
+                string TipoDespacho = ComboBox2.GetSelectedValue();
                 if (string.IsNullOrEmpty(fecha) )
                 {
                     Sb1Messages.ShowError(addonMessageInfo.MessageIdiomaMessage302(Sb1Globals.Idioma));
@@ -248,7 +251,7 @@ namespace Vistony.Distribucion.Win.Formularios
                 }
                 else
                 {
-                    oDT.CopyFrom(EntregaDAL.BuscarDespachos(oDT, Sb1Globals.UserName, Licencia, fecha, Estado));
+                    oDT.CopyFrom(EntregaDAL.BuscarDespachos(oDT, Sb1Globals.UserName, Licencia, fecha, Estado, TipoDespacho));
                 }
 #else
                 oDT.CopyFrom(EntregaDAL.BuscarDespachos(oDT, Sb1Globals.UserName, Licencia, fecha, Estado));
@@ -321,7 +324,7 @@ namespace Vistony.Distribucion.Win.Formularios
             Actualizarobj.VIS_DIS_DRT1Collection = ObtenerDetalle(LineId, U_Delivered, U_ReturnReason);
             return Actualizarobj;
         }
-        public List<RutaTransportista1Estado> ObtenerDetalle(string LineId, string U_Delivered, string U_ReturnReason)
+        private List<RutaTransportista1Estado> ObtenerDetalle(string LineId, string U_Delivered, string U_ReturnReason)
         {
 
             List<RutaTransportista1Estado> VIS_TRN_REP_DDocumentDetalls = new List<RutaTransportista1Estado>();
@@ -387,6 +390,14 @@ namespace Vistony.Distribucion.Win.Formularios
                 string Chofer = EditText1.Value;
                 string NombreChofer = EditText2.Value;
                 string Licencia = EditText5.Value;
+
+                int? docEntry =0;
+                string NumDespacho = "";
+                string OrdenDespacho = "";
+                string LineId = "";
+                string DocEntryCabecera = "";
+
+
                 //string Estado = ComboBox0.GetSelectedValue();
                 Int32 Filas = Grid0.Rows.Count;
                 if (Filas == 0)
@@ -418,58 +429,92 @@ namespace Vistony.Distribucion.Win.Formularios
                 {
                     if (Grid0.DataTable.GetString("Marcar", row) == "Y")
                     {
-                        int? docEntry = Grid0.DataTable.GetInt("DocEntry", row);
-                        string NumDespacho = Grid0.DataTable.GetString("ORDENITEM", row);
-                        string OrdenDespacho = Grid0.DataTable.GetString("CORRDESPACHO", row);
-                        string LineId = Grid0.DataTable.GetString("LineId", row);
-                        string DocEntryCabecera = Grid0.DataTable.GetString("DocEntryCabecera", row);
-
-                        if (Estado == "E")
+                        if (ComboBox2.Value == "15")
                         {
-                            EstadoDespacho obj = new EstadoDespacho();
-                            obj = AsignaObjetoDespacho(Estado, Ocurrencia);
-                            dynamic jsonData = JsonConvert.SerializeObject(obj);
+                            docEntry = Grid0.DataTable.GetInt("DocEntry", row);
+                            NumDespacho = Grid0.DataTable.GetString("ORDENITEM", row);
+                            OrdenDespacho = Grid0.DataTable.GetString("CORRDESPACHO", row);
+                            LineId = Grid0.DataTable.GetString("LineId", row);
+                            DocEntryCabecera = Grid0.DataTable.GetString("DocEntryCabecera", row);
 
-
-
-                            /////////////////////////////CORRDESPACHO
-                            response = string.Empty;
-
-                            using (EntregaBLL entregaBLL = new EntregaBLL())
+                            if (Estado == "E")
                             {
-                                asigno = entregaBLL.UpdateEstadoEntrega(docEntry, jsonData, ref response);
-                            }
+                                EstadoDespacho obj = new EstadoDespacho();
+                                obj = AsignaObjetoDespacho(Estado, Ocurrencia);
+                                dynamic jsonData = JsonConvert.SerializeObject(obj);
+                                
+                                /////////////////////////////CORRDESPACHO
+                                response = string.Empty;
 
-                            if (asigno)
+                                using (EntregaBLL entregaBLL = new EntregaBLL())
+                                {
+                                    asigno = entregaBLL.UpdateEstadoEntrega(docEntry, jsonData, ref response);
+                                }
+
+                                if (asigno)
+                                {
+                                    RutaTransportista1EstadoCabecera ActualizarEstadoObj = new RutaTransportista1EstadoCabecera();
+                                    ActualizarEstadoObj = ActualizarEstadoObjetoDespachoCabecera(DocEntryCabecera, LineId, Estado, Ocurrencia);
+                                    dynamic jsonDataUpdate = JsonConvert.SerializeObject(ActualizarEstadoObj);
+
+                                    EntregaDAL.UpdateEstadoEntregaDRT1(DocEntryCabecera, jsonDataUpdate);
+
+                                }
+                                else
+                                {
+                                    Sb1Messages.ShowError(response);
+                                }
+                            }
+                            else if (Estado == "S")
                             {
-                            RutaTransportista1EstadoCabecera ActualizarEstadoObj = new RutaTransportista1EstadoCabecera();
-                            ActualizarEstadoObj = ActualizarEstadoObjetoDespachoCabecera(DocEntryCabecera, LineId, Estado, Ocurrencia);
-                            dynamic jsonDataUpdate = JsonConvert.SerializeObject(ActualizarEstadoObj);
 
-                            EntregaDAL.UpdateEstadoEntregaDRT1(DocEntryCabecera, jsonDataUpdate);
-
-                            //    HistoricoDespachos objHistorico = new HistoricoDespachos();
-                            //    objHistorico = AsignaDatosObject(docEntry, NumDespacho.ToString(), Estado, OrdenDespacho, fecha, Chofer, NombreChofer, "", "", "", Sb1Globals.UserName);
-                            //    dynamic jsonHist = JsonConvert.SerializeObject(objHistorico);
-                            //    string rpta = "";
-                            //    EntregaDAL.GrabarHistorial(jsonHist, out rpta);
-                            //    Sb1Messages.ShowMessageBoxWarning("Actualizado a Entregado:  " + OrdenDespacho + " Chofer: " + NombreChofer);
                             }
-                            else
-                            {
-                                Sb1Messages.ShowError(response);
-                            }
-                        }
-                        else if (Estado == "S")
-                        {
-                            
-                        }
-                        /////////////////////////////
+                            /////////////////////////////
                     }
+                    else if (ComboBox2.Value == "67")
+                    {
+                        docEntry = Grid0.DataTable.GetInt("DocEntry", row);
+                        NumDespacho = Grid0.DataTable.GetString("ORDENITEM", row);
+                        OrdenDespacho = Grid0.DataTable.GetString("CORRDESPACHO", row);
+                        LineId = Grid0.DataTable.GetString("LineId", row);
+                        DocEntryCabecera = Grid0.DataTable.GetString("DocEntryCabecera", row);
+                        
+                            if (Estado == "E")
+                            {
+                                EstadoDespacho obj = new EstadoDespacho();
+                                obj = AsignaObjetoDespacho(Estado, Ocurrencia);
+                                dynamic jsonData = JsonConvert.SerializeObject(obj);
+
+                                /////////////////////////////CORRDESPACHO
+                                response = string.Empty;
+
+                                using (EntregaBLL entregaBLL = new EntregaBLL())
+                                {
+                                    asigno = entregaBLL.UpdateEstadoSLD(docEntry, jsonData, ref response);
+                                }
+
+                                if (asigno)
+                                {
+                                    RutaTransportista1EstadoCabecera ActualizarEstadoObj = new RutaTransportista1EstadoCabecera();
+                                    ActualizarEstadoObj = ActualizarEstadoObjetoDespachoCabecera(DocEntryCabecera, LineId, Estado, Ocurrencia);
+                                    dynamic jsonDataUpdate = JsonConvert.SerializeObject(ActualizarEstadoObj);
+
+                                    EntregaDAL.UpdateEstadoEntregaDRT1(DocEntryCabecera, jsonDataUpdate);
+
+                                }
+                                else
+                                {
+                                    Sb1Messages.ShowError(response);
+                                }
+                            }
+                       
+                    }
+
                 }
                 
                 Sb1Messages.ShowMessageBoxWarning(addonMessageInfo.MessageIdiomaMessage310(Sb1Globals.Idioma));
 
+                }
             }
             catch (Exception ex)
             {
@@ -513,45 +558,73 @@ namespace Vistony.Distribucion.Win.Formularios
                 {
                     if (Grid0.DataTable.GetString("Marcar", row) == "Y")
                     {
-                        docentry = Grid0.DataTable.GetInt("DocEntry", row);
-                        entrega = Grid0.DataTable.GetString("N° Entrega", row);
-                        LineId = Grid0.DataTable.GetString("LineId", row);
-
-                        NumDespacho = Grid0.DataTable.GetString("ORDENITEM", row);
-                        OrdenDespacho = Grid0.DataTable.GetString("CORRDESPACHO", row);
-                        string DocEntryCabecera = Grid0.DataTable.GetString("DocEntryCabecera", row);
-
-                        EstadoDespachoVolverProgramar obj = new EstadoDespachoVolverProgramar();
-                        obj = AsignaObjetoDespachoSinProgramar(estado, ocurrencia);
-                        dynamic jsonData = JsonConvert.SerializeObject(obj);
-                        response = string.Empty;
-
-                        
-                        using (EntregaBLL entregaBLL = new EntregaBLL())
+                        if (ComboBox2.Value=="15")
                         {
-                           ActualizoRegistro = entregaBLL.UpdateEstadoEntrega(docentry, jsonData, ref response);
+                            docentry = Grid0.DataTable.GetInt("DocEntry", row);
+                            entrega = Grid0.DataTable.GetString("N° Entrega", row);
+                            LineId = Grid0.DataTable.GetString("LineId", row);
+                            NumDespacho = Grid0.DataTable.GetString("ORDENITEM", row);
+                            OrdenDespacho = Grid0.DataTable.GetString("CORRDESPACHO", row);
+                            string DocEntryCabecera = Grid0.DataTable.GetString("DocEntryCabecera", row);
+
+                            EstadoDespachoVolverProgramar obj = new EstadoDespachoVolverProgramar();
+                            obj = AsignaObjetoDespachoSinProgramar(estado, ocurrencia);
+                            dynamic jsonData = JsonConvert.SerializeObject(obj);
+                            response = string.Empty;
+
+
+                            using (EntregaBLL entregaBLL = new EntregaBLL())
+                            {
+                                ActualizoRegistro = entregaBLL.UpdateEstadoEntrega(docentry, jsonData, ref response);
+                            }
+
+                            if (ActualizoRegistro)
+                            {
+                                RutaTransportista1EstadoCabecera ActualizarEstadoObj = new RutaTransportista1EstadoCabecera();
+                                ActualizarEstadoObj = ActualizarEstadoObjetoDespachoCabecera(DocEntryCabecera, LineId, estado, idOcurrencia);
+                                dynamic jsonDataUpdate = JsonConvert.SerializeObject(ActualizarEstadoObj);
+
+                                EntregaDAL.UpdateEstadoEntregaDRT1(DocEntryCabecera, jsonDataUpdate);
+
+                            }
+                            else
+                            {
+                                Sb1Messages.ShowError("Registro: " + entrega + " No se pudo actualizar " + response);
+                            }
+                        }
+                        else if (ComboBox2.Value == "67")
+                        {
+                            docentry = Grid0.DataTable.GetInt("DocEntry", row);
+                            entrega = Grid0.DataTable.GetString("N° Entrega", row);
+                            LineId = Grid0.DataTable.GetString("LineId", row);
+
+                            string DocEntryCabecera = Grid0.DataTable.GetString("DocEntryCabecera", row);
+
+                            EstadoDespachoVolverProgramar obj = new EstadoDespachoVolverProgramar();
+                            obj = AsignaObjetoDespachoSinProgramar(estado, ocurrencia);
+                            dynamic jsonData = JsonConvert.SerializeObject(obj);
+                            response = string.Empty;
+
+                            using (EntregaBLL entregaBLL = new EntregaBLL())
+                            {
+                                ActualizoRegistro = entregaBLL.UpdateEstadoSLD(docentry, jsonData, ref response);
+                            }
+
+                            if (ActualizoRegistro)
+                            {
+                                RutaTransportista1EstadoCabecera ActualizarEstadoObj = new RutaTransportista1EstadoCabecera();
+                                ActualizarEstadoObj = ActualizarEstadoObjetoDespachoCabecera(DocEntryCabecera, LineId, estado, idOcurrencia);
+                                dynamic jsonDataUpdate = JsonConvert.SerializeObject(ActualizarEstadoObj);
+
+                                EntregaDAL.UpdateEstadoEntregaDRT1(DocEntryCabecera, jsonDataUpdate);
+
+                            }
+                            else
+                            {
+                                Sb1Messages.ShowError("Registro: " + entrega + " No se pudo actualizar " + response);
+                            }
                         }
 
-                        if (ActualizoRegistro)
-                        {
-                            RutaTransportista1EstadoCabecera ActualizarEstadoObj = new RutaTransportista1EstadoCabecera();
-                            ActualizarEstadoObj = ActualizarEstadoObjetoDespachoCabecera(DocEntryCabecera, LineId, estado, idOcurrencia);
-                            dynamic jsonDataUpdate = JsonConvert.SerializeObject(ActualizarEstadoObj);
-
-                            EntregaDAL.UpdateEstadoEntregaDRT1(DocEntryCabecera, jsonDataUpdate);
-
-                            //HistoricoDespachos objHistorico = new HistoricoDespachos();
-                            //objHistorico = AsignaDatosObject(docentry, NumDespacho.ToString(), estado, OrdenDespacho, fecha, Chofer, NombreChofer, "", "", ocurrencia, Sb1Globals.UserName);
-                            //dynamic jsonHist = JsonConvert.SerializeObject(objHistorico);
-                            //string rpta = "";
-                            //EntregaDAL.GrabarHistorial(jsonHist, out rpta);
-                            //Sb1Messages.ShowMessage("Registro: " + entrega + " Actualizado");
-
-                        }
-                        else
-                        {
-                            Sb1Messages.ShowError("Registro: " + entrega + " No se pudo actualizar " + response);
-                        }
                     }
                 }
                 Button0.Item.Click();
@@ -1075,5 +1148,8 @@ namespace Vistony.Distribucion.Win.Formularios
 #endif
 
         }
+
+        private SAPbouiCOM.StaticText StaticText7;
+        private SAPbouiCOM.ComboBox ComboBox2;
     }
 }

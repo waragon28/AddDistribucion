@@ -37,6 +37,10 @@
       <HintPath>..\..\..\Framework\DLL\Forxap.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.DAL\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="SAPBusinessOneSDK, Version=1.0.0.1, Culture=neutral, PublicKeyToken=c7c3cb60e45d119f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\SAPBusinessOneSDK\v4.0_1.0.0.1__c7c3cb60e45d119f\SAPBusinessOneSDK.dll</HintPath>

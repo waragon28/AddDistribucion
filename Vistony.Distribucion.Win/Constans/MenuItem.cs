@@ -17,6 +17,8 @@ namespace Vistony.Distribucion.Constans
         public const string dis_Andenes = "disdef006";
         public const string dis_sld = "dis_sld";
         public const string dis_CodSld = "dis_ConSld";
+        public const string dis_Seguisld = "dis_Seguisld";
+        
         public const string dis_ActualizarImei = "dis_AIMEI";
         public const string dis_UpdateUbi = "dis_UPDATEUBI";
         public const string dis_PuntoEmiUsu = "dis_PuntoEmiUsu";
