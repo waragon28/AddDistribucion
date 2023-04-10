@@ -47,7 +47,6 @@ namespace Vistony.Distribucion.DAL
 
                 if (udt.Columns.Count == 0)
                 {
-
                     colItems.Add("Marca", BoFieldsType.ft_AlphaNumeric);
                     colItems.Add("DocEntry", BoFieldsType.ft_AlphaNumeric);
                     colItems.Add("Entrega", BoFieldsType.ft_AlphaNumeric);
@@ -64,12 +63,11 @@ namespace Vistony.Distribucion.DAL
                     colItems.Add("INDIC", BoFieldsType.ft_AlphaNumeric);
                     colItems.Add("Latitude", BoFieldsType.ft_AlphaNumeric);
                     colItems.Add("Longitude", BoFieldsType.ft_AlphaNumeric);
+                    colItems.Add("Kilometraje", BoFieldsType.ft_AlphaNumeric);
                 }
-                // Define las coordenadas de inicio y fin
-
                 int a = udt.Rows.Count;
                 if (oMatrix.RowCount > 0)
-                    
+                    a = udt.Rows.Count;
 
                 for (int oRow = 0; oRow < exp.Rows.Count; oRow++)
                 {
@@ -119,6 +117,25 @@ namespace Vistony.Distribucion.DAL
 
 
                 throw;
+            }
+
+        }
+
+        public void RutaMasCortaAPI_GOOGLE(string origen, List<string> destinos)
+        {
+            // Define los parámetros de la solicitud HTTP
+            var claveAPI = "AIzaSyBDbOiBGhKP8rjixiTEaNdBwd23iOFe7YM";//API DE GOOGLE
+            var unidades = "metric"; // utilizar unidades métricas (metros y segundos)
+            
+            // Crea una lista para almacenar los resultados de la solicitud HTTP
+            var resultados = new List<dynamic>();
+
+            // Envía solicitudes HTTP para cada destino y almacena los resultados
+            foreach (var destino in destinos)
+            {
+                // Construye la URL de la solicitud HTTP
+                var url = $"https://maps.googleapis.com/maps/api/directions/json?origin={origen}&destination={destino}&key={claveAPI}&units={unidades}";
+
             }
 
         }

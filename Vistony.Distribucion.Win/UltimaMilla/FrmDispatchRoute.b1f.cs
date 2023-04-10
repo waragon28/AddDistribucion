@@ -217,13 +217,14 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                                 oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_VehiculeCode", 0));
 
                             UpdateEntregaDespacho objDespacho = new UpdateEntregaDespacho();
-                            objDespacho = GetObjDespacho(Vehiculorecordset.Fields.Item("U_SYP_VEPL").Value.ToString(),
-                                                         Vehiculorecordset.Fields.Item("U_SYP_VEMA").Value.ToString(),
-                                                         Conductorrecordset.Fields.Item("U_SYP_CHLI").Value.ToString(),
-                                                         Conductorrecordset.Fields.Item("Name").Value.ToString(),
-                                                         oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DocDate", 0),
-                                                         oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantCode", 0),
-                                                         oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantName", 0));
+                            objDespacho = GetObjDespacho( Vehiculorecordset.Fields.Item("U_SYP_VEPL").Value.ToString(),
+                                                          Vehiculorecordset.Fields.Item("U_SYP_VEMA").Value.ToString(),
+                                                          Conductorrecordset.Fields.Item("U_SYP_CHLI").Value.ToString(),
+                                                          Conductorrecordset.Fields.Item("Name").Value.ToString(),
+                                                          oForm.GetEditText("Item_25").ToString(),
+                                                          oForm.GetEditText("Item_5").ToString(),
+                                                          oForm.GetEditText("Item_15").ToString()
+                                                         );
 
                             dynamic objDespachoJson = JsonConvert.SerializeObject(objDespacho);
 
@@ -362,7 +363,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                 UpdateEstadoDespacho objDespacho = new UpdateEstadoDespacho();
                 if (oDBDataSource.GetString("U_Delivered", nRow)!="P")
                 {
-                    Sb1Messages.ShowWarning("No se puede Eliminar el registro");
+                    Sb1Messages.ShowWarning("Para esta opción es necesario que el documento este en Programado");
                     objDespacho = null;
                     BubbleEvent = false;
                 }
@@ -405,6 +406,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                         RegistrosProgramdos += 1;
                     }
                 }
+
                 if (oDBDataSource.Size== RegistrosProgramdos)
                 {
                     var Menssage = Sb1Messages.ShowMessageBox("Esta seguro de Cancelar la ruta de despacho.\n recordar que los documentos pasaran a estado Volver a programar");
@@ -419,10 +421,11 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                         Cancelar = "";
                         BubbleEvent = false;
                     }
+
                 }
                 else
                 {
-                    Sb1Messages.ShowWarning("No se puede Cancelar el registro");
+                    Sb1Messages.ShowWarning("Para esta Opcion es necesario que todos los documentos esten en Programados");
                     Cancelar = "";
                     BubbleEvent = false;
                 }

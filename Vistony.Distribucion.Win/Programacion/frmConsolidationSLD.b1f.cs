@@ -37,6 +37,7 @@ namespace Vistony.Distribucion.Win.Programacion
             this.EditText2.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText2_KeyDownAfter);
             this.StaticText3 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_8").Specific));
             this.Grid0 = ((SAPbouiCOM.Grid)(this.GetItem("Item_9").Specific));
+            this.Grid0.ClickBefore += new SAPbouiCOM._IGridEvents_ClickBeforeEventHandler(this.Grid0_ClickBefore);
             this.Grid0.ClickAfter += new SAPbouiCOM._IGridEvents_ClickAfterEventHandler(this.Grid0_ClickAfter);
             this.Grid0.LinkPressedAfter += new SAPbouiCOM._IGridEvents_LinkPressedAfterEventHandler(this.Grid0_LinkPressedAfter);
             this.Button0 = ((SAPbouiCOM.Button)(this.GetItem("Item_10").Specific));
@@ -486,7 +487,7 @@ namespace Vistony.Distribucion.Win.Programacion
             return ret;
         }
 
-        private void Grid0_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, bool BubbleEvent)
+        private void Grid0_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal,out bool BubbleEvent)
         {
             BubbleEvent = true;
 

@@ -1,0 +1,1342 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UltimaMilla</name>
+    </assembly>
+    <members>
+        <member name="T:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States">
+            <summary>
+              Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.ResourceManager">
+            <summary>
+              Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Culture">
+            <summary>
+              Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.AddonName">
+            <summary>
+              Busca una cadena traducida similar a Addon Vistony Distribution.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.FinishLoading">
+            <summary>
+              Busca una cadena traducida similar a Load Finished ....
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message001">
+            <summary>
+              Busca una cadena traducida similar a Starting Menu Load....
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message003">
+            <summary>
+              Busca una cadena traducida similar a Error Loading Menu.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message100">
+            <summary>
+              Busca una cadena traducida similar a Select date from.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message101">
+            <summary>
+              Busca una cadena traducida similar a Select the date until.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message102">
+            <summary>
+              Busca una cadena traducida similar a Select Worker.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message103">
+            <summary>
+              Busca una cadena traducida similar a Select State.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message104">
+            <summary>
+              Busca una cadena traducida similar a Select Business Unit.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message105">
+            <summary>
+              Busca una cadena traducida similar a Select Vendor Code.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message120">
+            <summary>
+              Busca una cadena traducida similar a Date From cannot be less than : {0}.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message122">
+            <summary>
+              Busca una cadena traducida similar a Next &gt;.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message123">
+            <summary>
+              Busca una cadena traducida similar a To finalize.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message208">
+            <summary>
+              Busca una cadena traducida similar a Dispatch is already consolidated.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message209">
+            <summary>
+              Busca una cadena traducida similar a Document : {0} was consolidated successfully.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message210">
+            <summary>
+              Busca una cadena traducida similar a Document : {0} is being processed.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message211">
+            <summary>
+              Busca una cadena traducida similar a Document: {0} assigned to Driver: {1}.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message212">
+            <summary>
+              Busca una cadena traducida similar a Step {0} of {1}.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message301">
+            <summary>
+              Busca una cadena traducida similar a Did not mark any record.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message302">
+            <summary>
+              Busca una cadena traducida similar a Error in set date range.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message303">
+            <summary>
+              Busca una cadena traducida similar a Select Driver.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message304">
+            <summary>
+              Busca una cadena traducida similar a Select Plate.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message305">
+            <summary>
+              Busca una cadena traducida similar a Select Helper.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message306">
+            <summary>
+              Busca una cadena traducida similar a Select Date.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message307">
+            <summary>
+              Busca una cadena traducida similar a Are you sure to schedule the marked documents?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message308">
+            <summary>
+              Busca una cadena traducida similar a Completed Driver Assignment.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message309">
+            <summary>
+              Busca una cadena traducida similar a Are you sure to change the dispatch status for the marked documents?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message310">
+            <summary>
+              Busca una cadena traducida similar a finished process.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message311">
+            <summary>
+              Busca una cadena traducida similar a Are you sure to change the dispatch status to Delivered for the marked documents?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message312">
+            <summary>
+              Busca una cadena traducida similar a You must select a type of Occurrence.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message313">
+            <summary>
+              Busca una cadena traducida similar a You must select a type of State.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message314">
+            <summary>
+              Busca una cadena traducida similar a You must select an option to program.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message315">
+            <summary>
+              Busca una cadena traducida similar a You must select date to program.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message316">
+            <summary>
+              Busca una cadena traducida similar a Select a type of consolidation.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message317">
+            <summary>
+              Busca una cadena traducida similar a Are you sure to save {0} to the marked records?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message318">
+            <summary>
+              Busca una cadena traducida similar a Document: {0} Could not update {1}.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message319">
+            <summary>
+              Busca una cadena traducida similar a Are you sure to change the dispatch status to Scheduled for the marked documents?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message320">
+            <summary>
+              Busca una cadena traducida similar a Adding Dispatch Sheet Record.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message321">
+            <summary>
+              Busca una cadena traducida similar a Are you sure to change the dispatch status to Scheduled for the marked documents?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message322">
+            <summary>
+              Busca una cadena traducida similar a Are you sure to change the dispatch status to Scheduled for the marked documents?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message324">
+            <summary>
+              Busca una cadena traducida similar a The Dispatch Sheet was created for the driver &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message325">
+            <summary>
+              Busca una cadena traducida similar a Updating Dispatch Tracking.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message326">
+            <summary>
+              Busca una cadena traducida similar a Updated Dispatch Tracking.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message327">
+            <summary>
+              Busca una cadena traducida similar a Select at least 1 record.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message328">
+            <summary>
+              Busca una cadena traducida similar a Select a State.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message329">
+            <summary>
+              Busca una cadena traducida similar a The Order is already Scheduled.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message330">
+            <summary>
+              Busca una cadena traducida similar a Select an Occurrence.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message331">
+            <summary>
+              Busca una cadena traducida similar a Wrong imei.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message332">
+            <summary>
+              Busca una cadena traducida similar a The Imei is assigned to another employee \n Do you want to update it ?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message333">
+            <summary>
+              Busca una cadena traducida similar a The IMEI was updated correctly.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.Message334">
+            <summary>
+              Busca una cadena traducida similar a Validating Data.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.MessageFinTracker">
+            <summary>
+              Busca una cadena traducida similar a Tracker Upload Finished.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.MessageInicioTracker">
+            <summary>
+              Busca una cadena traducida similar a Starting Tracker Upload.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.NotRowFound">
+            <summary>
+              Busca una cadena traducida similar a No data found with the selected criteria.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.SAPNotRunning">
+            <summary>
+              Busca una cadena traducida similar a SAP Business One is not running.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.StartLoading">
+            <summary>
+              Busca una cadena traducida similar a Starting Charge ....
+            </summary>
+        </member>
+        <member name="T:Vistony.Distribucion.Win.Constans.Idioma.Frances">
+            <summary>
+              Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.ResourceManager">
+            <summary>
+              Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Culture">
+            <summary>
+              Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.AddonName">
+            <summary>
+              Busca una cadena traducida similar a Vistony Complément de distribution.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.FinishLoading">
+            <summary>
+              Busca una cadena traducida similar a Chargement terminé ....
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message001">
+            <summary>
+              Busca una cadena traducida similar a Chargement du menu de démarrage....
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message003">
+            <summary>
+              Busca una cadena traducida similar a Erreur lors du chargement du menu.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message100">
+            <summary>
+              Busca una cadena traducida similar a Sélectionnez la date de.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message101">
+            <summary>
+              Busca una cadena traducida similar a Sélectionnez la date jusqu&apos;au.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message102">
+            <summary>
+              Busca una cadena traducida similar a Sélectionnez le travailleur.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message103">
+            <summary>
+              Busca una cadena traducida similar a Sélectionnez l&apos;état.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message104">
+            <summary>
+              Busca una cadena traducida similar a Sélectionnez l&apos;unité commerciale.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message105">
+            <summary>
+              Busca una cadena traducida similar a Sélectionnez le code fournisseur.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message120">
+            <summary>
+              Busca una cadena traducida similar a La date de ne peut pas être inférieure à : {0}.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message122">
+            <summary>
+              Busca una cadena traducida similar a Suivant &gt;.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message123">
+            <summary>
+              Busca una cadena traducida similar a Finaliser.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message208">
+            <summary>
+              Busca una cadena traducida similar a L&apos;expédition est déjà consolidée.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message209">
+            <summary>
+              Busca una cadena traducida similar a Document : {0} a été consolidé avec succès.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message210">
+            <summary>
+              Busca una cadena traducida similar a Document : {0} est en cours de traitement.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message211">
+            <summary>
+              Busca una cadena traducida similar a Document : {0} attribué au conducteur : {1}.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message212">
+            <summary>
+              Busca una cadena traducida similar a Étape {0} sur {1}.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message301">
+            <summary>
+              Busca una cadena traducida similar a N&apos;a marqué aucun enregistrement.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message302">
+            <summary>
+              Busca una cadena traducida similar a Erreur dans la plage de dates définie.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message303">
+            <summary>
+              Busca una cadena traducida similar a Sélectionnez le pilote.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message304">
+            <summary>
+              Busca una cadena traducida similar a Sélectionner la plaque.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message305">
+            <summary>
+              Busca una cadena traducida similar a Sélectionnez l&apos;assistant.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message306">
+            <summary>
+              Busca una cadena traducida similar a Sélectionner une date.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message307">
+            <summary>
+              Busca una cadena traducida similar a Êtes-vous sûr de planifier les documents marqués ?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message308">
+            <summary>
+              Busca una cadena traducida similar a Affectation de conducteur terminée.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message309">
+            <summary>
+              Busca una cadena traducida similar a Voulez-vous vraiment modifier le statut d&apos;envoi des documents marqués ?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message310">
+            <summary>
+              Busca una cadena traducida similar a processus terminé.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message311">
+            <summary>
+              Busca una cadena traducida similar a Êtes-vous sûr de changer le statut d&apos;expédition en Livré pour les documents marqués ?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message312">
+            <summary>
+              Busca una cadena traducida similar a Vous devez sélectionner un type d&apos;Occurrence.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message313">
+            <summary>
+              Busca una cadena traducida similar a Vous devez sélectionner un type d&apos;état.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message314">
+            <summary>
+              Busca una cadena traducida similar a Vous devez sélectionner une option pour programmer.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message315">
+            <summary>
+              Busca una cadena traducida similar a Vous devez sélectionner la date à programmer.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message316">
+            <summary>
+              Busca una cadena traducida similar a Sélectionnez un type de consolidation.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message317">
+            <summary>
+              Busca una cadena traducida similar a Êtes-vous sûr d&apos;enregistrer {0} dans les enregistrements marqués ?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message318">
+            <summary>
+              Busca una cadena traducida similar a Document : {0} Impossible de mettre à jour {1}.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message319">
+            <summary>
+              Busca una cadena traducida similar a Êtes-vous sûr de changer le statut d&apos;envoi en Planifié pour les documents marqués ?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message320">
+            <summary>
+              Busca una cadena traducida similar a Ajout d&apos;un enregistrement de feuille d&apos;expédition.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message321">
+            <summary>
+              Busca una cadena traducida similar a Êtes-vous sûr de changer le statut d&apos;envoi en Planifié pour les documents marqués ?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message322">
+            <summary>
+              Busca una cadena traducida similar a Êtes-vous sûr de changer le statut d&apos;envoi en Planifié pour les documents marqués ?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message324">
+            <summary>
+              Busca una cadena traducida similar a La feuille de répartition a été créée pour le conducteur &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message325">
+            <summary>
+              Busca una cadena traducida similar a Mise à jour du suivi des expéditions.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message326">
+            <summary>
+              Busca una cadena traducida similar a Mise à jour du suivi des envois.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message327">
+            <summary>
+              Busca una cadena traducida similar a Sélectionnez au moins 1 enregistrement.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message328">
+            <summary>
+              Busca una cadena traducida similar a Sélectionner un état.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message329">
+            <summary>
+              Busca una cadena traducida similar a La commande est déjà planifiée.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message330">
+            <summary>
+              Busca una cadena traducida similar a Sélectionnez une occurrence.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message331">
+            <summary>
+              Busca una cadena traducida similar a Mauvais imei.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message332">
+            <summary>
+              Busca una cadena traducida similar a L&apos;Imei est attribué à un autre employé \n Voulez-vous le mettre à jour ?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message333">
+            <summary>
+              Busca una cadena traducida similar a L&apos;IMEI a été mis à jour correctement.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.Message334">
+            <summary>
+              Busca una cadena traducida similar a Validation des données.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.MessageFinTracker">
+            <summary>
+              Busca una cadena traducida similar a Chargement du tracker terminé.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.MessageInicioTracker">
+            <summary>
+              Busca una cadena traducida similar a Démarrage du téléchargement du tracker.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.NotRowFound">
+            <summary>
+              Busca una cadena traducida similar a Aucune donnée trouvée avec les critères sélectionnés.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.SAPNotRunning">
+            <summary>
+              Busca una cadena traducida similar a SAP Business One n&apos;est pas en cours d&apos;exécution.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Frances.StartLoading">
+            <summary>
+              Busca una cadena traducida similar a Frais de départ ....
+            </summary>
+        </member>
+        <member name="T:Vistony.Distribucion.Win.Constans.Idioma.Spanish">
+            <summary>
+              Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.ResourceManager">
+            <summary>
+              Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Culture">
+            <summary>
+              Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.AddonName">
+            <summary>
+              Busca una cadena traducida similar a Vistony Addon de Distribución.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.FinishLoading">
+            <summary>
+              Busca una cadena traducida similar a Carga Finalizada ....
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message001">
+            <summary>
+              Busca una cadena traducida similar a Iniciando Carga de Menu....
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message003">
+            <summary>
+              Busca una cadena traducida similar a Error al Cargar el Menu.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message100">
+            <summary>
+              Busca una cadena traducida similar a Seleccione la fecha desde.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message101">
+            <summary>
+              Busca una cadena traducida similar a Seleccione la fecha hasta.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message102">
+            <summary>
+              Busca una cadena traducida similar a Seleccione Trabajador.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message103">
+            <summary>
+              Busca una cadena traducida similar a Seleccione Estado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message104">
+            <summary>
+              Busca una cadena traducida similar a Seleccione Unidad de negocio.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message105">
+            <summary>
+              Busca una cadena traducida similar a Seleccione Código de Vendedor.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message120">
+            <summary>
+              Busca una cadena traducida similar a Fecha Desde no puede ser inferior a : {0}.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message122">
+            <summary>
+              Busca una cadena traducida similar a Siguiente &gt;.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message123">
+            <summary>
+              Busca una cadena traducida similar a Finalizar.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message208">
+            <summary>
+              Busca una cadena traducida similar a Despacho ya se encuentra consolidado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message209">
+            <summary>
+              Busca una cadena traducida similar a Documento : {0}  fue consolidado satisfactoriamente.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message210">
+            <summary>
+              Busca una cadena traducida similar a Documento : {0} se esta procesando.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message211">
+            <summary>
+              Busca una cadena traducida similar a Documento :  {0} asignado al  Chofer:  {1}.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message212">
+            <summary>
+              Busca una cadena traducida similar a Paso  {0} de {1}.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message301">
+            <summary>
+              Busca una cadena traducida similar a No Marcó ningún registro.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message302">
+            <summary>
+              Busca una cadena traducida similar a Error en rango de fechas establecido.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message303">
+            <summary>
+              Busca una cadena traducida similar a Seleccione Chofer.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message304">
+            <summary>
+              Busca una cadena traducida similar a Seleccione Placa.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message305">
+            <summary>
+              Busca una cadena traducida similar a Seleccione Ayudante.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message306">
+            <summary>
+              Busca una cadena traducida similar a Seleccione Fecha.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message307">
+            <summary>
+              Busca una cadena traducida similar a ¿Seguro de hacer la programación de los documentos marcados?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message308">
+            <summary>
+              Busca una cadena traducida similar a Asignación de Chofer Culminada.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message309">
+            <summary>
+              Busca una cadena traducida similar a ¿Seguro de cambiar el estado de despacho para los documentos marcados?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message310">
+            <summary>
+              Busca una cadena traducida similar a Proceso Culminado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message311">
+            <summary>
+              Busca una cadena traducida similar a ¿Seguro de cambiar el estado de despacho a Entregado para los documentos marcados?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message312">
+            <summary>
+              Busca una cadena traducida similar a Debe seleccionar un tipo de Ocurrencia.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message313">
+            <summary>
+              Busca una cadena traducida similar a Debe seleccionar un tipo de Estado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message314">
+            <summary>
+              Busca una cadena traducida similar a Debe seleccionar una opción a programar.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message315">
+            <summary>
+              Busca una cadena traducida similar a Debe seleccionar data a programar.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message316">
+            <summary>
+              Busca una cadena traducida similar a Seleccione un tipo de consolidado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message317">
+            <summary>
+              Busca una cadena traducida similar a ¿Está Seguro de grabar al {0} a los registros marcados?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message318">
+            <summary>
+              Busca una cadena traducida similar a Documento: {0}   No se pudo actualizar {1}.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message319">
+            <summary>
+              Busca una cadena traducida similar a ¿Seguro de cambiar el estado de despacho a Programado para los documentos marcados?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message320">
+            <summary>
+              Busca una cadena traducida similar a Agregando Registro de Hoja de despacho.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message321">
+            <summary>
+              Busca una cadena traducida similar a ¿Seguro de cambiar el estado de despacho a Programado para los documentos marcados?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message322">
+            <summary>
+              Busca una cadena traducida similar a ¿Está seguro de cambiar el estado de despacho a Programado para los documentos marcados?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message324">
+            <summary>
+              Busca una cadena traducida similar a Se creo la Hoja de despacho para el chofer &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message325">
+            <summary>
+              Busca una cadena traducida similar a Acualizando Seguimiento de Despacho.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message326">
+            <summary>
+              Busca una cadena traducida similar a Seguimiento de Despacho Actualizados.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message327">
+            <summary>
+              Busca una cadena traducida similar a Selecciona minimo 1 registro.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message328">
+            <summary>
+              Busca una cadena traducida similar a Selecciona un Estado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message329">
+            <summary>
+              Busca una cadena traducida similar a El Pedido ya se encuentra Programado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message330">
+            <summary>
+              Busca una cadena traducida similar a Selecciona una Ocurrencia.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message331">
+            <summary>
+              Busca una cadena traducida similar a Imei Incorrecto.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message332">
+            <summary>
+              Busca una cadena traducida similar a El Imei Esta Asignado a otro empleado \n ¿ Desea Actualizarlo ?.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message333">
+            <summary>
+              Busca una cadena traducida similar a Se Actualizo Correctamente el IMEI.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message334">
+            <summary>
+              Busca una cadena traducida similar a Validando Datos.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message335">
+            <summary>
+              Busca una cadena traducida similar a Validacion de Procedimientos Almacenados Finalizado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.Message336">
+            <summary>
+              Busca una cadena traducida similar a Validando Procedimientos Almacenados.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.MessageFinTracker">
+            <summary>
+              Busca una cadena traducida similar a Carga de Tracker Finalizado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.MessageInicioTracker">
+            <summary>
+              Busca una cadena traducida similar a Iniciando Carga de Tracker.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.NotRowFound">
+            <summary>
+              Busca una cadena traducida similar a No se encontraron datos con los criterios seleccionados.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.SAPNotRunning">
+            <summary>
+              Busca una cadena traducida similar a SAP Business One, no se encuentra ejecutandose.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Constans.Idioma.Spanish.StartLoading">
+            <summary>
+              Busca una cadena traducida similar a Cargando.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Mantenimiento.FrmActualizarIMEI.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Mantenimiento.FrmActualizarIMEI.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Mantenimiento.FrmPuntoEmisionUsuario.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Mantenimiento.FrmPuntoEmisionUsuario.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationSLD.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationSLD.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationSLDAsignar.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationSLDAsignar.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationV2.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationV2.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingHandbook.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingHandbook.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingHandbookAsignar.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingHandbookAsignar.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingSLD.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingSLD.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingSLDAsignar.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingSLDAsignar.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmCambiarEstadoDespacho.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmCambiarEstadoDespacho.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.FrmDispatchRoute.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.FrmDispatchRoute.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmDispatchTruckingSLD.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmDispatchTruckingSLD.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmDispatchTruckingVentas.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmDispatchTruckingVentas.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmDispatchTrucking.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmDispatchTrucking.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmUpdateUbigeo.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmUpdateUbigeo.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="F:Vistony.Distribucion.Win.UltimaMilla.MapaUltimamILLA.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.MapaUltimamILLA.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.MapaUltimamILLA.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmProgramacionAsignar.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmProgramacionAsignar.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmPrograming.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmPrograming.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmEstadoDespachos.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmEstadoDespachos.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmOcurrenciaDespacho.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmOcurrenciaDespacho.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmConsolidation.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmConsolidation.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmConsolidation.OnShowDatosConsolidadar">
+            <summary>
+            Muestra la ventana para seleccionar el tipo de consolidado y consolidar las Guías  
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmConsolidation.UpdateEstadoConsolidadoEntrega(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="tipoConsolidado"></param>
+            <param name="fechaConsolidado"></param>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.ApplicationEvent.SB1_Application_AppEvent(SAPbouiCOM.BoAppEventTypes)">
+            <summary>
+            
+            </summary>
+            <param name="EventType"></param>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Asistentes.BaseWizard.PaneLevel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Asistentes.BaseWizard.PaneMax">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Asistentes.BaseWizard.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Asistentes.BaseWizard.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Asistentes.wzdProgramacion.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Asistentes.wzdProgramacion.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Asistentes.wzdProgramacion.LoadResumen(System.Int32)">
+            <summary>
+            Carga el resumen de la programación realizada para los multiples 
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Sb1Connection.ConnectToSAP">
+            <summary>
+            Conecta el AddOn a la instancia de SAP que se encuentra cargada (desarrollo) o en la instancia
+            que lo invoca en Producción.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.SB1_FormMenuEvent.SB1_Application_FormMenuEvent(SAPbouiCOM.MenuEvent@,System.Boolean@)">
+            <summary>
+            
+            </summary>
+            <param name="pVal"></param>
+            <param name="BubbleEvent"></param>
+        </member>
+        <member name="T:Vistony.Distribucion.Win.Sb1Globals">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Vistony.Distribucion.Win.Sb1Globals.oCompany">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Vistony.Distribucion.Win.Sb1Globals.oCompanyService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Vistony.Distribucion.Win.Sb1Globals.DbServerType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Vistony.Distribucion.Win.Sb1Globals.CompanyName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Vistony.Distribucion.Win.Sb1Globals.CompanyDB">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Vistony.Distribucion.Win.Sb1Globals.Autorizacion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Vistony.Distribucion.Win.Sb1Globals.oForm">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Vistony.Distribucion.Win.Sb1Globals.UserSignature">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Vistony.Distribucion.Win.Sb1Globals.UserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <!-- El comentario XML con formato incorrecto se ha omitido para el miembro "M:Vistony.Distribucion.Win.SB1_MainMenuEvent.SB1_Application_MainMenuEvent(SAPbouiCOM.MenuEvent@,System.Boolean@)" -->
+        <member name="M:Vistony.Distribucion.Win.SB1_MainMenuEvent.onShowProgramacionConsolSeguimientoDespachoSLD">
+            fin del  metodo
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Sb1MetaData.AddMenusEnglisUnitedStates">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Sb1MetaData.AddUserProcedure">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Sb1MetaData.AddIcon">
+            <summary>
+            ddd
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Program.Main(System.String[])">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:Vistony.Distribucion.Win.Properties.Resources">
+            <summary>
+              Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Properties.Resources.ResourceManager">
+            <summary>
+              Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Properties.Resources.Culture">
+            <summary>
+              Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Properties.Resources.String1">
+            <summary>
+              Busca una cadena traducida similar a 1.
+            </summary>
+        </member>
+        <member name="P:Vistony.Distribucion.Win.Properties.Resources.String2">
+            <summary>
+              Busca una cadena traducida similar a 2.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Utils.LoadMiscelaneo(SAPbouiCOM.ComboBox@,System.String)">
+            <summary>
+            /
+            </summary>
+            <param name="oComboBox"></param>
+            <param name="tableName"></param>
+        </member>
+        <!-- El comentario XML con formato incorrecto se ha omitido para el miembro "M:Vistony.Distribucion.Win.Utils.LoadMiscelaneo(SAPbouiCOM.Column@,System.String)" -->
+        <member name="M:Vistony.Distribucion.Win.Utils.AssignLineNro(SAPbouiCOM.Form@,SAPbouiCOM.Grid@,System.Double@)">
+            <summary>
+            asigna el numero de registro dentro del Grid en la primera columna pone la númeracion
+            verifica ´primero que existan registros
+            </summary>
+            <param name="oGrid"></param>
+            <param name="oForm"></param>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Utils.CheckRowsEx(SAPbouiCOM.Form,SAPbouiCOM.Grid,System.Double@,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="oForm"></param>
+            <param name="oGrid"></param>
+            <param name="totalWeight"></param>
+            <param name="rowsSelected"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Utils.CheckRows(SAPbouiCOM.Form,SAPbouiCOM.Grid,System.Double@,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="oForm"></param>
+            <param name="oGrid"></param>
+            <param name="totalWeight"></param>
+            <param name="rowsSelected"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Vistony.Distribucion.Constans.AddonWinForms.frmPuntoEmisionUsuario">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Forxap.Banco.UI.Win.Configuracion.frmBase.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Forxap.Banco.UI.Win.Configuracion.frmBase.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+    </members>
+</doc>
