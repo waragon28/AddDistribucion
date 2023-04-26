@@ -55,6 +55,7 @@
       <HintPath>..\packages\GoogleMapsApi.1.2.1\lib\netstandard2.0\GoogleMapsApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="NetTopologySuite, Version=1.13.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NetTopologySuite.1.13.2\lib\net403-client\NetTopologySuite.dll</HintPath>
       <Private>True</Private>

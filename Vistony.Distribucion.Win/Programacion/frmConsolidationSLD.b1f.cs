@@ -9,10 +9,12 @@ using Vistony.Distribucion.BLL;
 using Vistony.Distribucion.Constans;
 using Vistony.Distribucion.BO;
 using Newtonsoft.Json;
+using SAPbobsCOM;
+using SAPbouiCOM;
 
 namespace Vistony.Distribucion.Win.Programacion
 {
-    [FormAttribute("Vistony.Distribucion.Win.Programacion.frmConsolidationSLD", "Programacion/frmConsolidationSLD.b1f")]
+    [FormAttribute("frmConsoliSLD", "Programacion/frmConsolidationSLD.b1f")]
     class frmConsolidationSLD : UserFormBase
     {
         public frmConsolidationSLD()
@@ -20,67 +22,6 @@ namespace Vistony.Distribucion.Win.Programacion
         }
         public SAPbouiCOM.Form oForm;
         AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
-
-        /// <summary>
-        /// Initialize components. Called by framework after form created.
-        /// </summary>
-        public override void OnInitializeComponent()
-        {
-            this.StaticText0 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_0").Specific));
-            this.StaticText1 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_1").Specific));
-            this.StaticText2 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_2").Specific));
-            this.EditText0 = ((SAPbouiCOM.EditText)(this.GetItem("Item_3").Specific));
-            this.EditText1 = ((SAPbouiCOM.EditText)(this.GetItem("Item_4").Specific));
-            this.CheckBox0 = ((SAPbouiCOM.CheckBox)(this.GetItem("Item_5").Specific));
-            this.CheckBox1 = ((SAPbouiCOM.CheckBox)(this.GetItem("Item_6").Specific));
-            this.EditText2 = ((SAPbouiCOM.EditText)(this.GetItem("Item_7").Specific));
-            this.EditText2.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText2_KeyDownAfter);
-            this.StaticText3 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_8").Specific));
-            this.Grid0 = ((SAPbouiCOM.Grid)(this.GetItem("Item_9").Specific));
-            this.Grid0.ClickBefore += new SAPbouiCOM._IGridEvents_ClickBeforeEventHandler(this.Grid0_ClickBefore);
-            this.Grid0.ClickAfter += new SAPbouiCOM._IGridEvents_ClickAfterEventHandler(this.Grid0_ClickAfter);
-            this.Grid0.LinkPressedAfter += new SAPbouiCOM._IGridEvents_LinkPressedAfterEventHandler(this.Grid0_LinkPressedAfter);
-            this.Button0 = ((SAPbouiCOM.Button)(this.GetItem("Item_10").Specific));
-            this.Button0.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button0_ClickAfter);
-            this.Button1 = ((SAPbouiCOM.Button)(this.GetItem("Item_11").Specific));
-            this.Button2 = ((SAPbouiCOM.Button)(this.GetItem("Item_12").Specific));
-            this.Button2.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button2_ClickAfter);
-            this.EditText3 = ((SAPbouiCOM.EditText)(this.GetItem("Item_13").Specific));
-            this.EditText4 = ((SAPbouiCOM.EditText)(this.GetItem("Item_14").Specific));
-            this.StaticText4 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_15").Specific));
-            this.StaticText5 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_16").Specific));
-            this.StaticText6 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_17").Specific));
-            this.StaticText7 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_18").Specific));
-            this.StaticText8 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_19").Specific));
-            this.EditText5 = ((SAPbouiCOM.EditText)(this.GetItem("Item_20").Specific));
-            this.EditText5.ChooseFromListAfter += new SAPbouiCOM._IEditTextEvents_ChooseFromListAfterEventHandler(this.EditText5_ChooseFromListAfter);
-            this.EditText6 = ((SAPbouiCOM.EditText)(this.GetItem("Item_21").Specific));
-            this.EditText6.ChooseFromListAfter += new SAPbouiCOM._IEditTextEvents_ChooseFromListAfterEventHandler(this.EditText6_ChooseFromListAfter);
-            this.LinkedButton0 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_22").Specific));
-            this.LinkedButton1 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_23").Specific));
-            this.EditText7 = ((SAPbouiCOM.EditText)(this.GetItem("Item_24").Specific));
-            this.LinkedButton2 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_25").Specific));
-            this.OnCustomInitialize();
-
-        }
-
-        /// <summary>
-        /// Initialize form event. Called by framework before form creation.
-        /// </summary>
-        public override void OnInitializeFormEvents()
-        {
-            this.LoadAfter += new LoadAfterHandler(this.Form_LoadAfter);
-
-        }
-
-        private SAPbouiCOM.StaticText StaticText0;
-
-        private void OnCustomInitialize()
-        {
-            oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
-            oForm.ScreenCenter();
-            Grid0.AutoResizeColumns();
-        }
 
         private SAPbouiCOM.StaticText StaticText1;
         private SAPbouiCOM.StaticText StaticText2;
@@ -101,14 +42,75 @@ namespace Vistony.Distribucion.Win.Programacion
         private SAPbouiCOM.StaticText StaticText6;
         private SAPbouiCOM.StaticText StaticText7;
         private SAPbouiCOM.StaticText StaticText8;
+        private SAPbouiCOM.StaticText StaticText0;
         private SAPbouiCOM.EditText EditText5;
         private SAPbouiCOM.EditText EditText6;
+        /// <summary>
+        /// Initialize components. Called by framework after form created.
+        /// </summary>
+        public override void OnInitializeComponent()
+        {
+            this.StaticText0 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_0").Specific));
+            this.StaticText1 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_1").Specific));
+            this.StaticText2 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_2").Specific));
+            this.EditText0 = ((SAPbouiCOM.EditText)(this.GetItem("Item_3").Specific));
+            this.EditText1 = ((SAPbouiCOM.EditText)(this.GetItem("Item_4").Specific));
+            this.CheckBox0 = ((SAPbouiCOM.CheckBox)(this.GetItem("Item_5").Specific));
+            this.CheckBox1 = ((SAPbouiCOM.CheckBox)(this.GetItem("Item_6").Specific));
+            this.EditText2 = ((SAPbouiCOM.EditText)(this.GetItem("Item_7").Specific));
+            this.EditText2.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText2_KeyDownAfter);
+            this.StaticText3 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_8").Specific));
+            this.Grid0 = ((SAPbouiCOM.Grid)(this.GetItem("Item_9").Specific));
+            this.Grid0.ClickBefore += new SAPbouiCOM._IGridEvents_ClickBeforeEventHandler(this.Grid0_ClickBefore);
+            this.Grid0.ClickAfter += new SAPbouiCOM._IGridEvents_ClickAfterEventHandler(this.Grid0_ClickAfter);
+            this.Grid0.LinkPressedAfter += new SAPbouiCOM._IGridEvents_LinkPressedAfterEventHandler(this.Grid0_LinkPressedAfter);
+            this.Button0 = ((SAPbouiCOM.Button)(this.GetItem("Item_10").Specific));
+            this.Button0.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button0_ClickBefore);
+            this.Button0.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button0_ClickAfter);
+            this.Button1 = ((SAPbouiCOM.Button)(this.GetItem("Item_11").Specific));
+            this.Button2 = ((SAPbouiCOM.Button)(this.GetItem("Item_12").Specific));
+            this.Button2.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button2_ClickAfter);
+            this.EditText3 = ((SAPbouiCOM.EditText)(this.GetItem("Item_13").Specific));
+            this.EditText4 = ((SAPbouiCOM.EditText)(this.GetItem("Item_14").Specific));
+            this.StaticText4 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_15").Specific));
+            this.StaticText5 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_16").Specific));
+            this.StaticText6 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_17").Specific));
+            this.StaticText7 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_18").Specific));
+            this.StaticText8 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_19").Specific));
+            this.EditText5 = ((SAPbouiCOM.EditText)(this.GetItem("Item_20").Specific));
+            this.EditText5.ChooseFromListAfter += new SAPbouiCOM._IEditTextEvents_ChooseFromListAfterEventHandler(this.EditText5_ChooseFromListAfter);
+            this.EditText6 = ((SAPbouiCOM.EditText)(this.GetItem("Item_21").Specific));
+            this.EditText6.ChooseFromListAfter += new SAPbouiCOM._IEditTextEvents_ChooseFromListAfterEventHandler(this.EditText6_ChooseFromListAfter);
+            this.LinkedButton0 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_22").Specific));
+            this.LinkedButton1 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_23").Specific));
+            this.EditText7 = ((SAPbouiCOM.EditText)(this.GetItem("Item_24").Specific));
+            this.LinkedButton2 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_25").Specific));
+            this.Button3 = ((SAPbouiCOM.Button)(this.GetItem("Item_26").Specific));
+            this.Button3.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button3_ClickAfter);
+            this.OnCustomInitialize();
 
+        }
+
+        /// <summary>
+        /// Initialize form event. Called by framework before form creation.
+        /// </summary>
+        public override void OnInitializeFormEvents()
+        {
+            this.LoadAfter += new LoadAfterHandler(this.Form_LoadAfter);
+
+        }
+
+
+        private void OnCustomInitialize()
+        {
+            oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
+            oForm.ScreenCenter();
+            Grid0.AutoResizeColumns();
+        }
         private void Form_LoadAfter(SAPbouiCOM.SBOItemEventArg pVal)
         {
 
         }
-
         private void EditText5_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             SAPbouiCOM.SBOChooseFromListEventArg chooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
@@ -129,7 +131,6 @@ namespace Vistony.Distribucion.Win.Programacion
                 //Sb1Messages.ShowError(string.Format(ex.ToString()), SAPbouiCOM.BoMessageTime.bmt_Short);
             }
         }
-
         private void EditText6_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             SAPbouiCOM.SBOChooseFromListEventArg chooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
@@ -153,7 +154,7 @@ namespace Vistony.Distribucion.Win.Programacion
 
         private void Button0_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
-            Search(pVal);
+           Search(pVal);
         }
 
         private void Search(SAPbouiCOM.SBOItemEventArg pVal)
@@ -220,18 +221,15 @@ namespace Vistony.Distribucion.Win.Programacion
             Grid0.AssignLineNro();
             Grid0.Columns.Item(0).Type = SAPbouiCOM.BoGridColumnType.gct_CheckBox;
 
-#if AD_PE
+            Grid0.Columns.Item("DocNum").LinkedObjectType(Grid0, "DocNum", "1250000001");
+            Grid0.Columns.Item("DocEntry").LinkedObjectType(Grid0, "DocEntry", "1250000001");
 
-#else
-            Grid0.Columns.Item("DocNum").LinkedObjectType(Grid0, "DocNum", "67");
-            Grid0.Columns.Item("DocEntry").LinkedObjectType(Grid0, "DocEntry", "67");
-#endif
             Grid0.Columns.Item("DocEntry").TitleObject.Caption = "Nº Interno";
             Grid0.Columns.Item("DocNum").TitleObject.Caption = "Nº  Tranferencia";
             Grid0.Columns.Item("CardCode").TitleObject.Caption = "Cod. Cliente";
             Grid0.Columns.Item("CardName").TitleObject.Caption = "Nombre Cliente";
             Grid0.Columns.Item("Address").TitleObject.Caption = "Dirección";
-
+            Grid0.Columns.Item("Peso").RightJustified = true;
             // Grid0.Columns.Item("Docntry").Visible = false;
             Grid0.ReadOnlyColumns();
             Grid0.Columns.Item(0).Editable = true;
@@ -253,7 +251,7 @@ namespace Vistony.Distribucion.Win.Programacion
 
                 SAPbouiCOM.EditTextColumn col = null;
                 col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("DocNum")));
-                col.LinkedObjectType = "67";// muestra la flecha amariilla asociada al objeto pedidos  
+                col.LinkedObjectType = "1250000001";// muestra la flecha amariilla asociada al objeto pedidos  
             }
         }
 
@@ -265,7 +263,7 @@ namespace Vistony.Distribucion.Win.Programacion
 
                 SAPbouiCOM.EditTextColumn col = null;
                 col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("DocNum")));
-                col.LinkedObjectType = "67";// muestra la flecha amariilla asociada al objeto pedidos  
+                col.LinkedObjectType = "1250000001";// muestra la flecha amariilla asociada al objeto pedidos  
             }
         }
 
@@ -286,7 +284,7 @@ namespace Vistony.Distribucion.Win.Programacion
                 EditText7.Value = docEntry;
 
                 EditText7.Item.Click(SAPbouiCOM.BoCellClickType.ct_Regular);
-                LinkedButton2.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_StockTransfers;
+                LinkedButton2.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_StockTransfersRequest;
                 LinkedButton2.Item.Click(SAPbouiCOM.BoCellClickType.ct_Linked);
 
                 // quito por un instante el codigo de objeto al cual esta relacionado el linkedbutton
@@ -568,5 +566,96 @@ namespace Vistony.Distribucion.Win.Programacion
             }
         }
 
+        private void Button0_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
+        {
+            if (ValidacionCampos()==true)
+            {
+                BubbleEvent = true;
+            }
+            else
+            {
+                 BubbleEvent = false;
+
+                string MessageError = "";
+
+                if (EditText0.Value == "")
+                {
+                    Sb1Messages.ShowError(AddonMessageInfo.MessageIdiomaMesage337);
+                    MessageError += AddonMessageInfo.MessageIdiomaMesage337+"\n";
+                }
+                if (EditText1.Value == "")
+                {
+                    Sb1Messages.ShowError(AddonMessageInfo.MessageIdiomaMesage338);
+                    MessageError += AddonMessageInfo.MessageIdiomaMesage338 + "\n";
+                }
+                if (EditText5.Value == "")
+                {
+                    Sb1Messages.ShowError(AddonMessageInfo.MessageIdiomaMesage339);
+                    MessageError += AddonMessageInfo.MessageIdiomaMesage339 + "\n";
+                }
+                if (EditText6.Value == "")
+                {
+                    Sb1Messages.ShowError(AddonMessageInfo.MessageIdiomaMesage340);
+                    MessageError += AddonMessageInfo.MessageIdiomaMesage340 + "\n";
+                }
+
+               // Sb1Messages.ShowMessageBoxWarning(MessageError);
+            }
+
+        }
+
+        public bool ValidacionCampos()
+        {
+            if (EditText0.Value!="" && EditText1.Value != "" && EditText5.Value != "" && EditText6.Value != "")
+            {
+
+                return true;
+               
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        private SAPbouiCOM.Button Button3;
+
+        private void Button3_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            Layout_Preview("Consolidado ST","",EditText0.GetString(),EditText5.GetString(),EditText6.GetString());
+        }
+
+        
+        public bool Layout_Preview(string ReportName, string Consolidado,string FechaConsol,string AlmaDesde,string AlmaHasta)
+        {
+            SAPbobsCOM.Recordset oRS = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+
+            oRS.DoQuery("SELECT \"GUID\" FROM OCMN WHERE \"Name\" = '" + ReportName + "' AND \"Type\" = 'C'");
+            SAPbouiCOM.Form form2 = null;
+            if (oRS.RecordCount > 0)
+            {
+                string MenuID = oRS.Fields.Item(0).Value.ToString();
+
+                SAPbouiCOM.Framework.Application.SBO_Application.Menus.Item(MenuID).Activate();
+                form2 = (SAPbouiCOM.Form)SAPbouiCOM.Framework.Application.SBO_Application.Forms.ActiveForm;
+                //((EditText)form2.Items.Item("1000003").Specific).String = "";
+                ((EditText)form2.Items.Item("1000009").Specific).String = FechaConsol;
+                ((EditText)form2.Items.Item("1000015").Specific).String = AlmaDesde;
+                ((EditText)form2.Items.Item("1000021").Specific).String = AlmaHasta;
+
+                //form2.Items.Item("1").Click(BoCellClickType.ct_Regular);
+                return true;
+            }
+            else
+            {
+                SAPbouiCOM.Framework.Application.SBO_Application.MessageBox("Report layout " + ReportName + " not found.", 0, "OK", null, null);
+                return false;
+            }
+
+        }
+
+
+        
     }
 }

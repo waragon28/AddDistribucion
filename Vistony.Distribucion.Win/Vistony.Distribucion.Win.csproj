@@ -191,6 +191,9 @@
     <Compile Include="UltimaMilla\frmEstadoDespachos.b1f.cs">
       <DependentUpon>frmEstadoDespachos.b1f</DependentUpon>
     </Compile>
+    <Compile Include="UltimaMilla\frmListConsolPrintSLD.b1f.cs">
+      <DependentUpon>frmListConsolPrintSLD.b1f</DependentUpon>
+    </Compile>
     <Compile Include="UltimaMilla\frmOcurrenciaDespacho.b1f.cs">
       <DependentUpon>frmOcurrenciaDespacho.b1f</DependentUpon>
     </Compile>
@@ -283,6 +286,9 @@
       <FormCategory>UserForm</FormCategory>
     </None>
     <None Include="UltimaMilla\frmEstadoDespachos.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="UltimaMilla\frmListConsolPrintSLD.b1f">
       <FormCategory>UserForm</FormCategory>
     </None>
     <None Include="UltimaMilla\frmOcurrenciaDespacho.b1f">

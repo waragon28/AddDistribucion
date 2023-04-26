@@ -1032,6 +1032,16 @@
             Initialize form event. Called by framework before form creation.
             </summary>
         </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmListConsolPrint.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmListConsolPrint.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
         <member name="M:Vistony.Distribucion.Win.UltimaMilla.frmDispatchTrucking.OnInitializeComponent">
             <summary>
             Initialize components. Called by framework after form created.

@@ -12,6 +12,53 @@ namespace Vistony.Distribucion.BLL
 {
     public class EntregaBLL : IDisposable
     {
+       public SAPbouiCOM.DataTable Search(SAPbouiCOM.SBOItemEventArg pVal, Form oForm, EditText EditText9, EditText EditText4,
+            EditText EditText5, string UserName, CheckBox CheckBox2, CheckBox CheckBox3, string AdminPuntoEmision,
+            ComboBox ComboBox0, Grid Grid1, EditText EditText8,SAPbouiCOM.DataTable oDT)
+        {
+            try
+            {
+                using (EntregaDAL entregaDAL = new EntregaDAL())
+                {
+                   return entregaDAL.Search(pVal,oForm,EditText9,EditText4,EditText5,UserName,CheckBox2,CheckBox3,AdminPuntoEmision,
+                                      ComboBox0,Grid1,EditText8, oDT);
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public void FindText(SAPbouiCOM.SBOItemEventArg pVal, int filaseleccionada, EditText EditText7, Grid Grid1)
+        {
+            try
+            {
+                using (EntregaDAL entregaDAL = new EntregaDAL())
+                {
+                    entregaDAL.FindText(pVal, filaseleccionada, EditText7, Grid1);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        public void UpdateEstadoConsolidadoEntrega(SAPbouiCOM.Form oForm, Grid Grid1, string tipoConsolidado,
+           string fechaConsolidado, EditText EditText8, EditText EditText9, Button Button5)
+        {
+            try
+            {
+                using (EntregaDAL entregaDAL = new EntregaDAL())
+                {
+                    entregaDAL.UpdateEstadoConsolidadoEntrega(oForm,Grid1,tipoConsolidado,
+                        fechaConsolidado,EditText8,EditText9,Button5);
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
         public void Consolidados(SAPbouiCOM.Form oForm,SAPbouiCOM.Matrix oMatrix, string Sucural)
         {
             try
@@ -27,20 +74,7 @@ namespace Vistony.Distribucion.BLL
                 //
             }
         }
-        public double CalcularDistancia(double lat1, double lon1, double lat2, double lon2)
-        {
-            try
-            {
-                using (EntregaDAL entregaDAL = new EntregaDAL())
-                {
-                    return entregaDAL.CalcularDistancia(lat1, lon1, lat2,lon2);
-                }
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
-        }
+
         public SAPbouiCOM.DataTable GetInfoUsuario(string USUARIO, SAPbouiCOM.DataTable oDT)
         {
             try
@@ -312,7 +346,7 @@ namespace Vistony.Distribucion.BLL
                 return ret;
           
         }
-        public bool UpdateEstadoSLD(int? docEntry, dynamic jsonData, ref string response)
+        public bool UpdateEstadoSLD(int? docEntry, dynamic jsonData, ref string responsedd)
         {
 
             bool ret = false;
@@ -321,7 +355,31 @@ namespace Vistony.Distribucion.BLL
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                    ret = entregaDAL.UpdateEstadoSLD(docEntry, jsonData, ref response);
+                    ret = entregaDAL.UpdateEstadoSLD(docEntry, jsonData, ref responsedd);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ex.Source.ToString();
+            }
+
+
+
+            return ret;
+
+        }
+        public bool UpdateEstadoSLD2(int? docEntry, dynamic jsonData, ref string response,
+           string Tipo, string Serie, string actual, SAPbobsCOM.Recordset rc, SAPbobsCOM.Recordset rc2)
+        {
+
+            bool ret = false;
+
+            try
+            {
+                using (EntregaDAL entregaDAL = new EntregaDAL())
+                {
+                    ret = entregaDAL.UpdateEstadoSLD2(docEntry, jsonData, ref response, Tipo, Serie, actual, rc, rc2);
                 }
 
             }

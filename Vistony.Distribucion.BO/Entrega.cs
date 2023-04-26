@@ -119,5 +119,22 @@ namespace Vistony.Distribucion.BO
         public string U_SYP_MDVN { get; set; }//SI
         public string U_SYP_DT_AYUDANTE { get; set; }//SI
         public string U_SYP_DT_ESTDES { get; set; }//SI
+        public string U_SYP_MDTD { get; set; }//SI
+        public string U_SYP_MDSD { get; set; }//SI  
+        public string U_SYP_MDCD { get; set; }//SI  
+        public string U_SYP_FEGMT { get; set; }//SI
+        public string U_SYP_MDCT { get; set; }//SI
+        public string U_SYP_MDRT { get; set; }//SI
+        public string U_SYP_MDNT { get; set; }//SI
+        public string U_SYP_MDDT { get; set; }//SI
+        public string U_SYP_MDTS { get; set; }//SI
+       
+        public string U_VIS_AgencyCode { get; set; }//SI
+        public string U_VIS_AgencyRUC { get; set; }//SI
+        public string U_VIS_AgencyName { get; set; }//SI
+        public string U_VIS_AgencyDir { get; set; }//SI
+        public string U_SYP_FEGFI { get; set; }//SI
+        public string U_SYP_FEGNB { get; set; }//SI
+
     }
 }

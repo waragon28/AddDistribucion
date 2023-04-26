@@ -29,11 +29,6 @@ D:\Desarrollo\AddDistribucion\Vistony.Banco.DAL\bin\Debug\RestSharp.xml
 D:\Desarrollo\AddDistribucion\Vistony.Banco.DAL\obj\Debug\Vistony.Distribucion.DAL.csprojResolveAssemblyReference.cache
 D:\Desarrollo\AddDistribucion\Vistony.Banco.DAL\obj\Debug\Vistony.Distribucion.DAL.dll
 D:\Desarrollo\AddDistribucion\Vistony.Banco.DAL\obj\Debug\Vistony.Distribucion.DAL.pdb
-D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\obj\Debug\Vistony.Distribucion.DAL.csprojResolveAssemblyReference.cache
-D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\obj\Debug\Vistony.Distribucion.DAL.Idiomas.Espaniol.resources
-D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\obj\Debug\Vistony.Distribucion.DAL.Idiomas.Frances.resources
-D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\obj\Debug\Vistony.Distribucion.DAL.Idiomas.English_United_States.resources
-D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\obj\Debug\Vistony.Distribucion.DAL.csproj.GenerateResource.Cache
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\bin\Debug\Vistony.Distribucion.DAL.dll.config
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\bin\Debug\Vistony.Distribucion.DAL.dll
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\bin\Debug\Vistony.Distribucion.DAL.pdb
@@ -63,5 +58,10 @@ D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\bin\Debug\Forxap.Framewor
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\bin\Debug\Vistony.Distribucion.BO.pdb
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\bin\Debug\RestSharp.xml
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\bin\Debug\SharpMap.xml
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\obj\Debug\Vistony.Distribucion.DAL.csprojResolveAssemblyReference.cache
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\obj\Debug\Vistony.Distribucion.DAL.Idiomas.Espaniol.resources
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\obj\Debug\Vistony.Distribucion.DAL.Idiomas.Frances.resources
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\obj\Debug\Vistony.Distribucion.DAL.Idiomas.English_United_States.resources
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\obj\Debug\Vistony.Distribucion.DAL.csproj.GenerateResource.Cache
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\obj\Debug\Vistony.Distribucion.DAL.dll
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.DAL\obj\Debug\Vistony.Distribucion.DAL.pdb

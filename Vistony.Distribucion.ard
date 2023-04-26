@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AddOnRegData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SlientInstallation="No" SlientUpgrade="No" Partnernmsp="Vistony_PE" SchemaVersion="3.0" Type="" MultipleVersion="false" OnDemand="" OnPremise="" ExtName="UltimaMilla_PE_V2" ExtVersion="1.2.9" Contdata="waragon@nogasa.com" Partner="TI Vistony" DBType="HANA" ClientType="A">
+<AddOnRegData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SlientInstallation="No" SlientUpgrade="No" Partnernmsp="Vistony_PE" SchemaVersion="3.0" Type="" MultipleVersion="false" OnDemand="" OnPremise="" ExtName="UltimaMilla_PE" ExtVersion="1.3.4" Contdata="waragon@nogasa.com" Partner="TI Vistony" DBType="HANA" ClientType="A">
   <Validity>
     <SBOCompatibility>
       <Version From="930.110.01" To="1000.160.06" />

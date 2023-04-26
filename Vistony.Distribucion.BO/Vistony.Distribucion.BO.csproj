@@ -50,8 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Choferes.cs" />
+    <Compile Include="PasoRuta.cs" />
+    <Compile Include="PatchSerie.cs" />
     <Compile Include="Programacion.cs" />
     <Compile Include="Programacion1.cs" />
+    <Compile Include="RutaOptima.cs" />
     <Compile Include="RutaTransportista.cs" />
     <Compile Include="RutaTransportista1.cs" />
     <Compile Include="Entrega.cs" />

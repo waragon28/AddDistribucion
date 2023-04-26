@@ -221,9 +221,9 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                                                           Vehiculorecordset.Fields.Item("U_SYP_VEMA").Value.ToString(),
                                                           Conductorrecordset.Fields.Item("U_SYP_CHLI").Value.ToString(),
                                                           Conductorrecordset.Fields.Item("Name").Value.ToString(),
-                                                          oForm.GetEditText("Item_25").ToString(),
+                                                          oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_DocDate", 0),
                                                           oForm.GetEditText("Item_5").ToString(),
-                                                          oForm.GetEditText("Item_15").ToString()
+                                                           oForm.DataSources.DBDataSources.Item("@VIS_DIS_ODRT").GetValue("U_AssistantName", 0)
                                                          );
 
                             dynamic objDespachoJson = JsonConvert.SerializeObject(objDespacho);

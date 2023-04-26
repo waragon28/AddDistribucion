@@ -65,7 +65,7 @@ namespace Vistony.Distribucion.Win.Formularios
             Utils.LoadQueryDynamic(ref ComboBox0,AddonMessageInfo.QueryStatusDelivery);
             oForm.State = SAPbouiCOM.BoFormStateEnum.fs_Maximized;
             SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_1");
-
+            ComboBox2.Select(1, SAPbouiCOM.BoSearchKey.psk_Index);
             using (EntregaBLL entregaBLL = new EntregaBLL())
             {
                 sucursal = entregaBLL.ObtenerSucursal(oDT, Sb1Globals.UserName);

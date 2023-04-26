@@ -996,6 +996,12 @@ namespace Vistony.Distribucion.Constans
             return Message336;
         }
 
+        public const string MessageIdiomaMesage337 = "Falta ingresar el campo Fecha desde";
+        public const string MessageIdiomaMesage338 = "Falta ingresar el campo Fecha hasta";
+        public const string MessageIdiomaMesage339 = "Falta ingresar el campo De almacén";
+        public const string MessageIdiomaMesage340 = "Falta ingresar el campo Almacén destino";
+
+
         public const string QueryStatusDelivery = "CALL SP_VIS_GETSTATUSDELIVERY()";
         public const string QueryListOcurrencia = "CALL SP_VIS_DIS_LIST_OCURRENCIAS()";
         public const string QueryConsolited = "CALL SP_VIS_DIS_GETSTATE()";
@@ -1018,6 +1024,10 @@ namespace Vistony.Distribucion.Constans
         public string QueryObtenerSLD = "CALL ADDON_ULT_MIL_GET_SLD('{0}','{1}','{2}','{3}','{4}','{5}')";
         public string QueryObtenerSLDConsol = "CALL ADDON_ULT_MIL_GET_SLD_CONSOL('{0}','{1}','{2}','{3}','{4}','{5}')";
         public string QueryObtenerTipoRuta = "CALL SP_VIS_DIS_GET_TIPO_RUTA()";
+        public string QueryObtenerSerieTransferenciaStock = "CALL SP_VIS_DIS_GET_SERIE_TRANSFERENCIA_STOCK()";
+        public string QueryObtenerModalidadTransporte= "CALL  P_VIS_DIS_GET_MODALIDAD_TRANSPORTE()";
+        public string QueryObtenerTipoSalida="CALL P_VIS_DIS_GET_TIPO_SALIDA()";
+        
 
     }// fin de la clase
 

@@ -15,18 +15,17 @@ using Vistony.Distribucion.BO;
 using SAPbouiCOM;
 
 using GoogleMapsApi;
+using GoogleMapsApi.Entities.DistanceMatrix.Request;
+using GoogleMapsApi.Entities.DistanceMatrix.Response;
+using GoogleMapsApi.Entities.Common;
+using System.Threading.Tasks;
 using GoogleMapsApi.Entities.Directions.Request;
-using GoogleMapsApi.Entities.Directions.Response;
-using GoogleMapsApi.Entities.Geocoding.Request;
-using GoogleMapsApi.Entities.Geocoding.Response;
-
 
 namespace Vistony.Distribucion.DAL
 {
     public class EntregaDAL : BaseDAL, IDisposable
     {
-
-
+        
         public void Consolidados(SAPbouiCOM.Form oForm, SAPbouiCOM.Matrix oMatrix, string Sucural)
         {
             try
@@ -110,7 +109,7 @@ namespace Vistony.Distribucion.DAL
                 oColumn = oColumns.Item("Col_0");
                 oMatrix.LoadFromDataSource();
                 oMatrix.AutoResizeColumns();
-                
+                GetRutaOptima();
             }
             catch (Exception EX)
             {
@@ -121,6 +120,70 @@ namespace Vistony.Distribucion.DAL
 
         }
 
+        public void GetRutaOptima()
+        {
+       
+            // Construir la solicitud de la API de Google Maps
+            RestClient client = new RestClient("https://maps.googleapis.com/maps/api/directions/json?origin=-11.7648155,-77.1600196&destination=-11.7648155,-77.1600196&waypoints=via:-11.8547872,-77.0782242|via:-11.8628667,-77.0896241|via:-11.8628667,-77.0896243&precision=high&&mode=driving&departure_time=now&avoid=tolls|highways&vehicle_type=truck&key=AIzaSyBDbOiBGhKP8rjixiTEaNdBwd23iOFe7YM");
+            RestRequest request = new RestRequest(Method.POST);
+            string JsonObtenerCabezera = JsonConvert.SerializeObject(request.ToString());
+            dynamic result = client.Execute(request);
+
+        }
+
+        public void FindText(SAPbouiCOM.SBOItemEventArg pVal,int filaseleccionada, EditText EditText7, Grid Grid1)
+        {
+            string textoFind = string.Empty;
+            string docNum = string.Empty;
+
+            try
+            {
+                textoFind = EditText7.Value.Trim();
+
+#if AD_PE
+                if (textoFind.Length < 8)
+                {
+                    filaseleccionada = -1;
+                    return;
+                }
+
+#endif
+
+
+                if (pVal.CharPressed != 13)
+                {
+                    for (int row = 0; row <= Grid1.Rows.Count - 1; row++)
+                    {
+                        docNum = Grid1.DataTable.GetString("Entrega", row);
+                        if (docNum == textoFind)
+                        {
+                            Grid1.Rows.SelectedRows.Clear();
+                            Grid1.Rows.SelectedRows.Add(row);
+                            filaseleccionada = row;
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    if (filaseleccionada != -1)
+                    {
+                        if (Grid1.DataTable.GetValue(0, filaseleccionada).ToString() != "Y")
+                        {
+                            Grid1.DataTable.SetValue(0, filaseleccionada, "Y");
+                        }
+                        else
+                        {
+                            Grid1.DataTable.SetValue(0, filaseleccionada, "N");
+                        }
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
         public void RutaMasCortaAPI_GOOGLE(string origen, List<string> destinos)
         {
             // Define los parámetros de la solicitud HTTP
@@ -139,25 +202,183 @@ namespace Vistony.Distribucion.DAL
             }
 
         }
-
-        public double CalcularDistancia(double lat1, double lon1, double lat2, double lon2)
+        public void UpdateEstadoConsolidadoEntrega(SAPbouiCOM.Form oForm,Grid Grid1, string tipoConsolidado, 
+            string fechaConsolidado,EditText EditText8,EditText EditText9,Button Button5)
         {
-            int radioTierra = 6371; // en kilómetros
+            int? docEntry = 0;
+            string docNum = string.Empty;
+            string response = string.Empty;
+            bool isUpdate = false;
 
-            // convertir las coordenadas de grados decimales a radianes
-            double dLat = (lat2 - lat1) * Math.PI / 180.0;
-            double dLon = (lon2 - lon1) * Math.PI / 180.0;
+            try
+            {
+                oForm.Freeze(true);
 
-            // aplicar la fórmula de Haversine
-            double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
-                       Math.Cos(lat1 * Math.PI / 180.0) * Math.Cos(lat2 * Math.PI / 180.0) *
-                       Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
-            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
-            double distancia = radioTierra * c;
+                int Check=0;
 
-            return distancia;
+                for (int oRow = 0; oRow < Grid1.Rows.Count; oRow++)
+                {
+                    if (Grid1.DataTable.GetString("Marca", oRow) == "Y")
+                    {
+                        Check+=1;
+                    }
+                }
+
+                for (int row = 0; row < Grid1.Rows.Count; row++)
+                {
+                    if (Grid1.DataTable.GetString("Marca", row) == "Y")
+                    {
+                        docEntry = Grid1.DataTable.GetInt("DocEntry", row);
+                        docNum = Grid1.DataTable.GetString("Entrega", row);
+
+
+                        ///creo el objeto que será serializado
+                        EntregaConsolidado obj = new EntregaConsolidado();
+                        obj.U_SYP_DT_CONSOL = tipoConsolidado;
+                        obj.U_SYP_DT_FCONSOL = fechaConsolidado;
+                        obj.U_SYP_DT_HCONSOL = DateTime.Now.ToString("hh:mm:ss");
+
+                        dynamic jsonData = JsonConvert.SerializeObject(obj);
+
+                        response = string.Empty;
+                        isUpdate = false;
+
+                        isUpdate = UpdateEstadoEntrega(docEntry, jsonData, ref response);
+
+                        if (isUpdate)
+                        {
+                            Forxap.Framework.UI.Sb1Messages.ShowSuccess("Se consolido " + row + " de " + Check +" documentos.");
+                        }
+                        else
+                        {
+                            Forxap.Framework.UI.Sb1Messages.ShowError("Error de Consolidado "+ docNum);
+                        }
+                    }
+                }
+
+                // sete en cero los documentos seleccionados y el peso
+                EditText8.SetInt(0);
+                EditText9.SetDouble(0);
+
+                Button5.Item.Click();
+            }
+            catch (Exception ex)
+            {
+                Sb1Messages.ShowError(ex.ToString());
+            }
+            finally
+            {
+                oForm.Freeze(false);
+            }
+
         }
 
+        public SAPbouiCOM.DataTable Search(SAPbouiCOM.SBOItemEventArg pVal,Form oForm,EditText EditText9,EditText EditText4, 
+            EditText EditText5,string UserName,CheckBox CheckBox2, CheckBox CheckBox3,string AdminPuntoEmision,
+            ComboBox ComboBox0, Grid Grid1, EditText EditText8,SAPbouiCOM.DataTable oDT)
+        {
+            string consolidado = string.Empty;
+            string agencia = string.Empty;
+            string desde = string.Empty;
+            string hasta = string.Empty;
+            string usuario = string.Empty;
+            EditText9.Value = "0";
+            try
+            {
+                consolidado = "N";
+                agencia = "N";
+                desde = EditText4.Value.Trim();
+                hasta = EditText5.Value.Trim();
+                usuario = UserName;
+
+                if (CheckBox2.Checked)
+                {
+                    consolidado = "Y";
+                }
+                if (CheckBox3.Checked)
+                {
+                    agencia = "Y";
+                }
+                
+                oDT.Clear();
+
+#if AD_PE
+                if (AdminPuntoEmision == "1")
+                {
+                    Entrega_Sucursal(ref oDT, desde, hasta, consolidado, agencia, ComboBox0.GetSelectedDescription());
+                }
+                else
+                {
+                    Entrega(ref oDT, desde, hasta, consolidado, agencia, usuario);
+                }
+#else
+                    Entrega(ref oDT, desde, hasta, consolidado, agencia, usuario);
+#endif
+
+                SetFormatGrid(EditText8, Grid1);
+            }
+            catch (Exception ex)
+            {
+                Sb1Messages.ShowError(ex.ToString());
+            }
+            return oDT;
+        }
+
+        private void SetFormatGrid(EditText EditText8, Grid Grid1)
+        {
+            EditText8.SetDouble(0);
+
+            Grid1.AssignLineNro();
+            Grid1.Columns.Item(0).Type = SAPbouiCOM.BoGridColumnType.gct_CheckBox;
+            Grid1.Columns.Item("DocEntry").Visible = false;
+            Grid1.Columns.Item("Tipo").Visible = false;
+
+
+#if AD_PE
+            Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "15");
+            Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Entrega";
+#elif AD_BO
+           Grid1.Columns.Item(2).TitleObject.Caption = "Factura";
+           LinkedButton1.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
+           Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "13");
+           Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Factura";
+#elif AD_ES
+            Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Factura", "15");
+            Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Entrega";
+#elif AD_CL
+            Grid1.Columns.Item(2).TitleObject.Caption = "Factura";
+            LinkedButton1.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
+            Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "15");
+            Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Factura";
+#elif AD_PY
+            Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "13");
+            Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Entrega";
+#elif AD_EC
+            Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "15");
+#endif
+            Grid1.Columns.Item("CodigoSN").LinkedObjectType(Grid1, "CodigoSN", "2");
+            Grid1.Columns.Item("INDIC").Visible = false;
+
+
+            Grid1.Columns.Item("Fecha").TitleObject.Caption = "Fecha Documento";
+            Grid1.Columns.Item(0).TitleObject.Caption = "Marcar";
+
+
+            Grid1.Columns.Item("CodigoSN").TitleObject.Caption = "Código SN";
+            Grid1.Columns.Item("NombreSN").TitleObject.Caption = "Nombre SN";
+            Grid1.Columns.Item("FConsolidacion").TitleObject.Caption = "Fecha Consolidación";
+            Grid1.Columns.Item("HConsolidacion").TitleObject.Caption = "Hora Consolidación";
+            Grid1.Columns.Item("Peso").TitleObject.Caption = "Peso Bruto";
+            Grid1.Columns.Item("Peso").RightJustified = true;
+            Grid1.Columns.Item("FReq").TitleObject.Caption = "Fecha Requerida";
+            Grid1.ReadOnlyColumns();
+            Grid1.Columns.Item(0).Editable = true;
+            Grid1.AutoResizeColumns();
+
+            // amplio el ancho de la columna
+            Grid1.RowHeaders.Width += 15;
+
+        }
         public void BuscarChoferesUbigeo(SAPbouiCOM.Form oForm, SAPbouiCOM.Matrix oMatrix, string Sucural)
         {
             SAPbouiCOM.DataTable udt;
@@ -670,7 +891,7 @@ namespace Vistony.Distribucion.DAL
                 Forxap.Framework.ServiceLayer.Methods methods = new Forxap.Framework.ServiceLayer.Methods();
                 dynamic restResponse;
                 
-                restResponse = methods.PATCH("StockTransfers", docEntry, jsonData);
+                restResponse = methods.PATCH("InventoryTransferRequests", docEntry, jsonData);
 
 
                 dynamic json2 = JsonConvert.DeserializeObject(restResponse.Content.ToString());
@@ -679,6 +900,7 @@ namespace Vistony.Distribucion.DAL
                 {
                     response = "OK";
                     ret = true;
+
                 }
                 else
                 {
@@ -693,6 +915,75 @@ namespace Vistony.Distribucion.DAL
                 return false;
             }
 
+        }
+        public bool UpdateEstadoSLD2(int? docEntry, dynamic jsonData, ref string response,
+           string Tipo, string Serie, string actual, SAPbobsCOM.Recordset rc, SAPbobsCOM.Recordset rc2)
+        {
+            bool ret = false;
+            try
+            {
+                Forxap.Framework.ServiceLayer.Methods methods = new Forxap.Framework.ServiceLayer.Methods();
+                dynamic restResponse;
+
+                restResponse = methods.PATCH("StockTransfers", docEntry, jsonData);
+
+
+                dynamic json2 = JsonConvert.DeserializeObject(restResponse.Content.ToString());
+
+                if (restResponse.StatusCode.ToString() == "" || restResponse.StatusCode.ToString() == "NoContent")
+                {
+                    response = "OK";
+                    ret = true;
+                    setNextCorrelativoSL(Tipo, Serie, actual, rc, rc2);
+
+                }
+                else
+                {
+                    response = restResponse.Content.ToString();
+                    ret = true;
+                }
+                return ret;
+            }
+            catch (Exception ex)
+            {
+                response = ex.ToString();
+                return false;
+            }
+
+        }
+
+        public static void setNextCorrelativoSL(string Tipo, string Serie, string actual, SAPbobsCOM.Recordset rc, SAPbobsCOM.Recordset rc2)
+        {
+            PatchSerie p = new PatchSerie();
+            try
+            {
+                int largo;
+                int siguienteInt;
+                int lineID;
+                string siguienteStr;
+                siguienteInt = Convert.ToInt32(actual) + 1;
+                string query = "select U_SYP_SIZECOR from \"@SYP_TPODOC\" where \"Code\" = '" + Tipo + "'";
+                rc.DoQuery(query);
+                largo = Convert.ToInt32(rc.Fields.Item(0).Value);
+                string query2 = string.Format("SELECT \"LineId\" FROM \"@SYP_NUMDOC\" WHERE \"Code\"='09' AND \"U_SYP_NDSD\"='{0}'", Serie);
+                rc2.DoQuery(query2);
+                lineID = Convert.ToInt32(rc2.Fields.Item(0).Value);
+                siguienteStr = "000000000000" + siguienteInt.ToString();
+                siguienteStr = siguienteStr.Substring(siguienteStr.Length - largo);
+                p.Code = "09";
+                p.LineId = lineID;
+                p.U_SYP_NDCD = siguienteStr;
+
+                string StrJson = JsonConvert.SerializeObject(p);
+                string update = string.Format("UPDATE \"@SYP_NUMDOC\" SET \"U_SYP_NDCD\" = '{0}' WHERE \"LineId\" = {1} AND \"Code\" = '09'", siguienteStr, lineID);
+                /*GuiaMasivaBLL gmbll = new GuiaMasivaBLL();
+                string rpta = gmbll.updateCorrelativo(StrJson);*/
+                rc2.DoQuery(update);
+            }
+            catch (Exception ex)
+            {
+                Sb1Messages.ShowError(ex.Message);
+            }
         }
         public  bool UpdateEstadoEntrega(int? docEntry, dynamic jsonData, ref  string response)
         {
@@ -1171,21 +1462,7 @@ namespace Vistony.Distribucion.DAL
                 {
                     ret = responsde.Content.ToString();
                 }
-                //RestClient client = new RestClient("VIS_DIS_ODRT");
-                //RestRequest request = new RestRequest(Method.POST);
-                //string JsonObtenerCabezera = JsonConvert.SerializeObject(ObtenerCabecera2);
-                //string dataReq = JsonObtenerCabezera;
-                //IRestResponse result = client.Execute(request.AddJsonBody(dataReq));
-
-                //if (result.StatusDescription == "OK")
-                //{
-                //  //  RespuestMensaje.Value = "OK";
-                //}
-                //else
-                //{
-                //    Sb1Messages.ShowError(result.Content);
-                //   // RespuestMensaje.Value = "ERROR";
-                //}
+               
             }
             catch (Exception e)
             {

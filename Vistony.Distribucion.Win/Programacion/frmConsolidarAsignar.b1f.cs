@@ -45,7 +45,6 @@ namespace Vistony.Distribucion.Win.Formularios
             OwnerForm = ownerForm;
 
         }
-
         public override void OnInitializeComponent()
         {
             this.StaticText0 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_0").Specific));
@@ -60,7 +59,6 @@ namespace Vistony.Distribucion.Win.Formularios
             this.OnCustomInitialize();
 
         }
-
         public override void OnInitializeFormEvents()
         {
             this.DeactivateAfter += new SAPbouiCOM.Framework.FormBase.DeactivateAfterHandler(this.Form_DeactivateAfter);
@@ -68,9 +66,6 @@ namespace Vistony.Distribucion.Win.Formularios
             this.VisibleAfter += new VisibleAfterHandler(this.Form_VisibleAfter);
 
         }
-
-        //   public object SBO_Application { get; private set; }
-
         private void OnCustomInitialize()
         {
             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
@@ -81,8 +76,6 @@ namespace Vistony.Distribucion.Win.Formularios
                 Button0,Button1);
 
         }
-
-
         private void Button0_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
@@ -130,10 +123,6 @@ namespace Vistony.Distribucion.Win.Formularios
             frmConsolidation owner = this.OwnerForm;
             oForm.Close();
         }
-
-
-
-
 
         private void Form_DeactivateAfter(SAPbouiCOM.SBOItemEventArg pVal)
         {
