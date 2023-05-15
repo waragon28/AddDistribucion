@@ -1,8 +1,8 @@
 ﻿//#define AD_BO
-#define AD_PE
+//#define AD_PE
 //#define AD_MA
 //#define AD_ES
-//#define AD_CL
+#define AD_CL
 //#define AD_PY
 //#define AD_EC
 
@@ -41,8 +41,7 @@ namespace Vistony.Distribucion.Win.Formularios
         public int filaseleccionada = -1;
         Idioma_BLL idioma_BLL = new Idioma_BLL();
         AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
-
-
+        
         private SAPbouiCOM.StaticText StaticText1;
         private SAPbouiCOM.StaticText StaticText2;
         private SAPbouiCOM.StaticText StaticText3;
@@ -88,6 +87,35 @@ namespace Vistony.Distribucion.Win.Formularios
 
         private SAPbouiCOM.Grid Grid1;
         private SAPbouiCOM.ComboBox ComboBox0;
+        
+        private void Search(SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_0");
+
+            try
+            {
+                oForm.Freeze(true);
+                using (EntregaBLL entregaBLL = new EntregaBLL())
+                {
+                    entregaBLL.Search(pVal,oForm,EditText9,EditText4,EditText5, Sb1Globals.UserName, CheckBox2,CheckBox3, Sb1Globals.AdminPuntoEmision,
+                                        ComboBox0, Grid1, EditText8, oDT);
+                }
+            }
+            catch (Exception ex)
+            {
+                Sb1Messages.ShowError(ex.ToString());
+            }
+            finally
+            {
+
+                if (oDT.Rows.Count == 0)
+                    Sb1Messages.ShowMessage(addonMessageInfo.MessageIdiomaNotRowFound(Sb1Globals.Idioma));
+                else
+                    Sb1Messages.ShowMessage(addonMessageInfo.MessageIdiomaFinishLoading(Sb1Globals.Idioma));
+                oForm.Freeze(false);
+            }
+        }
+
 
         public frmConsolidation()
         {
@@ -98,10 +126,19 @@ namespace Vistony.Distribucion.Win.Formularios
             // sete en cero los documentos seleccionados y el peso
             EditText8.SetInt(0);
             EditText9.SetDouble(0);
+
+
+#if AD_CL
+            oForm.Title = "Consolidación de facturas";
+#else
+             oForm.Title ="Consolidación de entregas";
+#endif
         }
+
         /// <summary>
         /// Initialize components. Called by framework after form created.
         /// </summary>
+        /// 
         public override void OnInitializeComponent()
         {
             this.Button3 = ((SAPbouiCOM.Button)(this.GetItem("Item_12").Specific));
@@ -143,25 +180,36 @@ namespace Vistony.Distribucion.Win.Formularios
             this.OnCustomInitialize();
 
         }
+
         /// <summary>
         /// Initialize form event. Called by framework before form creation.
         /// </summary>
+        /// 
         public override void OnInitializeFormEvents()
         {
             this.ResizeAfter += new ResizeAfterHandler(this.Form_ResizeAfter);
 
         }
+
         private void OnCustomInitialize()
         {
-            idioma_BLL.FormatoGridConsolidado(Grid1, Sb1Globals.Idioma);
+            //DOY FORMATO A LA GRILLA DEPENDIENTO AL IDIOMA EN SAP
+             idioma_BLL.FormatoGridConsolidado(Grid1, Sb1Globals.Idioma);
+
             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
             oForm.ScreenCenter();
+
+            //ASIGNO LOS NOMBRES A LAS ETIQUETAS DEPENDIENTO AL IDIOMA EN SAP
             idioma_BLL.GetPackIdiomafrmConsolidation(Sb1Globals.Idioma,oForm, StaticText10,
             StaticText11, StaticText12,CheckBox2,CheckBox3, StaticText13,Button5, Button4, Button3,
             StaticText8, StaticText9);
-            #if AD_PE
-                if (Sb1Globals.AdminPuntoEmision=="1")
-                {
+            //SI LA BD ES PERU, SE AGREGO UNA TABLA EL CUAL ES ADMINISTRADOR PUNTO DE EMISION SI SE AGREGA
+            //AL USUARIO Y LE ASIGNAN N SUCURSALES, ESTA PARTE LO VALIDA Y TE DEVUELVE UNA LISTA DE LAS 
+            //SUCURSALES ASIGNADAS SI NO SOLO TRAE EL PUNTO DE EMISION DEL USUARIO LOGEADO SI NO SE OCULTA
+
+#if AD_PE
+         if (Sb1Globals.AdminPuntoEmision=="1")
+           {
                 StaticText14.Item.Visible = true;
                 ComboBox0.Item.Visible = true;
                 ComboBox0.Item.DisplayDesc = true;
@@ -169,71 +217,17 @@ namespace Vistony.Distribucion.Win.Formularios
               
                 ComboBox0.Select(Sb1Globals.SucursalDefault, SAPbouiCOM.BoSearchKey.psk_ByDescription);
             }
-                else
-                {
+           else
+            {
                 StaticText14.Item.Visible = false;
-                    ComboBox0.Item.Visible = false;
-                }
-#else   
-                    StaticText14.Item.Visible = false;
-                    ComboBox0.Item.Visible = false;
+                ComboBox0.Item.Visible = false;
+            }
+#else
+                StaticText14.Item.Visible = false;
+                ComboBox0.Item.Visible = false;
 #endif
         }
-        private  void SetFormatGrid()
-        {
-            EditText8.SetDouble(0);
 
-            Grid1.AssignLineNro();
-            Grid1.Columns.Item(0).Type = SAPbouiCOM.BoGridColumnType.gct_CheckBox;
-            Grid1.Columns.Item("DocEntry").Visible = false;
-            Grid1.Columns.Item("Tipo").Visible = false;
-
-
-#if AD_PE
-            Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "15");
-            Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Entrega";
-#elif AD_BO
-           Grid1.Columns.Item(2).TitleObject.Caption = "Factura";
-           LinkedButton1.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
-           Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "13");
-           Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Factura";
-#elif AD_ES
-            Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Factura", "15");
-            Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Entrega";
-#elif AD_CL
-            Grid1.Columns.Item(2).TitleObject.Caption = "Factura";
-            LinkedButton1.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
-            Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "15");
-            Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Factura";
-#elif AD_PY
-            Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "13");
-            Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Entrega";
-#elif AD_EC
-            Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "15");
-#endif
-            Grid1.Columns.Item("CodigoSN").LinkedObjectType(Grid1, "CodigoSN", "2");
-            Grid1.Columns.Item("INDIC").Visible = false;
-
-            
-            Grid1.Columns.Item("Fecha").TitleObject.Caption = "Fecha Documento";
-            Grid1.Columns.Item(0).TitleObject.Caption = "Marcar";
-
-
-            Grid1.Columns.Item("CodigoSN").TitleObject.Caption = "Código SN";
-            Grid1.Columns.Item("NombreSN").TitleObject.Caption = "Nombre SN";
-            Grid1.Columns.Item("FConsolidacion").TitleObject.Caption = "Fecha Consolidación";
-            Grid1.Columns.Item("HConsolidacion").TitleObject.Caption = "Hora Consolidación";
-            Grid1.Columns.Item("Peso").TitleObject.Caption = "Peso Bruto";
-            Grid1.Columns.Item("Peso").RightJustified = true;
-            Grid1.Columns.Item("FReq").TitleObject.Caption = "Fecha Requerida";
-            Grid1.ReadOnlyColumns();
-            Grid1.Columns.Item(0).Editable = true;
-            Grid1.AutoResizeColumns();
-            
-            // amplio el ancho de la columna
-            Grid1.RowHeaders.Width += 15;
-           
-        }
         private void Grid1_LinkPressedAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             if (pVal.ColUID == "Entrega")
@@ -244,49 +238,42 @@ namespace Vistony.Distribucion.Win.Formularios
                  col.LinkedObjectType = "15";// muestra la flecha amariilla asociada al objeto pedidos  
 #elif AD_BO
                 col.LinkedObjectType = "13";// muestra la flecha amariilla asociada al objeto pedidos 
+#elif AD_CL
+                col.LinkedObjectType = "13";// muestra la flecha amariilla asociada al objeto pedidos 
 #else
                 col.LinkedObjectType = "15";// muestra la flecha amariilla asociada al objeto pedidos 
 #endif
 
             }
         }
+
         private void Grid0_LinkPressedBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
         }
+
         /// <summary>
         /// Muestra la ventana para seleccionar el tipo de consolidado y consolidar las Guías  
         /// </summary>
-        private void OnShowDatosConsolidadar()
-        {
-            try
-            {
-                string ID = oForm.UniqueID.ToString();
-                frmConsolidarAsignar form = new frmConsolidarAsignar(this);
-                form.Show();
-
-            }
-            catch (Exception ex)
-            {
-                Sb1Messages.ShowError(ex.Message.ToString());
-               
-            }
-            
-        }
+        /// 
+        
         /// <summary>
         /// 
         /// </summary>
         /// <param name="tipoConsolidado"></param>
         /// <param name="fechaConsolidado"></param>
+        /// 
+
         public void UpdateEstadoConsolidadoEntrega(string tipoConsolidado, string fechaConsolidado)
         {
            try
             {
-                oForm.Freeze(true);
-                using (EntregaBLL entregaBLL = new EntregaBLL())
-                {
-                    entregaBLL.UpdateEstadoConsolidadoEntrega(oForm, Grid1, tipoConsolidado, fechaConsolidado, EditText8, EditText9, Button5);
-                }
+            //ACTUALIZO LOS DOCUMENTOS PARA ASIGNAR EL CONSOLIDADO
+                    oForm.Freeze(true);
+                    using (EntregaBLL entregaBLL = new EntregaBLL())
+                    {
+                        entregaBLL.UpdateEstadoConsolidadoEntrega(oForm, Grid1, tipoConsolidado, fechaConsolidado, EditText8, EditText9, Button5);
+                    }
             }
             catch (Exception ex)
             {
@@ -298,6 +285,7 @@ namespace Vistony.Distribucion.Win.Formularios
             }
 
         }
+
         private void Button3_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             // valida que existan registros seleccionados
@@ -310,12 +298,15 @@ namespace Vistony.Distribucion.Win.Formularios
                 Sb1Messages.ShowError(addonMessageInfo.MessageIdiomaAddonName(Sb1Globals.Idioma));
             }
         }
+
         private void Button3_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
-            int contarpedidossel = 0;
+            //LLAMO AL FORMULARIO CONSOLIDAR ASIGNAR PARA SELECCIONAR UN CONSOLIDADO
             try
             {
-             OnShowDatosConsolidadar();
+                string ID = oForm.UniqueID.ToString();
+                frmConsolidarAsignar form = new frmConsolidarAsignar(this);
+                form.Show();
             }
             catch (Exception ex)
             {
@@ -327,39 +318,12 @@ namespace Vistony.Distribucion.Win.Formularios
             }
 
         }
+
         private void Button5_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             Search( pVal);
         }
-        private void Search(SAPbouiCOM.SBOItemEventArg pVal)
-        {
-          
-            string AdminPuntoEmision = string.Empty;
-            SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_0");
-
-            try
-            {
-                oForm.Freeze(true);
-                using (EntregaBLL entregaBLL = new EntregaBLL())
-                {
-                    entregaBLL.Search(pVal,oForm,EditText9,EditText4,EditText5, Sb1Globals.UserName, CheckBox2,CheckBox3,AdminPuntoEmision,
-                                        ComboBox0, Grid1, EditText8, oDT);
-                }
-            }
-            catch (Exception ex)
-            {
-                Sb1Messages.ShowError(ex.ToString());
-            }
-            finally
-            {
-
-                if (oDT.Rows.Count == 0)
-                    Sb1Messages.ShowMessage(addonMessageInfo.MessageIdiomaNotRowFound(Sb1Globals.Idioma));
-                else
-                    Sb1Messages.ShowMessage(addonMessageInfo.MessageIdiomaFinishLoading(Sb1Globals.Idioma));
-                oForm.Freeze(false);
-            }
-        }
+        
         private void Grid1_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             // si hicieron Check o deschekearon debo actualizar el contador de documentos seleccionados
@@ -437,6 +401,7 @@ namespace Vistony.Distribucion.Win.Formularios
             }
 
         }
+
         private void Grid1_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
@@ -467,6 +432,7 @@ namespace Vistony.Distribucion.Win.Formularios
             }
            // */
         }
+
         private void Grid1_LinkPressedBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
@@ -483,6 +449,11 @@ namespace Vistony.Distribucion.Win.Formularios
                 //int rowSelected = Grid0.Rows.SelectedRows.Item(0, SAPbouiCOM.BoOrderType.ot_RowOrder);
                 rowSelected = pVal.Row;
                 rowIndex = rowSelected;
+#if AD_CL
+                LinkedButton1.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
+#else
+                 LinkedButton1.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_DeliveryNotes;
+#endif
 
                 codigo = Grid1.DataTable.GetValue("DocEntry", Grid1.GetDataTableRowIndex(rowIndex)).ToString();
                 EditText6.Value = codigo;
@@ -494,10 +465,12 @@ namespace Vistony.Distribucion.Win.Formularios
                 
             }
         }
+        
         private void Grid1_PressedAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             
         }
+
         private void EditText7_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             using (EntregaBLL entregaBLL = new EntregaBLL())
@@ -506,36 +479,43 @@ namespace Vistony.Distribucion.Win.Formularios
             }
                
         }
+
         private void EditText7_LostFocusAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             filaseleccionada = -1;
 
         }
+
         private void StaticText10_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             //throw new System.NotImplementedException();
 
         }
+
         private void StaticText11_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             //throw new System.NotImplementedException();
 
         }
+
         private void StaticText12_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             //throw new System.NotImplementedException();
 
         }
+
         private void StaticText13_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             //throw new System.NotImplementedException();
 
         }
+
         private void Button6_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             frmConsolidationV2 FrmConsolidationV2 = new frmConsolidationV2();
             FrmConsolidationV2.Show();
         }
+
         private void Form_ResizeAfter(SAPbouiCOM.SBOItemEventArg pVal)
         {
           

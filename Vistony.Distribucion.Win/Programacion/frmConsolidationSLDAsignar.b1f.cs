@@ -1,4 +1,11 @@
-﻿using System;
+﻿//#define AD_PE
+//#define AD_BO
+//#define AD_EC
+//#define AD_PY
+#define AD_CL
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -88,6 +95,7 @@ namespace Vistony.Distribucion.Win.Programacion
 
             if (ret)
             {
+#if AD_PE
                 frmConsolidationSLD owner = this.OwnerForm;
                 tipoConsolidado = ComboBox0.GetSelectedDescription().Trim();
                 fechaConsolidado = EditText0.Value.Trim();
@@ -95,6 +103,24 @@ namespace Vistony.Distribucion.Win.Programacion
                 Thread myNewThread = new Thread(() => owner.UpdateEstadoConsolidadoSLD(tipoConsolidado, fechaConsolidado));
                 myNewThread.Start();
                 oForm.Close();
+#elif AD_BO
+                frmConsolidationSLD owner = this.OwnerForm;
+                tipoConsolidado = ComboBox0.GetSelectedDescription().Trim();
+                fechaConsolidado = EditText0.Value.Trim();
+
+                Thread myNewThread = new Thread(() => owner.UpdateEstadoConsolidadoSLD(tipoConsolidado, fechaConsolidado));
+                myNewThread.Start();
+                oForm.Close();
+#else
+                frmConsolidationSLD owner = this.OwnerForm;
+                tipoConsolidado = ComboBox0.GetSelectedDescription().Trim();
+                fechaConsolidado = EditText0.Value.Trim();
+
+                Thread myNewThread = new Thread(() => owner.UpdateEstadoConsolidadoSLD(tipoConsolidado, fechaConsolidado));
+                myNewThread.Start();
+                oForm.Close();
+#endif
+
             }
 
         }

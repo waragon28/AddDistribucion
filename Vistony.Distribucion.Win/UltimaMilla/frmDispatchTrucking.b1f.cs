@@ -1,6 +1,8 @@
 ﻿//#define AD_PY
-#define AD_PE
+//#define AD_PE
 //#define AD_EC
+//#define AD_BO
+#define AD_CL
 
 using SAPbouiCOM.Framework;
 using System.Drawing;
@@ -81,6 +83,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             this.Grid0 = ((SAPbouiCOM.Grid)(this.GetItem("Item_10").Specific));
             this.Grid0.ClickAfter += new SAPbouiCOM._IGridEvents_ClickAfterEventHandler(this.Grid0_ClickAfter);
             this.Grid1 = ((SAPbouiCOM.Grid)(this.GetItem("Item_11").Specific));
+            this.Grid1.LinkPressedAfter += new SAPbouiCOM._IGridEvents_LinkPressedAfterEventHandler(this.Grid1_LinkPressedAfter);
+            this.Grid1.LinkPressedBefore += new SAPbouiCOM._IGridEvents_LinkPressedBeforeEventHandler(this.Grid1_LinkPressedBefore);
             this.EditText0 = ((SAPbouiCOM.EditText)(this.GetItem("Item_1").Specific));
             this.EditText2 = ((SAPbouiCOM.EditText)(this.GetItem("Item_12").Specific));
             this.StaticText8 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_13").Specific));
@@ -107,6 +111,9 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             this.ComboBox0.ComboSelectAfter += new SAPbouiCOM._IComboBoxEvents_ComboSelectAfterEventHandler(this.ComboBox0_ComboSelectAfter);
             this.StaticText14 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_21").Specific));
             this.ComboBox1 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_22").Specific));
+            this.LinkedButton0 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_24").Specific));
+            this.LinkedButton0.ClickBefore += new SAPbouiCOM._ILinkedButtonEvents_ClickBeforeEventHandler(this.LinkedButton0_ClickBefore);
+            this.EditText3 = ((SAPbouiCOM.EditText)(this.GetItem("Item_26").Specific));
             this.OnCustomInitialize();
 
         }
@@ -170,7 +177,22 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                 Sucursales(true);
                 ComboBox0.Item.Enabled = false;
             }
-
+#elif AD_CL
+            StaticText9.Caption = "Facturas";
+             if (oDT.GetString("U_Admin_Sucursal", 0) == "Y") /* CONTROLLER ADM. */
+            {
+                Sucursales(true);
+                Utils.LoadQueryDynamic(ref ComboBox0, AddonMessageInfo.QueryPuntoEmisionAdminSucursales);
+                ComboBox0.Item.Enabled = true;
+            }
+            else
+            {
+                Utils.LoadQueryDynamic(ref ComboBox0, AddonMessageInfo.QueryPuntoEmisionAdminSucursales);
+                string aaaa = oDT.GetString("U_SYP_NDED", 0);
+                ComboBox0.Select(oDT.GetString("U_SYP_NDED", 0), SAPbouiCOM.BoSearchKey.psk_ByValue);
+                Sucursales(true);
+                ComboBox0.Item.Enabled = false;
+            }
 #else
             if (oDT.GetString("position", 0) == "61") /* CONTROLLER ADM. */
             {
@@ -451,7 +473,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                     string Fecha = EditText1.Value;
                     string CodVehiculo = dt.GetValue("CodVehiculo", i).ToString();
 
-                    entregaBll.SP_VIS_DIS_GET_TRACKER_D(ref dt_2, Fecha, HORA_INI, HORA_FIN, Cod_Chofer, CodVehiculo);
+                    entregaBll.SP_VIS_DIS_GET_TRACKER_D(ref dt_2, Fecha, HORA_INI, HORA_FIN, Cod_Chofer, CodVehiculo,TipoRuta);
                     if (dt.GetValue("Sucursal", i).ToString() != "")
                     {
                         for (int oRows = 0; oRows < dt_2.Rows.Count; oRows++)
@@ -552,6 +574,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                 ObtenerCalculoRegistros2(dt, dt_2, "SUCURSAL", ValorCombo, ComboBox1.GetSelectedValue());
             }
             Sb1Messages.ShowSuccess(addonMessageInfo.MessageIdiomaMessageFinTracker(Sb1Globals.Idioma));
+#if AD_PE
             if (ComboBox1.GetValue()=="15")
             {
                 Formato_Cabecera();
@@ -560,10 +583,22 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             {
                 Formato_CabeceraTransfer();
             }
+#elif AD_CL
+            if (ComboBox1.GetValue() == "13")
+            {
+                Formato_Cabecera();
+            }
+            else
+            {
+                Formato_CabeceraTransfer();
+            }
+#endif
+
 
         }
         public void Formato_Cabecera()
         {
+
             Grid0.Columns.Item("Chofer").LinkedObjectType(Grid0, "CodChofer", "CONDUC");// Chofer
             Grid0.Columns.Item("CodChofer").TitleObject.Caption = "Código Chofer";
            // Grid0.Columns.Item("CodChofer").Visible = false;
@@ -586,25 +621,26 @@ namespace Vistony.Distribucion.Win.UltimaMilla
         }
         public void Formato_CabeceraTransfer()
         {
-            Grid0.Columns.Item("Chofer").LinkedObjectType(Grid0, "CodChofer", "CONDUC");// Chofer
-            Grid0.Columns.Item("CodChofer").TitleObject.Caption = "Código Chofer";
             // Grid0.Columns.Item("CodChofer").Visible = false;
-            Grid0.Columns.Item("Chofer").TitleObject.Caption = "Chofer";
-            Grid0.Columns.Item("Vehiculo").TitleObject.Caption = "vehículo";
-            Grid0.Columns.Item("CodVehiculo").TitleObject.Caption = "Código de Vehículo"; // Vehiculo
-            //Grid0.Columns.Item("CodVehiculo").Visible = false;
-            Grid0.Columns.Item("CodVehiculo").LinkedObjectType(Grid0, "CodVehiculo", "VEHICU"); // Vehiculo/
-            Grid0.Columns.Item("CodAyudante").LinkedObjectType(Grid0, "CodAyudante", "OAYD"); // ayudante
-            //Grid0.Columns.Item("CodAyudante").Visible = false;
-            Grid0.Columns.Item("CodAyudante").TitleObject.Caption = "Código de Ayudante";
-            Grid0.Columns.Item("PesoTotal").TitleObject.Caption = "Peso Total";
-            Grid0.Columns.Item("CantEntregado").TitleObject.Caption = "Cantidad de Transferencias";
-            Grid0.Columns.Item("CantPendiente").TitleObject.Caption = "Cantidad Pendientes";
-            Grid0.Columns.Item("CantidadDoc").TitleObject.Caption = "Cantidad Documentos";
-            Grid0.Columns.Item("FechaProgramacion").TitleObject.Caption = "Fecha de Programación";
-            Grid0.Columns.Item("CargaUtil").TitleObject.Caption = "Carga Util";
 
-            Grid0.AutoResizeColumns();
+            /* Grid0.Columns.Item("Chofer").LinkedObjectType(Grid0, "CodChofer", "CONDUC");// Chofer
+             Grid0.Columns.Item("CodChofer").TitleObject.Caption = "Código Chofer";
+             Grid0.Columns.Item("Chofer").TitleObject.Caption = "Chofer";
+             Grid0.Columns.Item("Vehiculo").TitleObject.Caption = "vehículo";
+             Grid0.Columns.Item("CodVehiculo").TitleObject.Caption = "Código de Vehículo"; // Vehiculo
+             //Grid0.Columns.Item("CodVehiculo").Visible = false;
+             Grid0.Columns.Item("CodVehiculo").LinkedObjectType(Grid0, "CodVehiculo", "VEHICU"); // Vehiculo/
+             Grid0.Columns.Item("CodAyudante").LinkedObjectType(Grid0, "CodAyudante", "OAYD"); // ayudante
+             //Grid0.Columns.Item("CodAyudante").Visible = false;
+             Grid0.Columns.Item("CodAyudante").TitleObject.Caption = "Código de Ayudante";
+             Grid0.Columns.Item("PesoTotal").TitleObject.Caption = "Peso Total";
+             Grid0.Columns.Item("CantEntregado").TitleObject.Caption = "Cantidad de Transferencias";
+             Grid0.Columns.Item("CantPendiente").TitleObject.Caption = "Cantidad Pendientes";
+             Grid0.Columns.Item("CantidadDoc").TitleObject.Caption = "Cantidad Documentos";
+             Grid0.Columns.Item("FechaProgramacion").TitleObject.Caption = "Fecha de Programación";
+             Grid0.Columns.Item("CargaUtil").TitleObject.Caption = "Carga Util";
+            
+            Grid0.AutoResizeColumns(); */
         }
         public void Formato_Detalle()
         {
@@ -616,20 +652,28 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             Grid1.Columns.Item("LineId").Visible = false;
             Grid1.Columns.Item("OrdenVisita").Visible = false;
             Grid1.Columns.Item("DocEntry_Ent").Visible = true;
-            Grid1.Columns.Item("DoEntry_Fac").Visible = true;
+          //  Grid1.Columns.Item("DoEntry_Fac").Visible = true;
             Grid1.Columns.Item("CodCliente").LinkedObjectType(Grid1, "CodCliente", "2");
+#if AD_CL
+            Grid1.Columns.Item("DocEntry_Ent").LinkedObjectType(Grid1, "DocEntry_Ent", "13");
+            Grid1.Columns.Item("DocEntry_Ent").TitleObject.Caption = "Cod. Factura";
+            Grid1.Columns.Item("Documento_Ent").TitleObject.Caption = "Nro. Factura";
+            Grid1.Columns.Item("Documento_Ent").LinkedObjectType(Grid1, "Documento_Ent", "13");
+            Grid1.Columns.Item("DocEntry_Ent").Visible = false;
+            // Grid1.Columns.Item("DocumentoLegal_Fac").Visible = false;
+            //Grid1.Columns.Item("DoEntry_Fac").Visible = false;
+#else
             Grid1.Columns.Item("DocEntry_Ent").LinkedObjectType(Grid1, "DocEntry_Ent", "15");
-
             Grid1.Columns.Item("DocEntry_Ent").TitleObject.Caption = "Cod. guía entrega";
-
-            Grid1.Columns.Item("CodCliente").TitleObject.Caption = "Código Cliente";
-            Grid1.Columns.Item("Cliente").TitleObject.Caption = "Nombre Cliente";
             Grid1.Columns.Item("Documento_Ent").TitleObject.Caption = "Nro. guía entrega";
-
             Grid1.Columns.Item("DocumentoLegal_Fac").TitleObject.Caption = "Nro. factura";
             Grid1.Columns.Item("DoEntry_Fac").TitleObject.Caption = "Cod. factura";
-
             Grid1.Columns.Item("DoEntry_Fac").LinkedObjectType(Grid1, "DoEntry_Fac", "13");
+#endif
+            Grid1.Columns.Item("CodCliente").TitleObject.Caption = "Código Cliente";
+            Grid1.Columns.Item("Cliente").TitleObject.Caption = "Nombre Cliente";
+
+
 
             Grid1.Columns.Item("Direccion").TitleObject.Caption = "Dirección";
             Grid1.Columns.Item("Fecha_Emision").TitleObject.Caption = "Fecha Emisión";
@@ -641,6 +685,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             Grid1.Columns.Item("PersonaContacto").TitleObject.Caption = "Persona de Contacto";
             Grid1.Columns.Item("CodVendedor").TitleObject.Caption = "Código de Vendedor";
             Grid1.Columns.Item("CodVendedor").LinkedObjectType(Grid1, "CodVendedor", "53");
+
+
             Grid1.AutoResizeColumns();
             // Grid0.Columns.Item("CodAyudante").Visible = false;
         }
@@ -654,7 +700,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             Grid1.Columns.Item("LineId").Visible = false;
             Grid1.Columns.Item("OrdenVisita").Visible = false;
             Grid1.Columns.Item("DocEntry_Ent").Visible = true;
-            Grid1.Columns.Item("DoEntry_Fac").Visible = true;
+           // Grid1.Columns.Item("DoEntry_Fac").Visible = true;
             Grid1.Columns.Item("CodCliente").LinkedObjectType(Grid1, "CodCliente", "2");
             Grid1.Columns.Item("DocEntry_Ent").LinkedObjectType(Grid1, "DocEntry_Ent", "67");
 
@@ -664,8 +710,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             Grid1.Columns.Item("Cliente").TitleObject.Caption = "Nombre Cliente";
             Grid1.Columns.Item("Documento_Ent").TitleObject.Caption = "Nro. Transfencia";
 
-            Grid1.Columns.Item("DocumentoLegal_Fac").Visible = false;
-            Grid1.Columns.Item("DoEntry_Fac").Visible = false;
+           // Grid1.Columns.Item("DocumentoLegal_Fac").Visible = false;
+            //Grid1.Columns.Item("DoEntry_Fac").Visible = false;
             
             Grid1.Columns.Item("Direccion").Visible = false;
             Grid1.Columns.Item("Fecha_Emision").TitleObject.Caption = "Fecha Emisión";
@@ -737,7 +783,6 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                         Grid1.CommonSetting.SetRowFontColor(oRows + 1, ColorTranslator.ToOle(Color.Red));
                     }
                 }
-               
 
                 Grid1.AssignLineNro();
                 oForm.Freeze(false);
@@ -750,7 +795,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             string Cod_Chofer = Grid0.DataTable.GetValue("CodChofer", pVal.Row).ToString();
             string Fecha = EditText1.Value;
             string CodVehiculo = Grid0.DataTable.GetValue("CodVehiculo", pVal.Row).ToString();
-
+            string TipoRuta = ComboBox1.GetSelectedValue(); 
             if (EditText0.Value == null || EditText0.Value == "")
             {
                 EditText0.Value = "00:00";
@@ -761,12 +806,11 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             }
             int HORA_INI = Convert.ToInt32(EditText0.Value);
             int HORA_FIN = Convert.ToInt32(EditText2.Value);
-          
 
             using (BLL.EntregaBLL entregaBll = new BLL.EntregaBLL())
             {
-                entregaBll.SP_VIS_DIS_GET_TRACKER_D(ref dt, Fecha, HORA_INI, HORA_FIN, Cod_Chofer, CodVehiculo);
-                if (ComboBox1.GetValue()=="15")
+                entregaBll.SP_VIS_DIS_GET_TRACKER_D(ref dt, Fecha, HORA_INI, HORA_FIN, Cod_Chofer, CodVehiculo, TipoRuta);
+                if (ComboBox1.GetValue()=="15" || ComboBox1.GetValue() == "13")
                 {
                     Formato_Detalle();
                 }
@@ -815,8 +859,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                     string Cod_Chofer = dt.GetValue("CodChofer", i).ToString();
                     string Fecha = EditText1.Value;
                     string CodVehiculo = dt.GetValue("CodVehiculo", i).ToString();
-
-                    entregaBll.SP_VIS_DIS_GET_TRACKER_D(ref dt_2, Fecha, HORA_INI, HORA_FIN, Cod_Chofer, CodVehiculo);
+                    string TipoRuta = ComboBox1.GetSelectedValue();
+                    entregaBll.SP_VIS_DIS_GET_TRACKER_D(ref dt_2, Fecha, HORA_INI, HORA_FIN, Cod_Chofer, CodVehiculo, TipoRuta);
 
                     for (int oRows = 0; oRows < dt_2.Rows.Count; oRows++)
                     {
@@ -912,6 +956,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
         {
             //throw new System.NotImplementedException();
         }
+
         private void Button2_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             Thread mythr = new Thread((obj) =>
@@ -986,5 +1031,74 @@ namespace Vistony.Distribucion.Win.UltimaMilla
 
         private SAPbouiCOM.StaticText StaticText14;
         private SAPbouiCOM.ComboBox ComboBox1;
+        private SAPbouiCOM.LinkedButton LinkedButton0;
+        private SAPbouiCOM.EditText EditText3;
+
+        private void Grid1_LinkPressedBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal,out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+            SAPbouiCOM.EditTextColumn col = null;
+            string codigo = string.Empty;
+            string consolidado = string.Empty;
+            int rowIndex;
+            int rowSelected;
+
+            // verifico en que columna hicieron click  en el linkedbutton
+            if (pVal.ColUID == "Documento_Ent")
+
+            {
+            if (ComboBox1.GetValue()=="13")
+                {
+                    LinkedButton0.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
+
+                }
+                else if (ComboBox1.GetValue() == "15")
+                {
+                    LinkedButton0.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_DeliveryNotes;
+                }
+                else if (ComboBox1.GetValue() == "67")
+                {
+                    LinkedButton0.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_StockTransfers;
+                }
+                else
+                {
+                   
+                }
+
+
+
+                rowSelected = pVal.Row;
+                rowIndex = rowSelected;
+
+                codigo = Grid1.DataTable.GetValue("DocEntry_Ent", Grid1.GetDataTableRowIndex(rowIndex)).ToString();
+                EditText3.Value = codigo;
+                EditText3.Item.Click(SAPbouiCOM.BoCellClickType.ct_Regular);
+                LinkedButton0.Item.Click(SAPbouiCOM.BoCellClickType.ct_Linked);
+                // quito por un instante el codigo de objeto al cual esta relacionado el linkedbutton
+                col = ((SAPbouiCOM.EditTextColumn)(Grid1.Columns.Item("Documento_Ent")));
+                col.LinkedObjectType = "";// 
+
+            }
+
+        }
+
+        private void Grid1_LinkPressedAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            if (pVal.ColUID == "Documento_Ent")
+            {
+
+                SAPbouiCOM.EditTextColumn col = null;
+                col = ((SAPbouiCOM.EditTextColumn)(Grid1.Columns.Item("Documento_Ent")));
+                col.LinkedObjectType = ComboBox1.GetValue();// muestra la flecha amariilla asociada al objeto pedidos 
+                
+            }
+        }
+
+        private void LinkedButton0_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal,out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+            
+        }
+
     }
 }

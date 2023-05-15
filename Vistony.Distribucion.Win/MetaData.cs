@@ -56,6 +56,19 @@ namespace Vistony.Distribucion.Win
                 Sb1Messages.ShowError(ex.ToString());
             }
        }
+        public static void AddMenusChile()
+        {
+            try
+            {
+                //  Sb1Messages.ShowSuccess(string.Format(AddonMessageInfo.Message001), SAPbouiCOM.BoMessageTime.bmt_Short);
+                Sb1XmlFile.LoadAddonMenu(AddonUserFiles.UserMenusChile);
+                //  Sb1Messages.ShowSuccess(string.Format(AddonMessageInfo.Message002), SAPbouiCOM.BoMessageTime.bmt_Short);
+            }
+            catch (Exception ex)
+            {
+                Sb1Messages.ShowError(ex.ToString());
+            }
+        }
         public static void AddMenusEspanolPeru()
         {
             try

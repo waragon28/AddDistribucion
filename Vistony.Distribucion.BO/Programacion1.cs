@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace Vistony.Distribucion.BO
 
         public string U_DocEntryRef { get; set; }
         public string U_DocNumRef { get; set; }
-        // public object U_TaxDate { get; set; }
+         public string U_TaxDate { get; set; }
 
         public  string U_SlpCode { get; set; }
         public  string U_SlpName { get; set; }

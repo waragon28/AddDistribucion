@@ -1,8 +1,9 @@
 ﻿//#define AD_BO
-#define AD_PE
+//#define AD_PE
 //#define AD_ES
 //#define AD_PY
 //#define AD_EC
+#define AD_CL
 
 using System;
 using System.Collections.Generic;
@@ -119,6 +120,8 @@ namespace Vistony.Distribucion.BO
         public string U_SYP_MDVN { get; set; }//SI
         public string U_SYP_DT_AYUDANTE { get; set; }//SI
         public string U_SYP_DT_ESTDES { get; set; }//SI
+
+#if AD_PE
         public string U_SYP_MDTD { get; set; }//SI
         public string U_SYP_MDSD { get; set; }//SI  
         public string U_SYP_MDCD { get; set; }//SI  
@@ -134,7 +137,39 @@ namespace Vistony.Distribucion.BO
         public string U_VIS_AgencyName { get; set; }//SI
         public string U_VIS_AgencyDir { get; set; }//SI
         public string U_SYP_FEGFI { get; set; }//SI
-        public string U_SYP_FEGNB { get; set; }//SI
+        public string U_SYP_FEGFE { get; set; }//SI
+#else
+
+#endif
+
+
+    }
+
+    public class DespachoSLD_Induvis
+    {
+#if AD_EC
+        public string U_SYP_MDTD { get; set; }
+        public string U_SYP_DESDOC { get; set; }
+        public string U_SYP_TIPO_EMIS { get; set; }
+        public string U_SYP_MOT_TRAS { get; set; }
+        public string U_SYP_TIPDES { get; set; }
+        public string U_SYP_MDOM { get; set; }
+        public string U_SYP_MDCT { get; set; }
+        public string U_SYP_TIDTRANSPO { get; set; }
+        public string U_SYP_MDRT { get; set; }
+        public string U_SYP_MDNT { get; set; }
+        public string U_SYP_MDAO { get; set; }
+        public string U_SYP_MDPP { get; set; }
+        public string U_SYP_NOMCL { get; set; }
+        public string U_SYP_MDPLL { get; set; }
+        public string U_SYP_FECH_INI_TRNS { get; set; }
+        public string U_SYP_FECH_FIN_TRNS { get; set; }
+        public string U_SYP_DT_FCDES { get; set; }
+        public string U_SYP_DT_ESTDES { get; set; }
+#else
+
+#endif
+
 
     }
 }

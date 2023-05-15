@@ -1,4 +1,12 @@
-﻿using Forxap.Framework.Extensions;
+﻿//#define AD_BO
+//#define AD_PE
+//#define AD_MA
+//#define AD_ES
+#define AD_CL
+//#define AD_PY
+//#define AD_EC
+
+using Forxap.Framework.Extensions;
 using SAPbouiCOM;
 using System;
 using System.Collections.Generic;
@@ -52,8 +60,16 @@ namespace Vistony.Distribucion.DAL
                 }
                 else
                 {
-                    oForm.Title = "Consolidación de entregas";
-                    StaticText10.Caption = "Fecha de Documento";
+#if AD_PE
+                oForm.Title = "Consolidación de entregas";
+#elif AD_CL
+                oForm.Title = "Consolidación de Factura";
+#elif AD_EC
+                oForm.Title = "Consolidación de entregas";
+#else
+                oForm.Title = "Consolidación de entregas";
+#endif
+                StaticText10.Caption = "Fecha de Documento";
                     StaticText11.Caption = "Desde";
                     StaticText12.Caption = "Hasta";
                     CheckBox2.Caption = "Consolidado    ";
@@ -71,9 +87,17 @@ namespace Vistony.Distribucion.DAL
                 if (Idioma == "English (United States)")
                 {
                         Grid1.DataTable.Columns.Add(English_United_States.Marcar, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
-                        Grid1.DataTable.Columns.Add(English_United_States.Entrega, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
+#if AD_PE
+                 Grid1.DataTable.Columns.Add(English_United_States.Entrega, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                         Grid1.DataTable.Columns.Add(English_United_States.Fecha_Entrega, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
-                        Grid1.DataTable.Columns.Add(English_United_States.Numero_Legal, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
+#elif AD_CL
+                Grid1.DataTable.Columns.Add("Invoice", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
+                Grid1.DataTable.Columns.Add("Date Invoice", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
+#else
+                 Grid1.DataTable.Columns.Add(English_United_States.Entrega, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
+                        Grid1.DataTable.Columns.Add(English_United_States.Fecha_Entrega, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
+#endif
+                Grid1.DataTable.Columns.Add(English_United_States.Numero_Legal, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                         Grid1.DataTable.Columns.Add(English_United_States.Codigo_SN, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                         Grid1.DataTable.Columns.Add(English_United_States.Nombre_SN, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                         Grid1.DataTable.Columns.Add(English_United_States.Consolidado, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
@@ -88,7 +112,7 @@ namespace Vistony.Distribucion.DAL
                     Grid1.DataTable.Columns.Add(Frances.Marcar, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                     Grid1.DataTable.Columns.Add(Frances.Entrega, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                     Grid1.DataTable.Columns.Add(Frances.Fecha_Entrega, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
-                    Grid1.DataTable.Columns.Add(Frances.Numero_Legal, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
+                     Grid1.DataTable.Columns.Add(Frances.Numero_Legal, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                     Grid1.DataTable.Columns.Add(Frances.Codigo_SN, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                     Grid1.DataTable.Columns.Add(Frances.Nombre_SN, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                     Grid1.DataTable.Columns.Add(Frances.Consolidado, SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
@@ -100,9 +124,16 @@ namespace Vistony.Distribucion.DAL
                 else
                 {
                     Grid1.DataTable.Columns.Add("Marcar", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
-                    Grid1.DataTable.Columns.Add("Entrega", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
+#if AD_PE
+                 Grid1.DataTable.Columns.Add("Entrega", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                     Grid1.DataTable.Columns.Add("Fecha Entrega", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
-                    Grid1.DataTable.Columns.Add("Número Legal", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
+#elif AD_CL
+                Grid1.DataTable.Columns.Add("Factura", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
+                Grid1.DataTable.Columns.Add("Fecha Factura", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
+#else
+#endif
+
+                Grid1.DataTable.Columns.Add("Número Legal", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                     Grid1.DataTable.Columns.Add("Código SN", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                     Grid1.DataTable.Columns.Add("Nombre SN", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
                     Grid1.DataTable.Columns.Add("Consolidado", SAPbouiCOM.BoFieldsType.ft_AlphaNumeric);
@@ -194,6 +225,7 @@ namespace Vistony.Distribucion.DAL
                     Button1.Caption = "Cancelar";
                 }
             }
+
         /*============================================================================*/
                         /*===============FIN CONSOLIDADO  =============== */
         /*============================================================================*/

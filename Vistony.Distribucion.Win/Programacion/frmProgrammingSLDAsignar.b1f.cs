@@ -1,4 +1,9 @@
-﻿#define AD_PE
+﻿//#define AD_PE
+//#define AD_BO
+//#define AD_EC
+//#define AD_PY
+#define AD_CL
+
 
 using System;
 using System.Collections.Generic;
@@ -320,7 +325,7 @@ namespace Vistony.Distribucion.Win.Programacion
                          CodigoAgencia = chooseFromListEvent.SelectedObjects.GetValue("CardCode", 0).ToString();
                          RucAgencia = chooseFromListEvent.SelectedObjects.GetValue("LicTradNum", 0).ToString();
                          NombreAgencia = chooseFromListEvent.SelectedObjects.GetValue("CardName", 0).ToString();
-                         DireccionAgencia = chooseFromListEvent.SelectedObjects.GetValue("Address", 0).ToString();
+                         DireccionAgencia = chooseFromListEvent.SelectedObjects.GetValue("MailAddres", 0).ToString();
                         
                     }
                 }

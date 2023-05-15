@@ -1,8 +1,9 @@
 ﻿//#define AD_BO
-#define AD_PE
+//#define AD_PE
 //#define AD_ES
 //#define AD_PY
 //#define AD_EC
+#define AD_CL
 
 using System;
 using System.Collections.Generic;
@@ -35,57 +36,103 @@ namespace Vistony.Distribucion.Win.Formularios
     [FormAttribute("frmProgramming", "Programacion/frmProgramming.b1f")]
     class frmPrograming : BaseWizard
     {
+        AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
+        public EntregaBLL entregaBLL = new EntregaBLL();
         public string usuario;
         public int filaseleccionada;
         public string sucursalUsuarioLogin;
+
+
         private SAPbouiCOM.LinkedButton LinkedButton0;
-        private SAPbouiCOM.EditText EditText6;
-        private SAPbouiCOM.StaticText StaticText4;
-        private SAPbouiCOM.EditText EditText7;
-        AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
-        private SAPbouiCOM.StaticText StaticText0;
-        private SAPbouiCOM.EditText EditText0;
-        private SAPbouiCOM.StaticText StaticText2;
-        private SAPbouiCOM.EditText EditText1;
-        private SAPbouiCOM.Button Button0;
-        private SAPbouiCOM.StaticText StaticText3;
-        private SAPbouiCOM.EditText EditText2;
-        private SAPbouiCOM.Grid Grid0;
-        private SAPbouiCOM.StaticText StaticText9;
-        private SAPbouiCOM.EditText EditText8;
-        private SAPbouiCOM.Button Button2;
-        private SAPbouiCOM.StaticText StaticText11;
-        private SAPbouiCOM.EditText EditText10;
-        private SAPbouiCOM.StaticText StaticText12;
-        private SAPbouiCOM.EditText EditText11;
-        private SAPbouiCOM.StaticText StaticText13;
-        private SAPbouiCOM.EditText EditText12;
-        private SAPbouiCOM.StaticText StaticText14;
-        private SAPbouiCOM.EditText EditText13;
-        private SAPbouiCOM.Button Button4;
-        private SAPbouiCOM.StaticText StaticText15;
-        private SAPbouiCOM.StaticText StaticText16;
-        private SAPbouiCOM.EditText EditText3;
-        private SAPbouiCOM.ComboBox ComboBox0;
-        private SAPbouiCOM.StaticText StaticText6;
-        private SAPbouiCOM.EditText EditText15;
-        private SAPbouiCOM.StaticText StaticText7;
-        private SAPbouiCOM.Button Button1;
         private SAPbouiCOM.LinkedButton LinkedButton1;
-        private SAPbouiCOM.StaticText StaticText8;
+
+        private SAPbouiCOM.EditText EditText1;
+        private SAPbouiCOM.EditText EditText6;
+        private SAPbouiCOM.EditText EditText7;
+        private SAPbouiCOM.EditText EditText0;
+        private SAPbouiCOM.EditText EditText2;
+        private SAPbouiCOM.EditText EditText8;
+        private SAPbouiCOM.EditText EditText10;
+        private SAPbouiCOM.EditText EditText11;
+        private SAPbouiCOM.EditText EditText12;
+        private SAPbouiCOM.EditText EditText13;
+        private SAPbouiCOM.EditText EditText3;
+        private SAPbouiCOM.EditText EditText15;
         private SAPbouiCOM.EditText EditText16;
-        private SAPbouiCOM.CheckBox CheckBox0;
-        private SAPbouiCOM.Button Button3;
         private EditText EditText5;
-        private StaticText StaticText1;
-        private SAPbouiCOM.Button Button6;
-        private StaticText StaticText10;
         private EditText EditText9;
         private EditText EditText17;
-        private StaticText StaticText17;
         private EditText EditText18;
+        private EditText EditText4;
 
-        public EntregaBLL entregaBLL = new EntregaBLL();
+        private SAPbouiCOM.StaticText StaticText4;
+        private SAPbouiCOM.StaticText StaticText0;
+        private SAPbouiCOM.StaticText StaticText2;
+        private SAPbouiCOM.StaticText StaticText3;
+        private SAPbouiCOM.StaticText StaticText9;
+        private SAPbouiCOM.StaticText StaticText11;
+        private SAPbouiCOM.StaticText StaticText12;
+        private SAPbouiCOM.StaticText StaticText13;
+        private SAPbouiCOM.StaticText StaticText14;
+        private SAPbouiCOM.StaticText StaticText15;
+        private SAPbouiCOM.StaticText StaticText16;
+        private SAPbouiCOM.StaticText StaticText6;
+        private SAPbouiCOM.StaticText StaticText7;
+        private SAPbouiCOM.StaticText StaticText8;
+        private StaticText StaticText10;
+        private StaticText StaticText1;
+        private StaticText StaticText17;
+        private StaticText StaticText5;
+
+        private SAPbouiCOM.Button Button0;
+        private SAPbouiCOM.Button Button1;
+        private SAPbouiCOM.Button Button2;
+        private SAPbouiCOM.Button Button3;
+        private SAPbouiCOM.Button Button4;
+        private SAPbouiCOM.Button Button6;
+
+        private SAPbouiCOM.Grid Grid0;
+        
+        private SAPbouiCOM.ComboBox ComboBox0;
+        private SAPbouiCOM.ComboBox ComboBox1;
+
+        private SAPbouiCOM.CheckBox CheckBox0;
+
+        /*ACTUALIZAR ENTREGA*/
+        public void UpdateRutaDespachoEntrega(Grid Grilla, string dispatchDate, string driverCode,
+            string driverName, string assistantCode, string assistantName,
+            string vehiculeCode, string vehiculeName, string vehiculeBrand,
+            string fechaDespacho2, string driverCode2, string driverName2, string driverLicence2,
+            string ayudanteCode2, string ayudanteName2,
+            string vehiculoCode2, string vehiculoPlaca2, string vehiculoMarca2, string CapacidadVehiculo,
+            string documentsWeight,
+              string successQuantity, string failedQuantity, string documentsQuantity, string TipoRuta)
+        {
+
+            documentsWeight = EditText16.Value;
+            successQuantity = "0";
+            failedQuantity = "0";
+            documentsQuantity = EditText8.Value;
+#if AD_PE
+            TipoRuta = "15";
+#elif AD_EC
+            TipoRuta = "15";
+#else
+            TipoRuta = "13";
+#endif
+
+            //PRIMERO ACTUALIZO LAS ENTREGAS PARA VERIFICAR SI CUENTAN CON ALGUNA VALIDACION
+            entregaBLL.UpdateDespachoPrograManualEntregas(fechaDespacho2, driverCode2, driverName2, driverLicence2, ayudanteCode2,
+                   ayudanteName2, vehiculoCode2, vehiculoPlaca2, vehiculoMarca2, EditText16, EditText8, oForm, Grid0, Button0,
+                   addonMessageInfo.MessageIdiomaMessage210(Sb1Globals.Idioma),
+                   addonMessageInfo.MessageIdiomaMessage308(Sb1Globals.Idioma),
+                   addonMessageInfo.MessageIdiomaMessage308(Sb1Globals.Idioma),
+                   addonMessageInfo.MessageIdiomaMessage301(Sb1Globals.Idioma),
+                   CapacidadVehiculo, documentsWeight, successQuantity,
+                   failedQuantity, documentsQuantity, TipoRuta
+                   );
+        }
+
         public frmPrograming()
         {
             oForm.State = SAPbouiCOM.BoFormStateEnum.fs_Maximized;
@@ -199,6 +246,7 @@ namespace Vistony.Distribucion.Win.Formularios
         /// <summary>
         /// Initialize components. Called by framework after form created.
         /// </summary>
+       
         public override void OnInitializeComponent()
         {
             this.StaticText0 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_2").Specific));
@@ -258,6 +306,7 @@ namespace Vistony.Distribucion.Win.Formularios
         /// <summary>
         /// Initialize form event. Called by framework before form creation.
         /// </summary>
+        
         public override void OnInitializeFormEvents()
         {
             this.LoadAfter += new LoadAfterHandler(this.Form_LoadAfter);
@@ -295,7 +344,6 @@ namespace Vistony.Distribucion.Win.Formularios
 
         }
         
-
         private void EditText10_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             SAPbouiCOM.SBOChooseFromListEventArg chooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
@@ -342,7 +390,7 @@ namespace Vistony.Distribucion.Win.Formularios
 
                 using (EntregaBLL entregaBLL = new EntregaBLL())
                 {
-                    #if AD_PE
+#if AD_PE
                         if (Sb1Globals.AdminPuntoEmision == "1")
                          {
                         entregaBLL.ListPrevDespacho_Sucursal(startDate, endDate, ComboBox1.GetSelectedDescription(), chofer, agencia, ref oDT);
@@ -351,9 +399,9 @@ namespace Vistony.Distribucion.Win.Formularios
                          {
                            entregaBLL.ListPrevDespacho(startDate, endDate, usuario, chofer, agencia, ref oDT);
                          }
-                    #else
+#else
                             entregaBLL.ListPrevDespacho(startDate, endDate, usuario, chofer, agencia, ref oDT);
-                    #endif
+#endif
 
                 }
 
@@ -370,20 +418,14 @@ namespace Vistony.Distribucion.Win.Formularios
                 Sb1Messages.ShowMessage(addonMessageInfo.MessageIdiomaFinishLoading(Sb1Globals.Idioma));
             }
         }
+
         void FormatoGrilla()
         {
 
             double totalWeight = 0;
-            //        rowCount = Grid0.AssignLineNro();
-
-
-
-            //   StaticText16.Caption = LabelsForms.Label00001;
             EditText8.SetValue(Utils.AssignLineNro(ref oForm, ref Grid0, ref totalWeight).ToString());
             EditText16.SetDouble(Math.Round(totalWeight, 2));
-            //    StaticText17.Caption = LabelsForms.Label00002;
 
-            //     Grid0.AssignLineNro();
             Grid0.Columns.Item(0).Type = SAPbouiCOM.BoGridColumnType.gct_CheckBox;
             Grid0.Columns.Item("DocEntry").Visible = false;
             Grid0.Columns.Item("DocEntry").Visible = false;
@@ -454,6 +496,7 @@ namespace Vistony.Distribucion.Win.Formularios
             Grid0.RowHeaders.Width += 15;
 
         }
+
         private void FindText(SAPbouiCOM.SBOItemEventArg pVal)
         {
             string textFind = string.Empty;
@@ -509,11 +552,12 @@ namespace Vistony.Distribucion.Win.Formularios
             {
             }
         }
-        // busca un documento dentro de la grilla
+        
         private void EditText2_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             FindText(pVal);
         }
+
         private void Grid0_LinkPressedAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
 
@@ -560,6 +604,7 @@ namespace Vistony.Distribucion.Win.Formularios
             }
 
         }
+
         private void Grid0_LinkPressedBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
@@ -673,6 +718,7 @@ namespace Vistony.Distribucion.Win.Formularios
             }
 
         }
+
         private bool ValidarCampos(string Chofer, string fechaDespacho, string Placa, string Peso, string Ayudante)
         {
             if (Chofer == "")
@@ -709,12 +755,11 @@ namespace Vistony.Distribucion.Win.Formularios
 
             return true;
         }
+
         public void UpdateDespacho(string dispatchDate, string driverCode = "", string driverName = "", string driverLicence = "", string assistantCode = "", string assistantName = "", string vehiculeCode = "", string vehiculeName = "", string vehiculeBrandName = "")
         {
 
             string pesoDespacho = this.EditText16.Value.Trim();
-
-            //  string Licencia = string.Empty;// EditText5.Value;
             bool isUpdated = false;
             string response = string.Empty;
 
@@ -727,15 +772,8 @@ namespace Vistony.Distribucion.Win.Formularios
                 {
                     string docNum = string.Empty;
                     int? docEntry = 0;
-                    //  string choferCode = string.Empty;
-                    //  string choferName = string.Empty;
-                    string choferLicencia = string.Empty;
-                    string vehiculoMarca = string.Empty;
-                    string vehiculoPlaca = string.Empty;
-                    string ayudanteName = string.Empty;
                     string ordenDespacho = string.Empty;
-
-
+                    
                     oForm.Freeze(true);
                     //PROGRAMAR DESPACHO
                     SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_0");
@@ -757,51 +795,35 @@ namespace Vistony.Distribucion.Win.Formularios
                             //////////////////////// obtengo los datos para actualizar la guia ////////////////////////////
                             EntregaDespacho objDespacho = new EntregaDespacho();
                             objDespacho = GetObjDespacho(driverLicence, ordenDespacho, dispatchDate, driverName, assistantName, vehiculeName, vehiculeBrandName, "P", "PE", "-1", "1", dispatchDate, dispatchDate);
-
-
+                            
                             dynamic objDespachoJson = JsonConvert.SerializeObject(objDespacho);
 
-                            Sb1Messages.ShowMessage(string.Format(addonMessageInfo.MessageIdiomaMessage210(Sb1Globals.Idioma), docNum));
                             using (EntregaBLL entregaBLL = new EntregaBLL())
                             {
                                 isUpdated = entregaBLL.UpdateEstadoEntrega(docEntry, objDespachoJson, ref response);
                             }
 
-
                             if (isUpdated)
                             {
-                              
+                                Sb1Messages.ShowMessage(string.Format(addonMessageInfo.MessageIdiomaMessage210(Sb1Globals.Idioma), docNum));
                             }
                             else
                             {
                                 Sb1Messages.ShowError(response);
                             }
-
-
                         }
                     }
 
                     EditText8.SetInt(0);
                     EditText16.SetInt(0);
-                    //// EditText15.Value = docNum;
-                    // ///////////////GRABAR CABECERA DE HISTORIAL////////////////
 
-                    // HistoricoDespachosCabecera objHistoricoC = new HistoricoDespachosCabecera();
-                    // objHistoricoC = AsignaDatosObjectCabecera(docNum, driverCode, driverName, vehiculoPlaca, dispatchDate);
-                    // dynamic jsonHist1 = JsonConvert.SerializeObject(objHistoricoC);
-                    // string rpta1 = "";
-                    // EntregaDAL.GrabarHistorial(jsonHist1, out rpta1);
-
-
-                    ///////////////////////////////
                     Sb1Messages.ShowMessageBoxWarning(addonMessageInfo.MessageIdiomaMessage308(Sb1Globals.Idioma));
 
                     // DEBO GENERAR o BUSCAR EL DOCUMENTO DE SALIDA DEL CHOFER VEHICULO "HOJA DE DESPACHO DEL CHOFER"
                     Sb1Messages.ShowMessage(addonMessageInfo.MessageIdiomaMessage308(Sb1Globals.Idioma));
                     // FIN PROGRAMAR
                     Button0.Item.Click();
-
-
+                    
                 }
                 else
                 {
@@ -819,40 +841,6 @@ namespace Vistony.Distribucion.Win.Formularios
             }
         }
         
-
-        public void AddRutaDespacho(string dispatchDate, string driverCode, string driverName, string assistantCode, string assistantName, string vehiculeCode,
-            string vehiculeName, string vehiculeBrand,string driverLicence)
-        {
-            string ret = string.Empty;
-            double vehiculeCapacity = 0;
-            double documentsWeight = 0;
-            string successQuantity = string.Empty;
-            string failedQuantity = string.Empty;
-            string documentsQuantity = string.Empty;
-            string TipoRuta = "15";
-            documentsQuantity = EditText8.GetString(); //cantidad de documentos
-            documentsWeight = EditText16.GetDouble(); // peso de los documentos
-
-            vehiculeCode = Utils.GetVehiculeCode(vehiculeName, ref vehiculeCapacity, ref vehiculeBrand); // // codigo del vehiculo
-            string FormatovehiculeCapacity = vehiculeCapacity.ToString("N", Sb1Globals.cultura);
-            string FormatodocumentsWeight = documentsWeight.ToString("N", Sb1Globals.cultura);
-            ret = entregaBLL.GuardarHojaDespacho(Grid0, dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
-                vehiculeCapacity, documentsWeight, 
-                successQuantity, failedQuantity, documentsQuantity, TipoRuta);
-
-            if (ret == "Created")
-            {
-                UpdateDespacho(dispatchDate, driverCode, driverName, driverLicence, assistantCode, assistantName, vehiculeCode, vehiculeName, vehiculeBrand);
-                Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaMessage324(Sb1Globals.Idioma), driverName));
-            }
-            else
-            {
-                Sb1Messages.ShowError(ret);
-            }
-
-        }
-
-
         private HistoricoDespachos AsignaDatosObject(string docentry, string NumDespacho, string Estado,
                                     string OrdenDespacho, string fechaDespacho, string Chofer, string NombreChofer,
                                     string Placa, string Ayudante, string Ocurrencias, string Usuario)
@@ -886,9 +874,7 @@ namespace Vistony.Distribucion.Win.Formularios
             return obj;
 
         }
-
-
-
+        
         private EntregaDespacho GetObjDespacho(string driverLicence, string ordenDespacho, string fechaDespacho,
                string nombreChofer, string ayudanteName, string placaVehiculo, string marcaVehiculo, string status,
                string U_SYP_FEEST, string U_SYP_FEESUNAT, string U_SYP_FEMEX, string U_SYP_FEGFI, string U_SYP_FEGFE)
@@ -949,15 +935,21 @@ namespace Vistony.Distribucion.Win.Formularios
             objDespacho.U_SYP_MDVC = placaVehiculo;
             objDespacho.U_SYP_MDVN = marcaVehiculo;
             objDespacho.U_SYP_DT_ESTDES = status;
+#elif AD_CL
+            EntregaDespacho objDespacho = new EntregaDespacho();
+            objDespacho.U_SYP_MDFC = driverLicence;
+            objDespacho.U_SYP_DT_CORRDES = ordenDespacho;
+            objDespacho.U_SYP_DT_FCDES = fechaDespacho;
+            objDespacho.U_SYP_MDFN = nombreChofer;
+            objDespacho.U_SYP_DT_AYUDANTE = ayudanteName;
+            objDespacho.U_SYP_MDVC = placaVehiculo;
+            objDespacho.U_SYP_MDVN = marcaVehiculo;
+            objDespacho.U_SYP_DT_ESTDES = status;
 #endif
             return objDespacho;
 
         }
-
-
-
-
-
+        
         private void Button0_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
@@ -979,9 +971,7 @@ namespace Vistony.Distribucion.Win.Formularios
 
             }
         }
-
-
-
+        
         private void Grid0_PressedAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             //try
@@ -1014,24 +1004,12 @@ namespace Vistony.Distribucion.Win.Formularios
             //}
 
         }
-
-
-
+        
         private void EditText6_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
 
         }
-
-
-
-
-
-
-
-
-
-
-
+        
         private void EditText6_LostFocusAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             // si borran el codigo del chofer limpio las casillas con los demas datos
@@ -1057,15 +1035,7 @@ namespace Vistony.Distribucion.Win.Formularios
 
             filaseleccionada = -1;
         }
-
-
-
-
-
-
-
-
-
+        
         private void Button1_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
 
@@ -1079,8 +1049,7 @@ namespace Vistony.Distribucion.Win.Formularios
                 Sb1Messages.ShowError(addonMessageInfo.MessageIdiomaMessage301(Sb1Globals.Idioma));
             }
         }
-
-
+        
         private void OnShowProgramacionAsignar(bool isVisible)
         {
             string choferCode = string.Empty;
@@ -1126,7 +1095,7 @@ namespace Vistony.Distribucion.Win.Formularios
             try
             {
 
-                frmProgramacionAsignar form = new frmProgramacionAsignar(this, usuario, sucursalUsuarioLogin, isVisible, choferCode, choferName, choferLicencia, vehiculoCode, vehiculoMarca, vehiculoPlaca, ayudanteCode, ayudanteName);
+                frmProgramacionAsignar form = new frmProgramacionAsignar(Grid0,this, usuario, sucursalUsuarioLogin, isVisible, choferCode, choferName, choferLicencia, vehiculoCode, vehiculoMarca, vehiculoPlaca, ayudanteCode, ayudanteName);
                 form.Show();
 
             }
@@ -1147,9 +1116,7 @@ namespace Vistony.Distribucion.Win.Formularios
                 OnShowProgramacionAsignar(false);
 
         }
-
-
-
+        
         private void Grid0_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             // si hicieron Check o deschekearon debo actualizar el contador de documentos seleccionados
@@ -1252,32 +1219,13 @@ namespace Vistony.Distribucion.Win.Formularios
                 Sb1Messages.ShowError(ex.ToString());
             }
         }
-
-
+        
         private void Form_LoadAfter(SAPbouiCOM.SBOItemEventArg pVal)
         {
             // throw new System.NotImplementedException();
 
         }
-
-
-
-
-        public void EnviarData(SAPbouiCOM.Grid dt, string U_DriverCode,
-        string U_DriverName, string U_AssistantCode, string U_AssistantName,
-        string U_VehiculeCode, string U_VehiculeName, string U_DocumentsWeight,
-        string U_SuccessQuantity, string U_FailedQuantity, string U_DocumentsQuantity)
-
-        {
-            //using (EntregaBLL entregaBLL = new EntregaBLL())
-            //{
-            //    entregaBLL.ObtenerCabeceraDocuemtProgramacion(dt, U_DriverCode, U_DriverName, U_AssistantCode,
-            //  U_AssistantName, U_VehiculeCode, U_VehiculeName, U_DocumentsWeight, U_SuccessQuantity,
-            //  U_FailedQuantity, U_DocumentsQuantity);
-            //}
-        }
-
-
+        
         private void EditText9_ChooseFromListAfter(object sboObject, SBOItemEventArg pVal)
         {
             SAPbouiCOM.SBOChooseFromListEventArg chooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
@@ -1301,8 +1249,7 @@ namespace Vistony.Distribucion.Win.Formularios
             }
 
         }
-
-
+        
         private void Button6_ChooseFromListAfter(object sboObject, SBOItemEventArg pVal)
         {
             double vehiculeCapacity = 0;
@@ -1369,11 +1316,7 @@ namespace Vistony.Distribucion.Win.Formularios
 
             // UpdateRutaDespacho();
         }
-
-        private EditText EditText4;
-        private StaticText StaticText5;
-        private SAPbouiCOM.ComboBox ComboBox1;
-
+        
         private void ComboBox1_ClickAfter(object sboObject, SBOItemEventArg pVal)
         {
             SAPbouiCOM.ChooseFromList cfl = oForm.ChooseFromLists.Item("CFL_0");
@@ -1396,6 +1339,7 @@ namespace Vistony.Distribucion.Win.Formularios
 
             BubbleEvent = true;
         }
+
     }// fin de la clase
 
 }// fin del namespace

@@ -1,8 +1,9 @@
 ﻿//#define AD_BO
-#define AD_PE
+//#define AD_PE
 //#define AD_ES
 //#define AD_PY
 //#define AD_EC
+#define AD_CL
 
 using System;
 using System.Collections.Generic;
@@ -154,8 +155,11 @@ namespace Vistony.Distribucion.Win.Programacion
         private SAPbouiCOM.EditText EditText10;
         private SAPbouiCOM.StaticText StaticText8;
         private SAPbouiCOM.StaticText StaticText9;
+        private StaticText StaticText10;
         private SAPbouiCOM.Form oForm;
+        private ComboBox ComboBox0;
         string usuario = Sb1Globals.UserName;
+        string ErrorUpdateDespacho = "";
         public EntregaBLL entregaBLL = new EntregaBLL();
 
         private void Search()
@@ -193,10 +197,7 @@ namespace Vistony.Distribucion.Win.Programacion
 #else
                             entregaBLL.ListPrevDespacho(startDate, endDate, usuario, chofer, agencia, ref oDT);
 #endif
-
-
-
-
+                    
                     for (int oRows = 0; oRows < oDT.Rows.Count; oRows++)
                     {
                         Peso += Convert.ToDouble(Grid0.DataTable.GetString("Peso", oRows));
@@ -207,7 +208,9 @@ namespace Vistony.Distribucion.Win.Programacion
                     EditText10.SetDouble(0);
                 }
                 FormatoGrilla();
+#if A_PE
                 idioma_BLL.FormatoGridIdiomaProgramManual(Grid0, Sb1Globals.Idioma);
+#endif
                 Grid0.Sortable();
             }
             catch (Exception ex)
@@ -220,6 +223,7 @@ namespace Vistony.Distribucion.Win.Programacion
                 Sb1Messages.ShowMessage(addonMessageInfo.MessageIdiomaFinishLoading(Sb1Globals.Idioma));
             }
         }
+
         public void FormatoGrilla()
         {
             /*Deshabilitar Edicion de columnas*/
@@ -231,8 +235,28 @@ namespace Vistony.Distribucion.Win.Programacion
             Grid0.Columns.Item(0).Type = SAPbouiCOM.BoGridColumnType.gct_CheckBox;
             
             Grid0.Columns.Item("DocEntry").Visible = false; /*Oculto la Columna DocEntry de la Entrega*/
+#if AD_CL
+            Grid0.Columns.Item("Entrega").LinkedObjectType(Grid0, "Entrega", "13"); /*Asigno LinkedObject a la columna de Entrega*/
+            Grid0.Columns.Item("Entrega").TitleObject.Caption = "Factura";
+            Grid0.Columns.Item("DocDueDate").TitleObject.Caption = "Fecha de Factura";
+            Grid0.Columns.Item("NumAtCard").TitleObject.Caption = "N° Folio";
+            Grid0.Columns.Item("CardCode").TitleObject.Caption = "Cod. Cliente";
+            Grid0.Columns.Item("CardCode").LinkedObjectType(Grid0, "CardCode", "2");
+            Grid0.Columns.Item("CardName").TitleObject.Caption = "Nombre Cliente";
+            Grid0.Columns.Item("FechaConsolidado").TitleObject.Caption = "Fecha de Consolidado";
+            Grid0.Columns.Item("Ubigeo").Visible = false;
+            Grid0.Columns.Item("Chofer").Visible = false;
+            Grid0.Columns.Item("Vehiculo").Visible = false;
+            Grid0.Columns.Item("Ayudante").Visible = false;
+            Grid0.Columns.Item("NroFactura").Visible = false;
+            Grid0.Columns.Item("LicenciaChofer").Visible = false;
+            Grid0.Columns.Item("MarcaVehiculo").Visible = false;
+            Grid0.Columns.Item("Saldo").Visible = false;
+#else
             Grid0.Columns.Item("Entrega").LinkedObjectType(Grid0, "Entrega", "15"); /*Asigno LinkedObject a la columna de Entrega*/
-            
+#endif
+
+            Grid0.Columns.Item("Peso").RightJustified = true;
             Grid0.Columns.Item("CodChofer").LinkedObjectType(Grid0, "CodChofer", "CONDUC");
             Grid0.Columns.Item("CodChofer").Visible = false;/*Ocular columa de Código de chofer*/
             Grid0.Columns.Item("Chofer").LinkedObjectType(Grid0, "Chofer", "CONDUC"); /*Asigno el LinkedObject al chofer*/
@@ -256,6 +280,7 @@ namespace Vistony.Distribucion.Win.Programacion
 
             Grid0.AutoResizeColumns();
         }
+
         private void Button0_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             double vehiculeCapacity = 0;
@@ -306,10 +331,12 @@ namespace Vistony.Distribucion.Win.Programacion
 
 
         }
+
         private void EditText8_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             FindText(pVal);
         }
+
         private void FindText(SAPbouiCOM.SBOItemEventArg pVal)
         {
             string textFind = string.Empty;
@@ -365,15 +392,18 @@ namespace Vistony.Distribucion.Win.Programacion
             {
             }
         }
+
         private void EditText8_LostFocusAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             filaseleccionada = -1;
         }
+
         private void Button1_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             /*Buscar las Entregas en estado Volver a programar o Sin programar*/
             Search();
         }
+
         private void Grid0_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             // si hicieron Check o deschekearon debo actualizar el contador de documentos seleccionados
@@ -468,15 +498,22 @@ namespace Vistony.Distribucion.Win.Programacion
                 Sb1Messages.ShowError(ex.ToString());
             }
         }
+
         private void Grid0_LinkPressedAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             if (pVal.ColUID == "Entrega")
             {
                 SAPbouiCOM.EditTextColumn col = null;
                 col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("Entrega")));
-                col.LinkedObjectType = "15";// muestra la flecha amarilla asociada al objeto pedidos  
+#if AD_CL
+                col.LinkedObjectType = "13";// muestra la flecha amarilla asociada al objeto pedidos  
+#else
+               col.LinkedObjectType = "15";// muestra la flecha amarilla asociada al objeto pedidos  
+#endif
+
             }
         }
+
         private void Grid0_LinkPressedBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
@@ -500,9 +537,13 @@ namespace Vistony.Distribucion.Win.Programacion
                 docEntry = Grid0.DataTable.GetValue("DocEntry", Grid0.GetDataTableRowIndex(rowIndex)).ToString();
 
                 EditText11.Value = docEntry;
-
-                EditText11.Item.Click(SAPbouiCOM.BoCellClickType.ct_Regular);
+#if AD_CL
+                LinkedButton0.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
+#else
                 LinkedButton0.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_DeliveryNotes;
+#endif
+                EditText11.Item.Click(SAPbouiCOM.BoCellClickType.ct_Regular);
+                
                 LinkedButton0.Item.Click(SAPbouiCOM.BoCellClickType.ct_Linked);
 
                 // quito por un instante el codigo de objeto al cual esta relacionado el linkedbutton
@@ -574,10 +615,12 @@ namespace Vistony.Distribucion.Win.Programacion
             }
 
         }
+
         private void Button2_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             oForm.Close();
         }
+
         private void Button3_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             // si van a programar despachos de agencia y no seleccionaron un chofer
@@ -586,6 +629,7 @@ namespace Vistony.Distribucion.Win.Programacion
             else
                 OnShowProgramacionAsignar(false);
         }
+
         private void OnShowProgramacionAsignar(bool isVisible)
         {
             try
@@ -602,198 +646,42 @@ namespace Vistony.Distribucion.Win.Programacion
             }
 
         }
-        string ErrorUpdateDespacho = "";
-        public void UpdateRutaDespacho(Grid Grilla, string dispatchDate, string driverCode, string driverName, string assistantCode, string assistantName, 
+   
+
+        /*ACTUALIZAR ENTREGA*/
+        public void UpdateRutaDespachoEntrega(Grid Grilla, string dispatchDate, string driverCode, 
+            string driverName, string assistantCode, string assistantName,
             string vehiculeCode, string vehiculeName, string vehiculeBrand,
-            string fechaDespacho2, string driverCode2, string driverName2, string driverLicence2, string ayudanteCode2, string ayudanteName2,
-            string vehiculoCode2, string vehiculoPlaca2, string vehiculoMarca2
-            )
+            string fechaDespacho2, string driverCode2, string driverName2, string driverLicence2,
+            string ayudanteCode2, string ayudanteName2,
+            string vehiculoCode2, string vehiculoPlaca2, string vehiculoMarca2,string CapacidadVehiculo, 
+            string documentsWeight,
+              string successQuantity, string failedQuantity, string documentsQuantity, string TipoRuta)
         {
-            string ret = string.Empty;
 
-            ErrorUpdateDespacho = "";
-            double vehiculeCapacity = 0;
-            double documentsWeight = 0;
-            string successQuantity = string.Empty;
-            string failedQuantity = string.Empty;
-            string documentsQuantity = string.Empty;
-            string TipoRuta = "15";
-
-            documentsQuantity = EditText9.GetString(); //cantidad de documentos
-            documentsWeight = EditText10.GetDouble(); // peso de los documentos
-
-            vehiculeCode = Utils.GetVehiculeCode(vehiculeName, ref vehiculeCapacity, ref vehiculeBrand); // // codigo del vehiculo
-            SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_0");
-
-            vehiculeCode = Utils.GetVehiculeCode(vehiculeName, ref vehiculeCapacity, ref vehiculeBrand); // // codigo del vehiculo
-            string  FormatovehiculeCapacity = vehiculeCapacity.ToString("N", Sb1Globals.cultura);
-            string  FormatodocumentsWeight = documentsWeight.ToString("N", Sb1Globals.cultura);
-
-#if AD_PY
-            ret = entregaBLL.GuardarHojaDespacho(Grid0, dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
-                Convert.ToDouble(Convert.ToString(vehiculeCapacity).Replace(",", ".")), Convert.ToDouble(Convert.ToString(documentsWeight).Replace(",", ".")), successQuantity, failedQuantity, documentsQuantity);
+            documentsWeight = EditText10.Value;
+            successQuantity = "0";
+             failedQuantity = "0";
+            documentsQuantity = EditText9.Value;
+#if AD_PE
+            TipoRuta = "15";
+#elif AD_CL
+            TipoRuta = "13";
+#elif AD_EC
+            TipoRuta = "15";
 #else
 
-            ret = entregaBLL.GuardarHojaDespacho(Grid0,dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
-                vehiculeCapacity, Convert.ToDouble(documentsWeight), successQuantity, failedQuantity, documentsQuantity, TipoRuta);
 #endif
-
-
-            if (ret == "Created")
-            {
-                Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaMessage324(Sb1Globals.Idioma), driverName));
-                UpdateDespacho(fechaDespacho2, driverCode2, driverName2, driverLicence2, ayudanteCode2, ayudanteName2, vehiculoCode2, vehiculoPlaca2, vehiculoMarca2);
-            }
-            else
-            {
-                Sb1Messages.ShowError(ret);
-            }
-            ErrorUpdateDespacho = ret;
-        }
-        public void UpdateDespacho(string dispatchDate, string driverCode, string driverName, string driverLicence, string assistantCode, string assistantName, string vehiculeCode, string vehiculeName, string vehiculeBrandName)
-        {
-
-            string pesoDespacho = this.EditText10.Value.Trim();
-
-            //  string Licencia = string.Empty;// EditText5.Value;
-            string response = string.Empty;
-
-            try
-            {
-
-                int ContarMarcados = 0;
-                
-                    if (ContarMarcados == 0)
-                    {
-                        string docNum = string.Empty;
-                        int? docEntry = 0;
-                        string choferLicencia = string.Empty;
-                        string vehiculoMarca = string.Empty;
-                        string vehiculoPlaca = string.Empty;
-                        string ayudanteName = string.Empty;
-                        string ordenDespacho = string.Empty;
-
-                        oForm.Freeze(true);
-                        //PROGRAMAR DESPACHO
-                        SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_0");
-                        for (int row = 0; row <= Grid0.Rows.Count - 1; row++)
-                        {
-                            // verifico si el documento se encuentra seleccionado
-                            if (Grid0.DataTable.GetString("Marca", row) == "Y")
-                            {
-                                docEntry = Grid0.DataTable.GetInt("DocEntry", row);
-                                docNum = Grid0.DataTable.GetString("Entrega", row);
-
-                                oDT.Clear();
-
-                                // realmente necesito obtener este numero ???
-                                using (EntregaBLL entregaBLL = new EntregaBLL())
-                                {
-                                    ordenDespacho = entregaBLL.ObtenerCorrelativoDespacho(oDT, dispatchDate);
-                                }
-                                //////////////////////// obtengo los datos para actualizar la guia ////////////////////////////
-                                EntregaDespacho objDespacho = new EntregaDespacho();
-                                objDespacho = GetObjDespacho(driverLicence, ordenDespacho, dispatchDate, driverName, assistantName, vehiculeName, vehiculeBrandName, "P", "PE", "-1", "1", dispatchDate, dispatchDate);
-                                dynamic objDespachoJson = JsonConvert.SerializeObject(objDespacho);
-
-                                Sb1Messages.ShowMessage(string.Format(addonMessageInfo.MessageIdiomaMessage210(Sb1Globals.Idioma), docNum));
-                                using (EntregaBLL entregaBLL = new EntregaBLL())
-                                {
-                                   entregaBLL.UpdateEstadoEntrega(docEntry, objDespachoJson, ref response);
-                                }
-                            }
-                        }
-
-                        EditText9.SetInt(0);
-                        EditText10.SetInt(0);
-
-                        ///////////////////////////////
-                        Sb1Messages.ShowMessageBoxWarning(addonMessageInfo.MessageIdiomaMessage308(Sb1Globals.Idioma));
-
-                        Sb1Messages.ShowMessage(addonMessageInfo.MessageIdiomaMessage308(Sb1Globals.Idioma));
-                        // FIN PROGRAMAR
-                        Button1.Item.Click();
-                    }
-                    else
-                    {
-                        Sb1Messages.ShowError(addonMessageInfo.MessageIdiomaMessage301(Sb1Globals.Idioma));
-                        return;
-                    }
-                
-            }
-            catch (Exception ex)
-            {
-                Sb1Messages.ShowError(ex.ToString());
-            }
-            finally
-            {
-                oForm.Freeze(false);
-            }
-        }
-
-        private EntregaDespacho GetObjDespacho(string driverLicence, string ordenDespacho, string fechaDespacho,
-               string nombreChofer, string ayudanteName, string placaVehiculo, string marcaVehiculo, string status,
-               string U_SYP_FEEST, string U_SYP_FEESUNAT, string U_SYP_FEMEX, string U_SYP_FEGFI, string U_SYP_FEGFE)
-        {
-#if AD_PE
-            EntregaDespacho objDespacho = new EntregaDespacho();
-            objDespacho.U_SYP_MDFC = driverLicence;
-            objDespacho.U_SYP_DT_CORRDES = ordenDespacho;
-            objDespacho.U_SYP_DT_FCDES = fechaDespacho;
-            objDespacho.U_SYP_MDFN = nombreChofer;
-            objDespacho.U_SYP_DT_AYUDANTE = ayudanteName;
-            objDespacho.U_SYP_MDVC = placaVehiculo;
-            objDespacho.U_SYP_MDVN = marcaVehiculo;
-            objDespacho.U_SYP_FEEST = U_SYP_FEEST;
-            objDespacho.U_SYP_FEESUNAT = U_SYP_FEESUNAT;
-            objDespacho.U_SYP_FEMEX = U_SYP_FEMEX;
-            objDespacho.U_SYP_FEGFI = U_SYP_FEGFI;
-            objDespacho.U_SYP_FEGFE = U_SYP_FEGFE;
-
-            objDespacho.U_SYP_DT_ESTDES = status;
-#elif AD_BO
-            EntregaDespacho objDespacho = new EntregaDespacho();
-            objDespacho.U_SYP_MDFC = driverLicence;
-            objDespacho.U_SYP_DT_CORRDES = ordenDespacho;
-            objDespacho.U_SYP_DT_FCDES = fechaDespacho;
-            objDespacho.U_SYP_MDFN = nombreChofer;
-            objDespacho.U_SYP_DT_AYUDANTE = ayudanteName;
-            objDespacho.U_SYP_MDVC = placaVehiculo;
-            objDespacho.U_SYP_MDVN = marcaVehiculo;
-            objDespacho.U_SYP_DT_ESTDES = status;
-#elif AD_ES
-            EntregaDespacho objDespacho = new EntregaDespacho();
-            objDespacho.U_SYP_MDFC = driverLicence;
-            objDespacho.U_SYP_DT_CORRDES = ordenDespacho;
-            objDespacho.U_SYP_DT_FCDES = fechaDespacho;
-            objDespacho.U_SYP_MDFN = nombreChofer;
-            objDespacho.U_SYP_DT_AYUDANTE = ayudanteName;
-            objDespacho.U_SYP_MDVC = placaVehiculo;
-            objDespacho.U_SYP_MDVN = marcaVehiculo;
-            objDespacho.U_SYP_DT_ESTDES = status;
-#elif AD_PY
-            EntregaDespacho objDespacho = new EntregaDespacho();
-            objDespacho.U_SYP_MDFC = driverLicence;
-            objDespacho.U_SYP_DT_CORRDES = ordenDespacho;
-            objDespacho.U_SYP_DT_FCDES = fechaDespacho;
-            objDespacho.U_SYP_MDFN = nombreChofer;
-            objDespacho.U_SYP_DT_AYUDANTE = ayudanteName;
-            objDespacho.U_SYP_MDVC = placaVehiculo;
-            objDespacho.U_SYP_MDVN = marcaVehiculo;
-            objDespacho.U_SYP_DT_ESTDES = status;
-#elif AD_EC
-            EntregaDespacho objDespacho = new EntregaDespacho();
-            objDespacho.U_SYP_MDFC = driverLicence;
-            objDespacho.U_SYP_DT_CORRDES = ordenDespacho;
-            objDespacho.U_SYP_DT_FCDES = fechaDespacho;
-            objDespacho.U_SYP_MDFN = nombreChofer;
-            objDespacho.U_SYP_DT_AYUDANTE = ayudanteName;
-            objDespacho.U_SYP_MDVC = placaVehiculo;
-            objDespacho.U_SYP_MDVN = marcaVehiculo;
-            objDespacho.U_SYP_DT_ESTDES = status;
-#endif
-            return objDespacho;
-
+            //PRIMERO ACTUALIZO LAS ENTREGAS PARA VERIFICAR SI CUENTAN CON ALGUNA VALIDACION
+            entregaBLL.UpdateDespachoPrograManualEntregas(fechaDespacho2, driverCode2, driverName2, driverLicence2, ayudanteCode2,
+                   ayudanteName2, vehiculoCode2, vehiculoPlaca2, vehiculoMarca2, EditText10, EditText9, oForm, Grid0, Button1,
+                   addonMessageInfo.MessageIdiomaMessage210(Sb1Globals.Idioma),
+                   addonMessageInfo.MessageIdiomaMessage308(Sb1Globals.Idioma),
+                   addonMessageInfo.MessageIdiomaMessage308(Sb1Globals.Idioma),
+                   addonMessageInfo.MessageIdiomaMessage301(Sb1Globals.Idioma),
+                   CapacidadVehiculo, documentsWeight,successQuantity, 
+                   failedQuantity, documentsQuantity, TipoRuta
+                   );
         }
 
         private void Form_LoadAfter(SBOItemEventArg pVal)
@@ -819,8 +707,6 @@ namespace Vistony.Distribucion.Win.Programacion
 
                 }
 #endif
-
-
             }
             else
             {
@@ -831,7 +717,6 @@ namespace Vistony.Distribucion.Win.Programacion
 
         }
 
-        private StaticText StaticText10;
-        private ComboBox ComboBox0;
+
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AddOnRegData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SlientInstallation="No" SlientUpgrade="No" Partnernmsp="Vistony_PE" SchemaVersion="3.0" Type="" MultipleVersion="false" OnDemand="" OnPremise="" ExtName="UltimaMilla_PE" ExtVersion="1.3.4" Contdata="waragon@nogasa.com" Partner="TI Vistony" DBType="HANA" ClientType="A">
+<AddOnRegData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SlientInstallation="No" SlientUpgrade="No" Partnernmsp="Vistony" SchemaVersion="3.0" Type="" MultipleVersion="false" OnDemand="" OnPremise="" ExtName="UltimaMilla_CL" ExtVersion="1.5.8" Contdata="waragon@nogasa.com" Partner="TI Vistony" DBType="HANA" ClientType="A">
   <Validity>
     <SBOCompatibility>
       <Version From="930.110.01" To="1000.160.06" />
@@ -40,10 +40,19 @@
             <File FileName="Forxap.Framework.dll">
               <Actions />
             </File>
+            <File FileName="Forxap.Framework.pdb">
+              <Actions />
+            </File>
             <File FileName="Forxap.Framework.ServiceLayer.dll">
               <Actions />
             </File>
+            <File FileName="Forxap.Framework.ServiceLayer.pdb">
+              <Actions />
+            </File>
             <File FileName="Forxap.Framework.Utils.dll">
+              <Actions />
+            </File>
+            <File FileName="Forxap.Framework.Utils.pdb">
               <Actions />
             </File>
             <File FileName="GMap.NET.Core.dll">
@@ -67,7 +76,13 @@
             <File FileName="protobuf-net.dll">
               <Actions />
             </File>
+            <File FileName="protobuf-net.xml">
+              <Actions />
+            </File>
             <File FileName="RestSharp.dll">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.xml">
               <Actions />
             </File>
             <File FileName="SAPBusinessOneSDK.dll">
@@ -82,16 +97,40 @@
             <File FileName="UltimaMilla.exe.config">
               <Actions />
             </File>
+            <File FileName="UltimaMilla.exe.config.bak">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.pdb">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.vshost.exe">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.vshost.exe.config">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.vshost.exe.manifest">
+              <Actions />
+            </File>
             <File FileName="UltimaMilla.xml">
               <Actions />
             </File>
             <File FileName="Vistony.Distribucion.BLL.dll">
               <Actions />
             </File>
+            <File FileName="Vistony.Distribucion.BLL.pdb">
+              <Actions />
+            </File>
             <File FileName="Vistony.Distribucion.BO.dll">
               <Actions />
             </File>
+            <File FileName="Vistony.Distribucion.BO.pdb">
+              <Actions />
+            </File>
             <File FileName="Vistony.Distribucion.DAL.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Distribucion.DAL.pdb">
               <Actions />
             </File>
             <File FileName="es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll">
@@ -101,6 +140,9 @@
               <Actions />
             </File>
             <File FileName="Files\UserMenus.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserMenusChile.xml">
               <Actions />
             </File>
             <File FileName="Files\UserMenusEnglisUnitedStates.xml">
@@ -137,10 +179,19 @@
             <File FileName="Forxap.Framework.dll">
               <Actions />
             </File>
+            <File FileName="Forxap.Framework.pdb">
+              <Actions />
+            </File>
             <File FileName="Forxap.Framework.ServiceLayer.dll">
               <Actions />
             </File>
+            <File FileName="Forxap.Framework.ServiceLayer.pdb">
+              <Actions />
+            </File>
             <File FileName="Forxap.Framework.Utils.dll">
+              <Actions />
+            </File>
+            <File FileName="Forxap.Framework.Utils.pdb">
               <Actions />
             </File>
             <File FileName="GMap.NET.Core.dll">
@@ -164,7 +215,13 @@
             <File FileName="protobuf-net.dll">
               <Actions />
             </File>
+            <File FileName="protobuf-net.xml">
+              <Actions />
+            </File>
             <File FileName="RestSharp.dll">
+              <Actions />
+            </File>
+            <File FileName="RestSharp.xml">
               <Actions />
             </File>
             <File FileName="SAPBusinessOneSDK.dll">
@@ -179,16 +236,40 @@
             <File FileName="UltimaMilla.exe.config">
               <Actions />
             </File>
+            <File FileName="UltimaMilla.exe.config.bak">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.pdb">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.vshost.exe">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.vshost.exe.config">
+              <Actions />
+            </File>
+            <File FileName="UltimaMilla.vshost.exe.manifest">
+              <Actions />
+            </File>
             <File FileName="UltimaMilla.xml">
               <Actions />
             </File>
             <File FileName="Vistony.Distribucion.BLL.dll">
               <Actions />
             </File>
+            <File FileName="Vistony.Distribucion.BLL.pdb">
+              <Actions />
+            </File>
             <File FileName="Vistony.Distribucion.BO.dll">
               <Actions />
             </File>
+            <File FileName="Vistony.Distribucion.BO.pdb">
+              <Actions />
+            </File>
             <File FileName="Vistony.Distribucion.DAL.dll">
+              <Actions />
+            </File>
+            <File FileName="Vistony.Distribucion.DAL.pdb">
               <Actions />
             </File>
             <File FileName="es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll">
@@ -198,6 +279,9 @@
               <Actions />
             </File>
             <File FileName="Files\UserMenus.xml">
+              <Actions />
+            </File>
+            <File FileName="Files\UserMenusChile.xml">
               <Actions />
             </File>
             <File FileName="Files\UserMenusEnglisUnitedStates.xml">

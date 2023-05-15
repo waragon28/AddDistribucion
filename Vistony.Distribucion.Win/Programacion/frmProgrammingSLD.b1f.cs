@@ -1,5 +1,8 @@
-﻿//S#define AD_EC
-#define AD_PE
+﻿//#define AD_EC
+//#define AD_PE
+//#define AD_BO
+//#define AD_PY
+#define AD_CL
 
 using System;
 using System.Collections.Generic;
@@ -43,6 +46,8 @@ namespace Vistony.Distribucion.Win.Programacion
             this.EditText3 = ((SAPbouiCOM.EditText)(this.GetItem("Item_9").Specific));
             this.EditText3.ChooseFromListAfter += new SAPbouiCOM._IEditTextEvents_ChooseFromListAfterEventHandler(this.EditText3_ChooseFromListAfter);
             this.Grid0 = ((SAPbouiCOM.Grid)(this.GetItem("Item_10").Specific));
+            this.Grid0.LinkPressedBefore += new SAPbouiCOM._IGridEvents_LinkPressedBeforeEventHandler(this.Grid0_LinkPressedBefore);
+            this.Grid0.LinkPressedAfter += new SAPbouiCOM._IGridEvents_LinkPressedAfterEventHandler(this.Grid0_LinkPressedAfter);
             this.Grid0.ClickAfter += new SAPbouiCOM._IGridEvents_ClickAfterEventHandler(this.Grid0_ClickAfter);
             this.EditText4 = ((SAPbouiCOM.EditText)(this.GetItem("Item_11").Specific));
             this.EditText4.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText4_KeyDownAfter);
@@ -59,6 +64,8 @@ namespace Vistony.Distribucion.Win.Programacion
             this.Button3 = ((SAPbouiCOM.Button)(this.GetItem("Item_15").Specific));
             this.Button3.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button3_ClickAfter);
             this.CheckBox0 = ((SAPbouiCOM.CheckBox)(this.GetItem("Item_20").Specific));
+            this.LinkedButton0 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_21").Specific));
+            this.EditText7 = ((SAPbouiCOM.EditText)(this.GetItem("Item_23").Specific));
             this.OnCustomInitialize();
 
         }
@@ -176,12 +183,17 @@ namespace Vistony.Distribucion.Win.Programacion
             Grid0.ReadOnlyColumns();
             Grid0.Columns.Item(0).Editable = true;
             Grid0.AutoResizeColumns();
-
-            Grid0.Columns.Item("DocEntry").LinkedObjectType(Grid0, "DocEntry", "1250000001");
+            Grid0.Columns.Item("DocEntry").Visible = false;
+            Grid0.Columns.Item("DocEntry").LinkedObjectType(Grid0, "DocEntry", "67");
+            Grid0.Columns.Item("DocNum").LinkedObjectType(Grid0, "DocNum", "67");
+            Grid0.Columns.Item("Num Interno Transferencia").Visible = false;
+            Grid0.Columns.Item("DocNum").TitleObject.Caption = "N° Transferencia";
             Grid0.Columns.Item("Peso").RightJustified = true;
-            // ampliio el ancho de la columna
-            Grid0.RowHeaders.Width += 15;
-
+            Grid0.Columns.Item("CardCode").TitleObject.Caption = "Cod Proveedor";
+            Grid0.Columns.Item("CardName").TitleObject.Caption = "Nombre Proveedor";
+           // ampliio el ancho de la columna
+           Grid0.RowHeaders.Width += 15;
+            Grid0.AutoResizeColumns();
         }
 
         private void Button1_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
@@ -376,8 +388,16 @@ namespace Vistony.Distribucion.Win.Programacion
 
         private void Button3_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
-            frmProgrammingSLDAsignar form = new frmProgrammingSLDAsignar(this, usuario, sucursalUsuarioLogin, Grid0);
+#if AD_PE
+                        frmProgrammingSLDAsignar form = new frmProgrammingSLDAsignar(this, usuario, sucursalUsuarioLogin, Grid0);
             form.Show();
+#elif AD_EC
+            frmProgrammingTransferAsignarEC form = new frmProgrammingTransferAsignarEC(this, usuario, sucursalUsuarioLogin, Grid0);
+            form.Show();
+#else
+            frmProgrammingTransferAsignar form = new frmProgrammingTransferAsignar(this, usuario, sucursalUsuarioLogin, Grid0);
+            form.Show();
+#endif
         }
 
         private void Button3_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, bool BubbleEvent)
@@ -421,13 +441,18 @@ namespace Vistony.Distribucion.Win.Programacion
             vehiculeCode = Utils.GetVehiculeCode(vehiculeName, ref vehiculeCapacity, ref vehiculeBrand); // // codigo del vehiculo
             string FormatovehiculeCapacity = vehiculeCapacity.ToString("N", Sb1Globals.cultura);
             string FormatodocumentsWeight = documentsWeight.ToString("N", Sb1Globals.cultura);
+#if AD_BO
             TipoRuta = "67";
+#else
+    TipoRuta = "67";
+#endif
 #if AD_PY
             ret = entregaBLL.GuardarHojaDespacho(Grid0, dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
-                Convert.ToDouble(Convert.ToString(vehiculeCapacity).Replace(",", ".")), Convert.ToDouble(Convert.ToString(documentsWeight).Replace(",", ".")), successQuantity, failedQuantity, documentsQuantity);
+                Convert.ToDouble(Convert.ToString(vehiculeCapacity).Replace(",", ".")), Convert.ToDouble(Convert.ToString(documentsWeight).Replace(",", ".")), successQuantity,
+                failedQuantity, documentsQuantity, TipoRuta);
 #else
 
-            ret =entregaBLL.GuardarHojaDespachoSLD(Grid0, dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
+            ret =  entregaBLL.GuardarHojaDespachoSLD(Grid0, dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
                 vehiculeCapacity, Convert.ToDouble(documentsWeight), successQuantity, failedQuantity, documentsQuantity, TipoRuta);
 #endif
 
@@ -446,6 +471,135 @@ namespace Vistony.Distribucion.Win.Programacion
                 Sb1Messages.ShowError(ret);
             }
             ErrorUpdateDespacho = ret;
+        }
+
+        public void UpdateRutaDespacho2(Grid Grilla, string dispatchDate, string driverCode, string driverName, string assistantCode, string assistantName,
+    string vehiculeCode, string vehiculeName, string vehiculeBrand,
+    string fechaDespacho2, string driverCode2, string driverName2, string driverLicence2, string ayudanteCode2, string ayudanteName2,
+    string vehiculoCode2, string vehiculoPlaca2, string vehiculoMarca2
+    )
+        {
+            string ret = string.Empty;
+
+            ErrorUpdateDespacho = "";
+            double vehiculeCapacity = 0;
+            double documentsWeight = 0;
+            string successQuantity = string.Empty;
+            string failedQuantity = string.Empty;
+            string documentsQuantity = string.Empty;
+            string TipoRuta = string.Empty;
+
+            documentsQuantity = EditText5.GetString(); //cantidad de documentos
+            documentsWeight = EditText6.GetDouble(); // peso de los documentos
+
+            vehiculeCode = Utils.GetVehiculeCode(vehiculeName, ref vehiculeCapacity, ref vehiculeBrand); // // codigo del vehiculo
+            SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_0");
+
+            vehiculeCode = Utils.GetVehiculeCode(vehiculeName, ref vehiculeCapacity, ref vehiculeBrand); // // codigo del vehiculo
+            string FormatovehiculeCapacity = vehiculeCapacity.ToString("N", Sb1Globals.cultura);
+            string FormatodocumentsWeight = documentsWeight.ToString("N", Sb1Globals.cultura);
+#if AD_BO
+            TipoRuta = "67";
+#else
+    TipoRuta = "67";
+#endif
+
+#if AD_PY
+            ret = entregaBLL.GuardarHojaDespachoSLD(Grid0, dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
+                Convert.ToDouble(Convert.ToString(vehiculeCapacity).Replace(",", ".")), Convert.ToDouble(Convert.ToString(documentsWeight).Replace(",", ".")),
+                successQuantity, failedQuantity, documentsQuantity, TipoRuta);
+#else
+
+            ret = entregaBLL.GuardarHojaDespachoSLD(Grid0, dispatchDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName,
+                vehiculeCapacity, Convert.ToDouble(documentsWeight), successQuantity, failedQuantity, documentsQuantity, TipoRuta);
+#endif
+
+
+            if (ret == "Created")
+            {
+                string Respuesta = string.Empty;
+
+                UpdateDespachoSLD2(fechaDespacho2, driverCode2, driverName2, driverLicence2, ayudanteCode2, ayudanteName2, vehiculoCode2, vehiculoPlaca2, vehiculoMarca2
+            );
+            }
+            else
+            {
+                Sb1Messages.ShowError(ret);
+            }
+            ErrorUpdateDespacho = ret;
+        }
+
+        public void UpdateDespachoSLDEcuador( Grid Grilla,string TipoDocumento, string TipoDocumentoDescripcion,
+               string TipoEmision,
+               string MotivoTraslado, string TipoDespacho, 
+               string OtroMotivTraslado,
+               string CodTransportista,string TipoIdentificacionTransportista,
+               string RucTransportista, string RazonSocialTransportista,string CodPartida,
+               string DireccionPartida, string NombreTransportista,
+               string DireccionDestino,
+               string FechaInicio, string FechaFin,string FechaProgramacion,
+               string driverCode, string driverName, string driverLicence, string ayudanteCode, 
+               string ayudanteName, string vehiculoCode, string Capacidad, string vehiculoPlaca, string vehiculoMarca)
+        {
+            string ret = string.Empty;
+            
+            string TipoRuta = string.Empty;
+            string docNum = string.Empty;
+            int? docEntry = 0;
+            int? DocEntryTranfer = 0;
+            string response = string.Empty;
+#if AD_BO
+            TipoRuta = "67";
+#else
+            TipoRuta = "67";
+#endif
+
+#if AD_PY
+
+#elif AD_EC
+            
+            ret = entregaBLL.GuardarHojaDespachoSLD_Ecuador(Grid0, FechaProgramacion, driverCode, driverName, ayudanteCode,
+                  ayudanteName, vehiculoCode, vehiculoMarca,Capacidad,EditText6.Value,
+                  "0","0", EditText5.Value, TipoRuta, CodTransportista, RazonSocialTransportista);
+            if (ret == "Created")
+            {
+                using (EntregaBLL entregaBLL = new EntregaBLL())
+                {
+                    DespachoSLD_Induvis objDespachoSLD = new DespachoSLD_Induvis();
+                    for (int row = 0; row < Grid0.Rows.Count; row++)
+                    {
+
+                       
+
+                        // verifico si el documento se encuentra seleccionado
+                        if (Grid0.DataTable.GetString("Marca", row) == "Y")
+                        {
+                            objDespachoSLD = GetObjDespachoSLD_Induvis(TipoDocumento, TipoDocumentoDescripcion, TipoEmision,
+                           MotivoTraslado, TipoDespacho, OtroMotivTraslado, CodTransportista, TipoIdentificacionTransportista,
+                           RucTransportista, RazonSocialTransportista, CodPartida, DireccionPartida, Grid0.DataTable.GetString("CardName", row),
+                           Grid0.DataTable.GetString("Direccion", row), FechaInicio, FechaFin, FechaProgramacion,"P");
+                            dynamic objDespachoJson = JsonConvert.SerializeObject(objDespachoSLD);
+                            Sb1Messages.ShowMessage(string.Format(addonMessageInfo.MessageIdiomaMessage210(Sb1Globals.Idioma), docNum));
+
+
+                            docEntry = Grid0.DataTable.GetInt("DocEntry", row);
+                            docNum = Grid0.DataTable.GetString("DocNum", row);
+                            DocEntryTranfer = Grid0.DataTable.GetInt("Num Interno Transferencia", row);
+
+                            Sb1Messages.ShowMessage(string.Format(addonMessageInfo.MessageIdiomaMessage210(Sb1Globals.Idioma), docNum));
+
+                            if (entregaBLL.UpdateEstadoSLD3(DocEntryTranfer, objDespachoJson, ref response) == false)
+                            {
+                                Sb1Messages.ShowMessageBoxWarning(response);
+                            };
+                        }
+                    }
+                    Sb1Messages.ShowSuccess("Proceso Culminado");
+                    Button0.Item.Click();
+                }
+            }
+
+#endif
         }
 
         public void UpdateDespachoSLD(string dispatchDate, string driverCode, string driverName, string driverLicence, 
@@ -498,7 +652,13 @@ namespace Vistony.Distribucion.Win.Programacion
 
                             using (EntregaBLL entregaBLL = new EntregaBLL())
                             {
+#if AD_PE
                                 entregaBLL.UpdateEstadoSLD2(DocEntryTranfer, objDespachoJson, ref response,"09", SeriesSunat, CorrelativoSunat,rc,rc2);
+#elif AD_BO
+                                entregaBLL.UpdateEstadoSLD3(DocEntryTranfer, objDespachoJson, ref response);
+#else
+
+#endif
                             }
                         }
                     }
@@ -530,13 +690,103 @@ namespace Vistony.Distribucion.Win.Programacion
             }
         }
 
+        public void UpdateDespachoSLD2(string dispatchDate, string driverCode, string driverName, string driverLicence,
+                                  string assistantName, string assistantCode, string vehiculeCode, string vehiculeName,
+                                  string vehiculeBrandName)
+        {
+            string response = string.Empty;
+
+            try
+            {
+
+                int ContarMarcados = 0;
+
+                if (ContarMarcados == 0)
+                {
+                    string docNum = string.Empty;
+                    int? docEntry = 0;
+                    string choferLicencia = string.Empty;
+                    string vehiculoMarca = string.Empty;
+                    string vehiculoPlaca = string.Empty;
+                    string ayudanteName = string.Empty;
+                    string ordenDespacho = string.Empty;
+                    int? DocEntryTranfer = 0;
+                    //  oForm.Freeze(true);
+                    //PROGRAMAR DESPACHO
+                    SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_0");
+
+                    SAPbobsCOM.Recordset rc = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+
+                    SAPbobsCOM.Recordset rc2 = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+
+
+                    for (int row = 0; row < Grid0.Rows.Count; row++)
+                    {
+                        // verifico si el documento se encuentra seleccionado
+                        if (Grid0.DataTable.GetString("Marca", row) == "Y")
+                        {
+                            docEntry = Grid0.DataTable.GetInt("DocEntry", row);
+                            docNum = Grid0.DataTable.GetString("DocNum", row);
+
+                            DocEntryTranfer = Grid0.DataTable.GetInt("Num Interno Transferencia", row);
+
+                            //////////////////////// obtengo los datos para actualizar la guia ////////////////////////////
+                            EntregaDespachoSLD objDespachoSLD = new EntregaDespachoSLD();
+                            objDespachoSLD = GetObjDespachoSLD2(driverLicence, ordenDespacho, dispatchDate, driverName, assistantName, vehiculeName, vehiculeBrandName, "P");
+                            dynamic objDespachoJson = JsonConvert.SerializeObject(objDespachoSLD);
+
+                            Sb1Messages.ShowMessage(string.Format(addonMessageInfo.MessageIdiomaMessage210(Sb1Globals.Idioma), docNum));
+
+                            using (EntregaBLL entregaBLL = new EntregaBLL())
+                            {
+#if AD_PE
+                                entregaBLL.UpdateEstadoSLD3(DocEntryTranfer, objDespachoJson, ref response);
+#elif AD_BO
+                                entregaBLL.UpdateEstadoSLD3(DocEntryTranfer, objDespachoJson, ref response);
+#else
+                                if (entregaBLL.UpdateEstadoSLD3(DocEntryTranfer, objDespachoJson, ref response) ==false)
+                                {
+                                    Sb1Messages.ShowError(response);
+                                };
+#endif
+                            }
+                        }
+                    }
+
+                    EditText5.SetInt(0);
+                    EditText6.SetInt(0);
+
+                    ///////////////////////////////
+                    Sb1Messages.ShowMessageBoxWarning(addonMessageInfo.MessageIdiomaMessage308(Sb1Globals.Idioma));
+
+                    Sb1Messages.ShowMessage(addonMessageInfo.MessageIdiomaMessage308(Sb1Globals.Idioma));
+                    // FIN PROGRAMAR
+                    Button0.Item.Click();
+                }
+                else
+                {
+                    Sb1Messages.ShowError(addonMessageInfo.MessageIdiomaMessage301(Sb1Globals.Idioma));
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Sb1Messages.ShowError(ex.ToString());
+            }
+            finally
+            {
+                //  oForm.Freeze(false);
+            }
+        }
+
         private EntregaDespachoSLD GetObjDespachoSLD(string driverLicence, string ordenDespacho, string fechaDespacho,
                string nombreChofer, string ayudanteName, string placaVehiculo, string marcaVehiculo, string status,
                string SeriesSunat, string CorrelativoSunat, string ModalidadTansporte,
             string CodigoAgencia, string RucAgencia, string NombreAgencia, string DireccionAgencia, string TipoSalida, 
             string GuiaSalidaInicio, string GuiaSalidaEntrega)
         {
-#if AD_PE
+
             EntregaDespachoSLD objDespachoSLD = new EntregaDespachoSLD();
             objDespachoSLD.U_SYP_MDFC = driverLicence;
             objDespachoSLD.U_SYP_DT_CORRDES = ordenDespacho;
@@ -546,8 +796,9 @@ namespace Vistony.Distribucion.Win.Programacion
             objDespachoSLD.U_SYP_MDVC = placaVehiculo;
             objDespachoSLD.U_SYP_MDVN = marcaVehiculo;
             objDespachoSLD.U_SYP_DT_ESTDES = status;
-            objDespachoSLD.U_SYP_MDTD = SeriesSunat;
-            objDespachoSLD.U_SYP_MDSD = "09";
+#if AD_PE
+            objDespachoSLD.U_SYP_MDTD = "09";
+            objDespachoSLD.U_SYP_MDSD = SeriesSunat;
             objDespachoSLD.U_SYP_MDCD = CorrelativoSunat;
             objDespachoSLD.U_SYP_FEGMT = ModalidadTansporte;
             objDespachoSLD.U_SYP_MDCT = CodigoAgencia;
@@ -562,12 +813,67 @@ namespace Vistony.Distribucion.Win.Programacion
 
             objDespachoSLD.U_SYP_MDTS = TipoSalida;
             objDespachoSLD.U_SYP_FEGFI = GuiaSalidaInicio;
-            objDespachoSLD.U_SYP_FEGNB = GuiaSalidaEntrega;
+            objDespachoSLD.U_SYP_FEGFE = GuiaSalidaEntrega;
 #endif
             return objDespachoSLD;
 
         }
 
+#if AD_EC
+        private DespachoSLD_Induvis GetObjDespachoSLD_Induvis(string TipoDocumento, string TipoDocumentoDescripcion,
+               string TipoEmision,
+               string MotivoTraslado, string TipoDespacho,
+               string OtroMotivTraslado,
+               string CodTransportista, string TipoIdentificacionTransportista,
+               string RucTransportista, string RazonSocialTransportista,string CodPartida,
+               string DireccionPartida, string NombreTransportista,
+               string DireccionDestino,
+               string FechaInicio, string FechaFin, string FechaProgramacion,string StatusPrograman)
+        {
+
+            DespachoSLD_Induvis objDespachoSLD = new DespachoSLD_Induvis();
+
+            objDespachoSLD.U_SYP_MDTD = TipoDocumento;
+            objDespachoSLD.U_SYP_DESDOC = TipoDocumentoDescripcion;
+            objDespachoSLD.U_SYP_TIPO_EMIS = TipoEmision;
+            objDespachoSLD.U_SYP_MOT_TRAS = MotivoTraslado;
+            objDespachoSLD.U_SYP_TIPDES = TipoDespacho;
+            objDespachoSLD.U_SYP_MDOM = OtroMotivTraslado;
+            objDespachoSLD.U_SYP_MDCT = CodTransportista;
+            objDespachoSLD.U_SYP_TIDTRANSPO = TipoIdentificacionTransportista;
+            objDespachoSLD.U_SYP_MDRT = RucTransportista;
+            objDespachoSLD.U_SYP_MDNT = RazonSocialTransportista;
+            objDespachoSLD.U_SYP_MDAO = CodPartida;
+            objDespachoSLD.U_SYP_MDPP = DireccionPartida;
+            objDespachoSLD.U_SYP_NOMCL = NombreTransportista;
+            objDespachoSLD.U_SYP_MDPLL = DireccionDestino;
+            objDespachoSLD.U_SYP_FECH_INI_TRNS = FechaInicio;
+            objDespachoSLD.U_SYP_FECH_FIN_TRNS = FechaFin;
+            objDespachoSLD.U_SYP_DT_FCDES = FechaProgramacion;
+            objDespachoSLD.U_SYP_DT_ESTDES = StatusPrograman;
+        
+            return objDespachoSLD;
+
+        }
+#endif
+
+        private EntregaDespachoSLD GetObjDespachoSLD2(string driverLicence, string ordenDespacho, string fechaDespacho,
+               string nombreChofer, string ayudanteName, string placaVehiculo, string marcaVehiculo, string status)
+        {
+
+            EntregaDespachoSLD objDespachoSLD = new EntregaDespachoSLD();
+            objDespachoSLD.U_SYP_MDFC = driverLicence;
+            objDespachoSLD.U_SYP_DT_CORRDES = ordenDespacho;
+            objDespachoSLD.U_SYP_DT_FCDES = fechaDespacho;
+            objDespachoSLD.U_SYP_MDFN = nombreChofer;
+            objDespachoSLD.U_SYP_DT_AYUDANTE = ayudanteName;
+            objDespachoSLD.U_SYP_MDVC = placaVehiculo;
+            objDespachoSLD.U_SYP_MDVN = marcaVehiculo;
+            objDespachoSLD.U_SYP_DT_ESTDES = status;
+
+            return objDespachoSLD;
+
+        }
 
         private void Button0_ClickBefore(object sboObject, SBOItemEventArg pVal,out bool BubbleEvent)
         {
@@ -617,6 +923,46 @@ namespace Vistony.Distribucion.Win.Programacion
             else
             {
                 return false;
+            }
+
+        }
+
+        private void Grid0_LinkPressedAfter(object sboObject, SBOItemEventArg pVal)
+        {
+            if (pVal.ColUID == "DocNum")
+            {
+                SAPbouiCOM.EditTextColumn col = null;
+                col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("DocNum")));
+                col.LinkedObjectType = "67"; // muestra la flecha amariilla asociada al objeto pedidos  
+            }
+        }
+
+        private LinkedButton LinkedButton0;
+        private ButtonCombo ButtonCombo0;
+        private EditText EditText7;
+
+        private void Grid0_LinkPressedBefore(object sboObject, SBOItemEventArg pVal,out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+            string docEntry = string.Empty;
+            string code = string.Empty;
+            SAPbouiCOM.EditTextColumn col = null;
+
+            int rowSelected = pVal.Row;
+            int rowIndex = rowSelected;
+            // verifico en que columna hicieron click  en el linkedbutton
+            if (pVal.ColUID == "DocNum")
+            {
+                docEntry = Grid0.DataTable.GetValue("Num Interno Transferencia", Grid0.GetDataTableRowIndex(rowIndex)).ToString();
+
+                EditText7.Value = docEntry;
+
+                EditText7.Item.Click(SAPbouiCOM.BoCellClickType.ct_Regular);
+                LinkedButton0.Item.Click(SAPbouiCOM.BoCellClickType.ct_Linked);
+
+                // quito por un instante el codigo de objeto al cual esta relacionado el linkedbutton
+                col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("DocNum")));
+                col.LinkedObjectType = "";// 
             }
 
         }

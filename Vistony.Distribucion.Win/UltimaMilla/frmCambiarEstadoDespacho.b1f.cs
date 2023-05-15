@@ -25,10 +25,12 @@ namespace Vistony.Distribucion.Win.UltimaMilla
         private SAPbouiCOM.ComboBox ComboBox1;
         private SAPbouiCOM.StaticText StaticText3;
         private SAPbouiCOM.EditText EditText0;
+        string EstadoSeleccionadoFrm = "";
         AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
-        public frmCambiarEstadoDespacho(frmEstadoDespachos FormID)
+        public frmCambiarEstadoDespacho(frmEstadoDespachos FormID,string EstadoSeleccionado)
         {
             OwnerForm =FormID;
+            this.EstadoSeleccionadoFrm = EstadoSeleccionado;
             Utils.LoadQueryDynamicStatus(ref ComboBox0, AddonMessageInfo.QueryStatusDelivery);
             Utils.LoadQueryDynamic(ref ComboBox1, AddonMessageInfo.QueryListOcurrencia);
         }
@@ -76,6 +78,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
         {
             //throw new System.NotImplementedException();
             frmEstadoDespachos owner = this.OwnerForm;
+
             if (ComboBox0.GetSelectedValue() == "A")
             {
                 bool Consulta = Sb1Messages.ShowQuestion("Seguro de grabar la Ocurrencia " + ComboBox1.GetSelectedDescription() + " a los registros marcados?");
@@ -85,6 +88,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                     else { owner.ProcesoOcurrencia(ComboBox1.GetSelectedValue(), ComboBox1.GetSelectedDescription(), ComboBox0.GetSelectedValue()); } /*Agregar Ocurrencia*/
                 }
             }
+
             else if (ComboBox0.GetSelectedValue() == "E")
             {
                 bool Consulta = Sb1Messages.ShowQuestion("Seguro de grabar al estado " + ComboBox1.GetSelectedDescription() + " a los registros marcados?");
@@ -94,13 +98,9 @@ namespace Vistony.Distribucion.Win.UltimaMilla
 
                 }
             }
-            else if (ComboBox0.GetSelectedValue() == "P")
+            else if (EstadoSeleccionadoFrm == "S")
             {
-                Sb1Messages.ShowError("No es posible cambiar al estado " + ComboBox0.GetSelectedValue());    // Sb1Messages.ShowError(AddonMessageInfo.Message329);
-            }
-            else if (ComboBox0.GetSelectedValue() == "S")
-            {
-                Sb1Messages.ShowError("No es posible cambiar al estado "+ ComboBox0.GetSelectedValue());
+                Sb1Messages.ShowError("No es posible cambiar al estado porque el documento seleccionado se encuentra en estado Sin Programar");
             }
             else if (ComboBox0.GetSelectedValue() == "V")
             {

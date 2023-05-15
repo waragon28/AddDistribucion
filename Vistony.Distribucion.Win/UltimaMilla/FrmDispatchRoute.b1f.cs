@@ -1,6 +1,9 @@
-﻿#define AD_PE
+﻿//#define AD_PE
 //#define AD_PY
 //#define AD_EC
+//#define AD_BO
+#define AD_CL
+
 
 using System;
 using System.Collections.Generic;
@@ -456,6 +459,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
                                     restResponse = methods.PATCH("DeliveryNotes", docEntry, jsonData);
 #elif AD_PY
                                     restResponse = methods.PATCH("DeliveryNotes", docEntry, jsonData);
+#elif AD_CL
+                                    restResponse = methods.PATCH("Invoices", docEntry, jsonData);
 #endif
 
                 dynamic json2 = JsonConvert.DeserializeObject(restResponse.Content.ToString());

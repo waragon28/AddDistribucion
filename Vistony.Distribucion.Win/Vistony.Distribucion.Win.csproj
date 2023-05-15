@@ -149,6 +149,12 @@
     <Compile Include="Programacion\frmProgrammingSLDAsignar.b1f.cs">
       <DependentUpon>frmProgrammingSLDAsignar.b1f</DependentUpon>
     </Compile>
+    <Compile Include="Programacion\frmProgrammingTransferAsignar.b1f.cs">
+      <DependentUpon>frmProgrammingTransferAsignar.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Programacion\frmProgrammingTransferAsignarEC.b1f.cs">
+      <DependentUpon>frmProgrammingTransferAsignarEC.b1f</DependentUpon>
+    </Compile>
     <Compile Include="UltimaMilla\frmCambiarEstadoDespacho.b1f.cs">
       <DependentUpon>frmCambiarEstadoDespacho.b1f</DependentUpon>
     </Compile>
@@ -264,6 +270,12 @@
     <None Include="Programacion\frmProgrammingSLDAsignar.b1f">
       <FormCategory>UserForm</FormCategory>
     </None>
+    <None Include="Programacion\frmProgrammingTransferAsignar.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Programacion\frmProgrammingTransferAsignarEC.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
     <None Include="UltimaMilla\frmCambiarEstadoDespacho.b1f">
       <FormCategory>UserForm</FormCategory>
     </None>
@@ -335,6 +347,9 @@
   <ItemGroup>
     <Content Include="bin\Debug\Files\EC\UserProcedureEC.xml" />
     <Content Include="bin\Debug\Files\UserFields.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\Files\UserMenusChile.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="bin\Debug\Files\UserMenusPeru.xml">

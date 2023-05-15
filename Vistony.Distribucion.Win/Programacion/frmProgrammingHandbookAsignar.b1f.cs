@@ -15,10 +15,29 @@ namespace Vistony.Distribucion.Win.Programacion
     [FormAttribute("Vistony.Distribucion.Win.Programacion.frmProgrammingHandbookAsignar", "Programacion/frmProgrammingHandbookAsignar.b1f")]
     class frmProgrammingHandbookAsignar : UserFormBase
     {
+        Idioma_BLL idioma_BLL = new Idioma_BLL();
+        private SAPbouiCOM.StaticText StaticText1;
+        private SAPbouiCOM.StaticText StaticText2;
+        private SAPbouiCOM.StaticText StaticText3;
+        private SAPbouiCOM.StaticText StaticText4;
+        private SAPbouiCOM.EditText EditText0;
+        private SAPbouiCOM.EditText EditText1;
+        private SAPbouiCOM.EditText EditText2;
+        private SAPbouiCOM.EditText EditText3;
+        private SAPbouiCOM.EditText EditText4;
+        private SAPbouiCOM.EditText EditText5;
+        private SAPbouiCOM.StaticText StaticText5;
+        private SAPbouiCOM.EditText EditText6;
+        private SAPbouiCOM.Button Button0;
+        private SAPbouiCOM.Button Button1;
         private SAPbouiCOM.Form oForm;
         frmProgrammingHandbook OwnerForm;
         AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
         Grid Grilla;
+        private SAPbouiCOM.StaticText StaticText0;
+        string LicenciaChofer = "";
+        string Placa = "";
+        string MarcaVehiculo="";
         public frmProgrammingHandbookAsignar(frmProgrammingHandbook ownerForm, string usuario, string sucursal,Grid Grid0)
         {
             //this, usuario, sucursalUsuarioLogin, Grid0);
@@ -95,10 +114,6 @@ namespace Vistony.Distribucion.Win.Programacion
         {
         }
 
-        private SAPbouiCOM.StaticText StaticText0;
-        string LicenciaChofer = "";
-        string Placa = "";
-        string MarcaVehiculo="";
         private void OnCustomInitialize()
         {
             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
@@ -106,23 +121,7 @@ namespace Vistony.Distribucion.Win.Programacion
             idioma_BLL.GetPackIdiomafrmAsignationProgramationManual(Sb1Globals.Idioma, oForm, StaticText0, StaticText1,
                 StaticText2, StaticText3, StaticText4, StaticText5);
         }
-
-        Idioma_BLL idioma_BLL = new Idioma_BLL();
-        private SAPbouiCOM.StaticText StaticText1;
-        private SAPbouiCOM.StaticText StaticText2;
-        private SAPbouiCOM.StaticText StaticText3;
-        private SAPbouiCOM.StaticText StaticText4;
-        private SAPbouiCOM.EditText EditText0;
-        private SAPbouiCOM.EditText EditText1;
-        private SAPbouiCOM.EditText EditText2;
-        private SAPbouiCOM.EditText EditText3;
-        private SAPbouiCOM.EditText EditText4;
-        private SAPbouiCOM.EditText EditText5;
-        private SAPbouiCOM.StaticText StaticText5;
-        private SAPbouiCOM.EditText EditText6;
-        private SAPbouiCOM.Button Button0;
-        private SAPbouiCOM.Button Button1;
-
+        
         private void Button0_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             bool response = false;
@@ -139,8 +138,9 @@ namespace Vistony.Distribucion.Win.Programacion
             string vehiculoMarca = MarcaVehiculo;
 
             string fechaDespacho = EditText3.Value;
+            string CapacidadVehiculo = EditText6.Value;
             
-            
+
             if (!string.IsNullOrEmpty(driverCode.ToString().Trim()) && !string.IsNullOrEmpty(fechaDespacho.ToString().Trim()))
             {
                 // pide confirmacion para proceder con la programación
@@ -151,24 +151,23 @@ namespace Vistony.Distribucion.Win.Programacion
                     frmProgrammingHandbook owner = this.OwnerForm;
 
                     // caso 1, solo seleccionan la fecha de la programación
-                    Thread myNewThread2 = new Thread(() => owner.UpdateRutaDespacho(Grilla, fechaDespacho, driverCode, driverName, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca,
-                        fechaDespacho, driverCode, driverName, driverLicence, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca
+                    //Thread myNewThread2 = new Thread(() => owner.UpdateRutaDespacho(Grilla, fechaDespacho, driverCode, driverName, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca,
+                    //    fechaDespacho, driverCode, driverName, driverLicence, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca
+                    //    ));
+                    // myNewThread2.Start();
+
+                    Thread myNewThread2 = new Thread(() => owner.UpdateRutaDespachoEntrega(Grilla, fechaDespacho, driverCode, driverName, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca,
+                        fechaDespacho, driverCode, driverName, driverLicence, ayudanteCode, ayudanteName, vehiculoCode, 
+                        vehiculoPlaca, vehiculoMarca, CapacidadVehiculo,"","","","",""
                         ));
-                    myNewThread2.Start();
+                     myNewThread2.Start();
 
+                    //   Thread myNewThread = new Thread(() => owner.UpdateDespacho(fechaDespacho, driverCode, driverName, driverLicence, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca));
+                    //   myNewThread.Start();
 
-                 //   Thread myNewThread = new Thread(() => owner.UpdateDespacho(fechaDespacho, driverCode, driverName, driverLicence, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca));
-                 //   myNewThread.Start();
-
-                  
-                    // caso 2 seleccionan el conductor al cual van a programar su ruta de despacho
-                   // cierro el formulario
+                    // cierro el formulario
                     oForm.Close();
                 }
-            //    else
-            //    {
-            //        //Modal = true;
-            //    }
 
             }
             else
@@ -238,7 +237,7 @@ namespace Vistony.Distribucion.Win.Programacion
                     {
                         EditText2.Value = chooseFromListEvent.SelectedObjects.GetValue("Code", 0).ToString();
                         EditText6.Value = Convert.ToString(Convert.ToDouble(chooseFromListEvent.SelectedObjects.GetValue("U_SYP_VEPM", 0).ToString(),System.Globalization.CultureInfo.InvariantCulture));
-
+                        EditText6.Item.RightJustified = true;
                         Placa = chooseFromListEvent.SelectedObjects.GetValue("U_SYP_VEPL", 0).ToString();
                         MarcaVehiculo= chooseFromListEvent.SelectedObjects.GetValue("U_SYP_VEMA", 0).ToString();
                     }
@@ -255,5 +254,6 @@ namespace Vistony.Distribucion.Win.Programacion
         {
             oForm.Close();
         }
+
     }
 }

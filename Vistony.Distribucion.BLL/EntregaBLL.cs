@@ -1,4 +1,7 @@
-﻿using SAPbobsCOM;
+﻿using Forxap.Framework.Extensions;
+using Forxap.Framework.UI;
+using Newtonsoft.Json;
+using SAPbobsCOM;
 using SAPbouiCOM;
 using System;
 using System.Collections.Generic;
@@ -12,16 +15,16 @@ namespace Vistony.Distribucion.BLL
 {
     public class EntregaBLL : IDisposable
     {
-       public SAPbouiCOM.DataTable Search(SAPbouiCOM.SBOItemEventArg pVal, Form oForm, EditText EditText9, EditText EditText4,
-            EditText EditText5, string UserName, CheckBox CheckBox2, CheckBox CheckBox3, string AdminPuntoEmision,
-            ComboBox ComboBox0, Grid Grid1, EditText EditText8,SAPbouiCOM.DataTable oDT)
+        public SAPbouiCOM.DataTable Search(SAPbouiCOM.SBOItemEventArg pVal, Form oForm, EditText EditText9, EditText EditText4,
+             EditText EditText5, string UserName, CheckBox CheckBox2, CheckBox CheckBox3, string AdminPuntoEmision,
+             ComboBox ComboBox0, Grid Grid1, EditText EditText8, SAPbouiCOM.DataTable oDT)
         {
             try
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                   return entregaDAL.Search(pVal,oForm,EditText9,EditText4,EditText5,UserName,CheckBox2,CheckBox3,AdminPuntoEmision,
-                                      ComboBox0,Grid1,EditText8, oDT);
+                    return entregaDAL.Search(pVal, oForm, EditText9, EditText4, EditText5, UserName, CheckBox2, CheckBox3, AdminPuntoEmision,
+                                       ComboBox0, Grid1, EditText8, oDT);
                 }
             }
             catch (Exception)
@@ -50,16 +53,16 @@ namespace Vistony.Distribucion.BLL
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                    entregaDAL.UpdateEstadoConsolidadoEntrega(oForm,Grid1,tipoConsolidado,
-                        fechaConsolidado,EditText8,EditText9,Button5);
+                    entregaDAL.UpdateEstadoConsolidadoEntrega(oForm, Grid1, tipoConsolidado,
+                        fechaConsolidado, EditText8, EditText9, Button5);
                 }
             }
             catch (Exception)
             {
-                
+
             }
         }
-        public void Consolidados(SAPbouiCOM.Form oForm,SAPbouiCOM.Matrix oMatrix, string Sucural)
+        public void Consolidados(SAPbouiCOM.Form oForm, SAPbouiCOM.Matrix oMatrix, string Sucural)
         {
             try
             {
@@ -79,9 +82,9 @@ namespace Vistony.Distribucion.BLL
         {
             try
             {
-                using (EntregaDAL entregaDAL= new EntregaDAL())
+                using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                   return entregaDAL.GetInfoUsuario(USUARIO, oDT);
+                    return entregaDAL.GetInfoUsuario(USUARIO, oDT);
                 }
             }
             catch (Exception)
@@ -96,22 +99,22 @@ namespace Vistony.Distribucion.BLL
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                     entregaDAL.BuscarChoferesUbigeo(oForm,oMatrix , Sucural);
+                    entregaDAL.BuscarChoferesUbigeo(oForm, oMatrix, Sucural);
                 }
             }
             catch (Exception)
             {
 
-               // return null;
+                // return null;
             }
         }
-        public SAPbouiCOM.DataTable GetEmplIMEI(string IMEI,SAPbouiCOM.DataTable oDT)
+        public SAPbouiCOM.DataTable GetEmplIMEI(string IMEI, SAPbouiCOM.DataTable oDT)
         {
             try
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                   return entregaDAL.GetEmplIMEI(IMEI, oDT);
+                    return entregaDAL.GetEmplIMEI(IMEI, oDT);
                 }
             }
             catch (Exception)
@@ -126,7 +129,7 @@ namespace Vistony.Distribucion.BLL
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                    return entregaDAL.ValidarIMEI( IMEI, recordset, ID_Empleado, Nombre_OHEM);
+                    return entregaDAL.ValidarIMEI(IMEI, recordset, ID_Empleado, Nombre_OHEM);
                 }
             }
             catch (Exception ex)
@@ -140,7 +143,7 @@ namespace Vistony.Distribucion.BLL
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                   return entregaDAL.UpdateIMEI(EmployeeID, jsonData,ref response);
+                    return entregaDAL.UpdateIMEI(EmployeeID, jsonData, ref response);
                 }
             }
             catch (Exception ex)
@@ -154,13 +157,13 @@ namespace Vistony.Distribucion.BLL
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                   entregaDAL.Layout_Preview(ReportName, DocNum, oRS);
+                    entregaDAL.Layout_Preview(ReportName, DocNum, oRS);
                 }
 
             }
             catch (Exception ex)
             {
-                
+
             }
         }
 
@@ -168,11 +171,11 @@ namespace Vistony.Distribucion.BLL
         {
             try
             {
-                using (EntregaDAL  entregaDAL = new EntregaDAL()  )
+                using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                  return    entregaDAL.Entrega(ref oDT, startDate, endDate, consolidado, agencia, userName);
+                    return entregaDAL.Entrega(ref oDT, startDate, endDate, consolidado, agencia, userName);
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -186,7 +189,7 @@ namespace Vistony.Distribucion.BLL
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                    return entregaDAL.GetSLD(ref oDT, startDate, endDate, AlmacenDesde, AlmacenHasta,Query);
+                    return entregaDAL.GetSLD(ref oDT, startDate, endDate, AlmacenDesde, AlmacenHasta, Query);
                 }
 
             }
@@ -196,7 +199,7 @@ namespace Vistony.Distribucion.BLL
             }
         }
 
-        public SAPbouiCOM.DataTable GetConsolidadoSLD(ref SAPbouiCOM.DataTable oDT, string startDate, string endDate, string AlmacenDesde, string AlmacenHasta, string Query,string Consolidado, string Agencia)
+        public SAPbouiCOM.DataTable GetConsolidadoSLD(ref SAPbouiCOM.DataTable oDT, string startDate, string endDate, string AlmacenDesde, string AlmacenHasta, string Query, string Consolidado, string Agencia)
         {
             try
             {
@@ -211,7 +214,7 @@ namespace Vistony.Distribucion.BLL
                 return null;
             }
         }
-        
+
         public SAPbouiCOM.DataTable GetEntrega_Sucursal(ref SAPbouiCOM.DataTable oDT, string startDate, string endDate, string consolidado, string agencia, string Sucursal)
         {
             try
@@ -227,15 +230,15 @@ namespace Vistony.Distribucion.BLL
                 return null;
             }
         }
-       
+
         public SAPbouiCOM.DataTable SP_VIS_DIS_GET_TRACKER_C_TEST(ref SAPbouiCOM.DataTable oDT, string fecha,
-            string TRACKER, string Sucursal,string TipoRuta)
+            string TRACKER, string Sucursal, string TipoRuta)
         {
             try
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                    return entregaDAL.SP_VIS_DIS_GET_TRACKER_C_TEST(ref oDT, fecha,TRACKER,Sucursal, TipoRuta);
+                    return entregaDAL.SP_VIS_DIS_GET_TRACKER_C_TEST(ref oDT, fecha, TRACKER, Sucursal, TipoRuta);
                 }
             }
             catch (Exception ex)
@@ -248,7 +251,7 @@ namespace Vistony.Distribucion.BLL
         {
             try
             {
-                using (EntregaDAL entregaDAL = new EntregaDAL() )
+                using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
                     return entregaDAL.SP_VIS_DIS_GET_TRACKER_C(ref oDT, fecha);
                 }
@@ -259,13 +262,13 @@ namespace Vistony.Distribucion.BLL
                 return null;
             }
         }
-        public SAPbouiCOM.DataTable SP_VIS_DIS_GET_TRACKER_D(ref SAPbouiCOM.DataTable oDT,string Fecha, int HORA_INI, int HORA_FIN, string CodChofer,string CodVehiculo)
+        public SAPbouiCOM.DataTable SP_VIS_DIS_GET_TRACKER_D(ref SAPbouiCOM.DataTable oDT, string Fecha, int HORA_INI, int HORA_FIN, string CodChofer, string CodVehiculo, string TypeRoute)
         {
             try
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                    return entregaDAL.SP_VIS_DIS_GET_TRACKER_D(ref oDT, Fecha, HORA_INI, HORA_FIN, CodChofer, CodVehiculo);
+                    return entregaDAL.SP_VIS_DIS_GET_TRACKER_D(ref oDT, Fecha, HORA_INI, HORA_FIN, CodChofer, CodVehiculo,TypeRoute);
                 }
 
             }
@@ -323,7 +326,7 @@ namespace Vistony.Distribucion.BLL
                 return null;
             }
         }
-        public bool UpdateEstadoEntrega(int? docEntry, dynamic jsonData, ref  string  response )
+        public bool UpdateEstadoEntrega(int? docEntry, dynamic jsonData, ref string response)
         {
 
             bool ret = false;
@@ -332,7 +335,7 @@ namespace Vistony.Distribucion.BLL
             {
                 using (EntregaDAL entregaDAL = new EntregaDAL())
                 {
-                    ret = entregaDAL.UpdateEstadoEntrega(docEntry,jsonData, ref response);
+                    ret = entregaDAL.UpdateEstadoEntrega(docEntry, jsonData, ref response);
                 }
 
             }
@@ -341,10 +344,10 @@ namespace Vistony.Distribucion.BLL
                 ex.Source.ToString();
             }
 
-          
-           
-                return ret;
-          
+
+
+            return ret;
+
         }
         public bool UpdateEstadoSLD(int? docEntry, dynamic jsonData, ref string responsedd)
         {
@@ -393,12 +396,32 @@ namespace Vistony.Distribucion.BLL
             return ret;
 
         }
-        public  SAPbouiCOM.DataTable ListPrevDespacho( string startDate, string endDate, string usuario, string chofer, string agencia, ref SAPbouiCOM.DataTable oDT)
+        public bool UpdateEstadoSLD3(int? docEntry, dynamic jsonData, ref string response)
+        {
+
+            bool ret = false;
+
+            try
+            {
+                using (EntregaDAL entregaDAL = new EntregaDAL())
+                {
+                    ret = entregaDAL.UpdateEstadoSLD3(docEntry, jsonData, ref response);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ex.Source.ToString();
+            }
+            return ret;
+
+        }
+        public SAPbouiCOM.DataTable ListPrevDespacho(string startDate, string endDate, string usuario, string chofer, string agencia, ref SAPbouiCOM.DataTable oDT)
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())
             {
-               return  entregaDAL.ListPrevDespacho( startDate, endDate, usuario, chofer,agencia, ref oDT);
-            } 
+                return entregaDAL.ListPrevDespacho(startDate, endDate, usuario, chofer, agencia, ref oDT);
+            }
         }
         public SAPbouiCOM.DataTable ListPrevDespacho_Sucursal(string startDate, string endDate, string Sucursal, string chofer, string agencia, ref SAPbouiCOM.DataTable oDT)
         {
@@ -408,7 +431,7 @@ namespace Vistony.Distribucion.BLL
             }
 
         }
-        public SAPbouiCOM.DataTable ListPrevDespachoManual(string startDate, string endDate, string usuario, string chofer,string Agencia,ref SAPbouiCOM.DataTable oDT)
+        public SAPbouiCOM.DataTable ListPrevDespachoManual(string startDate, string endDate, string usuario, string chofer, string Agencia, ref SAPbouiCOM.DataTable oDT)
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())
             {
@@ -419,11 +442,11 @@ namespace Vistony.Distribucion.BLL
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())
             {
-                return entregaDAL.ListPrevDespachoEdit(ref oDT, startDate, endDate, usuario, chofer );
+                return entregaDAL.ListPrevDespachoEdit(ref oDT, startDate, endDate, usuario, chofer);
             }
-            
+
         }
-        public  string ObtenerSucursal(SAPbouiCOM.DataTable oDT, string usuario)
+        public string ObtenerSucursal(SAPbouiCOM.DataTable oDT, string usuario)
         {
 
             using (EntregaDAL entregaDAL = new EntregaDAL())
@@ -436,7 +459,7 @@ namespace Vistony.Distribucion.BLL
 
             using (EntregaDAL entregaDAL = new EntregaDAL())
             {
-                return entregaDAL.ObtenerSucursal( usuario);
+                return entregaDAL.ObtenerSucursal(usuario);
             }
         }
         public string ObtenerDepartamento(string usuario)
@@ -447,12 +470,12 @@ namespace Vistony.Distribucion.BLL
                 return entregaDAL.ObtenerDepartamento(usuario);
             }
         }
-        
+
         public void GetDatosChofer(ref string choferCode, ref string choferName, ref string choferLicencia, ref string vehiculoPlaca, ref string vehiculoMarca, ref string ayudanteCode, ref string ayudanteName, ref double pesoUtil)
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())
             {
-                 entregaDAL.GetDatosChofer( ref choferCode,ref choferName, ref choferLicencia, ref vehiculoPlaca,ref vehiculoMarca, ref ayudanteCode, ref ayudanteName, ref pesoUtil );
+                entregaDAL.GetDatosChofer(ref choferCode, ref choferName, ref choferLicencia, ref vehiculoPlaca, ref vehiculoMarca, ref ayudanteCode, ref ayudanteName, ref pesoUtil);
             }
         }
 
@@ -475,7 +498,7 @@ namespace Vistony.Distribucion.BLL
                                             U_CountDocuments, U_DocumentsCapacity, U_AssistantCode, U_AssistantName);
             }
         }
-        
+
         public void GetDataTableResumen(ref SAPbouiCOM.DataTable oDatatable, int rows)
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())
@@ -487,35 +510,53 @@ namespace Vistony.Distribucion.BLL
 
 
         public Programacion ObtenerCabeceraDocuemtProgramacion(SAPbouiCOM.Grid dt, string docDate, string driverCode,
-        string driverName,string assistantCode,string assistantName,string vehiculeCode,string vehiculeName, double? vehiculeapacity, double? documentsWeight,
-        string successQuantity,string failedQuantity,string documentsQuantity,string TipoRuta)
+        string driverName, string assistantCode, string assistantName, string vehiculeCode, string vehiculeName, double? vehiculeapacity, double? documentsWeight,
+        string successQuantity, string failedQuantity, string documentsQuantity, string TipoRuta)
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())
             {
-               return entregaDAL.ObtenerRutaTransportista(dt, docDate,driverCode,driverName,  assistantCode,  assistantName, vehiculeCode,  vehiculeName, vehiculeapacity, documentsWeight,
-                         successQuantity,  failedQuantity, documentsQuantity,TipoRuta);
+                return entregaDAL.ObtenerRutaTransportista(dt, docDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName, vehiculeapacity, documentsWeight,
+                          successQuantity, failedQuantity, documentsQuantity, TipoRuta);
             }
         }
-
-        public string  GuardarHojaDespacho(SAPbouiCOM.Grid dt, string docDate, string driverCode,string driverName, string assistantCode,
-            string assistantName, string vehiculeCode, string vehiculeName,double? vehiculeCapacity, double? documentsWeight,  
-            string successQuantity, string failedQuantity, string documentsQuantity,string TipoRuta)
+        
+        public void UpdateDespachoPrograManualEntregas(string dispatchDate, string driverCode, string driverName,
+    string driverLicence, string assistantCode, string assistantName,
+    string vehiculeCode, string vehiculeName,
+    string vehiculeBrandName, EditText EditText10, EditText EditText9, Form oForm, Grid Grid0,
+    Button Button1, string Mensaje1, string Mensaje2, string Mensaje3, string Mensaje4,string CapacidadVehiculo,
+    string documentsWeight,string successQuantity, string failedQuantity, string documentsQuantity, string TipoRuta)
         {
+
             using (EntregaDAL entregaDAL = new EntregaDAL())
             {
-              return  entregaDAL.GuardarProgramacion(dt, docDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName, vehiculeCapacity,
-                  documentsWeight, successQuantity, failedQuantity, documentsQuantity, TipoRuta);
+                entregaDAL.UpdateDespachoPrograManualEntregas(dispatchDate, driverCode, driverName, driverLicence,
+                    assistantCode, assistantName, vehiculeCode, vehiculeName, vehiculeBrandName, EditText10,
+                    EditText9, oForm, Grid0, Button1, Mensaje1, Mensaje2, Mensaje3, Mensaje4, CapacidadVehiculo,
+                     documentsWeight,successQuantity, failedQuantity, documentsQuantity, TipoRuta);
             }
         }
-
         public string GuardarHojaDespachoSLD(SAPbouiCOM.Grid dt, string docDate, string driverCode, string driverName, string assistantCode,
     string assistantName, string vehiculeCode, string vehiculeName, double? vehiculeCapacity, double? documentsWeight,
-    string successQuantity, string failedQuantity, string documentsQuantity,string TipoRuta)
+    string successQuantity, string failedQuantity, string documentsQuantity, string TipoRuta)
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())
             {
                 return entregaDAL.GuardarProgramacionSLD(dt, docDate, driverCode, driverName, assistantCode, assistantName, vehiculeCode, vehiculeName, vehiculeCapacity,
                     documentsWeight, successQuantity, failedQuantity, documentsQuantity, TipoRuta);
+            }
+        }
+
+        public string GuardarHojaDespachoSLD_Ecuador(SAPbouiCOM.Grid dt, string docDate, string driverCode, string driverName, string assistantCode,
+            string assistantName, string vehiculeCode, string vehiculeName, string vehiculeCapacity, string documentsWeight,
+            string successQuantity, string failedQuantity, string documentsQuantity, string TipoRuta,
+            string  CodTransportista,string RazonSocialTransportista)
+        {
+            using (EntregaDAL entregaDAL = new EntregaDAL())
+            {
+                 return entregaDAL.GuardarProgramacionSLD_Ecudador(dt, docDate, driverCode, driverName, assistantCode,
+                 assistantName, vehiculeCode, vehiculeName, vehiculeCapacity, documentsWeight,
+                 successQuantity, failedQuantity, documentsQuantity, TipoRuta,  CodTransportista, RazonSocialTransportista);
             }
         }
 

@@ -1,4 +1,8 @@
-﻿#define AD_EC
+﻿//#define AD_EC
+//#define AD_BO
+#define AD_CL
+//#define AD_PY
+//#define AD_PE
 
 using System;
 using System.Collections.Generic;
@@ -59,17 +63,18 @@ namespace Vistony.Distribucion.Win
 
                 #region Creación del Menu, Iconos, Tablas, Campos, UDOs,Permisos, Scripts
 
-                        if (Sb1Globals.Idioma== "English (United States)")
-                        {
-                            Sb1MetaData.AddMenusEnglisUnitedStates(); // agrega el menu del addon
-                        }
-                        else if (Sb1Globals.Idioma == "French")
-                        {
-                            Sb1MetaData.AddMenusFrench(); // agrega el menu del addon
-                        }
-                        else
-                        {
-                            if (Sb1Globals.CompanyName == "VISTONY COMPAÑIA INDUSTRIAL DEL PERU S.A.C.")
+                if (Sb1Globals.Idioma == "English (United States)")
+                {
+                    Sb1MetaData.AddMenusEnglisUnitedStates(); // agrega el menu del addon
+                }
+                else if (Sb1Globals.Idioma == "French")
+                {
+                    Sb1MetaData.AddMenusFrench(); // agrega el menu del addon
+                }
+                else
+                {
+#if AD_PE
+                        if (Sb1Globals.CompanyName == "VISTONY COMPAÑIA INDUSTRIAL DEL PERU S.A.C.")
                             {
                                 Sb1MetaData.AddMenusEspanolPeru(); // agrega el menu del addon
                                 Sb1Globals.AdminPuntoEmision = Utils.GetMultiSucursal(string.Format(addonMessageInfo.QueryGetListAdminSucu, Sb1Globals.UserSignature)); // Consulta Usuario Multi Sucursal
@@ -80,20 +85,23 @@ namespace Vistony.Distribucion.Win
                             {
                                 Sb1MetaData.AddMenusEspanol(); // agrega el menu del addon
                             }
-                        }
+#elif AD_CL
+                    Sb1MetaData.AddMenusChile();
+#else
 
-                        Sb1Globals.cultura.NumberFormat.NumberDecimalSeparator = Utils.GetNumberDecimalSeparator(addonMessageInfo.QueryObtenerDecimalSeparator);
-                        Sb1Globals.cultura.NumberFormat.NumberGroupSeparator = Utils.GetNumberMilesSeparator(addonMessageInfo.QueryObtenerMilesSeparator);
+#endif
 
-                        Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaStartLoading(Sb1Globals.Idioma)), SAPbouiCOM.BoMessageTime.bmt_Short);
-                               
-                Sb1MetaData.AddIcon();
+                    Sb1Globals.cultura.NumberFormat.NumberDecimalSeparator = Utils.GetNumberDecimalSeparator(addonMessageInfo.QueryObtenerDecimalSeparator);
+                    Sb1Globals.cultura.NumberFormat.NumberGroupSeparator = Utils.GetNumberMilesSeparator(addonMessageInfo.QueryObtenerMilesSeparator);
+
+                    Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaStartLoading(Sb1Globals.Idioma)), SAPbouiCOM.BoMessageTime.bmt_Short);
+
+                    Sb1MetaData.AddIcon();
 
 
-                #endregion
-
-              
-
+                    #endregion
+                    
+                }
                 Sb1Messages.ShowSuccess(string.Format(addonMessageInfo.MessageIdiomaFinishLoading(Sb1Globals.Idioma)), SAPbouiCOM.BoMessageTime.bmt_Short);
 
                 ret = true;

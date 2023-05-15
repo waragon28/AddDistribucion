@@ -926,11 +926,13 @@
             <summary>
             Initialize components. Called by framework after form created.
             </summary>
+            
         </member>
         <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationSLD.OnInitializeFormEvents">
             <summary>
             Initialize form event. Called by framework before form creation.
             </summary>
+            
         </member>
         <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationSLDAsignar.OnInitializeComponent">
             <summary>
@@ -988,6 +990,26 @@
             </summary>
         </member>
         <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingSLDAsignar.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingTransferAsignar.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingTransferAsignar.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingTransferAsignarEC.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Programacion.frmProgrammingTransferAsignarEC.OnInitializeFormEvents">
             <summary>
             Initialize form event. Called by framework before form creation.
             </summary>
@@ -1123,23 +1145,25 @@
             <summary>
             Initialize components. Called by framework after form created.
             </summary>
+            
         </member>
         <member name="M:Vistony.Distribucion.Win.Formularios.frmConsolidation.OnInitializeFormEvents">
             <summary>
             Initialize form event. Called by framework before form creation.
             </summary>
+            
         </member>
-        <member name="M:Vistony.Distribucion.Win.Formularios.frmConsolidation.OnShowDatosConsolidadar">
+        <member name="M:Vistony.Distribucion.Win.Formularios.frmConsolidation.UpdateEstadoConsolidadoEntrega(System.String,System.String)">
             <summary>
             Muestra la ventana para seleccionar el tipo de consolidado y consolidar las Guías  
             </summary>
-        </member>
-        <member name="M:Vistony.Distribucion.Win.Formularios.frmConsolidation.UpdateEstadoConsolidadoEntrega(System.String,System.String)">
+            
             <summary>
             
             </summary>
             <param name="tipoConsolidado"></param>
             <param name="fechaConsolidado"></param>
+            
         </member>
         <member name="M:Vistony.Distribucion.Win.ApplicationEvent.SB1_Application_AppEvent(SAPbouiCOM.BoAppEventTypes)">
             <summary>

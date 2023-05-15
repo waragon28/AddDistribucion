@@ -1,8 +1,9 @@
 ﻿//#define AD_BO
-#define AD_PE
+//#define AD_PE
 //#define AD_ES
 //#define AD_PY
 //#define AD_EC
+#define AD_CL
 
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,7 @@ namespace Vistony.Distribucion.Win.Formularios
             Utils.LoadQueryDynamic(ref ComboBox0,AddonMessageInfo.QueryStatusDelivery);
             oForm.State = SAPbouiCOM.BoFormStateEnum.fs_Maximized;
             SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_1");
-            ComboBox2.Select(1, SAPbouiCOM.BoSearchKey.psk_Index);
+            ComboBox2.Select(0, SAPbouiCOM.BoSearchKey.psk_Index);
             using (EntregaBLL entregaBLL = new EntregaBLL())
             {
                 sucursal = entregaBLL.ObtenerSucursal(oDT, Sb1Globals.UserName);
@@ -137,6 +138,10 @@ namespace Vistony.Distribucion.Win.Formularios
             this.ComboBox1.ClickAfter += new SAPbouiCOM._IComboBoxEvents_ClickAfterEventHandler(this.ComboBox1_ClickAfter);
             this.StaticText7 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_25").Specific));
             this.ComboBox2 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_26").Specific));
+            this.ComboBox2.ComboSelectAfter += new SAPbouiCOM._IComboBoxEvents_ComboSelectAfterEventHandler(this.ComboBox2_ComboSelectAfter);
+            this.ComboBox2.ClickBefore += new SAPbouiCOM._IComboBoxEvents_ClickBeforeEventHandler(this.ComboBox2_ClickBefore);
+            this.Button6 = ((SAPbouiCOM.Button)(this.GetItem("Item_27").Specific));
+            this.Button6.ChooseFromListAfter += new SAPbouiCOM._IButtonEvents_ChooseFromListAfterEventHandler(this.Button6_ChooseFromListAfter);
             this.OnCustomInitialize();
 
         }
@@ -156,6 +161,7 @@ namespace Vistony.Distribucion.Win.Formularios
         {
             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
             oForm.ScreenCenter();
+
             Utils.LoadQueryTipoRuta(ref ComboBox2, addonMessageInfo.QueryObtenerTipoRuta);
 
 #if AD_PE
@@ -254,7 +260,7 @@ namespace Vistony.Distribucion.Win.Formularios
                     oDT.CopyFrom(EntregaDAL.BuscarDespachos(oDT, Sb1Globals.UserName, Licencia, fecha, Estado, TipoDespacho));
                 }
 #else
-                oDT.CopyFrom(EntregaDAL.BuscarDespachos(oDT, Sb1Globals.UserName, Licencia, fecha, Estado));
+                oDT.CopyFrom(EntregaDAL.BuscarDespachos(oDT, Sb1Globals.UserName, Licencia, fecha, Estado, TipoDespacho));
 #endif
                 EditText7.SetInt(oDT.Rows.Count);
                 FormatoGrilla();
@@ -282,10 +288,16 @@ namespace Vistony.Distribucion.Win.Formularios
             Grid0.Columns.Item("ORDENITEM").Visible = false;
             Grid0.Columns.Item("LineId").Visible = false;
             Grid0.Columns.Item("DocEntryCabecera").Visible = false;
-            
+
             Grid0.Columns.Item("Marcar").Editable = true;
             Grid0.Columns.Item("N° Entrega").Editable = false;
             Grid0.Columns.Item("N° Guía Entrega").Editable = false;
+#if AD_CL
+
+            Grid0.Columns.Item("N° Entrega").TitleObject.Caption= "N° Factura";
+            Grid0.Columns.Item("N° Guía Entrega").TitleObject.Caption = "N° Folio";
+#endif
+            Grid0.Columns.Item("N° Entrega").RightJustified = true;
             Grid0.Columns.Item("Código SN").Editable = false;
             Grid0.Columns.Item("Nombre SN").Editable = false;
             Grid0.Columns.Item("Estado").Editable = false;
@@ -296,10 +308,17 @@ namespace Vistony.Distribucion.Win.Formularios
 
 
             Grid0.Columns.Item("ORDENITEM").Visible = false;
-
+#if AD_PE
             Grid0.Columns.Item("N° Entrega").LinkedObjectType(Grid0, "N° Entrega", "15");
+             Grid0.Columns.Item("N° Referencia").LinkedObjectType(Grid0, "N° Referencia", "15");
+
+#elif AD_CL
+            Grid0.Columns.Item("N° Entrega").LinkedObjectType(Grid0, "N° Entrega", "13");
+            Grid0.Columns.Item("N° Referencia").Visible = false;
+
+#endif
             Grid0.Columns.Item("Código SN").LinkedObjectType(Grid0, "Código SN", "2");
-            Grid0.Columns.Item("N° Referencia").LinkedObjectType(Grid0, "N° Referencia", "13");
+           
             Grid0.Columns.Item("Chofer").LinkedObjectType(Grid0, "Chofer", "CONDUC");
             Grid0.Columns.Item("Código Chofer").LinkedObjectType(Grid0, "Código Chofer", "CONDUC");
 
@@ -429,7 +448,7 @@ namespace Vistony.Distribucion.Win.Formularios
                 {
                     if (Grid0.DataTable.GetString("Marcar", row) == "Y")
                     {
-                        if (ComboBox2.Value == "15")
+                        if (ComboBox2.Value == "15" || ComboBox2.Value == "13")
                         {
                             docEntry = Grid0.DataTable.GetInt("DocEntry", row);
                             NumDespacho = Grid0.DataTable.GetString("ORDENITEM", row);
@@ -453,6 +472,8 @@ namespace Vistony.Distribucion.Win.Formularios
 
                                 if (asigno)
                                 {
+                                    Sb1Messages.ShowSuccess("Se actualizo : " + (row+1) + " de " + Grid0.Rows.Count);
+
                                     RutaTransportista1EstadoCabecera ActualizarEstadoObj = new RutaTransportista1EstadoCabecera();
                                     ActualizarEstadoObj = ActualizarEstadoObjetoDespachoCabecera(DocEntryCabecera, LineId, Estado, Ocurrencia);
                                     dynamic jsonDataUpdate = JsonConvert.SerializeObject(ActualizarEstadoObj);
@@ -512,9 +533,9 @@ namespace Vistony.Distribucion.Win.Formularios
 
                 }
                 
-                Sb1Messages.ShowMessageBoxWarning(addonMessageInfo.MessageIdiomaMessage310(Sb1Globals.Idioma));
-
                 }
+
+                Sb1Messages.ShowMessageBoxWarning(addonMessageInfo.MessageIdiomaMessage310(Sb1Globals.Idioma));
             }
             catch (Exception ex)
             {
@@ -558,7 +579,7 @@ namespace Vistony.Distribucion.Win.Formularios
                 {
                     if (Grid0.DataTable.GetString("Marcar", row) == "Y")
                     {
-                        if (ComboBox2.Value=="15")
+                        if (ComboBox2.Value=="15" || ComboBox2.Value == "13")
                         {
                             docentry = Grid0.DataTable.GetInt("DocEntry", row);
                             entrega = Grid0.DataTable.GetString("N° Entrega", row);
@@ -689,7 +710,12 @@ namespace Vistony.Distribucion.Win.Formularios
             {
                 SAPbouiCOM.EditTextColumn col = null;
                 col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("N° Entrega")));
+#if AD_PE
                 col.LinkedObjectType = "15";// muestra la flecha amariilla asociada al objeto pedidos  
+#elif AD_CL
+                col.LinkedObjectType = "13";// muestra la flecha amariilla asociada al objeto pedidos  
+
+#endif
             }
         }
 
@@ -703,23 +729,32 @@ namespace Vistony.Distribucion.Win.Formularios
             int rowSelected = pVal.Row;
             int rowIndex = rowSelected;
 
+            //int rowSelected = Grid0.Rows.SelectedRows.Item(0, SAPbouiCOM.BoOrderType.ot_RowOrder);
+            rowSelected = pVal.Row;
+            rowIndex = rowSelected;
+
             // verifico en que columna hicieron click  en el linkedbutton
             if (pVal.ColUID == "N° Entrega")
 
             {
                 //int rowSelected = Grid0.Rows.SelectedRows.Item(0, SAPbouiCOM.BoOrderType.ot_RowOrder);
+#if AD_CL
+                LinkedButton0.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
+
+#else
+                 LinkedButton0.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_DeliveryNotes;
+#endif
 
                 docEntry = Grid0.DataTable.GetValue("DocEntry", Grid0.GetDataTableRowIndex(rowIndex)).ToString();
 
                 EditText6.Value = docEntry;
 
                 EditText6.Item.Click(SAPbouiCOM.BoCellClickType.ct_Regular);
-                LinkedButton0.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_DeliveryNotes;
                 LinkedButton0.Item.Click(SAPbouiCOM.BoCellClickType.ct_Linked);
 
                 // quito por un instante el codigo de objeto al cual esta relacionado el linkedbutton
                 col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("N° Entrega")));
-                col.LinkedObjectType = string.Empty;// 
+               // col.LinkedObjectType = string.Empty;// 
             }
             else if (pVal.ColUID == "NumAtCard")
 
@@ -916,7 +951,7 @@ namespace Vistony.Distribucion.Win.Formularios
             }
             if (RegistrosMarcados > 0)
             {
-                UltimaMilla.frmCambiarEstadoDespacho frmCambiarEstadoDespacho = new UltimaMilla.frmCambiarEstadoDespacho(this);
+                UltimaMilla.frmCambiarEstadoDespacho frmCambiarEstadoDespacho = new UltimaMilla.frmCambiarEstadoDespacho(this,ComboBox0.GetValue());
                 frmCambiarEstadoDespacho.Show();
             }
             else
@@ -1151,5 +1186,54 @@ namespace Vistony.Distribucion.Win.Formularios
 
         private SAPbouiCOM.StaticText StaticText7;
         private SAPbouiCOM.ComboBox ComboBox2;
+        private SAPbouiCOM.Button Button6;
+
+        private void ComboBox2_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal,out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+        }
+
+        private void Button6_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            SAPbouiCOM.SBOChooseFromListEventArg chooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
+            try
+            {
+
+                if (chooseFromListEvent.SelectedObjects != null)
+                {
+                    if (chooseFromListEvent.SelectedObjects.Rows.Count > 0)
+                    {
+                        EditText1.Value = chooseFromListEvent.SelectedObjects.GetValue("CardCode", 0).ToString();
+                        EditText2.Value = chooseFromListEvent.SelectedObjects.GetValue("CardName", 0).ToString();
+                        EditText5.Value = chooseFromListEvent.SelectedObjects.GetValue("CardCode", 0).ToString();
+
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                // Sb1Messages.ShowError(string.Format(ex.ToString()), SAPbouiCOM.BoMessageTime.bmt_Short);
+
+            }
+        }
+
+        private void ComboBox2_ComboSelectAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+#if AD_PE
+            if (ComboBox2.GetValue() == "15" || ComboBox2.GetValue() == "13")
+            {
+                Button5.Item.Visible = true;
+                Button6.Item.Visible = false;
+            }
+            else
+            {
+                Button5.Item.Visible = false;
+                Button6.Item.Visible = true;
+            }
+#else
+            Button5.Item.Visible = true;
+#endif
+        }
     }
 }

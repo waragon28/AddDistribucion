@@ -1,8 +1,9 @@
 ﻿//#define AD_BO
-#define AD_PE
+//#define AD_PE
 //#define AD_ES
 //#define AD_PY
 //#define AD_EC
+#define AD_CL
 
 using System;
 using System.Collections.Generic;

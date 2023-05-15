@@ -26,17 +26,23 @@ namespace Vistony.Distribucion.Win.Formularios
     [FormAttribute("frmDatosConsolidar", "Programacion/frmConsolidarAsignar.b1f")]
     class frmConsolidarAsignar : BaseWizard
     {
-        bool Modal = true;
-        string IDForm = "";
-        private SAPbouiCOM.StaticText StaticText1;
-        private SAPbouiCOM.ComboBox ComboBox0;
-        private SAPbouiCOM.EditText EditText0;
-        private SAPbouiCOM.Button Button0;
-        private SAPbouiCOM.Button Button1;
         frmConsolidation OwnerForm;
-        private SAPbouiCOM.StaticText StaticText0;
         AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
         Idioma_BLL idioma_BLL = new Idioma_BLL();
+
+        bool Modal = true;
+        string IDForm = "";
+
+        private SAPbouiCOM.StaticText StaticText0;
+        private SAPbouiCOM.StaticText StaticText1;
+
+        private SAPbouiCOM.ComboBox ComboBox0;
+
+        private SAPbouiCOM.EditText EditText0;
+
+        private SAPbouiCOM.Button Button0;
+        private SAPbouiCOM.Button Button1;
+
 
         public frmConsolidarAsignar(frmConsolidation ownerForm)
         {
@@ -45,6 +51,7 @@ namespace Vistony.Distribucion.Win.Formularios
             OwnerForm = ownerForm;
 
         }
+
         public override void OnInitializeComponent()
         {
             this.StaticText0 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_0").Specific));
@@ -59,6 +66,7 @@ namespace Vistony.Distribucion.Win.Formularios
             this.OnCustomInitialize();
 
         }
+
         public override void OnInitializeFormEvents()
         {
             this.DeactivateAfter += new SAPbouiCOM.Framework.FormBase.DeactivateAfterHandler(this.Form_DeactivateAfter);
@@ -66,6 +74,7 @@ namespace Vistony.Distribucion.Win.Formularios
             this.VisibleAfter += new VisibleAfterHandler(this.Form_VisibleAfter);
 
         }
+
         private void OnCustomInitialize()
         {
             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
@@ -76,6 +85,7 @@ namespace Vistony.Distribucion.Win.Formularios
                 Button0,Button1);
 
         }
+
         private void Button0_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
@@ -96,13 +106,13 @@ namespace Vistony.Distribucion.Win.Formularios
 
             Modal = false;
 
-            /// valida que seleccionen un tipo de consolidado
-
-            /// pide confirmacion para proceder con la consolidacion
+            // valida que seleccionen un tipo de consolidado
+            // pide confirmacion para proceder con la consolidacion
             ret = Sb1Messages.ShowQuestion(string.Format(addonMessageInfo.MessageIdiomaMessage317(Sb1Globals.Idioma), ComboBox0.GetSelectedDescription()));
 
             if (ret)
             {
+
                 Modal = false;
                 frmConsolidation owner = this.OwnerForm;
                 tipoConsolidado = ComboBox0.GetSelectedDescription().Trim();
@@ -111,6 +121,7 @@ namespace Vistony.Distribucion.Win.Formularios
                 Thread myNewThread = new Thread(() => owner.UpdateEstadoConsolidadoEntrega(tipoConsolidado, fechaConsolidado));
                 myNewThread.Start();
                 oForm.Close();
+
             }
             else
             {
@@ -149,5 +160,6 @@ namespace Vistony.Distribucion.Win.Formularios
         {
            
         }
+
     }
 }

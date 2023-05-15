@@ -1,4 +1,10 @@
-﻿using System;
+﻿//#define AD_PE
+//#define AD_BO
+//#define AD_EC
+//#define AD_PY
+#define AD_CL
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,34 +26,49 @@ namespace Vistony.Distribucion.Win.Programacion
         public frmConsolidationSLD()
         {
         }
-        public SAPbouiCOM.Form oForm;
-        AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
 
-        private SAPbouiCOM.StaticText StaticText1;
-        private SAPbouiCOM.StaticText StaticText2;
-        private SAPbouiCOM.EditText EditText0;
-        private SAPbouiCOM.EditText EditText1;
+        public SAPbouiCOM.Form oForm;
+        int filaseleccionada;
+        AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
+        
         private SAPbouiCOM.CheckBox CheckBox0;
         private SAPbouiCOM.CheckBox CheckBox1;
-        private SAPbouiCOM.EditText EditText2;
-        private SAPbouiCOM.StaticText StaticText3;
+
         private SAPbouiCOM.Grid Grid0;
+
         private SAPbouiCOM.Button Button0;
         private SAPbouiCOM.Button Button1;
         private SAPbouiCOM.Button Button2;
+        private SAPbouiCOM.Button Button3;
+
+        private SAPbouiCOM.EditText EditText0;
+        private SAPbouiCOM.EditText EditText1;
+        private SAPbouiCOM.EditText EditText2;
         private SAPbouiCOM.EditText EditText3;
         private SAPbouiCOM.EditText EditText4;
+        private SAPbouiCOM.EditText EditText5;
+        private SAPbouiCOM.EditText EditText6;
+        private SAPbouiCOM.EditText EditText7;
+
+        private SAPbouiCOM.StaticText StaticText1;
+        private SAPbouiCOM.StaticText StaticText2;
+        private SAPbouiCOM.StaticText StaticText3;
         private SAPbouiCOM.StaticText StaticText4;
         private SAPbouiCOM.StaticText StaticText5;
         private SAPbouiCOM.StaticText StaticText6;
         private SAPbouiCOM.StaticText StaticText7;
         private SAPbouiCOM.StaticText StaticText8;
         private SAPbouiCOM.StaticText StaticText0;
-        private SAPbouiCOM.EditText EditText5;
-        private SAPbouiCOM.EditText EditText6;
+
+        private SAPbouiCOM.LinkedButton LinkedButton0;
+        private SAPbouiCOM.LinkedButton LinkedButton1;
+        private SAPbouiCOM.LinkedButton LinkedButton2;
+
         /// <summary>
         /// Initialize components. Called by framework after form created.
         /// </summary>
+        /// 
+
         public override void OnInitializeComponent()
         {
             this.StaticText0 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_0").Specific));
@@ -61,6 +82,7 @@ namespace Vistony.Distribucion.Win.Programacion
             this.EditText2.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText2_KeyDownAfter);
             this.StaticText3 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_8").Specific));
             this.Grid0 = ((SAPbouiCOM.Grid)(this.GetItem("Item_9").Specific));
+            this.Grid0.LinkPressedBefore += new SAPbouiCOM._IGridEvents_LinkPressedBeforeEventHandler(this.Grid0_LinkPressedBefore);
             this.Grid0.ClickBefore += new SAPbouiCOM._IGridEvents_ClickBeforeEventHandler(this.Grid0_ClickBefore);
             this.Grid0.ClickAfter += new SAPbouiCOM._IGridEvents_ClickAfterEventHandler(this.Grid0_ClickAfter);
             this.Grid0.LinkPressedAfter += new SAPbouiCOM._IGridEvents_LinkPressedAfterEventHandler(this.Grid0_LinkPressedAfter);
@@ -94,23 +116,26 @@ namespace Vistony.Distribucion.Win.Programacion
         /// <summary>
         /// Initialize form event. Called by framework before form creation.
         /// </summary>
+        /// 
+
         public override void OnInitializeFormEvents()
         {
             this.LoadAfter += new LoadAfterHandler(this.Form_LoadAfter);
 
         }
-
-
+        
         private void OnCustomInitialize()
         {
             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
             oForm.ScreenCenter();
             Grid0.AutoResizeColumns();
         }
+
         private void Form_LoadAfter(SAPbouiCOM.SBOItemEventArg pVal)
         {
 
         }
+
         private void EditText5_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             SAPbouiCOM.SBOChooseFromListEventArg chooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
@@ -131,6 +156,7 @@ namespace Vistony.Distribucion.Win.Programacion
                 //Sb1Messages.ShowError(string.Format(ex.ToString()), SAPbouiCOM.BoMessageTime.bmt_Short);
             }
         }
+
         private void EditText6_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             SAPbouiCOM.SBOChooseFromListEventArg chooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
@@ -151,7 +177,7 @@ namespace Vistony.Distribucion.Win.Programacion
                 Sb1Messages.ShowError(string.Format(ex.ToString()), SAPbouiCOM.BoMessageTime.bmt_Short);
             }
         }
-
+        
         private void Button0_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
            Search(pVal);
@@ -196,7 +222,11 @@ namespace Vistony.Distribucion.Win.Programacion
                     entregaBLL.GetConsolidadoSLD(ref oDT, desde, hasta, desdeAlmacen, hastaAlmacen, addonMessageInfo.QueryObtenerSLDConsol, Consolidado, Agencia);
 
                 }
+#if AD_PE
                 SetFormatGrid();
+#else
+                SetFormatGrid2();
+#endif
             }
             catch (Exception ex)
             {
@@ -211,6 +241,26 @@ namespace Vistony.Distribucion.Win.Programacion
                 oForm.Freeze(false);
             }
 
+        }
+
+        private void SetFormatGrid2()
+        {
+            EditText3.SetDouble(0);
+            EditText4.SetDouble(0);
+            Grid0.AssignLineNro();
+            Grid0.Columns.Item(0).Type = SAPbouiCOM.BoGridColumnType.gct_CheckBox;
+
+            Grid0.Columns.Item("DocNum").LinkedObjectType(Grid0, "DocNum", "1250000001");
+            Grid0.Columns.Item("DocEntry").LinkedObjectType(Grid0, "DocEntry", "1250000001");
+            Grid0.Columns.Item("DocEntry").TitleObject.Caption = "Nº Interno";
+            Grid0.Columns.Item("DocEntry").Visible = false;
+            Grid0.Columns.Item("DocNum").TitleObject.Caption = "N° Solicitud";
+            Grid0.ReadOnlyColumns();
+            Grid0.Columns.Item(0).Editable = true;
+            Grid0.AutoResizeColumns();
+            Grid0.Columns.Item("Peso").RightJustified = true;
+            // ampliio el ancho de la columna
+            Grid0.RowHeaders.Width += 15;
         }
 
         private void SetFormatGrid()
@@ -240,34 +290,18 @@ namespace Vistony.Distribucion.Win.Programacion
             
         }
 
-        private SAPbouiCOM.LinkedButton LinkedButton0;
-        private SAPbouiCOM.LinkedButton LinkedButton1;
-
         private void Grid0_LinkPressedAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             if (pVal.ColUID == "DocNum")
             {
-                Grid0_LinkPressedBefore(sboObject, pVal,true);
-
                 SAPbouiCOM.EditTextColumn col = null;
                 col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("DocNum")));
-                col.LinkedObjectType = "1250000001";// muestra la flecha amariilla asociada al objeto pedidos  
+                col.LinkedObjectType = "1250000001"; // muestra la flecha amariilla asociada al objeto pedidos  
             }
+
         }
 
-        private void Grid0_EventBre(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
-        {
-            if (pVal.ColUID == "DocNum")
-            {
-                Grid0_LinkPressedBefore(sboObject,pVal, true);
-
-                SAPbouiCOM.EditTextColumn col = null;
-                col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("DocNum")));
-                col.LinkedObjectType = "1250000001";// muestra la flecha amariilla asociada al objeto pedidos  
-            }
-        }
-
-        private void Grid0_LinkPressedBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, bool BubbleEvent)
+        private void Grid0_LinkPressedBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
             string docEntry = string.Empty;
@@ -284,20 +318,15 @@ namespace Vistony.Distribucion.Win.Programacion
                 EditText7.Value = docEntry;
 
                 EditText7.Item.Click(SAPbouiCOM.BoCellClickType.ct_Regular);
-                LinkedButton2.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_StockTransfersRequest;
                 LinkedButton2.Item.Click(SAPbouiCOM.BoCellClickType.ct_Linked);
 
                 // quito por un instante el codigo de objeto al cual esta relacionado el linkedbutton
                 col = ((SAPbouiCOM.EditTextColumn)(Grid0.Columns.Item("DocNum")));
-                col.LinkedObjectType = string.Empty;// 
+                col.LinkedObjectType = "";// 
             }
-
-
         }
-
-        private SAPbouiCOM.EditText EditText7;
-        private SAPbouiCOM.LinkedButton LinkedButton2;
-
+          
+        
         private void Grid0_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             // si hicieron Check o deschekearon debo actualizar el contador de documentos seleccionados
@@ -471,8 +500,7 @@ namespace Vistony.Distribucion.Win.Programacion
             }
 
         }
-
-
+        
         private static bool SetConsolidado(int? docEntry, ref string response, dynamic jsonData)
         {
             bool ret;
@@ -520,7 +548,7 @@ namespace Vistony.Distribucion.Win.Programacion
         {
             FindText(pVal);
         }
-        int filaseleccionada;
+
         private void FindText(SAPbouiCOM.SBOItemEventArg pVal)
         {
             string textoFind = string.Empty;
@@ -618,14 +646,11 @@ namespace Vistony.Distribucion.Win.Programacion
             }
 
         }
-
-        private SAPbouiCOM.Button Button3;
-
+        
         private void Button3_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             Layout_Preview("Consolidado ST","",EditText0.GetString(),EditText5.GetString(),EditText6.GetString());
         }
-
         
         public bool Layout_Preview(string ReportName, string Consolidado,string FechaConsol,string AlmaDesde,string AlmaHasta)
         {
@@ -654,8 +679,5 @@ namespace Vistony.Distribucion.Win.Programacion
             }
 
         }
-
-
-        
     }
 }

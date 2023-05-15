@@ -9,6 +9,7 @@ using Vistony.Distribucion.BLL;
 using Forxap.Framework.UI;
 using Vistony.Distribucion.Constans;
 using System.Threading;
+using SAPbouiCOM;
 
 namespace Vistony.Distribucion.Win.Formularios
 {
@@ -17,9 +18,11 @@ namespace Vistony.Distribucion.Win.Formularios
     {
         AddonMessageInfo addonMessageInfo = new AddonMessageInfo();
         private frmPrograming OwnerForm;
+
         public SAPbouiCOM.Form oForm;
         private SAPbouiCOM.Button Button0;
         private SAPbouiCOM.Button Button1;
+
         private string sucursal = string.Empty;
         private string usuario = string.Empty;
 
@@ -30,6 +33,7 @@ namespace Vistony.Distribucion.Win.Formularios
         private SAPbouiCOM.EditText EditText4;
         private SAPbouiCOM.EditText EditText5;
         private SAPbouiCOM.EditText EditText6;
+        private SAPbouiCOM.EditText EditText7;
 
         private SAPbouiCOM.StaticText StaticText0;
         private SAPbouiCOM.StaticText StaticText1;
@@ -56,10 +60,11 @@ namespace Vistony.Distribucion.Win.Formularios
             EditText5.Item.Visible = value;
 
         }
-        public frmProgramacionAsignar(frmPrograming ownerForm, string usuario, string sucursal, bool value,string choferCode, string choferName,string choferLicencia, string vehiculoCode, string vehiculoMarca, string vehiculoPlaca,string ayudanteCode, string ayudanteName)
+        Grid Grilla;
+        public frmProgramacionAsignar(Grid Grilla,frmPrograming ownerForm, string usuario, string sucursal, bool value,string choferCode, string choferName,string choferLicencia, string vehiculoCode, string vehiculoMarca, string vehiculoPlaca,string ayudanteCode, string ayudanteName)
         {
             OwnerForm = ownerForm;
-
+            this.Grilla = Grilla;
             SetViisbleControl(value);
             // Conductores se filtran por sucursal 
             SAPbouiCOM.ChooseFromList cfl1 = oForm.ChooseFromLists.Item("CFL_0");
@@ -107,9 +112,11 @@ namespace Vistony.Distribucion.Win.Formularios
 
 
         }
+
         /// <summary>
         /// Initialize components. Called by framework after form created.
         /// </summary>
+        
         public override void OnInitializeComponent()
         {
             this.Button0 = ((SAPbouiCOM.Button)(this.GetItem("Item_0").Specific));
@@ -135,19 +142,23 @@ namespace Vistony.Distribucion.Win.Formularios
             this.OnCustomInitialize();
 
         }
+
         /// <summary>
         /// Initialize form event. Called by framework before form creation.
         /// </summary>
+        
         public override void OnInitializeFormEvents()
         {
             this.LoadAfter += new LoadAfterHandler(this.Form_LoadAfter);
 
         }
+
         private void OnCustomInitialize()
         {
             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
             oForm.ScreenCenter();
         }
+
         private void EditText1_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
         //    SAPbouiCOM.SBOChooseFromListEventArg chooseFromListEvent = ((SAPbouiCOM.SBOChooseFromListEventArg)(pVal));
@@ -173,6 +184,7 @@ namespace Vistony.Distribucion.Win.Formularios
 
             //}
         }
+
         private void Button0_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             bool response = false;
@@ -188,6 +200,7 @@ namespace Vistony.Distribucion.Win.Formularios
             string vehiculoCode = string.Empty;
             string vehiculoPlaca = string.Empty;
             string vehiculoMarca = string.Empty;
+            string CapacidadVehiculo = EditText6.Value;
 
             fechaDespacho = EditText6.Value.Trim();
 
@@ -206,8 +219,7 @@ namespace Vistony.Distribucion.Win.Formularios
                 vehiculoPlaca = oForm.GetDBDataSource("@SYP_CONDUC").GetString("U_VIS_Vehiculo");
                 vehiculoMarca = oForm.GetDBDataSource("@SYP_VEHICU").GetString("U_SYP_VEMA");
 
-
-
+                
                 /// pide confirmacion para proceder con la programación
                 response = Sb1Messages.ShowQuestion(string.Format(addonMessageInfo.MessageIdiomaMessage319(Sb1Globals.Idioma)));
 
@@ -215,21 +227,15 @@ namespace Vistony.Distribucion.Win.Formularios
                 {
                     //   Modal = false;
                     frmPrograming owner = this.OwnerForm;
+                    
+                  //  Thread myNewThread2 = new Thread(() => owner.AddRutaDespacho(fechaDespacho, driverCode, driverName, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca, driverLicence));
+                   // myNewThread2.Start();
 
-                    // caso 1, solo seleccionan la fecha de la programación
-
-                   // Thread myNewThread = new Thread(() => owner.UpdateDespacho(fechaDespacho, driverCode, driverName,driverLicence, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca));
-                   // myNewThread.Start();
-
-
-                    Thread myNewThread2 = new Thread(() => owner.AddRutaDespacho(fechaDespacho, driverCode, driverName, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca, driverLicence));
+                    Thread myNewThread2 = new Thread(() => owner.UpdateRutaDespachoEntrega(Grilla, fechaDespacho, driverCode, driverName, ayudanteCode, ayudanteName, vehiculoCode, vehiculoPlaca, vehiculoMarca,
+                       fechaDespacho, driverCode, driverName, driverLicence, ayudanteCode, ayudanteName, vehiculoCode,
+                       vehiculoPlaca, vehiculoMarca, CapacidadVehiculo, "", "", "", "", ""
+                       ));
                     myNewThread2.Start();
-
-
-                    // caso 2 seleccionan el conductor al cual van a programar su ruta de despacho
-
-
-
 
                     // cierro el formulario
                     oForm.Close();
@@ -246,6 +252,7 @@ namespace Vistony.Distribucion.Win.Formularios
             }
 
         }
+
         private void EditText0_ChooseFromListAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
             double vehiculeCapacity = 0;
@@ -271,7 +278,7 @@ namespace Vistony.Distribucion.Win.Formularios
                         oForm.GetDBDataSource("@SYP_VEHICU").SetString("Code", 0, Utils.GetVehiculeCode(oForm.GetDBDataSource("@SYP_CONDUC").GetString("U_VIS_Vehiculo", 0), ref vehiculeCapacity, ref brandName)); // // codigo del vehiculo
 
                         // vehiculo capacidad
-                        oForm.GetDBDataSource("@SYP_VEHICU").SetDouble("U_SYP_VEPM", 0, vehiculeCapacity);
+                       // oForm.GetDBDataSource("@SYP_VEHICU").SetDouble("U_SYP_VEPM", 0, vehiculeCapacity);
 
                         // vehiculo marca
                         oForm.GetDBDataSource("@SYP_VEHICU").SetString("U_SYP_VEMA", 0, brandName);
@@ -295,7 +302,7 @@ namespace Vistony.Distribucion.Win.Formularios
 
             }
         }
-        private SAPbouiCOM.EditText EditText7;
+
         private void Form_LoadAfter(SAPbouiCOM.SBOItemEventArg pVal)
         {
            // throw new System.NotImplementedException();

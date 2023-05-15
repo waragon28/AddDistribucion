@@ -1,8 +1,9 @@
 ﻿//#define AD_BO
-#define AD_PE
+//#define AD_PE
 //#define AD_ES
-//#define AD_PY
 //#define AD_EC
+//#define AD_PY
+#define AD_CL
 
 using System;
 using System.Collections.Generic;
@@ -251,7 +252,7 @@ namespace Vistony.Distribucion.DAL
                         }
                         else
                         {
-                            Forxap.Framework.UI.Sb1Messages.ShowError("Error de Consolidado "+ docNum);
+                            Forxap.Framework.UI.Sb1Messages.ShowError("Error de Consolidado "+ docNum + " - "+response);
                         }
                     }
                 }
@@ -339,22 +340,30 @@ namespace Vistony.Distribucion.DAL
             Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Entrega";
 #elif AD_BO
            Grid1.Columns.Item(2).TitleObject.Caption = "Factura";
-           LinkedButton1.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
+           //LinkedButton1.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
            Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "13");
+             Grid1.Columns.Item("Ubigeo").Visible = false;
            Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Factura";
 #elif AD_ES
             Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Factura", "15");
             Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Entrega";
+             Grid1.Columns.Item("Ubigeo").Visible = false;
 #elif AD_CL
             Grid1.Columns.Item(2).TitleObject.Caption = "Factura";
-            LinkedButton1.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
+            //LinkedButton1.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_Invoice;
             Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "15");
-            Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Factura";
+            Grid1.Columns.Item(2).RightJustified = true;
+           Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Factura";
+            Grid1.Columns.Item("Ubigeo").Visible = false;
+            Grid1.Columns.Item("FechaFinal").Visible = false;
+            Grid1.Columns.Item("FReq").Visible = false;
 #elif AD_PY
             Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "13");
             Grid1.Columns.Item("FechaFinal").TitleObject.Caption = "Fecha Entrega";
+             Grid1.Columns.Item("Ubigeo").Visible = false;
 #elif AD_EC
             Grid1.Columns.Item(2).LinkedObjectType(Grid1, "Entrega", "15");
+             Grid1.Columns.Item("Ubigeo").Visible = false;
 #endif
             Grid1.Columns.Item("CodigoSN").LinkedObjectType(Grid1, "CodigoSN", "2");
             Grid1.Columns.Item("INDIC").Visible = false;
@@ -377,7 +386,7 @@ namespace Vistony.Distribucion.DAL
 
             // amplio el ancho de la columna
             Grid1.RowHeaders.Width += 15;
-
+            Grid1.AutoResizeColumns();
         }
         public void BuscarChoferesUbigeo(SAPbouiCOM.Form oForm, SAPbouiCOM.Matrix oMatrix, string Sucural)
         {
@@ -890,7 +899,12 @@ namespace Vistony.Distribucion.DAL
             {
                 Forxap.Framework.ServiceLayer.Methods methods = new Forxap.Framework.ServiceLayer.Methods();
                 dynamic restResponse;
-                
+
+#if AD_PE
+                restResponse = methods.PATCH("InventoryTransferRequests", docEntry, jsonData);
+#elif AD_BO
+                restResponse = methods.PATCH("InventoryTransferRequests", docEntry, jsonData);
+#endif
                 restResponse = methods.PATCH("InventoryTransferRequests", docEntry, jsonData);
 
 
@@ -905,7 +919,7 @@ namespace Vistony.Distribucion.DAL
                 else
                 {
                     response = restResponse.Content.ToString();
-                    ret = true;
+                    ret = false;
                 }
                 return ret;
             }
@@ -951,7 +965,38 @@ namespace Vistony.Distribucion.DAL
             }
 
         }
+        public bool UpdateEstadoSLD3(int? docEntry, dynamic jsonData, ref string response)
+        {
+            bool ret = false;
+            try
+            {
+                Forxap.Framework.ServiceLayer.Methods methods = new Forxap.Framework.ServiceLayer.Methods();
+                dynamic restResponse;
 
+                restResponse = methods.PATCH("StockTransfers", docEntry, jsonData);
+
+
+                dynamic json2 = JsonConvert.DeserializeObject(restResponse.Content.ToString());
+
+                if (restResponse.StatusCode.ToString() == "" || restResponse.StatusCode.ToString() == "NoContent")
+                {
+                    response = "OK";
+                    ret = true;
+                }
+                else
+                {
+                    response = restResponse.Content.ToString();
+                    ret = false;
+                }
+                return ret;
+            }
+            catch (Exception ex)
+            {
+                response = ex.ToString();
+                return false;
+            }
+
+        }
         public static void setNextCorrelativoSL(string Tipo, string Serie, string actual, SAPbobsCOM.Recordset rc, SAPbobsCOM.Recordset rc2)
         {
             PatchSerie p = new PatchSerie();
@@ -1003,7 +1048,9 @@ namespace Vistony.Distribucion.DAL
                     restResponse = methods.PATCH("DeliveryNotes", docEntry, jsonData);
 #elif AD_PY
                 restResponse = methods.PATCH("DeliveryNotes", docEntry, jsonData);
-                #endif
+#elif AD_CL
+                restResponse = methods.PATCH("Invoices", docEntry, jsonData);
+#endif
 
                 dynamic json2 = JsonConvert.DeserializeObject(restResponse.Content.ToString());
 
@@ -1014,8 +1061,10 @@ namespace Vistony.Distribucion.DAL
                 }
                 else
                 {
-                    response = restResponse.Content.ToString();
-                    ret = true;
+                    dynamic m = JsonConvert.DeserializeObject(restResponse.Content.ToString());
+                   
+                        response = restResponse.Content.ToString();
+                    ret = false;
                 }
                 return ret;
             }
@@ -1254,11 +1303,16 @@ namespace Vistony.Distribucion.DAL
                 return null;
             }
         }
-        public SAPbouiCOM.DataTable SP_VIS_DIS_GET_TRACKER_D(ref SAPbouiCOM.DataTable oDT,string fecha, int HORA_INI , int HORA_FIN, string CodChofer,string CodVehiculo)
+        public SAPbouiCOM.DataTable SP_VIS_DIS_GET_TRACKER_D(ref SAPbouiCOM.DataTable oDT,string fecha, int HORA_INI , int HORA_FIN, string CodChofer,string CodVehiculo, string TypeRoute)
         {
             try
             {
-                string sSTRSQL = String.Format("CALL SP_VIS_DIS_GET_TRACKER_D ('{0}','{1}','{2}','{3}','{4}')", fecha,HORA_INI, HORA_FIN, CodChofer, CodVehiculo);
+#if AD_CL
+                string sSTRSQL = string.Format("CALL SP_VIS_DIS_GET_TRACKER_D ('{0}','{1}','{2}','{3}','{4}','{5}')", fecha, HORA_INI, HORA_FIN, CodChofer, CodVehiculo, TypeRoute);
+#else
+                  string sSTRSQL = String.Format("CALL SP_VIS_DIS_GET_TRACKER_D ('{0}','{1}','{2}','{3}','{4}')", fecha,HORA_INI, HORA_FIN, CodChofer, CodVehiculo);
+#endif
+
                 oDT.ExecuteQuery(sSTRSQL);
                 return oDT;
             }
@@ -1345,21 +1399,6 @@ namespace Vistony.Distribucion.DAL
                 {
                     ret = responsde.Content.ToString();
                 }
-                //RestClient client = new RestClient("VIS_DIS_ODRT");
-                //RestRequest request = new RestRequest(Method.POST);
-                //string JsonObtenerCabezera = JsonConvert.SerializeObject(ObtenerCabecera2);
-                //string dataReq = JsonObtenerCabezera;
-                //IRestResponse result = client.Execute(request.AddJsonBody(dataReq));
-
-                //if (result.StatusDescription == "OK")
-                //{
-                //  //  RespuestMensaje.Value = "OK";
-                //}
-                //else
-                //{
-                //    Sb1Messages.ShowError(result.Content);
-                //   // RespuestMensaje.Value = "ERROR";
-                //}
             }
             catch (Exception e)
             {
@@ -1371,6 +1410,343 @@ namespace Vistony.Distribucion.DAL
 
         }
 
+        /*PENDIENTE DE ELIMINAR UpdateDespachoPrograManual*/
+        public void UpdateDespachoPrograManual(string dispatchDate, string driverCode, string driverName,
+                string driverLicence, string assistantCode, string assistantName,
+                string vehiculeCode, string vehiculeName,
+                string vehiculeBrandName, EditText EditText10, EditText EditText9, Form oForm, Grid Grid0,
+                Button Button1, string Mensaje1, string Mensaje2, string Mensaje3, string Mensaje4)
+        {
+
+            string pesoDespacho = EditText10.Value.Trim();
+
+            //  string Licencia = string.Empty;// EditText5.Value;
+            string response = string.Empty;
+
+            try
+            {
+
+                int ContarMarcados = 0;
+
+                if (ContarMarcados == 0)
+                {
+                    string docNum = string.Empty;
+                    int? docEntry = 0;
+                    string choferLicencia = string.Empty;
+                    string vehiculoMarca = string.Empty;
+                    string vehiculoPlaca = string.Empty;
+                    string ayudanteName = string.Empty;
+                    string ordenDespacho = string.Empty;
+
+                    oForm.Freeze(true);
+                    //PROGRAMAR DESPACHO
+                    SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_0");
+                    for (int row = 0; row <= Grid0.Rows.Count - 1; row++)
+                    {
+                        // verifico si el documento se encuentra seleccionado
+                        if (Grid0.DataTable.GetString("Marca", row) == "Y")
+                        {
+                            docEntry = Grid0.DataTable.GetInt("DocEntry", row);
+                            docNum = Grid0.DataTable.GetString("Entrega", row);
+
+                            oDT.Clear();
+                            
+                            //////////////////////// obtengo los datos para actualizar la guia ////////////////////////////
+                            EntregaDespacho objDespacho = new EntregaDespacho();
+                            objDespacho = GetObjDespacho(driverLicence, ordenDespacho, dispatchDate, driverName, assistantName, vehiculeName, vehiculeBrandName, "P", "PE", "-1", "1", dispatchDate, dispatchDate);
+                            dynamic objDespachoJson = JsonConvert.SerializeObject(objDespacho);
+
+                            Sb1Messages.ShowMessage(string.Format(Mensaje1, docNum));
+                            if (UpdateEstadoEntrega(docEntry, objDespachoJson, ref response))
+                            {
+
+                            } 
+
+                        }
+                    }
+
+                    EditText9.SetInt(0);
+                    EditText10.SetInt(0);
+                    
+                    ///////////////////////////////
+                    Sb1Messages.ShowMessageBoxWarning(Mensaje2);
+
+                    Sb1Messages.ShowMessage(Mensaje3);
+                    // FIN PROGRAMAR
+                    Button1.Item.Click();
+                }
+                else
+                {
+                    Sb1Messages.ShowError(Mensaje4);
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Sb1Messages.ShowError(ex.ToString());
+            }
+            finally
+            {
+                oForm.Freeze(false);
+            }
+        }
+
+        public void UpdateDespachoPrograManualEntregas(string dispatchDate, string driverCode, string driverName,
+               string driverLicence, string assistantCode, string assistantName,
+               string vehiculeCode, string vehiculeName,
+               string vehiculeBrandName, EditText EditText10, EditText EditText9, Form oForm, Grid Grid0,
+               Button Button1, string Mensaje1, string Mensaje2, string Mensaje3, string Mensaje4,
+               string CapacidadVehiculo, string documentsWeight,
+              string successQuantity, string failedQuantity, string documentsQuantity, string TipoRuta)
+        {
+
+            string pesoDespacho = EditText10.Value.Trim();
+
+            //  string Licencia = string.Empty;// EditText5.Value;
+            string response = string.Empty;
+
+            try
+            {
+
+                int ContarMarcados = 0;
+
+                if (ContarMarcados == 0)
+                {
+                    string docNum = string.Empty;
+                    int? docEntry = 0;
+                    string choferLicencia = string.Empty;
+                    string vehiculoMarca = string.Empty;
+                    string vehiculoPlaca = string.Empty;
+                    string ayudanteName = string.Empty;
+                    string ordenDespacho = string.Empty;
+                    List<RutaTransportista1> VIS_TRN_REP_DDocumentDetalls = new List<RutaTransportista1>();
+
+                    oForm.Freeze(true);
+                    //PROGRAMAR DESPACHO
+                    SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_0");
+                    List<Programacion1> VIS_ProgramacionDetalls = new List<Programacion1>();
+
+                    for (int row = 0; row <= Grid0.Rows.Count - 1; row++)
+                    {
+                        // verifico si el documento se encuentra seleccionado
+                        if (Grid0.DataTable.GetString("Marca", row) == "Y")
+                        {
+                            docEntry = Grid0.DataTable.GetInt("DocEntry", row);
+                            docNum = Grid0.DataTable.GetString("Entrega", row);
+
+                            oDT.Clear();
+
+                            //////////////////////// obtengo los datos para actualizar la guia ////////////////////////////
+                            EntregaDespacho objDespacho = new EntregaDespacho();
+                            objDespacho = GetObjDespacho(driverLicence, ordenDespacho, dispatchDate, driverName, assistantName, vehiculeName, vehiculeBrandName, "P", "PE", "-1", "1", dispatchDate, dispatchDate);
+                            dynamic objDespachoJson = JsonConvert.SerializeObject(objDespacho);
+                            
+                            /*VALIDO SI FUE CORRECTAMENTE ACTUALIZADO PARA PODER AGREGARLO A UNA LISTA PARA
+                            LUEGO CREAR LA RUTA DE DESPACHO DE LAS ENTREGAS QUE YA FUERON PROGRAMADAS CORRECTAMENTE*/
+                            if (UpdateEstadoEntrega(docEntry, objDespachoJson, ref response)==true)
+                            {
+                               // for (int oRows = 0; oRows < Grid0.Rows.Count; oRows++)
+                               // {
+                                    Programacion1 programacion1 = new Programacion1();
+
+                                    programacion1.U_NumAtCard = Grid0.DataTable.GetString("NumAtCard", row).ToString();
+                                    programacion1.U_Delivered = "P";// dt.DataTable.GetString("CardCode", oRows).ToString();
+                                    programacion1.U_CardCode = Grid0.DataTable.GetString("CardCode", row).ToString();
+                                    programacion1.U_CardName = Grid0.DataTable.GetString("CardName", row).ToString();
+                                    programacion1.U_DocEntry = Grid0.DataTable.GetString("DocEntry", row).ToString();
+                                    programacion1.U_DocNum = Grid0.DataTable.GetString("Entrega", row).ToString();
+                                    programacion1.U_FullAddress = Grid0.DataTable.GetString("Direccion", row).ToString();
+                                    programacion1.U_DocEntryRef = Grid0.DataTable.GetString("DocEntry_Fac", row).ToString();
+                                    programacion1.U_DocNumRef = Grid0.DataTable.GetString("NroFactura", row).ToString();
+                                    programacion1.U_SlpCode = Grid0.DataTable.GetString("Vendedor_ID", row).ToString();
+                                    programacion1.U_SlpName = Grid0.DataTable.GetString("Vendedor", row).ToString();
+                                    programacion1.U_PymntGroup = Grid0.DataTable.GetString("TerminoPago", row).ToString();
+                                    programacion1.U_DocBalance = Grid0.DataTable.GetString("Saldo", row).ToString();
+                                     programacion1.U_TaxDate = ConvertirFormatoFecha(Grid0.DataTable.GetString("DocDueDate", row).ToString(),"yyyyMMdd");
+                                    programacion1.U_PymntGroup = Grid0.DataTable.GetString("TerminoPago", row).ToString();
+                                    programacion1.U_DocBalance = Grid0.DataTable.GetString("Saldo", row).ToString();
+
+                                    VIS_ProgramacionDetalls.Add(programacion1);
+
+                                    Sb1Messages.ShowMessage(string.Format(Mensaje1, docNum));
+                               // }
+                            }
+                            else
+                            {
+                                Sb1Messages.ShowError(docNum +" - "+ response.ToString());
+
+                            }
+
+                        }
+                    }
+
+                    //AL FINALIZAR LA ACTUALIZACION DE LAS ENTREGAS GENERO LA RUTA DE DESPACHO
+                    //VALIDANDO LA LISTA 
+                    if (VIS_ProgramacionDetalls.Count>0)
+                    {
+                        Programacion ObtenerCabecera2 = new Programacion();
+
+                        ObtenerCabecera2 = ObtenerRutaDespacho(dispatchDate, driverCode, driverName, assistantCode,
+                        assistantName,  vehiculeCode,  vehiculeName, CapacidadVehiculo, documentsWeight,
+                        successQuantity,  failedQuantity,  documentsQuantity, TipoRuta, VIS_ProgramacionDetalls);
+
+                        string JsonObtenerCabezera = JsonConvert.SerializeObject(ObtenerCabecera2);
+
+                        IRestResponse responsde;
+                        Forxap.Framework.ServiceLayer.Methods Methods = new Forxap.Framework.ServiceLayer.Methods();
+                        dynamic entrada = JsonObtenerCabezera;
+                        responsde = Methods.POST("VIS_DIS_ODRT", entrada.ToString());
+
+                        dynamic m = JsonConvert.DeserializeObject(responsde.Content.ToString());
+                        if (responsde.StatusCode.ToString() == "Created")
+                        {
+                            Sb1Messages.ShowSuccess("Se genero la ruta de transportista: " + m["DocNum"].ToString());
+
+                        }
+                        else
+                        {
+                            Sb1Messages.ShowError(responsde.Content.ToString());
+                            Sb1Messages.ShowError("Revirtiendo los cambios ...");
+
+                            for (int row = 0; row <= Grid0.Rows.Count - 1; row++)
+                            {
+                                // verifico si el documento se encuentra seleccionado
+                                if (Grid0.DataTable.GetString("Marca", row) == "Y")
+                                {
+                                    docEntry = Grid0.DataTable.GetInt("DocEntry", row);
+
+                                    EntregaDespacho objDespacho = new EntregaDespacho();
+                                    objDespacho = GetObjDespacho(null, null, null, null, null, null, null, "S", "PE", "-1", "1", dispatchDate, dispatchDate);
+                                    dynamic objDespachoJson = JsonConvert.SerializeObject(objDespacho);
+                                    /*EN ESTE PUNTO SE REVERTIRAN LOS CAMBIOS*/
+                                    if (UpdateEstadoEntrega(docEntry, objDespachoJson, ref response) == true)
+                                    {
+                                        Sb1Messages.ShowMessage("Se revirtio correctamente el documento "+ docNum);
+                                    }
+                                    else
+                                    {
+                                        Sb1Messages.ShowError(docNum + " - " + response.ToString());
+                                    }
+
+                                }
+                            }
+                            
+                            
+
+                        }
+
+                    }
+
+                    EditText9.SetInt(0);
+                    EditText10.SetInt(0);
+
+                    ///////////////////////////////
+                    Sb1Messages.ShowMessageBoxWarning(Mensaje2);
+
+                    //Sb1Messages.ShowMessage(Mensaje3);
+                    // FIN PROGRAMAR
+                    Button1.Item.Click();
+                }
+                else
+                {
+                    Sb1Messages.ShowError(Mensaje4);
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Sb1Messages.ShowError(ex.ToString());
+            }
+            finally
+            {
+                oForm.Freeze(false);
+            }
+        }
+
+        public string ConvertirFormatoFecha(string fecha, string formato)
+        {
+            DateTime fechaConvertida = DateTime.ParseExact(fecha, "dd/MM/yyyy HH:mm:ss", null);
+            return fechaConvertida.ToString(formato);
+        }
+
+        public Programacion ObtenerRutaDespacho(string docDate, string driverCode, string driverName, string assistantCode,
+           string assistantName, string vehiculeCode, string vehiculeName, string vehiculeCapacity, string documentsWeight,
+       string successQuantity, string failedQuantity, string documentsQuantity, string TipoRuta, List<Programacion1> VIS_ProgramacionDetalls)
+        {
+            Programacion DocumentoProgramacion = new Programacion();
+
+            DocumentoProgramacion.U_DocDate = docDate;
+            DocumentoProgramacion.U_DriverCode = driverCode;
+            DocumentoProgramacion.U_DriverName = driverName;
+            DocumentoProgramacion.U_AssistantCode = assistantCode;
+            DocumentoProgramacion.U_AssistantName = assistantName;
+            DocumentoProgramacion.U_VehiculeCode = vehiculeCode;
+            DocumentoProgramacion.U_VehiculeName = vehiculeName;
+            DocumentoProgramacion.U_VehicleCapacity = vehiculeCapacity.ToString();
+            DocumentoProgramacion.U_DocumentsWeight = documentsWeight.ToString();
+            DocumentoProgramacion.U_SuccessQuantity = successQuantity;
+            DocumentoProgramacion.U_FailedQuantity = failedQuantity;
+            DocumentoProgramacion.U_DocumentsQuantity = documentsQuantity;
+            DocumentoProgramacion.U_Type_Route = TipoRuta;
+            DocumentoProgramacion.VIS_DIS_DRT1Collection = VIS_ProgramacionDetalls;
+            return DocumentoProgramacion;
+        }
+        private EntregaDespacho GetObjDespacho(string driverLicence, string ordenDespacho, string fechaDespacho,
+       string nombreChofer, string ayudanteName, string placaVehiculo, string marcaVehiculo, string status,
+       string U_SYP_FEEST, string U_SYP_FEESUNAT, string U_SYP_FEMEX, string U_SYP_FEGFI, string U_SYP_FEGFE)
+        {
+#if AD_PE
+            EntregaDespacho objDespacho = new EntregaDespacho();
+            objDespacho.U_SYP_MDFC = driverLicence;
+            objDespacho.U_SYP_DT_CORRDES = ordenDespacho;
+            objDespacho.U_SYP_DT_FCDES = fechaDespacho;
+            objDespacho.U_SYP_MDFN = nombreChofer;
+            objDespacho.U_SYP_DT_AYUDANTE = ayudanteName;
+            objDespacho.U_SYP_MDVC = placaVehiculo;
+            objDespacho.U_SYP_MDVN = marcaVehiculo;
+            objDespacho.U_SYP_FEEST = U_SYP_FEEST;
+            objDespacho.U_SYP_FEESUNAT = U_SYP_FEESUNAT;
+            objDespacho.U_SYP_FEMEX = U_SYP_FEMEX;
+            objDespacho.U_SYP_FEGFI = U_SYP_FEGFI;
+            objDespacho.U_SYP_FEGFE = U_SYP_FEGFE;
+
+            objDespacho.U_SYP_DT_ESTDES = status;
+#elif AD_BO
+            EntregaDespacho objDespacho = new EntregaDespacho();
+            objDespacho.U_SYP_MDFC = driverLicence;
+            objDespacho.U_SYP_DT_CORRDES = ordenDespacho;
+            objDespacho.U_SYP_DT_FCDES = fechaDespacho;
+            objDespacho.U_SYP_MDFN = nombreChofer;
+            objDespacho.U_SYP_DT_AYUDANTE = ayudanteName;
+            objDespacho.U_SYP_MDVC = placaVehiculo;
+            objDespacho.U_SYP_MDVN = marcaVehiculo;
+            objDespacho.U_SYP_DT_ESTDES = status;
+#elif AD_ES
+            EntregaDespacho objDespacho = new EntregaDespacho();
+            objDespacho.U_SYP_MDFC = driverLicence;
+            objDespacho.U_SYP_DT_CORRDES = ordenDespacho;
+            objDespacho.U_SYP_DT_FCDES = fechaDespacho;
+            objDespacho.U_SYP_MDFN = nombreChofer;
+            objDespacho.U_SYP_DT_AYUDANTE = ayudanteName;
+            objDespacho.U_SYP_MDVC = placaVehiculo;
+            objDespacho.U_SYP_MDVN = marcaVehiculo;
+            objDespacho.U_SYP_DT_ESTDES = status;
+#else
+            EntregaDespacho objDespacho = new EntregaDespacho();
+            objDespacho.U_SYP_MDFC = driverLicence;
+            objDespacho.U_SYP_DT_CORRDES = ordenDespacho;
+            objDespacho.U_SYP_DT_FCDES = fechaDespacho;
+            objDespacho.U_SYP_MDFN = nombreChofer;
+            objDespacho.U_SYP_DT_AYUDANTE = ayudanteName;
+            objDespacho.U_SYP_MDVC = placaVehiculo;
+            objDespacho.U_SYP_MDVN = marcaVehiculo;
+            objDespacho.U_SYP_DT_ESTDES = status;
+#endif
+            return objDespacho;
+
+        }
 
         public Programacion ObtenerRutaTransportistaSLD(SAPbouiCOM.Grid dt, string docDate, string driverCode, string driverName, string assistantCode,
                 string assistantName, string vehiculeCode, string vehiculeName, double? vehiculeCapacity, double? documentsWeight,
@@ -1405,7 +1781,6 @@ namespace Vistony.Distribucion.DAL
                 {
                     Programacion1 programacion1 = new Programacion1();
 
-                    programacion1.U_NumAtCard = dt.DataTable.GetString("Serie Transferencia", oRows).ToString();
                     programacion1.U_Delivered = "P";// dt.DataTable.GetString("CardCode", oRows).ToString();
                     programacion1.U_CardCode = dt.DataTable.GetString("CardCode", oRows).ToString();
                     programacion1.U_CardName = dt.DataTable.GetString("CardName", oRows).ToString();
@@ -1417,7 +1792,12 @@ namespace Vistony.Distribucion.DAL
                     programacion1.U_DocNumRef = "";// dt.DataTable.GetString("NroFactura", oRows).ToString();
 
                     programacion1.U_SlpCode = "";// dt.DataTable.GetString("Vendedor_ID", oRows).ToString();
+#if AD_PE
                     programacion1.U_SlpName = dt.DataTable.GetString("Almacenero", oRows).ToString();
+                    programacion1.U_NumAtCard = dt.DataTable.GetString("Serie Transferencia", oRows).ToString();
+#elif AD_BO
+                    programacion1.U_SlpName = "";// dt.DataTable.GetString("Almacenero", oRows).ToString();
+#endif
 
                     programacion1.U_PymntGroup = "";// dt.DataTable.GetString("TerminoPago", oRows).ToString();
 
@@ -1432,6 +1812,77 @@ namespace Vistony.Distribucion.DAL
             return VIS_ProgramacionDetalls;
 
         }
+
+
+        public ProgramacionSLD ObtenerRutaTransportistaSLD_Ecuador(SAPbouiCOM.Grid dt, string docDate, string driverCode, string driverName, string assistantCode,
+        string assistantName, string vehiculeCode, string vehiculeName, string vehiculeCapacity, string documentsWeight,
+        string successQuantity, string failedQuantity, string documentsQuantity, string TipoRuta, 
+        string CodTransportista, string RazonSocialTransportista)
+        {
+            ProgramacionSLD DocumentoProgramacionSLD_Ecuador = new ProgramacionSLD();
+
+            DocumentoProgramacionSLD_Ecuador.U_DocDate = docDate;
+            DocumentoProgramacionSLD_Ecuador.U_DriverCode = driverCode;
+            DocumentoProgramacionSLD_Ecuador.U_DriverName = driverName;
+            DocumentoProgramacionSLD_Ecuador.U_AssistantCode = assistantCode;
+            DocumentoProgramacionSLD_Ecuador.U_AssistantName = assistantName;
+            DocumentoProgramacionSLD_Ecuador.U_VehiculeCode = vehiculeCode;
+            DocumentoProgramacionSLD_Ecuador.U_VehiculeName = vehiculeName;
+            DocumentoProgramacionSLD_Ecuador.U_VehicleCapacity = vehiculeCapacity.ToString();
+            DocumentoProgramacionSLD_Ecuador.U_DocumentsWeight = documentsWeight.ToString();
+            DocumentoProgramacionSLD_Ecuador.U_SuccessQuantity = successQuantity;
+            DocumentoProgramacionSLD_Ecuador.U_FailedQuantity = failedQuantity;
+            DocumentoProgramacionSLD_Ecuador.U_DocumentsQuantity = documentsQuantity;
+            DocumentoProgramacionSLD_Ecuador.U_Type_Route = TipoRuta;
+            DocumentoProgramacionSLD_Ecuador.U_CardCode = CodTransportista;
+            DocumentoProgramacionSLD_Ecuador.U_CardName = RazonSocialTransportista;
+
+            DocumentoProgramacionSLD_Ecuador.VIS_DIS_DRT1Collection = ObtenerDetalleProgramacionSLD_Ecuador(dt);
+            return DocumentoProgramacionSLD_Ecuador;
+        }
+        public List<Programacion1> ObtenerDetalleProgramacionSLD_Ecuador(SAPbouiCOM.Grid dt)
+        {
+
+            List<Programacion1> VIS_ProgramacionDetalls = new List<Programacion1>();
+
+            for (int oRows = 0; oRows < dt.Rows.Count; oRows++)
+            {
+                if (dt.DataTable.GetString("Marca", oRows).ToString() == "Y")
+                {
+                    Programacion1 programacion1 = new Programacion1();
+
+                    programacion1.U_Delivered = "P";// dt.DataTable.GetString("CardCode", oRows).ToString();
+                    programacion1.U_CardCode = dt.DataTable.GetString("CardCode", oRows).ToString();
+                    programacion1.U_CardName = dt.DataTable.GetString("CardName", oRows).ToString();
+                    programacion1.U_DocEntry = dt.DataTable.GetString("DocEntry", oRows).ToString();
+                    programacion1.U_DocNum = dt.DataTable.GetString("DocNum", oRows).ToString();
+                    programacion1.U_FullAddress = dt.DataTable.GetString("Direccion", oRows).ToString();
+
+                    programacion1.U_DocEntryRef = "";// dt.DataTable.GetString("DocEntry_Fac", oRows).ToString();
+                    programacion1.U_DocNumRef = "";// dt.DataTable.GetString("NroFactura", oRows).ToString();
+
+                    programacion1.U_SlpCode = "";// dt.DataTable.GetString("Vendedor_ID", oRows).ToString();
+#if AD_PE
+                    programacion1.U_SlpName = dt.DataTable.GetString("Almacenero", oRows).ToString();
+                    programacion1.U_NumAtCard = dt.DataTable.GetString("Serie Transferencia", oRows).ToString();
+#elif AD_BO
+                    programacion1.U_SlpName = "";// dt.DataTable.GetString("Almacenero", oRows).ToString();
+#endif
+
+                    programacion1.U_PymntGroup = "";// dt.DataTable.GetString("TerminoPago", oRows).ToString();
+
+
+                    programacion1.U_DocBalance = "";// dt.DataTable.GetString("Saldo", oRows).ToString();
+
+                    // DocumentoProgramacionDetalls.U_TaxDate = dt.DataTable.GetString("DocDueDate", oRows).ToString();
+
+                    VIS_ProgramacionDetalls.Add(programacion1);
+                }
+            }
+            return VIS_ProgramacionDetalls;
+
+        }
+
         public string GuardarProgramacionSLD(SAPbouiCOM.Grid dt, string docDate, string driverCode, string driverName, string assistantCode,
            string assistantName, string vehiculeCode, string vehiculeName, double? vehiculeCapacity, double? documentsWeight,
            string successQuantity, string failedQuantity, string documentsQuantity,string TipoRuta)
@@ -1473,6 +1924,54 @@ namespace Vistony.Distribucion.DAL
             return ret;
 
         }
+
+
+        public string GuardarProgramacionSLD_Ecudador(SAPbouiCOM.Grid dt, string docDate, string driverCode, string driverName, string assistantCode,
+            string assistantName, string vehiculeCode, string vehiculeName,string vehiculeCapacity, string documentsWeight,
+            string successQuantity, string failedQuantity, string documentsQuantity, 
+            string TipoRuta, string CodTransportista, string RazonSocialTransportista)
+        {
+            string ret = string.Empty;
+
+            try
+            {
+
+                ProgramacionSLD ObtenerCabecera2 = new ProgramacionSLD();
+
+                ObtenerCabecera2 = ObtenerRutaTransportistaSLD_Ecuador(dt, docDate, driverCode, driverName, assistantCode, 
+                                   assistantName, vehiculeCode,vehiculeName, vehiculeCapacity, documentsWeight, 
+                                   successQuantity, failedQuantity, documentsQuantity, TipoRuta, CodTransportista,
+                                   RazonSocialTransportista);
+
+                string JsonObtenerCabezera = JsonConvert.SerializeObject(ObtenerCabecera2);
+
+                IRestResponse responsde;
+                Forxap.Framework.ServiceLayer.Methods Methods = new Forxap.Framework.ServiceLayer.Methods();
+                dynamic entrada = JsonObtenerCabezera;
+                responsde = Methods.POST("VIS_DIS_ODRT", entrada.ToString());
+                dynamic m = JsonConvert.DeserializeObject(responsde.Content.ToString());
+
+                if (responsde.StatusCode.ToString() == "Created")
+                {
+                    ret = responsde.StatusCode.ToString();
+                }
+                else
+                {
+                    ret = responsde.Content.ToString();
+                }
+
+            }
+            catch (Exception e)
+            {
+
+                Sb1Messages.ShowError(e.ToString());
+            }
+
+            return ret;
+
+        }
+
+
         #region Disposable
 
 
