@@ -21,12 +21,16 @@ using GoogleMapsApi.Entities.DistanceMatrix.Response;
 using GoogleMapsApi.Entities.Common;
 using System.Threading.Tasks;
 using GoogleMapsApi.Entities.Directions.Request;
+using GoogleMapsApi.Entities.Directions.Response;
+using Newtonsoft.Json.Linq;
 
 namespace Vistony.Distribucion.DAL
 {
     public class EntregaDAL : BaseDAL, IDisposable
     {
-        
+
+
+        /* INICIO -  CODIGO EN DESARROLLO - OBTENER LA RUTA MAS OPTIMA Y ORDENAS LAS ORDENES DE VENTAS*/
         public void Consolidados(SAPbouiCOM.Form oForm, SAPbouiCOM.Matrix oMatrix, string Sucural)
         {
             try
@@ -37,7 +41,7 @@ namespace Vistony.Distribucion.DAL
                 string Query = Sucural;
                 exp.ExecuteQuery(Query);
                 //FIN DE EJECUCION DE PROCEDIMIENTO ALMACENADO
-                
+
                 SAPbouiCOM.DataTable udt = oForm.GetDataTable("DT_1");
                 oMatrix = oForm.GetMatrix("Item_2");
                 SAPbouiCOM.Columns oColumns;
@@ -120,19 +124,159 @@ namespace Vistony.Distribucion.DAL
             }
 
         }
-
         public void GetRutaOptima()
         {
        
             // Construir la solicitud de la API de Google Maps
-            RestClient client = new RestClient("https://maps.googleapis.com/maps/api/directions/json?origin=-11.7648155,-77.1600196&destination=-11.7648155,-77.1600196&waypoints=via:-11.8547872,-77.0782242|via:-11.8628667,-77.0896241|via:-11.8628667,-77.0896243&precision=high&&mode=driving&departure_time=now&avoid=tolls|highways&vehicle_type=truck&key=AIzaSyBDbOiBGhKP8rjixiTEaNdBwd23iOFe7YM");
-            RestRequest request = new RestRequest(Method.POST);
-            string JsonObtenerCabezera = JsonConvert.SerializeObject(request.ToString());
-            dynamic result = client.Execute(request);
+            RestClient client = new RestClient("https://maps.googleapis.com/maps/api/directions/json");
+
+            string[] waypoints = {
+                                   "-11.773358333570355, -77.16045549134635",
+                                   "-11.768530850348426, -77.16104723303908",
+                                   "-11.817091454630537, -77.12739714902531",
+                                   "-11.803682265098885, -77.13584928711177"
+                                 };
+
+            string waypointsString = string.Join("|", waypoints);
+
+            RestRequest request = new RestRequest(Method.GET);
+            request.AddParameter("origin", "-11.76394370047932, -77.16104957188698");
+            request.AddParameter("destination", "-11.76394370047932, -77.16104957188698");
+            request.AddParameter("waypoints", waypointsString);
+            request.AddParameter("precision", "high");
+            request.AddParameter("mode", "driving");
+            request.AddParameter("departure_time", "now");
+            request.AddParameter("avoid", "tolls|highways");
+            request.AddParameter("vehicle_type", "truck");
+            request.AddParameter("key", "AIzaSyBDbOiBGhKP8rjixiTEaNdBwd23iOFe7YM");
+            IRestResponse response = client.Execute(request);
+
+
+            if (response.IsSuccessful)
+            {
+                string responseBody = response.Content;
+                // Analizar el resultado JSON y obtener los waypoints ordenados
+                JObject json = JObject.Parse(responseBody);
+
+                if (json["status"].ToString() == "OK")
+                {
+                    JArray routes = (JArray)json["routes"];
+
+                    if (routes.Count > 0)
+                    {
+                        JArray legs = (JArray)routes[0]["legs"];
+
+                        if (legs.Count > 0)
+                        {
+                            List<string> orderedWaypoints = new List<string>();
+
+                            foreach (var leg in legs)
+                            {
+                                JArray legWaypoints = (JArray)leg["via_waypoint"];
+
+                                foreach (var waypoint in legWaypoints)
+                                {
+                                    string location = waypoint["location"]["lat"] + "," + waypoint["location"]["lng"];
+                                    orderedWaypoints.Add(location);
+                                }
+                            }
+
+                            Console.WriteLine("Waypoints ordenados:");
+                            foreach (var waypoint in orderedWaypoints)
+                            {
+                                Console.WriteLine(waypoint);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error en la solicitud: " + response.ErrorMessage);
+            }
+        
+
+
+            /*if (response.IsSuccessful)
+            {
+                DirectionsResponse directions = JsonConvert.DeserializeObject<DirectionsResponse>(response.Content);
+
+                List<Location> locations = new List<Location>();
+
+                foreach (Route route in directions.routes)
+                {
+                    foreach (Leg leg in route.legs)
+                    {
+                        foreach (Step step in leg.steps)
+                        {
+                            locations.Add(step.start_location);
+                        }
+                    }
+                }
+
+                foreach (Location location in locations)
+                {
+                    Console.WriteLine($"Latitud: {location.lat}");
+                    Console.WriteLine($"Longitud: {location.lng}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error en la solicitud: " + response.ErrorMessage);
+            }*/
+
+            //RestRequest request = new RestRequest(Method.POST);
+            //string JsonObtenerCabezera = JsonConvert.SerializeObject(request.ToString());
+            //dynamic result = client.Execute(request);
 
         }
+        public class DirectionsResponse
+        {
+            public List<Route> routes { get; set; }
+        }
+        public class Route
+        {
+            public List<Leg> legs { get; set; }
+        }
+        public class Leg
+        {
+            public List<Step> steps { get; set; }
+        }
+        public class Step
+        {
+            public string html_instructions { get; set; }
+            public Location start_location { get; set; }
+            public Location end_location { get; set; }
+        }
+        public class Location
+        {
+            public double lat { get; set; }
+            public double lng { get; set; }
+        }
+        public void RutaMasCortaAPI_GOOGLE(string origen, List<string> destinos)
+        {
+            // Define los parámetros de la solicitud HTTP
+            var claveAPI = "AIzaSyBDbOiBGhKP8rjixiTEaNdBwd23iOFe7YM";//API DE GOOGLE
+            var unidades = "metric"; // utilizar unidades métricas (metros y segundos)
 
-        public void FindText(SAPbouiCOM.SBOItemEventArg pVal,int filaseleccionada, EditText EditText7, Grid Grid1)
+            // Crea una lista para almacenar los resultados de la solicitud HTTP
+            var resultados = new List<dynamic>();
+
+            // Envía solicitudes HTTP para cada destino y almacena los resultados
+            foreach (var destino in destinos)
+            {
+                // Construye la URL de la solicitud HTTP
+                var url = $"https://maps.googleapis.com/maps/api/directions/json?origin={origen}&destination={destino}&key={claveAPI}&units={unidades}";
+
+            }
+
+        }
+        /* FIN -  CODIGO EN DESARROLLO - OBTENER LA RUTA MAS OPTIMA Y ORDENAS LAS ORDENES DE VENTAS*/
+
+
+
+        /*INICIO - CUANDO ESCRIBA EN LA CAJA DE TEXTO Y ENCUENTRA EL VALOR SE SELECCIONARA AUTORIMATICAMNETE EL VALOR */
+        public void FindText(SAPbouiCOM.SBOItemEventArg pVal, int filaseleccionada, EditText EditText7, Grid Grid1)
         {
             string textoFind = string.Empty;
             string docNum = string.Empty;
@@ -185,24 +329,8 @@ namespace Vistony.Distribucion.DAL
 
             }
         }
-        public void RutaMasCortaAPI_GOOGLE(string origen, List<string> destinos)
-        {
-            // Define los parámetros de la solicitud HTTP
-            var claveAPI = "AIzaSyBDbOiBGhKP8rjixiTEaNdBwd23iOFe7YM";//API DE GOOGLE
-            var unidades = "metric"; // utilizar unidades métricas (metros y segundos)
-            
-            // Crea una lista para almacenar los resultados de la solicitud HTTP
-            var resultados = new List<dynamic>();
+        /*FIN - CUANDO ESCRIBA EN LA CAJA DE TEXTO Y ENCUENTRA EL VALOR SE SELECCIONARA AUTORIMATICAMNETE EL VALOR */
 
-            // Envía solicitudes HTTP para cada destino y almacena los resultados
-            foreach (var destino in destinos)
-            {
-                // Construye la URL de la solicitud HTTP
-                var url = $"https://maps.googleapis.com/maps/api/directions/json?origin={origen}&destination={destino}&key={claveAPI}&units={unidades}";
-
-            }
-
-        }
         public void UpdateEstadoConsolidadoEntrega(SAPbouiCOM.Form oForm,Grid Grid1, string tipoConsolidado, 
             string fechaConsolidado,EditText EditText8,EditText EditText9,Button Button5)
         {
