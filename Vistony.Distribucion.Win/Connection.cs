@@ -1,8 +1,8 @@
 ﻿//#define AD_EC
 //#define AD_BO
-#define AD_CL
+//#define AD_CL
 //#define AD_PY
-//#define AD_PE
+#define AD_PE
 
 using System;
 using System.Collections.Generic;
@@ -80,7 +80,7 @@ namespace Vistony.Distribucion.Win
                                 Sb1Globals.AdminPuntoEmision = Utils.GetMultiSucursal(string.Format(addonMessageInfo.QueryGetListAdminSucu, Sb1Globals.UserSignature)); // Consulta Usuario Multi Sucursal
                                 Sb1Globals.SucursalDefault = Utils.GetSucursalDefault(string.Format(addonMessageInfo.QueryComboBoxSucursalesDefault, Sb1Globals.UserSignature));
                                 Sb1Globals.IDSucursal = Utils.GetIDSucursal(string.Format(addonMessageInfo.QueryGetIDSucursal, Sb1Globals.SucursalDefault));
-                            }
+                    }
                             else
                             {
                                 Sb1MetaData.AddMenusEspanol(); // agrega el menu del addon

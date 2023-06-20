@@ -63,8 +63,9 @@
       
           <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="7" String="Mantenimiento de Choferes" Type="2" UniqueID="dis003"></Menu>
              <Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="1" String="Actualizar IMEI" Type="1" UniqueID="dis_AIMEI"></Menu>
-             <Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="2" String="Actualizar Ubigeo" Type="1" UniqueID="dis_UPDATEUBI"></Menu>
+             <!--<Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="2" String="Actualizar Ubigeo" Type="1" UniqueID="dis_UPDATEUBI"></Menu>-->
              <Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="3" String="Administración Punto Emisión Usuario" Type="1" UniqueID="dis_PuntoEmiUsu"></Menu>
+             <Menu Checked="0" Enabled="1" FatherUID="dis003" Image="" Position="3" String="Administración Serie SUNAT" Type="1" UniqueID="dis_SerieSUNAT"></Menu>
 
     </action>
   </Menus>

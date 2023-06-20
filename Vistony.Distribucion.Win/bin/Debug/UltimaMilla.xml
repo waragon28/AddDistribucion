@@ -922,6 +922,16 @@
             Initialize form event. Called by framework before form creation.
             </summary>
         </member>
+        <member name="M:Vistony.Distribucion.Win.Mantenimiento.FrmSerieSUNAT.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.Mantenimiento.FrmSerieSUNAT.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
         <member name="M:Vistony.Distribucion.Win.Programacion.frmConsolidationSLD.OnInitializeComponent">
             <summary>
             Initialize components. Called by framework after form created.

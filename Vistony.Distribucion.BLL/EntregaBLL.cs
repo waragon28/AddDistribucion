@@ -32,6 +32,20 @@ namespace Vistony.Distribucion.BLL
                 return null;
             }
         }
+       public void addItem(Form oForm, string Query)
+        {
+            using (EntregaDAL entregaDAL = new EntregaDAL())
+            {
+                entregaDAL.addItem(oForm, Query);
+            }
+        }
+        public void ActualizarCorrelativoSunat(Form oForm,string Code,Matrix oMatrix)
+        {
+            using (EntregaDAL entregaDAL = new EntregaDAL())
+            {
+                entregaDAL.ActualizarCorrelativoSunat(oForm, Code, oMatrix);
+            }
+        }
         public void FindText(SAPbouiCOM.SBOItemEventArg pVal, int filaseleccionada, EditText EditText7, Grid Grid1)
         {
             try
@@ -77,7 +91,6 @@ namespace Vistony.Distribucion.BLL
                 //
             }
         }
-
         public SAPbouiCOM.DataTable GetInfoUsuario(string USUARIO, SAPbouiCOM.DataTable oDT)
         {
             try
@@ -166,7 +179,6 @@ namespace Vistony.Distribucion.BLL
 
             }
         }
-
         public SAPbouiCOM.DataTable GetEntrega(ref SAPbouiCOM.DataTable oDT, string startDate, string endDate, string consolidado, string agencia, string userName)
         {
             try
@@ -182,7 +194,6 @@ namespace Vistony.Distribucion.BLL
                 return null;
             }
         }
-
         public SAPbouiCOM.DataTable GetSLD(ref SAPbouiCOM.DataTable oDT, string startDate, string endDate, string AlmacenDesde, string AlmacenHasta, string Query)
         {
             try
@@ -198,7 +209,6 @@ namespace Vistony.Distribucion.BLL
                 return null;
             }
         }
-
         public SAPbouiCOM.DataTable GetConsolidadoSLD(ref SAPbouiCOM.DataTable oDT, string startDate, string endDate, string AlmacenDesde, string AlmacenHasta, string Query, string Consolidado, string Agencia)
         {
             try
@@ -214,7 +224,6 @@ namespace Vistony.Distribucion.BLL
                 return null;
             }
         }
-
         public SAPbouiCOM.DataTable GetEntrega_Sucursal(ref SAPbouiCOM.DataTable oDT, string startDate, string endDate, string consolidado, string agencia, string Sucursal)
         {
             try
@@ -230,7 +239,6 @@ namespace Vistony.Distribucion.BLL
                 return null;
             }
         }
-
         public SAPbouiCOM.DataTable SP_VIS_DIS_GET_TRACKER_C_TEST(ref SAPbouiCOM.DataTable oDT, string fecha,
             string TRACKER, string Sucursal, string TipoRuta)
         {
@@ -462,6 +470,13 @@ namespace Vistony.Distribucion.BLL
                 return entregaDAL.ObtenerSucursal(usuario);
             }
         }
+        public string ObtenerPuntoEmision(string Usuario)
+        {
+            using (EntregaDAL entregaDAL = new EntregaDAL())
+            {
+                return entregaDAL.ObtenerPuntoEmision(Usuario);
+            }
+        }
         public string ObtenerDepartamento(string usuario)
         {
 
@@ -470,7 +485,6 @@ namespace Vistony.Distribucion.BLL
                 return entregaDAL.ObtenerDepartamento(usuario);
             }
         }
-
         public void GetDatosChofer(ref string choferCode, ref string choferName, ref string choferLicencia, ref string vehiculoPlaca, ref string vehiculoMarca, ref string ayudanteCode, ref string ayudanteName, ref double pesoUtil)
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())
@@ -478,7 +492,6 @@ namespace Vistony.Distribucion.BLL
                 entregaDAL.GetDatosChofer(ref choferCode, ref choferName, ref choferLicencia, ref vehiculoPlaca, ref vehiculoMarca, ref ayudanteCode, ref ayudanteName, ref pesoUtil);
             }
         }
-
         public string ObtenerCorrelativoDespacho(SAPbouiCOM.DataTable oDT, string fecha)
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())
@@ -488,7 +501,6 @@ namespace Vistony.Distribucion.BLL
 
 
         }
-
         public void GenerarRutaTransportista(Grid Grid0, EditText U_DriverCode, EditText U_DriverName, EditText U_VehiculeCode, EditText U_VehicleCapacity,
                                                EditText U_CountDocuments, EditText U_DocumentsCapacity, EditText U_AssistantCode, EditText U_AssistantName)
         {
@@ -498,7 +510,6 @@ namespace Vistony.Distribucion.BLL
                                             U_CountDocuments, U_DocumentsCapacity, U_AssistantCode, U_AssistantName);
             }
         }
-
         public void GetDataTableResumen(ref SAPbouiCOM.DataTable oDatatable, int rows)
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())
@@ -507,8 +518,6 @@ namespace Vistony.Distribucion.BLL
             }
 
         }
-
-
         public Programacion ObtenerCabeceraDocuemtProgramacion(SAPbouiCOM.Grid dt, string docDate, string driverCode,
         string driverName, string assistantCode, string assistantName, string vehiculeCode, string vehiculeName, double? vehiculeapacity, double? documentsWeight,
         string successQuantity, string failedQuantity, string documentsQuantity, string TipoRuta)
@@ -519,7 +528,7 @@ namespace Vistony.Distribucion.BLL
                           successQuantity, failedQuantity, documentsQuantity, TipoRuta);
             }
         }
-        
+   
         public void UpdateDespachoPrograManualEntregas(string dispatchDate, string driverCode, string driverName,
     string driverLicence, string assistantCode, string assistantName,
     string vehiculeCode, string vehiculeName,

@@ -1,9 +1,9 @@
 ﻿//#define AD_BO
-//#define AD_PE
+#define AD_PE
 //#define AD_ES
 //#define AD_PY
 //#define AD_EC
-#define AD_CL
+//#define AD_CL
 
 using System;
 using System.Collections.Generic;
@@ -387,6 +387,11 @@ namespace Vistony.Distribucion.Win
                                 SAPbobsCOM.Recordset oRS = (SAPbobsCOM.Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
 
                                 entregaBLL.Layout_Preview("Guía Electronica por Fecha V3", "", oRS);
+                            }
+                            break;
+                        case AddonMenuItem.dis_SerieSUNAT:
+                            {
+                                onShowSerieSUNAT();
                             }
                             break;
                         #endregion
@@ -794,6 +799,21 @@ namespace Vistony.Distribucion.Win
 
                frmConsolidation form = new frmConsolidation();
                form.Show();
+
+            }
+            catch (Exception ex)
+            {
+                Forxap.Framework.UI.Sb1Messages.ShowError(ex.ToString());
+            }
+        }
+
+        private void onShowSerieSUNAT()
+        {
+            try
+            {
+
+                FrmSerieSUNAT form = new FrmSerieSUNAT();
+                form.Show();
 
             }
             catch (Exception ex)

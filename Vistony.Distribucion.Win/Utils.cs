@@ -767,6 +767,13 @@ namespace Vistony.Distribucion.Win
                 return entregaBLL.ObtenerSucursal( usuario);
             }
         }
+        public static string ObtenerPuntoEmision(string Usuario)
+        {
+            using (EntregaBLL entregaBLL = new EntregaBLL())
+            {
+                return entregaBLL.ObtenerPuntoEmision(Usuario);
+            }
+        }
 
         public static string GetDepartamento(string usuario)
         {

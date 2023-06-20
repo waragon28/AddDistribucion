@@ -29,7 +29,7 @@ namespace Vistony.Distribucion.Constans
 
         public const string dis_estado = "dis_estado";
         public const string dis_wizard = "dis_wizard";
-        
+        public const string dis_SerieSUNAT = "dis_SerieSUNAT";
         public const string dis_rutTra = "dis_rutTra";
 
         public const string dis_seguimiento = "dis_seguimiento";

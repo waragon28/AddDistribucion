@@ -1,9 +1,9 @@
 ﻿//#define AD_BO
-//#define AD_PE
+#define AD_PE
 //#define AD_ES
 //#define AD_EC
 //#define AD_PY
-#define AD_CL
+//#define AD_CL
 
 using System;
 using System.Collections.Generic;
@@ -273,10 +273,116 @@ namespace Vistony.Distribucion.DAL
         }
         /* FIN -  CODIGO EN DESARROLLO - OBTENER LA RUTA MAS OPTIMA Y ORDENAS LAS ORDENES DE VENTAS*/
 
+        /*INICIO - DOCUMENTOS SUNAT*/
+        public DocumentSUNAT CabeceraDocumentoSUNAT(string Code,Matrix oMatrix)
+        {
+            DocumentSUNAT documentSUNAT = new DocumentSUNAT();
+            documentSUNAT.Code = Code;
+            documentSUNAT.SYP_NUMDOCCollection = DetalleDocumentoSUNAT(Code,oMatrix);
+            return documentSUNAT;
+        }
+        public List<SYPNUMDOCCollection> DetalleDocumentoSUNAT(string Code,Matrix oMatrix)
+        {
+            List<SYPNUMDOCCollection> ListDocumentoDetalle = new List<SYPNUMDOCCollection>();
+            for (int oRow = 0; oRow < oMatrix.RowCount; oRow++)
+            {
+                if (oMatrix.GetValueFromCheckBox("Col_0", oRow+1) == "Y")
+                {
+                    string Linea = oMatrix.GetValueFromEditText("Col_3", oRow + 1);
+                    SYPNUMDOCCollection DocumentoDetalle = new SYPNUMDOCCollection();
+                    DocumentoDetalle.Code = Code;
+                    DocumentoDetalle.LineId = Convert.ToInt32(oMatrix.GetValueFromEditText("Col_3", oRow+1));
+                    DocumentoDetalle.U_SYP_NDSD = oMatrix.GetValueFromEditText("Col_1", oRow+1);
+                    DocumentoDetalle.U_SYP_NDCD = oMatrix.GetValueFromEditText("Col_2", oRow+1);
+                    ListDocumentoDetalle.Add(DocumentoDetalle);
+                }
+            }
+            return ListDocumentoDetalle;
+        }
+
+        public void addItem(Form oForm, string Query)
+        {
+            SAPbouiCOM.Matrix oMatrix;
+            /*EJECUTAR EL PROCEDIMIENTO ALMACENADO*/
+            SAPbouiCOM.DataTable exp;
+            exp = oForm.DataSources.DataTables.Item("DT_QUERY");
+            exp.ExecuteQuery(Query);
+            /*FIN DE EJECUCION DE PROCEDIMIENTO ALMACENADO*/
 
 
-        /*INICIO - CUANDO ESCRIBA EN LA CAJA DE TEXTO Y ENCUENTRA EL VALOR SE SELECCIONARA AUTORIMATICAMNETE EL VALOR */
-        public void FindText(SAPbouiCOM.SBOItemEventArg pVal, int filaseleccionada, EditText EditText7, Grid Grid1)
+            SAPbouiCOM.DataTable udt = oForm.GetDataTable("DT_1");
+            oMatrix = oForm.GetMatrix("Item_9");
+            oMatrix.Clear();
+            SAPbouiCOM.Columns oColumns;
+            oColumns = oMatrix.Columns;
+            SAPbouiCOM.Column oColumn;
+            var colItems = udt.Columns;
+            oForm.Freeze(true);
+            if (udt.Columns.Count == 0)
+            {
+
+                colItems.Add("#", BoFieldsType.ft_AlphaNumeric);
+                colItems.Add("Marcar", BoFieldsType.ft_AlphaNumeric);
+                colItems.Add("Linea", BoFieldsType.ft_AlphaNumeric);
+                colItems.Add("Serie del Documento", BoFieldsType.ft_AlphaNumeric);
+                colItems.Add("Correlativo del Documento", BoFieldsType.ft_AlphaNumeric);
+             }
+            int a = udt.Rows.Count;
+            if (oMatrix.RowCount > 0)
+                a = udt.Rows.Count;
+            for (int oRow = 0; oRow < exp.Rows.Count; oRow++)
+            {
+                udt.Rows.Add();
+                udt.SetValue("#", oRow, oRow + 1);
+                udt.SetValue("Marcar", oRow, exp.GetString("Marcar", oRow));
+                udt.SetValue("Serie del Documento", oRow, exp.GetString("Serie del Documento", oRow));
+                udt.SetValue("Correlativo del Documento", oRow, exp.GetString("Correlativo del Documento", oRow));
+                udt.SetValue("Linea", oRow, exp.GetString("Linea", oRow));
+               
+            }
+
+            oMatrix.Columns.Item("Col_0").DataBind.Bind("DT_1", "Marcar");
+            oMatrix.Columns.Item("Col_1").DataBind.Bind("DT_1", "Serie del Documento");
+            oMatrix.Columns.Item("Col_2").DataBind.Bind("DT_1", "Correlativo del Documento");
+            oMatrix.Columns.Item("Col_3").DataBind.Bind("DT_1", "Linea");
+
+            oMatrix.Columns.Item("Col_0").Editable = true;
+            oMatrix.Columns.Item("Col_1").Editable = false;
+            oMatrix.Columns.Item("Col_2").Editable = true;
+            oMatrix.Columns.Item("Col_3").Visible = false;
+
+
+
+           oColumn = oColumns.Item("Col_0");
+            oMatrix.LoadFromDataSource();
+            oMatrix.AutoResizeColumns();
+            oForm.Freeze(false);
+        }
+        public void ActualizarCorrelativoSunat(Form oForm,string Code,Matrix oMatrix)
+        {
+            DocumentSUNAT ObjDocumentoSUNAT = CabeceraDocumentoSUNAT(Code, oMatrix);
+            dynamic objDespachoJson = JsonConvert.SerializeObject(ObjDocumentoSUNAT);
+
+            Forxap.Framework.ServiceLayer.Methods methods = new Forxap.Framework.ServiceLayer.Methods();
+            dynamic restResponse;
+            restResponse = methods.PATCH("TPODOC", Code, objDespachoJson);
+
+                dynamic json2 = JsonConvert.DeserializeObject(restResponse.Content.ToString());
+
+                    if (restResponse.StatusCode.ToString() == "" || restResponse.StatusCode.ToString() == "NoContent")
+                    {
+                 Sb1Messages.ShowSuccess("Se actualizo correctamente la Serie");
+                    }
+                    else
+                    {
+                        dynamic m = JsonConvert.DeserializeObject(restResponse.Content.ToString());
+                Sb1Messages.ShowError(restResponse.StatusCode.ToString());
+            }
+        }
+/*FINAL - DOCUMENTOS SUNAT*/
+
+/*INICIO - CUANDO ESCRIBA EN LA CAJA DE TEXTO Y ENCUENTRA EL VALOR SE SELECCIONARA AUTORIMATICAMNETE EL VALOR */
+public void FindText(SAPbouiCOM.SBOItemEventArg pVal, int filaseleccionada, EditText EditText7, Grid Grid1)
         {
             string textoFind = string.Empty;
             string docNum = string.Empty;
@@ -708,7 +814,6 @@ namespace Vistony.Distribucion.DAL
                 return null;
             }
         }
-
         public static SAPbouiCOM.DataTable ListPrevDespacho(SAPbouiCOM.DataTable oDT, string Desde, string Hasta, string Usuario, string chofer, int dia)
         {
             try
@@ -914,6 +1019,39 @@ namespace Vistony.Distribucion.DAL
 
                 sucursal = recordSet.Fields.Item("Dato").Value.ToString();
                 
+                return sucursal;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public string ObtenerPuntoEmision(string usuario)
+        {
+            string sucursal = string.Empty;
+            string strSQL = string.Empty;
+
+            SAPbobsCOM.Recordset recordSet = null;
+            string code = string.Empty;
+
+
+
+            recordSet = (Recordset)oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+
+            if (recordSet == null)
+                throw new NullReferenceException("No se pudo obtener el objeto Recordset");
+
+            try
+            {
+
+                strSQL = string.Format("CALL SP_VIS_DIS_OBTENERPUNTOEMISION ('{0}')", usuario);
+
+                recordSet.DoQuery(strSQL);
+
+
+                sucursal = recordSet.Fields.Item("Dato").Value.ToString();
+
                 return sucursal;
             }
             catch (Exception ex)
@@ -1670,7 +1808,7 @@ namespace Vistony.Distribucion.DAL
                             objDespacho = GetObjDespacho(driverLicence, ordenDespacho, dispatchDate, driverName, assistantName, vehiculeName, vehiculeBrandName, "P", "PE", "-1", "1", dispatchDate, dispatchDate);
                             dynamic objDespachoJson = JsonConvert.SerializeObject(objDespacho);
                             
-                            /*VALIDO SI FUE CORRECTAMENTE ACTUALIZADO PARA PODER AGREGARLO A UNA LISTA PARA
+                            /*VALIDO SI FUE CORRECTAMENTE ACTUALIZADO PARA PODER AGREGARLO A UNA LISTA Y
                             LUEGO CREAR LA RUTA DE DESPACHO DE LAS ENTREGAS QUE YA FUERON PROGRAMADAS CORRECTAMENTE*/
                             if (UpdateEstadoEntrega(docEntry, objDespachoJson, ref response)==true)
                             {

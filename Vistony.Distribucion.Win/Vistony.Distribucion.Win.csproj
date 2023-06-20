@@ -128,6 +128,9 @@
     <Compile Include="Mantenimiento\FrmPuntoEmisionUsuario.b1f.cs">
       <DependentUpon>FrmPuntoEmisionUsuario.b1f</DependentUpon>
     </Compile>
+    <Compile Include="Mantenimiento\FrmSerieSUNAT.b1f.cs">
+      <DependentUpon>FrmSerieSUNAT.b1f</DependentUpon>
+    </Compile>
     <Compile Include="Programacion\frmConsolidationSLD.b1f.cs">
       <DependentUpon>frmConsolidationSLD.b1f</DependentUpon>
     </Compile>
@@ -247,6 +250,9 @@
       <FormCategory>UserForm</FormCategory>
     </None>
     <None Include="Mantenimiento\FrmPuntoEmisionUsuario.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Mantenimiento\FrmSerieSUNAT.b1f">
       <FormCategory>UserForm</FormCategory>
     </None>
     <None Include="Programacion\frmConsolidationSLD.b1f">

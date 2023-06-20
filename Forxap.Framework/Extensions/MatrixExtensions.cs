@@ -165,7 +165,32 @@ namespace Forxap.Framework.Extensions
             }
             return ret;
         }
+        public static string GetValueFromCheckBox(this SAPbouiCOM.Matrix oMatrix, string colID, int rowNumber)
+        {
+            string ret = string.Empty;
+             CheckBox editText = null;
 
+
+
+            if (oMatrix.RowCount > 0)
+            {
+                //  object a = oMatrix.Columns.Item(colID).Cells.Item(recordNumber).Specific;
+
+
+                editText =(CheckBox)oMatrix.Columns.Item(colID).Cells.Item(rowNumber).Specific;
+
+
+
+                //ret = (oMatrix.Columns.Item(colID).Cells.Item(recordNumber).Specific;
+
+
+                if (editText != null)
+                {
+                    ret = editText.Caption.ToString();
+                }
+            }
+            return ret;
+        }
         public static int GetSelectedRow(this SAPbouiCOM.Matrix oMatrix)
         {
             int row = 0;

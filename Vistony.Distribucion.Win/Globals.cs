@@ -67,7 +67,7 @@ namespace Vistony.Distribucion.Win
         public static string Idioma = string.Empty;
         public static string AdminPuntoEmision = string.Empty;
         public static string SucursalDefault = string.Empty;
-
+        public static string PuntoEmisionUsuario = string.Empty;
         public static  CultureInfo cultura = new CultureInfo("es-PE");
 
     }// fin de la clase

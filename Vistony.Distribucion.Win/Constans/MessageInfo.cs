@@ -1029,8 +1029,11 @@ namespace Vistony.Distribucion.Constans
         public string QueryObtenerTipoDespachoTransferenciaStock = "CALL SP_VIS_DIS_GET_TIPO_DESPACHO_TRANSFERENCIA_STOCK()";
         public string QueryObtenerMotivoTrasladoTransferenciaStock = "CALL SP_VIS_DIS_GET_MOTIVO_TRASLADO_TRANSFERENCIA_STOCK()";
         public string QueryObtenerModalidadTransporte= "CALL  P_VIS_DIS_GET_MODALIDAD_TRANSPORTE()";
-        public string QueryObtenerTipoSalida="CALL P_VIS_DIS_GET_TIPO_SALIDA()";
-        
+        public string QueryObtenerTipoSalida = "CALL P_VIS_DIS_GET_TIPO_SALIDA()";
+        public string QueryObtenerSerieSUNAT = "CALL P_VIST_ULT_MIL_GET_SERIE_SUNAT()";
+        public string QueryObtenerDocumentosSUNAT = "CALL P_VIST_ULT_MIL_GET_DOCUMENTOS_SUNAT('{0}','{1}')";
+
+
 
     }// fin de la clase
 

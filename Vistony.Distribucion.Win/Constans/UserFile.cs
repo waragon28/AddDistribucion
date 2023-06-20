@@ -1,6 +1,6 @@
 ﻿//#define AD_EC
-//#define AD_PE
-#define AD_CL
+#define AD_PE
+//#define AD_CL
 //#define AD_PY
 //#define AD_ES
 //#define AD_MA
