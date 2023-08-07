@@ -51,8 +51,8 @@ D:\Desarrollo\AddDistribucion\Forxap.Framework.ServiceLayer\bin\Debug\ICSharpCod
 D:\Desarrollo\AddDistribucion\Forxap.Framework.ServiceLayer\bin\Debug\Forxap.Framework.Utils.pdb
 D:\Desarrollo\AddDistribucion\Forxap.Framework.ServiceLayer\bin\Debug\Forxap.Framework.pdb
 D:\Desarrollo\AddDistribucion\Forxap.Framework.ServiceLayer\bin\Debug\RestSharp.xml
-D:\Desarrollo\AddDistribucion\Forxap.Framework.ServiceLayer\obj\Debug\Forxap.Framework.ServiceLayer.csprojResolveAssemblyReference.cache
 D:\Desarrollo\AddDistribucion\Forxap.Framework.ServiceLayer\obj\Debug\Forxap.Framework.ServiceLayer.SLResources.resources
 D:\Desarrollo\AddDistribucion\Forxap.Framework.ServiceLayer\obj\Debug\Forxap.Framework.ServiceLayer.csproj.GenerateResource.Cache
 D:\Desarrollo\AddDistribucion\Forxap.Framework.ServiceLayer\obj\Debug\Forxap.Framework.ServiceLayer.dll
 D:\Desarrollo\AddDistribucion\Forxap.Framework.ServiceLayer\obj\Debug\Forxap.Framework.ServiceLayer.pdb
+D:\Desarrollo\AddDistribucion\Forxap.Framework.ServiceLayer\obj\Debug\Forxap.Framework.ServiceLayer.csprojResolveAssemblyReference.cache

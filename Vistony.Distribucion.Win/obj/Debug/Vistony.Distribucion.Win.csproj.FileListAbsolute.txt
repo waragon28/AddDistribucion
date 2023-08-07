@@ -40,7 +40,6 @@ D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\SAPBusinessOneS
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\Vistony.Distribucion.BLL.dll
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\Vistony.Distribucion.BO.dll
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\Vistony.Distribucion.DAL.dll
-D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\Forxap.Framework.ServiceLayer.pdb
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\Forxap.Framework.Utils.pdb
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\Forxap.Framework.pdb
@@ -49,8 +48,6 @@ D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\Vistony.Distrib
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\Vistony.Distribucion.DAL.pdb
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\protobuf-net.xml
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\RestSharp.xml
-D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
-D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\obj\Debug\Vistony.Distribucion.Win.csprojResolveAssemblyReference.cache
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\obj\Debug\Interop.SHDocVw.dll
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\obj\Debug\Vistony.Distribucion.Win.csproj.ResolveComReference.cache
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\obj\Debug\Vistony.Distribucion.Win.Constans.Idioma.EnglishUnited_States.resources
@@ -61,3 +58,6 @@ D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\obj\Debug\Vistony.Distrib
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\obj\Debug\Vistony.Distribucion.Win.csproj.GenerateResource.Cache
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\obj\Debug\UltimaMilla.exe
 D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\obj\Debug\UltimaMilla.pdb
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+D:\Desarrollo\AddDistribucion\Vistony.Distribucion.Win\obj\Debug\Vistony.Distribucion.Win.csprojResolveAssemblyReference.cache

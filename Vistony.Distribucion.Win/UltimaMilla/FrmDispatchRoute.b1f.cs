@@ -311,7 +311,7 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             this.EditText19.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText19_KeyDownAfter);
             this.StaticText16 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_41").Specific));
             this.ComboBox1 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_42").Specific));
-            //      this.LinkedButton0 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_43").Specific));
+            //       this.LinkedButton0 = ((SAPbouiCOM.LinkedButton)(this.GetItem("Item_43").Specific));
             this.StaticText17 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_44").Specific));
             this.ComboBox2 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_45").Specific));
             this.Button3 = ((SAPbouiCOM.Button)(this.GetItem("Item_47").Specific));
@@ -324,6 +324,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
             this.StaticText18 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_51").Specific));
             this.StaticText19 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_43").Specific));
             this.ComboBox3 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_46").Specific));
+            this.StaticText20 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_52").Specific));
+            this.ComboBox4 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_53").Specific));
             this.OnCustomInitialize();
 
         }
@@ -694,5 +696,8 @@ namespace Vistony.Distribucion.Win.UltimaMilla
         {
           
         }
+
+        private StaticText StaticText20;
+        private ComboBox ComboBox4;
     }
 }

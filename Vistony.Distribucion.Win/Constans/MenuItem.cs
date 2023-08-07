@@ -34,7 +34,7 @@ namespace Vistony.Distribucion.Constans
 
         public const string dis_seguimiento = "dis_seguimiento";
         public const string dis_seguimientoSec = "dis_DispaTruckVent";
-        
+        public const string dis_StartRouteSMS = "dis_StartRouteSMS";
         /*REPORTES*/
         /*REPORTES ULTIMA MILLA*/
         public const string dis_Control_Documentario_Diario = "CDDA";

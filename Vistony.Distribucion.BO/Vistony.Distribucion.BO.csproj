@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cabecera_Mensaje.cs" />
     <Compile Include="Choferes.cs" />
     <Compile Include="DocumentSUNAT.cs" />
     <Compile Include="PasoRuta.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="HistoricoDespachos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolicitudTraslado.cs" />
+    <Compile Include="StartRoute.cs" />
     <Compile Include="TransportBookingOrders.cs" />
     <Compile Include="Ubigaciones.cs" />
     <Compile Include="UbigeoChofer.cs" />

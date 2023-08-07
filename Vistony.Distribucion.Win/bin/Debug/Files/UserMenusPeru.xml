@@ -21,6 +21,7 @@
             <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="2" String="Seguimiento de Despachos - Choferes" Type="1" UniqueID="dis_seguimiento"></Menu>
             <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="3" String="Seguimiento de Despachos - Vendedores" Type="1" UniqueID="dis_DispaTruckVent"></Menu>
             <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="4" String="Estado de Despachos" Type="1" UniqueID="dis_estado"></Menu>
+            <Menu Checked="0" Enabled="1" FatherUID="dis002" Image="" Position="5" String="Inicio Ruta SMS" Type="1" UniqueID="dis_StartRouteSMS"></Menu>
       
       <Menu Checked="0" Enabled="1" FatherUID="dis001" Image="" Position="6" String="Informes Ultima Milla" Type="2" UniqueID="dis77111"></Menu>
         <Menu Checked="0" Enabled="1" FatherUID="dis77111" Image="" Position="1" String="Informes Ancón" Type="2" UniqueID="AnconMenu"></Menu>

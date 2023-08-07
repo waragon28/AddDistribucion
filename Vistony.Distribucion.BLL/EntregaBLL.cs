@@ -32,6 +32,20 @@ namespace Vistony.Distribucion.BLL
                 return null;
             }
         }
+        public SAPbouiCOM.DataTable ExcecuteDT(ref SAPbouiCOM.DataTable oDT, string query)
+        {
+            try
+            {
+                using (EntregaDAL entregaDAL = new EntregaDAL())
+                {
+                    return entregaDAL.ExcecuteDT(ref oDT,query);
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
        public void addItem(Form oForm, string Query)
         {
             using (EntregaDAL entregaDAL = new EntregaDAL())

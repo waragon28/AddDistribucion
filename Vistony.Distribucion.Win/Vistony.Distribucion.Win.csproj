@@ -231,6 +231,9 @@
     <Compile Include="UltimaMilla\MapaUltimamILLA.Designer.cs">
       <DependentUpon>MapaUltimamILLA.cs</DependentUpon>
     </Compile>
+    <Compile Include="UltimaMilla\StartRouteSMS.b1f.cs">
+      <DependentUpon>StartRouteSMS.b1f</DependentUpon>
+    </Compile>
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -321,6 +324,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Mantenimiento\frmUpdateUbigeo.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="UltimaMilla\StartRouteSMS.b1f">
       <FormCategory>UserForm</FormCategory>
     </None>
   </ItemGroup>

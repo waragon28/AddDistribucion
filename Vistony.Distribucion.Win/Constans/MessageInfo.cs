@@ -1032,8 +1032,11 @@ namespace Vistony.Distribucion.Constans
         public string QueryObtenerTipoSalida = "CALL P_VIS_DIS_GET_TIPO_SALIDA()";
         public string QueryObtenerSerieSUNAT = "CALL P_VIST_ULT_MIL_GET_SERIE_SUNAT()";
         public string QueryObtenerDocumentosSUNAT = "CALL P_VIST_ULT_MIL_GET_DOCUMENTOS_SUNAT('{0}','{1}')";
-
-
+        public const string QueryObtenerDespachosStartRoute = " CALL P_VIST_ULT_MIL_GET_START_ROUTE('{0}','{1}')";
+        public const string QueryObtenerDespachosStartRouteDescripcion = " CALL P_VIST_ULT_MIL_GET_START_ROUTE_DESC('{0}','{1}')";
+       
+        public const string QueryObtenerDespachosStartRouteDetalle = " CALL P_VIST_ULT_MIL_GET_START_ROUTE_D('{0}')";
+        
 
     }// fin de la clase
 

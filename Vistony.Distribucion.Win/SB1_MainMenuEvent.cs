@@ -170,6 +170,11 @@ namespace Vistony.Distribucion.Win
                                 OnShowSeguimientoSectorista();
                             }
                             break;
+                        case AddonMenuItem.dis_StartRouteSMS:
+                            {
+                                OnShowStartRouteSMS();
+                            }
+                            break;
                         #endregion
 
 #if AD_PE
@@ -644,6 +649,20 @@ namespace Vistony.Distribucion.Win
                 Forxap.Framework.UI.Sb1Messages.ShowError(ex.ToString());
             }
         }
+        private void OnShowStartRouteSMS()
+        {
+            try
+            {
+                StartRouteSMS form = new StartRouteSMS();
+                form.Show();
+            }
+            catch (Exception ex)
+            {
+
+                Forxap.Framework.UI.Sb1Messages.ShowError(ex.ToString());
+            }
+        }
+        
         private void onShowProgramacionConsolSLD()
         {
             try

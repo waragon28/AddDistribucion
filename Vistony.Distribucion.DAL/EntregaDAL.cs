@@ -1816,7 +1816,10 @@ public void FindText(SAPbouiCOM.SBOItemEventArg pVal, int filaseleccionada, Edit
                                // {
                                     Programacion1 programacion1 = new Programacion1();
 
-                                    programacion1.U_NumAtCard = Grid0.DataTable.GetString("NumAtCard", row).ToString();
+                                string aa = Grid0.DataTable.GetString("DocDueDate", row);
+                                DateTime dt = DateTime.Parse(aa);
+                                string ab = dt.ToString("yyyyMMdd");
+                                programacion1.U_NumAtCard = Grid0.DataTable.GetString("NumAtCard", row).ToString();
                                     programacion1.U_Delivered = "P";// dt.DataTable.GetString("CardCode", oRows).ToString();
                                     programacion1.U_CardCode = Grid0.DataTable.GetString("CardCode", row).ToString();
                                     programacion1.U_CardName = Grid0.DataTable.GetString("CardName", row).ToString();
@@ -1829,7 +1832,7 @@ public void FindText(SAPbouiCOM.SBOItemEventArg pVal, int filaseleccionada, Edit
                                     programacion1.U_SlpName = Grid0.DataTable.GetString("Vendedor", row).ToString();
                                     programacion1.U_PymntGroup = Grid0.DataTable.GetString("TerminoPago", row).ToString();
                                     programacion1.U_DocBalance = Grid0.DataTable.GetString("Saldo", row).ToString();
-                                     programacion1.U_TaxDate = ConvertirFormatoFecha(Grid0.DataTable.GetString("DocDueDate", row).ToString(),"yyyyMMdd");
+                                     programacion1.U_TaxDate = dt.ToString("yyyyMMdd");
                                     programacion1.U_PymntGroup = Grid0.DataTable.GetString("TerminoPago", row).ToString();
                                     programacion1.U_DocBalance = Grid0.DataTable.GetString("Saldo", row).ToString();
 
@@ -2235,6 +2238,19 @@ public void FindText(SAPbouiCOM.SBOItemEventArg pVal, int filaseleccionada, Edit
 
             return ret;
 
+        }
+
+        public SAPbouiCOM.DataTable ExcecuteDT(ref SAPbouiCOM.DataTable oDT, string query)
+        {
+            try
+            {
+                oDT.ExecuteQuery(query);
+                return oDT;
+            }
+            catch (Exception ex)
+            {
+                return null; //Sb1Messages.ShowError(ex);
+            }
         }
 
 

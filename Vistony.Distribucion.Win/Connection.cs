@@ -74,7 +74,7 @@ namespace Vistony.Distribucion.Win
                 else
                 {
 #if AD_PE
-                        if (Sb1Globals.CompanyName == "VISTONY COMPAÑIA INDUSTRIAL DEL PERU S.A.C.")
+                        if (Sb1Globals.CompanyName == "VISTONY COMPAÑIA INDUSTRIAL DEL PERU S.A.C." || Sb1Globals.CompanyName == "QA VISTONY PERU")
                             {
                                 Sb1MetaData.AddMenusEspanolPeru(); // agrega el menu del addon
                                 Sb1Globals.AdminPuntoEmision = Utils.GetMultiSucursal(string.Format(addonMessageInfo.QueryGetListAdminSucu, Sb1Globals.UserSignature)); // Consulta Usuario Multi Sucursal

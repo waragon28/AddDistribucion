@@ -1111,6 +1111,16 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.StartRouteSMS.OnInitializeComponent">
+            <summary>
+            Initialize components. Called by framework after form created.
+            </summary>
+        </member>
+        <member name="M:Vistony.Distribucion.Win.UltimaMilla.StartRouteSMS.OnInitializeFormEvents">
+            <summary>
+            Initialize form event. Called by framework before form creation.
+            </summary>
+        </member>
         <member name="M:Vistony.Distribucion.Win.Formularios.frmProgramacionAsignar.OnInitializeComponent">
             <summary>
             Initialize components. Called by framework after form created.
